@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// import { Container, Row, Col } from "react-bootstrap";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+// import VerifyOtp from "./components/client/VerifyOtp";
+import UserLogin from "./components/client/UserLogin";
+import VerifyOtp from "./components/client/VerifyOtp";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+        {/* <Route path="/user/verify/otp" element={<VerifyOtp />} /> */}
+        <Route path="/user/login" element={<UserLogin />} />
+        <Route path="/user/verify/otp" element={< VerifyOtp />} />
+      </Routes>
+      
+
   );
 }
 
