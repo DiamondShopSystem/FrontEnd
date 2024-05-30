@@ -21,7 +21,7 @@ const UserLogin = () => {
     const [number, setNumber] = useState("");
     const navigate = useNavigate();
     const [otp, setOtp] = useState("");
-    const { setResult } = useContext(GetResultContext);
+    const { setResult , setPhoneNumber } = useContext(GetResultContext);
 
     function setUpRecaptha(number) {
         const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
@@ -39,14 +39,15 @@ const UserLogin = () => {
         e.preventDefault();
         console.log(number);
         setError("");
-        if (number === "" || number === undefined || number.length < 12)
+        if (number === "" || number === undefined || number.length < 12) {
             return setError("Số điện thoại không hợp lệ");
+        }
         try {
-            const response = await setUpRecaptha(number);
-            console.log(response);
-            setResult(response);
-            console.log(otp);
-
+            // const response = await setUpRecaptha(number);
+            // console.log(response);
+            // setResult(response);
+            // console.log(otp);
+            setPhoneNumber(number);
             navigate("/user/verify/otp");
         } catch (err) {
             return setError("Số điện thoại không hợp lệ");
