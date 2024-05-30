@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from '../../config/firebase';
 import Sparkle from './Sparkle';
+import { useForm } from "react-hook-form";
 import './AdminLogin.css';
+import axios from "axios";
+
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
@@ -14,9 +17,13 @@ const AdminLogin = () => {
     const [forgotPassword, setForgotPassword] = useState(false);
     const [otpSent, setOtpSent] = useState(false);
     const [otpVerified, setOtpVerified] = useState(false);
+    const [isLogin, setIsLogin] = useState([]);
     const navigate = useNavigate();
+    const {
+        reset
+    } = useForm();
 
-    
+
     const handleGoogleLogin = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -28,25 +35,45 @@ const AdminLogin = () => {
             });
     };
 
-    const handleSubmit = (e) => {
 
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // setMessage('Đăng nhập thành công với email: ' + email);
-        console.log(email);
-        console.log(password);
-        // fetch('http://localhost:3000/api/v1/admin/login', {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(email)
-        // })
-        //     .then((response) => response.json())
+        const configuration = {
+            method: "post",
+            url: "http://127.0.0.1:8080/api/v1/admin/login",
+            data: {
+                email,
+                password,
+            },
+        };
+        axios(configuration)
+            .then((result) => { 
+                console.log(result); 
+                const checkResult = result.data;
+                console.log(checkResult);
+                if(checkResult.code == 200){
+                    alert("Đăng nhập thành công");
+                }else{
+                    setMessage(checkResult.msg);
+                }
+            })
+            .catch((error) => { console.log(error); })
+        
+        
+        // make the API call
+        // axios(configuration)
         //     .then((result) => {
-        //         console.log(result)
+        //         setIsLogin(true);
         //     })
-        // navigate('/admin');
+        //     .catch((error) => {
+        //         error = new Error();
+        //     });
+        // console.log(isLogin);
+        // alert("submitted");
     };
+
 
     const handleForgotPassword = (event) => {
         event.preventDefault();
@@ -136,7 +163,7 @@ const AdminLogin = () => {
                 ) : (
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
-                            <label>Tên Đăng Nhập:</label>
+                            <label>Email:</label>
                             <input
                                 type="email"
                                 value={email}
