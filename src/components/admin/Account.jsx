@@ -16,6 +16,7 @@ export default function Account() {
         setAccounts(accounts.filter((_, i) => i !== index));
     };
 
+    
     const handleUpdateAccount = (updatedAccount) => {
         const updatedAccounts = accounts.map((account, i) =>
             i === accountToEdit ? updatedAccount : account
@@ -102,7 +103,7 @@ const AccountList = ({ accounts, onDelete, onEdit }) => {
             <ul>
                 {accounts.map((account, index) => (
                     <li key={index}>
-                        <h3 style={{fontSize: '1.5rem'}}>{account.name}</h3>
+                        <h3 style={{ fontSize: '1.5rem' }}>{account.name}</h3>
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                             <button style={buttonStyle} onClick={() => onEdit(index)}>
                                 <FaEdit style={{ marginRight: '5px' }} />
