@@ -8,6 +8,7 @@ import {
     RiVipDiamondLine } from "react-icons/ri";
 import { MdCategory } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
+import logo from "../../assets/logo1.png";
 
 const Sidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,7 @@ const Sidebar = ({ children }) => {
         <div className="container">
             <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
                 <div className="top_section">
-                    <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Logo</h1>
+                    <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">ADMIN</h1>
                     <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
                         <FaBars onClick={toggle} />
                     </div>

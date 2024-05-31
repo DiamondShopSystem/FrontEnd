@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
-import Dashboard from './pages/Dashboard.jsx';
-import Accounts from './pages/Account.jsx';
-import Category from './pages/Category.jsx';
-import Products from './pages/Product.jsx';
+import Dashboard from './Dashboard.jsx';
+import Accounts from './Account.jsx';
+import Category from './Category.jsx';
+import Products from './Product.jsx';
 import Header from './ui/Header.jsx'
 
 function adminDashboard() {
