@@ -61,22 +61,24 @@ const UserLogin = () => {
         }
     };
     return (
-        <div className="min-h-100vh flex justify-center grow bg-slate-50 dark:bg-navy-900">
-            <main className="flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
-                <div className="text-left flex w-full max-w-sm   flex-col justify-center cursor-pointer py-4">
+        <div className="wrapper">
+            <main className="total">
+                <div className="linkback">
                     <Link to="/" className="flex d-none">
                         <div className="">
                             <FaArrowLeft />
-                            <span class="text-slate-600 font-bold ml-2">Trang chủ</span>
+                            <span class="back">Trang chủ</span>
                         </div>
                     </Link>
+                </div>
+                <div className="img"> 
                 </div>
                 <div className="flex w-full max-w-sm grow flex-col justify-center p-5">
                     <div className="text-center">
                         <div className="mt-4">
-                            <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100">Chào mừng trở lại</h2>
+                            <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100 ">Chào mừng trở lại</h2>
                             <p className="text-slate-400 dark:text-navy-300">Vui lòng đăng nhập để tiếp tục</p>
-
+ 
                         </div>
                     </div>
 
@@ -103,6 +105,8 @@ const UserLogin = () => {
                                     defaultCountry="VN"
                                 // countries={["VN"]}
                                 />
+                                {/* <FaPhone className="icon" /> */}
+                                
                                 {/* <span className="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
                                         <FaPhone />
                                     </span> */}
@@ -114,8 +118,8 @@ const UserLogin = () => {
                             <div id="recaptcha-container"></div>
                         </Form.Group>
                         {<Alert className="text-red-600">{error}</Alert>}
-                        <Button className="btn mt-2 mr-3 h-10 w-full bg-[#1bb51b] font-bold text-white hover:bg-[#71cd00]" type="submit" variant="primary">
-                            SMS
+                        <Button className="button">
+                            <span> SMS </span>
                         </Button>
                     </Form>
                     <div className="my-[30px] flex flex-col justify-end">
@@ -138,7 +142,6 @@ const UserLogin = () => {
                 </div>
             </main>
         </div>
-
     );
 };
 
