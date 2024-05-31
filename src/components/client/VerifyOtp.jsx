@@ -9,10 +9,6 @@ import "react-phone-number-input/style.css";
 import "./UserLogin"
 import {useContext,  useState } from "react";
 
-
-import { GetResultContext } from "./GetResultContext";
-
-
 import { GetResultContext } from "./GetResultContext";
 
 
