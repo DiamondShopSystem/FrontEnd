@@ -14,29 +14,29 @@ const Sidebar = ({ children }) => {
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {
-            path: "admin/dashboard",
+            path: "dashboard",
             name: "Dashboard",
             dashboard_icon: <RiDashboardFill />
         },
         {
-            path: "admin/accounts",
+            path: "accounts",
             name: "Account",
             dashboard_icon: <RiAccountBoxFill />
         },
         {
-            path: "admin/products",
+            path: "products",
             name: "Products",
             dashboard_icon: <RiVipDiamondLine />
         },
         {
-            path: "admin/category",
+            path: "category",
             name: "Category",
             dashboard_icon: <MdCategory />
         },
     ]
     return (
         <div className="container">
-            <div style={{ width: isOpen ? "300px" : "80px" }} className="sidebar">
+            <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">Logo</h1>
                     <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">

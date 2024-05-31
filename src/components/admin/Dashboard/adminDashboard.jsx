@@ -15,10 +15,10 @@ function adminDashboard() {
       <Sidebar>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="admin/dashboard" element={<Dashboard />} />
-        <Route path="admin/accounts" element={<Accounts />} />
-        <Route path="admin/category" element={<Category />} />
-        <Route path="admin/products" element={<Products />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/accounts" element={<Accounts />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </Sidebar>
     </div>
