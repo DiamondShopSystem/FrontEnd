@@ -9,6 +9,7 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import "./UserLogin"
 import { createContext, useContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
@@ -22,6 +23,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
+import { GetResultContext } from "./GetResultContext";
+
 
 
 
@@ -31,7 +34,7 @@ const VerifyOtp = () => {
     const [number, setNumber] = useState("");
     const [flag, setFlag] = useState(false);
     const [otp, setOtp] = useState("");
-    const [result, setResult] = useState("");
+    const { result } = useContext(GetResultContext);
     const navigate = useNavigate();
 
     const verifyOtp = async (e) => {
