@@ -1,25 +1,18 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
 import "./UserLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut,
-    GoogleAuthProvider,
-    signInWithPopup,
     RecaptchaVerifier,
     signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../../config/firebase";
-
+import { GetResultContext } from "./GetResultContext";
 
 
 const UserLogin = () => {
@@ -27,9 +20,10 @@ const UserLogin = () => {
     const [error, setError] = useState("");
     const [number, setNumber] = useState("");
     const navigate = useNavigate();
-    // const [flag, setFlag] = useState(false);
     const [otp, setOtp] = useState("");
-    const [result, setResult] = useState("");
+
+    const { setResult , setPhoneNumber } = useContext(GetResultContext);
+
     function setUpRecaptha(number) {
         const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             size: 'invisible',
@@ -46,16 +40,17 @@ const UserLogin = () => {
         e.preventDefault();
         console.log(number);
         setError("");
-        if (number === "" || number === undefined || number.length < 12)
+
+        if (number === "" || number === undefined || number.length < 12) {
             return setError("Số điện thoại không hợp lệ");
+        }
         try {
-            const response = await setUpRecaptha(number);
-            console.log(response);
-            setResult(response);
-            console.log(otp);
-            // window.location = "/user/verify/otp";
+            // const response = await setUpRecaptha(number);
+            // console.log(response);
+            // setResult(response);
+            // console.log(otp);
+            setPhoneNumber(number);
             navigate("/user/verify/otp");
-            // setFlag(true);
         } catch (err) {
             return setError("Số điện thoại không hợp lệ");
         }
@@ -80,7 +75,8 @@ const UserLogin = () => {
                             <p className="text-slate-400 dark:text-navy-300">Vui lòng đăng nhập để tiếp tục</p>
  
                         </div>
-                    </div>
+
+
 
                     <Form onSubmit={getOtp}>
                         <Form.Group className="mt-4" >
@@ -111,7 +107,9 @@ const UserLogin = () => {
                                         <FaPhone />
                                     </span> */}
                                 {/* </label> */}
+
                             </div>
+                        </div>
 
 
                             {/* </div> */}
@@ -139,8 +137,8 @@ const UserLogin = () => {
                             </li>
                         </ul>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     );
 };
