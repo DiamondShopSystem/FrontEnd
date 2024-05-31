@@ -1,0 +1,133 @@
+
+.header {
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .header__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f7f7f7;
+    font-size: 14px;
+  }
+  
+  .header__location {
+    font-size: 14px;
+  }
+  
+  .header__account {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__wishlist,
+  .header__cart {
+    margin-left: 10px;
+  }
+  
+  .header__center {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .header__logo-image {
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .header__logo-text {
+    line-height: 1.2;
+    margin-top: 5px;
+  }
+  
+  .header__logo-title {
+    font-weight: bold;
+  }
+  
+  .header__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+  }
+  
+  .header__nav {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .header__nav ul {
+    list-style: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header__nav li {
+    margin: 0 15px;
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+  }
+  
+  .header__nav .highlight {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .header__search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__search input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .header__search button {
+    margin-left: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 10px; 
+    border-radius: 5px; 
+    overflow: hidden;
+    flex-direction: column; 
+  }
+  
+  .dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 16px; 
+    background-color: white; 
+    transition: background-color 0.3s; 
+  }
+  
+  .dropdown-content li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
