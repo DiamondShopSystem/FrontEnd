@@ -1,6 +1,4 @@
-
 import { Routes, Route } from "react-router-dom";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import UserLogin from "./components/client/UserLogin";
 import VerifyOtp from "./components/client/VerifyOtp";
