@@ -3,7 +3,7 @@ import "./App.css";
 import UserLogin from "./components/client/UserLogin";
 import VerifyOtp from "./components/client/VerifyOtp";
 import AdminLogin from "./components/admin/AdminLogin";
-import AdminDashboard from "./components/adminDashboard/adminDashboard";
+import Dashboard from "./components/admin/Dashboard/adminDashboard";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/user/login" element={<UserLogin />} />
       <Route path="/user/verify/otp" element={< VerifyOtp />} />
-      <Route path="/*" element={<AdminDashboard />} />
+      <Route path="admin/*" element={<Dashboard />} />
     </Routes>
   );
 }
