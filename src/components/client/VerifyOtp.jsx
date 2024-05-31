@@ -5,8 +5,12 @@ import {  useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
+
 import "./UserLogin"
 import {useContext,  useState } from "react";
+
+
+import { GetResultContext } from "./GetResultContext";
 
 
 import { GetResultContext } from "./GetResultContext";
@@ -18,7 +22,9 @@ const VerifyOtp = () => {
 
     const [error, setError] = useState("");
     const [otp, setOtp] = useState("");
+
     const { result , phoneNumber } = useContext(GetResultContext);
+
     const navigate = useNavigate();
 
     const verifyOtp = async (e) => {

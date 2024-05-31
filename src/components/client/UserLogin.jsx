@@ -21,6 +21,7 @@ const UserLogin = () => {
     const [number, setNumber] = useState("");
     const navigate = useNavigate();
     const [otp, setOtp] = useState("");
+
     const { setResult , setPhoneNumber } = useContext(GetResultContext);
 
     function setUpRecaptha(number) {
@@ -39,6 +40,7 @@ const UserLogin = () => {
         e.preventDefault();
         console.log(number);
         setError("");
+
         if (number === "" || number === undefined || number.length < 12) {
             return setError("Số điện thoại không hợp lệ");
         }
@@ -74,6 +76,7 @@ const UserLogin = () => {
 
                             </div>
                         </div>
+
 
                         <Form onSubmit={getOtp}>
                             <Form.Group className="mt-4" >
