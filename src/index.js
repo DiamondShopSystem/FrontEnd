@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { BrowserRouter } from "react-router-dom";
-import UserLogin from './components/client/UserLogin';
-import UserLoginProvider from './components/client/UserLogin';
+
+import { BrowserRouter as Router } from "react-router-dom";
+
 import GetResultProvider from './components/client/GetResultContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
-    <BrowserRouter>
+
+    <Router>
       <GetResultProvider>
         <App />
       </GetResultProvider>
-    </BrowserRouter>
+    </Router>
+
   </React.StrictMode>
 
 );

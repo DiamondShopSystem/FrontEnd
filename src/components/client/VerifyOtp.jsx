@@ -1,27 +1,17 @@
-import { FaArrowLeft } from "react-icons/fa";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
 import { FaPencil } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import "./VerifyOtp.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
+import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+
 import "./UserLogin"
-import { createContext, useContext, useEffect, useState } from "react";
-import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut,
-    GoogleAuthProvider,
-    signInWithPopup,
-    RecaptchaVerifier,
-    signInWithPhoneNumber,
-} from "firebase/auth";
-import { auth } from "../../config/firebase";
+import {useContext,  useState } from "react";
+
+
+import { GetResultContext } from "./GetResultContext";
+
 
 import { GetResultContext } from "./GetResultContext";
 
@@ -31,10 +21,10 @@ import { GetResultContext } from "./GetResultContext";
 const VerifyOtp = () => {
 
     const [error, setError] = useState("");
-    const [number, setNumber] = useState("");
-    const [flag, setFlag] = useState(false);
     const [otp, setOtp] = useState("");
-    const { result } = useContext(GetResultContext);
+
+    const { result , phoneNumber } = useContext(GetResultContext);
+
     const navigate = useNavigate();
 
     const verifyOtp = async (e) => {
@@ -44,11 +34,9 @@ const VerifyOtp = () => {
         if (otp === "" || otp === null) return;
         try {
             await result.confirm(otp);
-            alert("Đăng nhập thành công");
-            //   navigate("/home");
+            
         } catch (err) {
             alert("Sai rồi mày ơi");
-            //   setError(err.message);
         }
     };
 
@@ -61,7 +49,7 @@ const VerifyOtp = () => {
                             <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100">Xác thực</h2>
                             <p className="text-slate-400 dark:text-navy-300">Mã xác thực của bạn đã được gửi tới số điện thoại</p>
                             <a href="/user/login" className="text-blue-400  focus:outline-none font-light py-2 px-4 rounded inline-flex items-center">
-                                <span>0365320161</span>
+                                <span>{phoneNumber}</span>
                                 <FaPencil />
                             </a>
                         </div>
@@ -89,25 +77,6 @@ const VerifyOtp = () => {
                 </div>
             </main>
         </div>
-        // <Form onSubmit={verifyOtp}>
-        //     <Form.Group className="mb-3">
-        //         <Form.Control
-        //             type="otp"
-        //             placeholder="Enter OTP"
-        //             onChange={(e) => setOtp(e.target.value)}
-        //         />
-        //     </Form.Group>
-        //     <div className="button-right">
-        //         <Link to="/">
-        //             <Button variant="secondary">Cancel</Button>
-        //         </Link>
-        //         &nbsp;
-        //         <Button type="submit" variant="primary">
-        //             Verify
-        //         </Button>
-        //     </div>
-        // </Form>
-
     )
 }
 
