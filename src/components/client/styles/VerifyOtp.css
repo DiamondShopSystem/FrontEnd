@@ -1,20 +1,27 @@
-*, :before, :after {
+.verify_otp_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.verify-otp .bg-blue-500 {
+    background-color: #3b82f6;
+}
+*,
+:before,
+:after {
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
 }
-
-body {
-    background-color: #f8fafc;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    color: #64748b;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    
-    
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bg-slate-50 {
@@ -61,6 +68,8 @@ menu {
 
 .items-center {
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .flex-col {
@@ -109,9 +118,11 @@ menu {
 .text-center {
     text-align: center;
 }
-.d-none{
+
+.d-none {
     text-decoration: none;
 }
+
 .text-white {
     color: #fff;
 }
@@ -192,7 +203,8 @@ menu {
 .relative {
     position: relative;
 }
-.center{
+
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -202,6 +214,7 @@ menu {
     display: flex;
     align-items: center;
 }
+
 .pointer-events-none {
     pointer-events: none;
 }
@@ -244,7 +257,8 @@ menu {
 .rounded {
     border-radius: .25rem;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
@@ -263,9 +277,8 @@ input {
     margin: 0;
     padding: 0;
 }
-.bg-blue-500 {
-    background-color: #3b82f6;
-}
+
+
 
 .icon {
     height: 1.5rem;
@@ -281,6 +294,7 @@ input {
 .gap-2 {
     gap: .5rem;
 }
+
 .text-blue-400 {
     color: #60a5fa;
 }
@@ -288,6 +302,7 @@ input {
 .font-light {
     font-weight: 300;
 }
+
 @media (min-width: 1024px) {
     .lg\:max-w-md {
         max-width: 28rem;
@@ -295,56 +310,100 @@ input {
 }
 
 
-.wrapper1{
+.verify_otp_wrapper {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.224);
-    backdrop-filter: blur(30px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #000000;
     border-radius: 10px;
-    padding: 120px 40px;
-    margin: auto;
+    /* padding: 55px 40px; */
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.linkback{
-    position: absolute;
-    top: 0;
-    left: 20px;
-    padding: 10px;
-
-}
-
-
-.back{
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: #585858;
-}
-.linkback .flex{
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    color: #585858;
-}
-
-.wrapper1 button{
+.verify_otp_wrapper button {
+    justify-content: center;
     width: 100%;
     height: 40px;
     background: #18a627;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    color: #ffffff; 
+    color: #ffffff;
     font-weight: 700;
     margin: 20px 0 20px;
-    
-}
-.wrapper1 button:hover {
-    background: rgb(81, 193, 11);
- }
- .header{
-    color: #585858;
- }
 
+}
+
+.verify_otp_wrapper button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+.mg-1 {
+    margin: 0.25rem;
+}
+
+.verify_otp_container img {
+    height: 100px;
+    width: 100px;
+    /* background-size: cover;
+    display: inline-block; */
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+}
+
+.verify-otp {
+    padding-top: 15px;
+    font-size: large;
+}
+
+.verify-otp input:focus {
+    border: 10px;
+    background: #abbfeb4f;
+    /* Đổi màu border khi input được focus */
+    box-shadow: 0 0 0 0.2rem rgba(160, 160, 241, 0.653);
+    /* Thêm hiệu ứng shadow khi input được focus */
+    outline: 0;
+    /* Loại bỏ outline mặc định */
+    border-radius: 8px;
+    /* Đặt góc bo tròn cho input */
+    border: 1px solid #d1d5db;
+    /* Đặt border cho input */
+    /* Đặt padding cho input */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Thêm hiệu ứng transition cho border-color và box-shadow */
+}
+
+.verify-otp input {
+    justify-content: center;
+    width: 100%;
+    /* Đặt chiều rộng của input */
+    height: 40px;
+    border-radius: 8px;
+    /* Góc bo tròn cho input */
+    border: 1px solid #a0aec0;
+    /* Màu border mặc định */
+    /* Padding cho input */
+    background: #d5e1e998;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Hiệu ứng transition */
+}
+
+.verify-otp input:hover {
+    background: #c9d4dcba;
+}
+
+.verify_otp_header {
+    padding-top: 27px;
+}
+
+.verify-otp {
+    padding-top: 35px;
+}
