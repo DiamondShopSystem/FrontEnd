@@ -45,7 +45,8 @@ function AdminForgotPass() {
     return (
         <div className="forgot-password">
             <div className="forgot-password__form-container">
-                <h2 className="forgot-password__title">Thế Giới Kim Cương</h2>
+                <h2 className="forgot-password__title1">Quên Mật Khẩu</h2>
+                <p className="forgot-password__title">Trùm Kim Cương</p>
                 {otpSent ? (
                     otpVerified ? (
                         <form onSubmit={handleResetPassword} className="forgot-password__form">

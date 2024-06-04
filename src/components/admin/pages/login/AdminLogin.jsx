@@ -38,7 +38,7 @@ function AdminLogin() {
         <div className="login">
             <div className="login__form-container">
                 <h2 className="login__title">Đăng Nhập</h2>
-                <p className="login__subtitle">Thế Giới Kim Cương</p>
+                <p className="login__subtitle">Trùm Kim Cương</p>
                 <form onSubmit={handleSubmit} className="login__form">
                     <div className="login__input-group">
                         <label className="login__label">Tên Đăng Nhập:</label>
@@ -63,10 +63,10 @@ function AdminLogin() {
                     <div className="login__forgot-password">
                         <Link to="/admin/forgotpassword" className="login__forgot-password-button">Quên Mật Khẩu</Link>
                     </div>
-                    <button type="submit" className="login__button">Login</button>
+                    <button type="submit" className="login__button">Đăng Nhập</button>
                 </form>
                 <button onClick={handleGoogleSignIn} className="login__google-button">
-                    <img src="/path/to/google-logo.png" alt="Google logo" /> Đăng nhập với Google
+                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo" /> Đăng nhập với Google
                 </button>
                 {message && <p className="login__message">{message}</p>}
             </div>
