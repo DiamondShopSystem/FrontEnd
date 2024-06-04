@@ -1,0 +1,93 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/Login.css">
+    <title>Forgot Password</title>
+</head>
+
+<body>
+    <div class="forgot-password">
+        <div class="forgot-password__form-container">
+            <h2 class="forgot-password__title">Trùm Kim Cương</h2>
+            <!-- Form for sending OTP -->
+            <form id="send-otp-form" class="forgot-password__form">
+                <div class="forgot-password__input-group">
+                    <label class="forgot-password__label">Email:</label>
+                    <input type="email" id="email" required class="forgot-password__input">
+                </div>
+                <button type="submit" class="forgot-password__button">Gửi OTP</button>
+            </form>
+            <!-- Form for verifying OTP -->
+            <form id="verify-otp-form" class="forgot-password__form" style="display: none;">
+                <div class="forgot-password__input-group">
+                    <label class="forgot-password__label">Nhập OTP:</label>
+                    <input type="text" id="otp" required class="forgot-password__input">
+                </div>
+                <button type="submit" class="forgot-password__button">Xác Nhận OTP</button>
+            </form>
+            <!-- Form for resetting password -->
+            <form id="reset-password-form" class="forgot-password__form" style="display: none;">
+                <div class="forgot-password__input-group">
+                    <label class="forgot-password__label">Mật Khẩu Mới:</label>
+                    <input type="password" id="newPassword" required class="forgot-password__input">
+                </div>
+                <button type="submit" class="forgot-password__button">Đổi Mật Khẩu</button>
+            </form>
+            <p id="message" class="forgot-password__message"></p>
+            <button onclick="goBack()" class="forgot-password__back-button">Quay Lại</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('send-otp-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Logic for sending OTP email
+            const email = document.getElementById('email').value;
+            sendPasswordResetEmail(email).then(() => {
+                document.getElementById('send-otp-form').style.display = 'none';
+                document.getElementById('verify-otp-form').style.display = 'block';
+                document.getElementById('message').innerText = 'OTP đã được gửi tới email: ' + email;
+            }).catch((error) => {
+                document.getElementById('message').innerText = 'Lỗi khi gửi OTP: ' + error.message;
+            });
+        });
+
+        document.getElementById('verify-otp-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Logic for verifying OTP
+            const otp = document.getElementById('otp').value;
+            if (otp === '123456') {
+                document.getElementById('verify-otp-form').style.display = 'none';
+                document.getElementById('reset-password-form').style.display = 'block';
+                document.getElementById('message').innerText = 'OTP xác nhận thành công';
+            } else {
+                document.getElementById('message').innerText = 'OTP không chính xác';
+            }
+        });
+
+        document.getElementById('reset-password-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Logic for resetting password
+            const newPassword = document.getElementById('newPassword').value;
+            document.getElementById('message').innerText = 'Mật khẩu đã được đổi thành công';
+            document.getElementById('reset-password-form').style.display = 'none';
+        });
+
+        function sendPasswordResetEmail(email) {
+            // Mock function for sending password reset email
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
+            });
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
