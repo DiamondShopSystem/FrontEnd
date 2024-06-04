@@ -8,7 +8,7 @@ import AdminLayout from "./components/admin/layouts/AdminLayout";
 import Category from "./components/admin/pages/category/Category";
 import CreateCategory from "./components/admin/pages/category/CreateCategory";
 
-
+import AdminLogin from "./components/admin/pages/login/AdminLogin";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <Route path="/user/verify/otp" element={<VerifyOtp />} />
 
       {/* Admin Path  */}
-
+      <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/category" element={<AdminLayout><Category /></AdminLayout>} />
       <Route path="/admin/category/create" element={<AdminLayout><CreateCategory /></AdminLayout>} />
       <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
