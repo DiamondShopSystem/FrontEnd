@@ -1,0 +1,218 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Căn giữa theo chiều dọc */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.login__form-container {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 28.125rem;
+}
+
+.login__title {
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.login__subtitle {
+    margin-bottom: 2.5rem;
+    font-size: 2.1875rem;
+    color: #007bff;
+    font-weight: bold;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+}
+
+.login__input-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.login__label {
+    display: block;
+    margin-bottom: 0.3125rem;
+    color: #333;
+}
+
+.login__input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.25rem;
+}
+
+.login__button {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 0.625rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login__button:active {
+    background-color: #28a745;
+    /* Đổi màu xanh lá khi bấm vào */
+}
+
+.login__forgot-password {
+    text-align: right;
+}
+
+.login__forgot-password-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.login__forgot-password-button:hover {
+    text-decoration: underline;
+}
+
+.login__google-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.625rem;
+    background-color: #ffffff;
+    color: #333;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login__google-button img {
+    margin-right: 0.625rem;
+}
+
+.login__google-button:active {
+    background-color: #28a745;
+    /* Đổi màu xanh lá khi bấm vào */
+}
+
+.login__message {
+    margin-top: 1.25rem;
+    color: #333;
+}
+
+.forgot-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Căn giữa theo chiều dọc */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.forgot-password__form-container {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 28.125rem;
+}
+
+.forgot-password__title {
+    margin-bottom: 2.5rem;
+    font-size: 2.1875rem;
+    color: #007bff;
+    font-weight: bold;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+}
+
+.forgot-password__title1 {
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.forgot-password__form {
+    text-align: left;
+}
+
+.forgot-password__input-group {
+    margin-bottom: 1.25rem;
+}
+
+.forgot-password__label {
+    display: block;
+    margin-bottom: 0.3125rem;
+    color: #333;
+}
+
+.forgot-password__input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.25rem;
+}
+
+.forgot-password__button {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 0.625rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.forgot-password__button:active {
+    background-color: #28a745;
+    /* Đổi màu xanh lá khi bấm vào */
+}
+
+.forgot-password__back-button {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-top: 0.625rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.forgot-password__back-button:active {
+    background-color: #dc3545;
+    /* Đổi màu đỏ khi bấm vào */
+}
+
+.forgot-password__message {
+    margin-top: 1.25rem;
+    color: #333;
+}

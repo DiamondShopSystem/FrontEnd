@@ -1,20 +1,34 @@
 // import { Container, Row, Col } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-// import VerifyOtp from "./components/client/VerifyOtp";
-import UserLogin from "./components/client/UserLogin";
-import VerifyOtp from "./components/client/VerifyOtp";
-import AdminLogin from "./components/admin/AdminLogin";
-import AdminMain from "./components/admin/AdminMain";
-import Header from './components/Header';
+
+
+import UserLogin from "./components/client/pages/auth/UserLogin";
+import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
+import Home from "./components/client/pages/home/Home";
+import Account from "./components/admin/pages/account/Account";
+import Dashboard from "./components/admin/pages/dashboard/Dashboard";
+import AdminLayout from "./components/admin/layouts/AdminLayout";
+import Category from "./components/admin/pages/category/Category";
+import CreateCategory from "./components/admin/pages/category/CreateCategory";
+import AdminLogin from "./components/admin/pages/login/AdminLogin";
+import AdminForgotPass from "./components/admin/pages/login/AdminForgotPass";
+
 
 function App() {
   return (
     <Routes>
-      <Header />
+
+      {/* Client Path  */}
+      <Route path="/" element={<Home />} />
       <Route path="/user/login" element={<UserLogin />} />
-      <Route path="/user/verify/otp" element={< VerifyOtp />} />
-      <Route path="/admin/*" element={<AdminMain />} />
+      <Route path="/user/verify/otp" element={<VerifyOtp />} />
+      {/* Admin Path  */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/forgotpassword" element={<AdminForgotPass />} />
+      <Route path="/admin/category" element={<AdminLayout><Category /></AdminLayout>} />
+      <Route path="/admin/category/create" element={<AdminLayout><CreateCategory /></AdminLayout>} />
+      <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
+      <Route path="/admin/account" element={<AdminLayout><Account /></AdminLayout>} />
     </Routes>
 
   );
