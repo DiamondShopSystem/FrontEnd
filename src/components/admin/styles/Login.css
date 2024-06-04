@@ -85,6 +85,7 @@
 
 .login__forgot-password-button:hover {
     text-decoration: underline;
+    color: #dc3545;
 }
 
 .login__google-button {
