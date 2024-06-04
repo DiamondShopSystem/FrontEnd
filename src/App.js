@@ -1,7 +1,4 @@
-// import { Container, Row, Col } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
-
-
 import UserLogin from "./components/client/pages/auth/UserLogin";
 import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
 import Home from "./components/client/pages/home/Home";
@@ -10,12 +7,15 @@ import Dashboard from "./components/admin/pages/dashboard/Dashboard";
 import AdminLayout from "./components/admin/layouts/AdminLayout";
 import Category from "./components/admin/pages/category/Category";
 import CreateCategory from "./components/admin/pages/category/CreateCategory";
+
 import AdminLogin from "./components/admin/pages/login/AdminLogin";
 import AdminForgotPass from "./components/admin/pages/login/AdminForgotPass";
 
 
+
 function App() {
   return (
+
     <Routes>
 
       {/* Client Path  */}
@@ -30,6 +30,7 @@ function App() {
       <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
       <Route path="/admin/account" element={<AdminLayout><Account /></AdminLayout>} />
     </Routes>
+
 
   );
 }
