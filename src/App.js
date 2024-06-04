@@ -10,7 +10,7 @@ import CreateCategory from "./components/admin/pages/category/CreateCategory";
 
 import AdminLogin from "./components/admin/pages/login/AdminLogin";
 import AdminForgotPass from "./components/admin/pages/login/AdminForgotPass";
-
+import Header from "./components/client/pages/home/Header";
 
 
 function App() {
@@ -22,9 +22,9 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/user/login" element={<UserLogin />} />
       <Route path="/user/verify/otp" element={<VerifyOtp />} />
+
       {/* Admin Path  */}
-      <Route path="/admin/login" element={<AdminLogin />} />
-      <Route path="/admin/forgotpassword" element={<AdminForgotPass />} />
+
       <Route path="/admin/category" element={<AdminLayout><Category /></AdminLayout>} />
       <Route path="/admin/category/create" element={<AdminLayout><CreateCategory /></AdminLayout>} />
       <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
