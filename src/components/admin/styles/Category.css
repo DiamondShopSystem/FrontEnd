@@ -1,0 +1,11 @@
+.admincategory__container{
+    margin-top: 20px;
+    
+}
+.flex-end{
+    display: flex;
+    justify-content: end;
+}
+.admincreatecategory__container{
+    margin-top: 20px;
+}

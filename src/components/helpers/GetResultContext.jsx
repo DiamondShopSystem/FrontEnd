@@ -10,4 +10,4 @@ const GetResultProvider = ({children}) => {
   return <GetResultContext.Provider value={{result, setResult, phoneNumber, setPhoneNumber }}>{children}</GetResultContext.Provider>
 }
 
-export default GetResultProvider
+export default GetResultProvider;
