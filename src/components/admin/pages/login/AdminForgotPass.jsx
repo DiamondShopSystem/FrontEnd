@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from '../../../../firebase-config';
 import { Link, useNavigate } from 'react-router-dom';
-import '../../styles/Login.css';
+import '../../styles/ForgotPassword.css';
 
 function AdminForgotPass() {
     const [email, setEmail] = useState('');
@@ -45,8 +45,7 @@ function AdminForgotPass() {
     return (
         <div className="forgot-password">
             <div className="forgot-password__form-container">
-                <h2 className="forgot-password__title1">Quên Mật Khẩu</h2>
-                <p className="forgot-password__title">Trùm Kim Cương</p>
+                <h2 className="forgot-password__title">Thế Giới Kim Cương</h2>
                 {otpSent ? (
                     otpVerified ? (
                         <form onSubmit={handleResetPassword} className="forgot-password__form">

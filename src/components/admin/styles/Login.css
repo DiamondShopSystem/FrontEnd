@@ -67,9 +67,9 @@
     transition: background-color 0.3s ease;
 }
 
-.login__button:active {
+.login__button:hover {
     background-color: #28a745;
-    /* Đổi màu xanh lá khi bấm vào */
+    /* Đổi màu xanh lá khi trỏ vào */
 }
 
 .login__forgot-password {
@@ -107,9 +107,9 @@
     margin-right: 0.625rem;
 }
 
-.login__google-button:active {
+.login__google-button:hover {
     background-color: #28a745;
-    /* Đổi màu xanh lá khi bấm vào */
+    /* Đổi màu xanh lá khi trỏ vào */
 }
 
 .login__message {
@@ -189,9 +189,9 @@
     transition: background-color 0.3s ease;
 }
 
-.forgot-password__button:active {
+.forgot-password__button:hover {
     background-color: #28a745;
-    /* Đổi màu xanh lá khi bấm vào */
+    /* Đổi màu xanh lá khi trỏ vào */
 }
 
 .forgot-password__back-button {
@@ -207,9 +207,9 @@
     transition: background-color 0.3s ease;
 }
 
-.forgot-password__back-button:active {
+.forgot-password__back-button:hover {
     background-color: #dc3545;
-    /* Đổi màu đỏ khi bấm vào */
+    /* Đổi màu đỏ khi trỏ vào */
 }
 
 .forgot-password__message {
