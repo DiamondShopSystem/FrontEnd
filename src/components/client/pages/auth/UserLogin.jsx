@@ -78,12 +78,18 @@ const UserLogin = () => {
                             <Form onSubmit={getOtp}>
                                 <Form.Group className="mt-4" >
                                     <div className="phone-input-wrapper">
-                                        <PhoneInput
-                                            value={number}
-                                            onChange={setNumber}
-                                            placeholder="Số điện thoại của bạn"
-                                            defaultCountry="VN"
-                                        />
+
+                                        <div className="userlogin__customphoneinput">
+                                            <span className="userlogin__countrycode">+84</span>
+                                            <PhoneInput
+                                                defaultCountry="VN"
+                                                value={number}
+                                                onChange={setNumber}
+                                                placeholder="Số điện thoại của bạn"
+                                                countries={['VN']} // Chỉ cho phép quốc gia Việt Nam
+                                            />
+                                        </div>
+
                                     </div>
 
                                 </Form.Group>
