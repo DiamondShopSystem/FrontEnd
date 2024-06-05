@@ -7,12 +7,14 @@ import Dashboard from "./components/admin/pages/dashboard/Dashboard";
 import AdminLayout from "./components/admin/layouts/AdminLayout";
 import Category from "./components/admin/pages/category/Category";
 import CreateCategory from "./components/admin/pages/category/CreateCategory";
+import Footer from "./components/client/pages/home/Footer";
 
 
 function App() {
   return (
     <>
       <Routes>
+      <Route path="/test" element={<Footer />} />
         {/* Client Path  */}
         <Route path="/" element={<Home />} />
         <Route path="/user/login" element={<UserLogin />} />
