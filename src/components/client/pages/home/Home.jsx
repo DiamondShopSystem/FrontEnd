@@ -1,14 +1,11 @@
-import React from 'react'
-import PopularProducts from './PopularProducts'
-import NewProducts from './NewProducts'
 
+import React from "react";
 const Home = () => {
     return (
         <>
-            <PopularProducts />
-            <NewProducts />
+            <div>Home</div>
         </>
-    )
+    );
 }
+export default Home;
 
-export default Home
