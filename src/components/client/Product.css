@@ -1,0 +1,86 @@
+.cover-product {
+    background-color: white;
+    border-radius: 0.75rem;
+    position: relative;
+    padding: 4px;
+    margin: 55px 5px 0px 5px;
+    height: 210px;
+    width: 330px;
+}
+
+.cover-image {
+    /* display: flex;
+    justify-content: center; */
+    height: 110px;
+}
+
+.link-product {
+    display: flex;
+    justify-content: center;
+}
+
+.image-product {
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 20px 3px rgb(250, 128, 128);
+    position: absolute;
+    bottom: 95px;
+    transition: transform 0.5s ease;
+}
+
+.image-product:hover {
+    transform: scale(1.1);
+}
+
+.cover-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px 0px;
+    padding-top: 24px;
+    padding-bottom: 10px;
+}
+
+.name-product {
+    font-size: 16px;
+    text-align: center;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+}
+
+.cover-price-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 5px;
+}
+
+.price-product {
+    display: flex;
+    gap: 0px 15px;
+    font-size: 16px;
+}
+
+.new-price-product {
+    color: orange;
+}
+
+.old-price-product {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.RiShoppingBag3Fill-product {
+    padding: 2px;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.RiShoppingBag3Fill-product:hover {
+    color: red;
+}
