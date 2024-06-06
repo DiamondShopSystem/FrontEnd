@@ -78,7 +78,6 @@ const UserLogin = () => {
                             <Form onSubmit={getOtp}>
                                 <Form.Group className="mt-4" >
                                     <div className="phone-input-wrapper">
-
                                         <div className="userlogin__customphoneinput">
                                             <span className="userlogin__countrycode">+84</span>
                                             <PhoneInput
@@ -89,7 +88,6 @@ const UserLogin = () => {
                                                 countries={['VN']} // Chỉ cho phép quốc gia Việt Nam
                                             />
                                         </div>
-
                                     </div>
 
                                 </Form.Group>
