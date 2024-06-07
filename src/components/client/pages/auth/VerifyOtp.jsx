@@ -61,9 +61,6 @@ const VerifyOtp = () => {
                                                 value={otp}
                                                 onChange={(e) => setOtp(e.target.value)}
                                             />
-                                            {/* <span className="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                                    <FaEnvelope />
-                                </span> */}
                                         </div>
                                     </Form.Group>
                                     {error !== "" ? <div className="text-red-600 center">{error}</div> : <div className="text-red-600 d-none center">{error}</div>}

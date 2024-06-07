@@ -98,10 +98,13 @@
     /* Đặt góc bo tròn cho input */
     border: 1px solid #d1d5db;
     /* Đặt border cho input */
-    padding: 10px;
+
+    padding: 7px;
     /* Đặt padding cho input */
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     /* Thêm hiệu ứng transition cho border-color và box-shadow */
+    padding-right: 2.3rem;
+
 }
 
 .userlogin_input input {
@@ -109,11 +112,14 @@
     /* Góc bo tròn cho input */
     border: 1px solid #a0aec0;
     /* Màu border mặc định */
-    padding: 10px;
+    padding: 7px;
+
     /* Padding cho input */
     background: #d5e1e998;
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     /* Hiệu ứng transition */
+    padding-right: 2.3rem;
+
 }
 
 .userlogin_input input:hover {
@@ -146,4 +152,17 @@
 .userlogin__linktohome {
     justify-content: center;
     align-items: center;
+
 }
+.userlogin__customphoneinput .PhoneInputCountry{
+    display: none;
+}
+.userlogin__customphoneinput {
+    display: flex;
+    align-items: center;
+}
+.userlogin__customphoneinput .userlogin__countrycode{
+    margin-right: 8px;
+    font-size: 16px;
+}
+
