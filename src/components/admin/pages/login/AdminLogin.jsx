@@ -27,7 +27,7 @@ function AdminLogin() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 setMessage('Đăng nhập với Google thành công');
-                navigate('/admin/dashboard');
+                navigate('/admin');
             })
             .catch((error) => {
                 setMessage('Đăng nhập với Google thất bại: ' + error.message);

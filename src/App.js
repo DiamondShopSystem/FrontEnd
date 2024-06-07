@@ -11,7 +11,7 @@ import CreateCategory from "./components/admin/pages/category/CreateCategory";
 import UpdateCategory from "./components/admin/pages/category/UpdateCategory";
 import DetailCategory from "./components/admin/pages/category/DetailCategory";
 // import 'dotenv/config';
-
+import Header from "./components/client/pages/home/Header";
 function App() {
   return (
 
@@ -21,7 +21,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/user/login" element={<UserLogin />} />
       <Route path="/user/verify/otp" element={<VerifyOtp />} />
-
+      <Route path="/user/header" element={<Header />} />
       {/* Admin Path  */}
 
 
