@@ -27,7 +27,7 @@ const Header = () => {
             <div className="header__center">
                 <img src="/logo.png" alt="Thế Giới Kim Cương" className="header__logo-image" />
                 <div className="header__logo-text">
-                    <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
+                    <span className="header__logo-title">TRÙM KIM CƯƠNG</span>
                 </div>
             </div>
             <div className="header__bottom">
