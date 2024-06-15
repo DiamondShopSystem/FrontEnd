@@ -7,13 +7,21 @@ const { Header, Content, Sider } = Layout;
 const Navbar = () => {
     return (
         <>
-            <Header style={{ display: 'flex', alignItems: 'center' }} >
+            <Header style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 1,
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+            }} >
                 <Logo />
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                />
             </Header>
+            <Menu
+                theme="dark"
+                mode="horizontal"
+                style={{ flex: 1, minWidth: 0 }}
+            />
         </>
 
     );

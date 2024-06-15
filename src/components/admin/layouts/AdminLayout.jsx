@@ -13,7 +13,7 @@ const AdminLayout = ({ children }) => {
                     <Sidebar />
                     <Layout>
                         <Content>
-                            <div className="adminlayout__content">{children}</div>
+                            <div style={{ marginLeft: 200 }}  className="adminlayout__content">{children}</div>
                         </Content>
                     </Layout>
                 </Layout>
