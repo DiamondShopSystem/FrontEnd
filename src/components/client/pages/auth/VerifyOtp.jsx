@@ -26,6 +26,7 @@ const VerifyOtp = () => {
         try {
             await result.confirm(otp);
             alert("Đăng nhập thành công");
+            navigate('/');
         } catch (err) {
             return setError("OTP không chính xác")
         }

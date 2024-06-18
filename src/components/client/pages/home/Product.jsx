@@ -7,10 +7,12 @@ const Product = ({ product }) => {
 
     const { id, name, image, price } = product;
 
+    console.log(id);
+
     return (
         <div className='cover-product'>
             <div className='cover-image'>
-                <Link to={'/product/id'} className='link-product'>
+                <Link to={`/product/${id}`} className='link-product'>
                     <img className='image-product' src={image} alt='' height='150px' width='150px' />
                 </Link>
             </div>
