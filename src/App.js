@@ -16,9 +16,9 @@ import AdminLogin from "./components/admin/pages/auth/AdminLogin";
 import DetailProduct from "./components/admin/pages/product/DetailProduct";
 
 // import 'dotenv/config';
-
 function App() {
   return (
+
     <>
       <Routes>
         {/* Client Path  */}
