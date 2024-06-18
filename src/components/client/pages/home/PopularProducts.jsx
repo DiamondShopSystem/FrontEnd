@@ -79,7 +79,7 @@ const PopularProducts = () => {
                 <Link>Xem thêm {'>'}</Link>
             </div>
 
-            <Carousel responsive={responsive}>
+            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='cover-item'>
                 {GetPopularProduct.map((item) => {
                     return <Product product={item} key={item.id} />
                 })}
