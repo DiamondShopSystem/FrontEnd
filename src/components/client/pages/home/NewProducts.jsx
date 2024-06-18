@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/PopularProduct.css'
-import picture from '../../../../Assets/logo.png'
 import Product from './Product'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -32,42 +31,42 @@ const NewProducts = () => {
         {
             id: 1,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
 
         {
             id: 2,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
 
         {
             id: 3,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
 
         {
             id: 4,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
 
         {
             id: 5,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
 
         {
             id: 6,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     ];
@@ -88,4 +87,4 @@ const NewProducts = () => {
     )
 }
 
-export default NewProducts
+export default NewProducts;

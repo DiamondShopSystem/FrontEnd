@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 import { useState, useContext } from "react";
 import 'react-phone-number-input/style.css'
 import { GetResultContext } from "../../../helpers/GetResultContext";
-
+import axios from "axios";
 
 
 const VerifyOtp = () => {
@@ -25,8 +25,27 @@ const VerifyOtp = () => {
         if (otp === "" || otp === null) return setError("OTP không chính xác");;
         try {
             await result.confirm(otp);
-            alert("Đăng nhập thành công");
-            navigate('/');
+
+            const configuration = {
+                method: "post",
+                url: "user/login",
+                data: {
+                    phoneNumber
+                },
+            };
+            axios(configuration)
+                .then((result) => {
+                    console.log(result);
+                    const checkResult = result.data;
+                    console.log(checkResult);
+                    if (checkResult.code === 200) {
+                        navigate('/');
+                    } else {
+                        setError(result.data.msg)
+                    }
+                })
+                .catch((error) => { console.log(error); })
+
         } catch (err) {
             return setError("OTP không chính xác")
         }
@@ -62,9 +81,6 @@ const VerifyOtp = () => {
                                                 value={otp}
                                                 onChange={(e) => setOtp(e.target.value)}
                                             />
-                                            {/* <span className="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                                    <FaEnvelope />
-                                </span> */}
                                         </div>
                                     </Form.Group>
                                     {error !== "" ? <div className="text-red-600 center">{error}</div> : <div className="text-red-600 d-none center">{error}</div>}

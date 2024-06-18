@@ -1,3 +1,4 @@
+
 import React from "react";
 import NewProduct from './NewProducts';
 // import PopularProduct from './PopularProducts';
@@ -9,16 +10,17 @@ import CheckOutCart from "../checkout/CheckOutCart";
 // import CartContextProvider from "../../../helpers/CartContext";
 
 
+
 const Home = () => {
     return (
         <>
-            <NewProduct />
-            {/* <PopularProduct /> */}
-            {/* <HomeCarousel /> */}
-            <RingProducts />
-            {/* <CustomerSupport /> */}
-            <CheckOutCart />
-            {/* <Footer /> */}
+
+            <Header />
+            <HomeCarousel />
+            <NewProducts />
+            <PopularProducts />
+            <Footer />
+
         </>
     );
 }
