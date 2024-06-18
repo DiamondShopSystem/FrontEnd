@@ -10,18 +10,17 @@ import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../styles/Category.css';
+import '../../styles/Product.css';
 
 
 
-const Category = () => {
-
+const Product = () => {
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
     const {
         reset,
     } = useForm()
-    const [category, setCategory] = useState([]);
+    const [product, setProduct] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
@@ -31,11 +30,11 @@ const Category = () => {
 
     // Lấy data thông qua API
     const fetchData = () => {
-        axios.get('/admin/category', { params: { keyword: searchQuery, status: filterStatusQuery } })
+        axios.get('/admin/product', { params: { keyword: searchQuery, status: filterStatusQuery } })
             .then(function (response) {
-                setCategory(response.data.records);
+                setProduct(response.data.records);
                 setFilterState(response.data.filterState);
-                console.log(category);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -44,7 +43,7 @@ const Category = () => {
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = (event) => {
+    const onSearch = () => {
         try {
             fetchData();
         } catch (error) {
@@ -52,11 +51,9 @@ const Category = () => {
         }
     };
 
-
-
     // Xóa danh mục
-    const deleteCategory = async (id) => {
-        axios.delete(`/admin/category/delete/${id}`)
+    const deleteProduct = async (id) => {
+        axios.delete(`/admin/product/delete/${id}`)
             .then(response => {
                 console.log(response);
                 fetchData();
@@ -68,11 +65,14 @@ const Category = () => {
             });
     }
 
+
+    // Chuyển sang trang tạo tài khoản
+
     return (
         <>
             <ToastContainer />
-            <Container className='admincategory__container'>
-                <h1>Danh mục sản phẩm</h1>
+            <Container className='adminproduct__container'>
+                <h1>Danh sách sản phẩm</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>
                     <Card.Body>
@@ -128,7 +128,7 @@ const Category = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {category.map((item, index) => {
+                                {product.map((item, index) => {
                                     return (
                                         <tr>
                                             <td>
@@ -145,14 +145,14 @@ const Category = () => {
                                                 {item.status === "active" ? <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge> : <Badge bg="danger">Dừng hoạt động</Badge>}
                                             </td>
                                             <td>
-                                                <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/category/detail/${item._id}`} >Chi tiết</Link></Button>
-                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/category/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
+                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"
                                                     // color='error'
                                                     type='submit'
-                                                    onClick={(e) => deleteCategory(item._id)}
+                                                onClick={(e) => deleteProduct(item._id)}
                                                 >
                                                     Xóa
                                                 </Button>
@@ -169,4 +169,4 @@ const Category = () => {
     )
 }
 
-export default Category;
+export default Product;

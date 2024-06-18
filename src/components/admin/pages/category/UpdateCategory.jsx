@@ -2,23 +2,34 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/Category.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Input, Radio } from 'antd';
+import { Editor } from '@tinymce/tinymce-react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios'
+import { TreeSelect } from 'antd';
 import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateCategory = (req, res) => {
 
+    const [defaultValue, setDefaultValue] = useState([]);
     const [category, setCategory] = useState([]);
-
+    const [columns, setColumns] = useState([]);
     const { id } = useParams();
-
+    const onChange = (newValue) => {
+        setCategory({ ...category, parent_id: newValue });
+    };
+    const onPopupScroll = (e) => {
+        console.log('onPopupScroll', e);
+    };
     useEffect(() => {
         console.log(id);
         axios.get("/admin/category/edit/" + id)
             .then(function (response) {
                 setCategory(response.data.category);
+                setColumns(response.data.records);
+                setDefaultValue(response.data.category.parent_id)
             })
             .catch(function (error) {
                 console.log(error);
@@ -34,25 +45,48 @@ const UpdateCategory = (req, res) => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                if (checkResult.code === 200) {
-                    alert(result.data.msg);
-                } else {
-                    alert(result.data.msg)
-                }
+                toast.success('Cập nhật thành công');
             })
-            .catch((error) => { console.log(error); })
+            .catch((error) => { console.log(error); toast.error('Cập nhật không thành công') })
     }
 
 
     return (
         <>
+            <ToastContainer />
             <Container className='admindetailcategory__container'>
                 <h1>Chỉnh sửa danh mục</h1>
                 <Form onSubmit={updateCategory}>
-                    <Form.Group   className="mb-3" style={{ width: '50%' }} >
-                        <Form.Label>Tên danh mục</Form.Label>
-                        <Form.Control type="text" value={category.title}  onChange={(e) => setCategory({ ...category, title: e.target.value })} />
+                    <Form.Group className="mb-3" style={{ width: '100%' }} >
+                        <Form.Label>Tiêu đề</Form.Label>
+                        <Form.Control type="text" value={category.title} onChange={(e) => setCategory({ ...category, title: e.target.value })} />
                     </Form.Group>
+                    <TreeSelect
+                        showSearch
+                        style={{
+                            width: '100%',
+                        }}
+                        value={category.parent_id}
+                        dropdownStyle={{
+                            maxHeight: 400,
+                            overflow: 'auto',
+                        }}
+                        placeholder="Chọn danh mục cha"
+                        allowClear
+                        treeDefaultExpandAll
+                        fieldNames={{ label: "title", value: '_id', children: "children" }}
+                        onChange={onChange}
+                        treeData={columns}
+                        onPopupScroll={onPopupScroll}
+                    />
+                    <div className='mt-3 mb-3 ml-2 mr-2'>Mô tả</div>
+                    <Editor
+                        onEditorChange={(value, editor) => {
+                            setCategory({ ...category, description: editor.getContent({ format: 'text' }) });
+                        }}
+                        value={category.description}
+                        apiKey='7kewhhnqfkgy1b51ajibp6aquu8pbcuqgaw64fatnixmljhf'
+                    />
                     {['radio'].map((type) => (
                         <div key={`inline-${type}`} className="mb-3" onChange={(e) => setCategory({ ...category, status: e.target.value })} >
                             <Form.Check
@@ -66,7 +100,7 @@ const UpdateCategory = (req, res) => {
                             />
                             <Form.Check
                                 inline
-                                label="Không hoạt động"
+                                label="Dừng hoạt động"
                                 name="group1"
                                 type={type}
                                 id={`inline-${type}-2`}

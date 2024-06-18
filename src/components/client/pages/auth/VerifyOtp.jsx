@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 import { useState, useContext } from "react";
 import 'react-phone-number-input/style.css'
 import { GetResultContext } from "../../../helpers/GetResultContext";
-
+import axios from "axios";
 
 
 const VerifyOtp = () => {
@@ -25,7 +25,25 @@ const VerifyOtp = () => {
         if (otp === "" || otp === null) return setError("OTP không chính xác");;
         try {
             await result.confirm(otp);
-            alert("Đăng nhập thành công");
+            const configuration = {
+                method: "post",
+                url: "user/login",
+                data: {
+                    phoneNumber
+                },
+            };
+            axios(configuration)
+                .then((result) => {
+                    console.log(result);
+                    const checkResult = result.data;
+                    console.log(checkResult);
+                    if (checkResult.code === 200) {
+                        navigate('/');
+                    } else {
+                        setError(result.data.msg)
+                    }
+                })
+                .catch((error) => { console.log(error); })
         } catch (err) {
             return setError("OTP không chính xác")
         }
