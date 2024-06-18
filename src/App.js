@@ -11,7 +11,6 @@ import CreateCategory from "./components/admin/pages/category/CreateCategory";
 import UpdateCategory from "./components/admin/pages/category/UpdateCategory";
 import DetailCategory from "./components/admin/pages/category/DetailCategory";
 // import 'dotenv/config';
-
 function App() {
   return (
 
@@ -32,6 +31,7 @@ function App() {
       <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
       <Route path="/admin/adminaccount" element={<AdminLayout><AdminAccount /></AdminLayout>} />
       <Route path="/admin/useraccount" element={<AdminLayout><UserAccount /></AdminLayout>} />
+
     </Routes>
 
 
