@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Input, Table } from 'antd';
+import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { useSearchParams, useNavigate, Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
@@ -107,7 +106,7 @@ const Product = () => {
                                 <Link to={"create"}><Button variant="success">Thêm mới</Button></Link>
                             </Col>
                         </Row>
-                        <table className='table table-hover table-sm'>
+                        <table className='table table-hover table-sm centered-table'>
                             <thead>
                                 <tr>
                                     <th>
@@ -135,7 +134,8 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
-                                                {item.thumnail === "" ? <div></div> : <img alt='thumnail' />}
+                                                {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
+
 
                                             </td>
                                             <td>
@@ -152,7 +152,7 @@ const Product = () => {
                                                     variant="danger"
                                                     // color='error'
                                                     type='submit'
-                                                onClick={(e) => deleteProduct(item._id)}
+                                                    onClick={(e) => deleteProduct(item._id)}
                                                 >
                                                     Xóa
                                                 </Button>

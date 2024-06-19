@@ -87,9 +87,11 @@ const CreateCategory = () => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                reset();
-                fetchData()
+                
+                // fetchData()
+                
                 toast.success('Thêm mới thành công')
+                reset();
             })
             .catch((error) => { console.log(error); toast.error('Thêm mới không thành công') })
     }
@@ -134,7 +136,7 @@ const CreateCategory = () => {
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
                     <Form.Item className='admincreatecategory__wrapperbtn' >
-                        <Button variant="primary" type='submit'>Tạo mới</Button>
+                        <Button style={{marginBottom:"20px"}} variant="primary" type='submit'>Tạo mới</Button>
                     </Form.Item>
                 </Form>
             </Container>

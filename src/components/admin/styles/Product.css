@@ -1,31 +1,40 @@
-.adminproduct__container{
+.adminproduct__container {
     margin-top: 20px;
+    /* margin-bottom: 20px; */
 }
-.adminproduct__container{
-    margin-top: 20px;
-}
-.adminproduct__pagination{
+
+.adminproduct__pagination {
     display: flex;
     align-items: center;
     justify-content: center;
     /* padding: 2rem; */
 }
-.admincreateproduct__wrapperbtn{
+
+.admincreateproduct__wrapperbtn {
     padding-top: 2rem;
 }
-.flex-end{
+
+.flex-end {
     display: flex;
     justify-content: end;
 }
-.admincreateproduct__container{
+
+.admincreateproduct__container {
     margin-top: 20px;
 }
-.admincreateproduct__container .admincreateproduct__btn{
+
+.admincreateproduct__container .admincreateproduct__btn {
     color: white;
     background-color: #3b82f6;
 }
 
-.admincreateproduct__container .admincreateproduct__btn:hover{
+.admincreateproduct__container .admincreateproduct__btn:hover {
     color: white;
     background-color: #0056b3;
+}
+
+.centered-table th,
+.centered-table td {
+    text-align: center;
+    vertical-align: middle;
 }
