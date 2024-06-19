@@ -87,9 +87,11 @@ const CreateCategory = () => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                reset();
-                fetchData()
+                
+                // fetchData()
+                
                 toast.success('Thêm mới thành công')
+                reset();
             })
             .catch((error) => { console.log(error); toast.error('Thêm mới không thành công') })
     }

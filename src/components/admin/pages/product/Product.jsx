@@ -7,10 +7,6 @@ import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
-<<<<<<< Updated upstream
-=======
-import { Pagination } from 'antd';
->>>>>>> Stashed changes
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
@@ -110,7 +106,7 @@ const Product = () => {
                                 <Link to={"create"}><Button variant="success">Thêm mới</Button></Link>
                             </Col>
                         </Row>
-                        <table className='table table-hover table-sm'>
+                        <table className='table table-hover table-sm centered-table'>
                             <thead>
                                 <tr>
                                     <th>
@@ -138,12 +134,9 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
-<<<<<<< Updated upstream
                                                 {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
 
-=======
-                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
->>>>>>> Stashed changes
+
                                             </td>
                                             <td>
                                                 {item.title}

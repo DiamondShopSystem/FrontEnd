@@ -107,7 +107,7 @@ const Category = () => {
                                 <Link to={"create"}><Button variant="success">Thêm mới</Button></Link>
                             </Col>
                         </Row>
-                        <table className='table table-hover table-sm'>
+                        <table className='table table-hover table-sm centered-table'>
                             <thead>
                                 <tr>
                                     <th>
