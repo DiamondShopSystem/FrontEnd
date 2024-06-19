@@ -8,15 +8,30 @@ import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import '../../styles/Product.css';
 
 
 const CreateProduct = () => {
+
     const {
         reset,
+<<<<<<< Updated upstream
     } = useForm()
 
     const [thumbnail, setThumbnail] = useState("");
+=======
+    } = useForm();
+
+    const [thumbnail, setThumbnail] = useState();
+    function handleImageChange(e) {
+        const formData = new FormData();
+        console.log(e.target.files);
+        setThumbnail(URL.createObjectURL(e.target.files[0]));
+       
+    }
+
+>>>>>>> Stashed changes
     const [size, setSize] = useState("");
     const [title, setTitle] = useState("");
     const [status, setStatus] = useState("active");
@@ -27,35 +42,6 @@ const CreateProduct = () => {
         console.log('radio checked', e.target.value);
         setStatus(e.target.value);
     };
-    // React.useEffect(() => {
-    //     fetchData()
-    // }, [])
-    // const onChange = (newValue) => {
-    //     setParentCategory(newValue);
-    // };
-    const onPopupScroll = (e) => {
-        console.log('onPopupScroll', e);
-    };
-
-    // const fetchData = () => {
-    //     axios.get('/admin/category/create')
-    //         .then(function (response) {
-
-    //             setCategory(response.data.records);
-    //             const data = category.map(item => {
-    //                 const { title: label, ...rest } = item;
-    //                 return { label, ...rest }
-    //             }
-    //             );
-    //             console.log(data);
-    //             setColumns(data);
-
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         })
-
-    // }
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -78,16 +64,23 @@ const CreateProduct = () => {
 
     //Hàm submit gửi form tạo mới sản phẩm
     const addProduct = async (e) => {
+
+        console.log(thumbnail)
         const configuration = {
             method: "post",
             url: "admin/product/create",
+            // headers: { "Content-Type": "multipart/form-data" },
             data: {
                 title,
                 status,
                 description,
                 price,
                 size,
+<<<<<<< Updated upstream
                 thumbnail
+=======
+                thumbnail,
+>>>>>>> Stashed changes
                 // parent_id
             },
         };
@@ -104,11 +97,15 @@ const CreateProduct = () => {
             <ToastContainer />
             <Container className='admincreateproduct__container'>
                 <h1>Tạo mới sản phẩm</h1>
+<<<<<<< Updated upstream
                 <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data" >
                     {/* <Radio.Group onChange={onChangeStatus} value={status}>
                         <Radio value={"active"}>Nổi bật</Radio>
                         <Radio value={"inactive"}>Không</Radio>
                     </Radio.Group> */}
+=======
+                <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data">
+>>>>>>> Stashed changes
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
                         <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
@@ -148,22 +145,32 @@ const CreateProduct = () => {
                     <div className='mt-2 mb-4'>
                         <div className="App">
                             <div className='mb-2'>Ảnh</div>
+<<<<<<< Updated upstream
                             <input name="thumbnail"
                                 accept="image/*" type="file" onChange={handleImageChange} />
                             <div style={{ marginTop: "5px" }}>
                                 <img style={{ width: "100px", height: "auto" }} src={thumbnail} />
                             </div>
+=======
+                            <input name="thumnail"
+                                accept="image/*" type="file" onChange={handleImageChange} />
+                            <img  style={{width:'100px', height:'auto'}} src={thumbnail} />
+>>>>>>> Stashed changes
                         </div>
-                        {/* <Upload previewFile {...props}>
-                            <ButtonAnt  icon={<UploadOutlined />}>Click to Upload</ButtonAnt>
-                        </Upload> */}
                     </div>
+
+
                     <Radio.Group onChange={onChangeStatus} value={status}>
                         <Radio value={"active"}>Hoạt động</Radio>
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
+<<<<<<< Updated upstream
                     <Form.Item className='admincreateproduct__wrapperbtn' >
                         <Button style={{ marginBottom: "20px" }} variant="primary" type='submit'>Tạo mới</Button>
+=======
+                    <Form.Item  className='admincreateproduct__wrapperbtn' >
+                        <Button style={{marginBottom:'20px'}} variant="primary" type='submit'>Tạo mới</Button>
+>>>>>>> Stashed changes
                     </Form.Item>
                 </Form>
             </Container>
@@ -171,4 +178,4 @@ const CreateProduct = () => {
     )
 }
 
-export default CreateProduct
+export default CreateProduct;

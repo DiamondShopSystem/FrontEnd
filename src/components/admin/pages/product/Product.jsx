@@ -7,6 +7,10 @@ import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
+<<<<<<< Updated upstream
+=======
+import { Pagination } from 'antd';
+>>>>>>> Stashed changes
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
@@ -134,8 +138,12 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
+<<<<<<< Updated upstream
                                                 {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
 
+=======
+                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
+>>>>>>> Stashed changes
                                             </td>
                                             <td>
                                                 {item.title}
@@ -151,7 +159,7 @@ const Product = () => {
                                                     variant="danger"
                                                     // color='error'
                                                     type='submit'
-                                                onClick={(e) => deleteProduct(item._id)}
+                                                    onClick={(e) => deleteProduct(item._id)}
                                                 >
                                                     Xóa
                                                 </Button>
