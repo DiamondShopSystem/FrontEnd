@@ -17,15 +17,15 @@ const DiamondGuide = () => {
                     <img src="https://file.hstatic.net/1000381168/file/igi_b265002bab294a358d1f9a74fce3241b.png" alt="kiem dinh IGI" />
                 </div>
                 <ul>
-                    <li><b>Lưu ý:</b></li>
+                    <b>Lưu ý:</b>
                     <li>Hai tổ chức kiểm định GIA và IGI <b>không mua bán, kinh doanh kim cương</b> mà là đơn vị kiểm định độc lập, nên đảm bảo kim cương được kiểm định một cách khách quan và có độ chính xác tuyệt đối.</li>
                     <li>GIA: Gemological Institute of America (Viện Đá Quý Hoa Kỳ)</li>
                     <li>IGI: International Gemological Institute (Viện Đá Quý Quốc Tế)</li>
-                    <li>Đặc biệt Quý Khách có thể tự tra cứu Giấy Kiểm Định Kim Cương tại các đường dẫn sau:</li>
+                    <b>Đặc biệt Quý Khách có thể tự tra cứu Giấy Kiểm Định Kim Cương tại các đường dẫn sau:</b>
                     <li><a href="https://www.gia.edu" target="_blank" rel="noopener noreferrer">GIA: https://www.gia.edu</a></li>
                     <li><a href="https://www.igi.org" target="_blank" rel="noopener noreferrer">IGI: https://www.igi.org</a></li>
                 </ul>
-                <p><b>Thế giới kim cương tư vấn:</b></p>
+                <p><b>Trùm kim cương tư vấn:</b></p>
                 <ul>
                     <li>Theo chúng tôi Giấy kiểm định kim cương là một trong những tiêu chí quan trọng nhất.</li>
                     <li>Quý Khách nên lựa chọn các sản phẩm kim cương viên có đầy đủ kiểm định của GIA hoặc IGI.</li>
@@ -39,7 +39,7 @@ const DiamondGuide = () => {
                 <div className="diamond-guide__cut-image">
                     <img src="https://file.hstatic.net/1000381168/file/2_pc_c50d7f9c47d44fdd8c010ad7cb9f5a23.png" alt="Cut Chart" />
                 </div>
-                <p><i>Thế giới kim cương tư vấn: Tùy vào ngân sách của mình, Quý khách có thể chọn giác cắt từ Very Good trở lên.</i></p>
+                <p><i>Trùm kim cương tư vấn: Tùy vào ngân sách của mình, Quý khách có thể chọn giác cắt từ Very Good trở lên.</i></p>
             </section>
 
             <section className="diamond-guide__section">
@@ -67,32 +67,9 @@ const DiamondGuide = () => {
                 <h2>Tiêu chí 5: Kích cỡ kim cương (Carat Weight/Measurements)</h2>
                 <p>Kim cương có kích cỡ càng lớn thì giá trị càng cao</p>
                 <h3>Thang đo đường kính</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Trọng lượng tham khảo (ct)</th>
-                            <th>0,18</th>
-                            <th>0,33</th>
-                            <th>0,58</th>
-                            <th>1,0</th>
-                            <th>1,4</th>
-                            <th>2,0</th>
-                            <th>2,7</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Đường kính (mm)</td>
-                            <td>3,6</td>
-                            <td>4,5</td>
-                            <td>5,4</td>
-                            <td>6,3</td>
-                            <td>7,2</td>
-                            <td>8,1</td>
-                            <td>9,0</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="diamond-guide__cut-image">
+                    <img src="https://file.hstatic.net/1000381168/file/cnkc-pc-_psd__14_369f341f9043461e8e242a0952b4fd7a.png" alt="Carat Weight Chart" />
+                </div>
                 <p>Tại Việt Nam, Khách Hàng thường căn cứ vào đường kính viên kim cương khi chọn mua. Trên thế giới, người ta thường dùng trọng lượng viên kim cương (Carat Weight) để chọn mua.</p>
                 <p><i>Thế giới kim cương tư vấn: Tùy vào ngân sách của mình, Quý khách có thể chọn viên kim cương có kích cỡ phù hợp với trang sức mà mình yêu thích.</i></p>
             </section>
