@@ -56,7 +56,7 @@ const UpdateCategory = (req, res) => {
             <ToastContainer />
             <Container className='admindetailcategory__container'>
                 <h1>Chỉnh sửa danh mục</h1>
-                <Form onSubmit={updateCategory}>
+                <Form onSubmit={updateCategory} enctype='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }} >
                         <Form.Label>Tiêu đề</Form.Label>
                         <Form.Control type="text" value={category.title} onChange={(e) => setCategory({ ...category, title: e.target.value })} />
