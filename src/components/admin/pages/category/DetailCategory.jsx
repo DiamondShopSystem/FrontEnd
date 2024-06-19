@@ -31,12 +31,14 @@ const DetailCategory = (req, res) => {
     return (
         <>
             <Container className='admindetailcategory__container'>
-                <h1>Chi tiết danh mục</h1>
-                <h3>Tên danh mục: {category.title}</h3>
+                <h1 className='mb-4'>Chi tiết danh mục</h1>
+                <h3 className='mb-4'>Tên danh mục: {category.title}</h3>
+                {(category.parent_id === "") ? <span></span> : <div className='mb-4'>Danh mục cha: <b>{category.parentTitle}</b></div>}
                 {
-                    (category.status === "active") ? (<Badge style={{ width: 100.21 }} bg="success">Đang hoạt động</Badge>)
-                        : (<Badge style={{ width: 100.21 }} bg="danger">Không hoạt động</Badge>)
+                    (category.status === "active") ? (<span className='mb-4'>Trạng thái: <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge></span>)
+                        : ( <span className='mb-4'>Trạng thái: <Badge style={{ width: 100.21 }} bg="danger">Dừng hoạt động</Badge></span>)
                 }
+                <div className='mt-4'>Mô tả: {category.description}</div>
             </Container>
         </>
     )
