@@ -14,7 +14,7 @@ import Product from "./components/admin/pages/product/Product";
 import CreateProduct from "./components/admin/pages/product/CreateProduct";
 import AdminLogin from "./components/admin/pages/auth/AdminLogin";
 import DetailProduct from "./components/admin/pages/product/DetailProduct";
-
+import Promotion from "./components/client/pages/promotion/Promotion";
 // import 'dotenv/config';
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/verify/otp" element={<VerifyOtp />} />
+        <Route path="/user/promotion" element={<Promotion />} />
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />

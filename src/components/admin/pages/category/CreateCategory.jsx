@@ -134,7 +134,7 @@ const CreateCategory = () => {
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
                     <Form.Item className='admincreatecategory__wrapperbtn' >
-                        <Button variant="primary" type='submit'>Tạo mới</Button>
+                        <Button style={{marginBottom:"20px"}} variant="primary" type='submit'>Tạo mới</Button>
                     </Form.Item>
                 </Form>
             </Container>
