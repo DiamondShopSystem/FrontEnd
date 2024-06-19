@@ -11,9 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <GetResultProvider>
-        <App />
-      </GetResultProvider>
+      <CartContextProvider>
+        <GetResultProvider>
+          <App />
+        </GetResultProvider>
+      </CartContextProvider>
     </Router>
   </React.StrictMode>
   //rafce

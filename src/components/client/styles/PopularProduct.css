@@ -39,6 +39,13 @@
     color: rgba(13, 110, 253, 1);
 }
 
+
+.cover-item {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* .grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -78,3 +85,4 @@
 .mt-32 {
     margin-top: 60px;
 } */
+

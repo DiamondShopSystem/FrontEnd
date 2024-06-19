@@ -1,0 +1,108 @@
+.RingProducts-container {
+    background-color: #fbd83d;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.RingProducts-title-ring-cover {
+    text-align: center;
+}
+
+.RingProducts-title-ring {
+    color: #0b4b88;
+    text-shadow: 5px 2px #ceae80;
+}
+
+.RingProducts-cover-select-ring {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 50px;
+}
+
+.RingProducts-select-ring {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+
+.RingProducts-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 32px;
+}
+
+@media (min-width: 576px) {
+
+    .RingProducts-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .RingProducts-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .RingProducts-grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+.RingProducts-previous-ring {
+    margin-right: 10px; 
+}
+
+.RingProducts-previous-link-ring {
+    color: black;
+}
+
+.RingProducts-next-link-ring {
+    color: black;
+}
+
+.RingProducts-breakLabel {
+    margin-right: 12px;
+}
+
+.RingProducts-reactPaginate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px 0px 0px;
+    padding: 15px 0px;
+}
+
+.RingProducts-reactPaginate-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.RingProducts-reactPaginate-page:hover {
+    border-radius: 0.5rem;
+    background-color: #ffc107;
+}
+
+.RingProducts-reactPaginate-page-link {
+    color: black;
+}
+
+.RingProducts-active-ring {
+    background-color: #ffc107;
+    border-radius: 0.5rem;
+}
+
