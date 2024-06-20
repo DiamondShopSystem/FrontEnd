@@ -73,7 +73,6 @@ const CreateProduct = () => {
 
     //Hàm submit gửi form tạo mới sản phẩm
     const addProduct = async (e) => {
-
         console.log(thumbnail)
         const configuration = {
             method: "post",

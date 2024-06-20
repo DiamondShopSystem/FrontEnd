@@ -25,7 +25,6 @@ const VerifyOtp = () => {
         if (otp === "" || otp === null) return setError("OTP không chính xác");;
         try {
             await result.confirm(otp);
-
             const configuration = {
                 method: "post",
                 url: "user/login",
