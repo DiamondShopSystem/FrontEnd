@@ -10,7 +10,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
-
+import { useLocation } from 'react-router-dom';
 
 
 const Product = () => {
@@ -23,9 +23,16 @@ const Product = () => {
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
+    const location = useLocation();
+    
     React.useEffect(() => {
         fetchData()
     }, [filterStatusQuery])
+    useEffect(() => {
+        if (location.state && location.state.success) {
+            toast.success('Thêm mới thành công');
+        }
+    }, [location.state]);
 
     // Lấy data thông qua API
     const fetchData = () => {
@@ -146,7 +153,10 @@ const Product = () => {
                                             </td>
                                             <td>
                                                 <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
-                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                <Button
+                                                    style={{ margin: 1 }} 
+                                                    variant="warning">
+                                                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"
