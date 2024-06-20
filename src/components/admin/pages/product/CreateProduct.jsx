@@ -16,12 +16,7 @@ const CreateProduct = () => {
 
     const {
         reset,
-<<<<<<< Updated upstream
     } = useForm()
-
-    const [thumbnail, setThumbnail] = useState("");
-=======
-    } = useForm();
 
     const [thumbnail, setThumbnail] = useState();
     function handleImageChange(e) {
@@ -31,7 +26,6 @@ const CreateProduct = () => {
        
     }
 
->>>>>>> Stashed changes
     const [size, setSize] = useState("");
     const [title, setTitle] = useState("");
     const [status, setStatus] = useState("active");
@@ -43,11 +37,6 @@ const CreateProduct = () => {
         setStatus(e.target.value);
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        console.log(file);
-        transformFile(file);
-    }
     const transformFile = (file) => {
         const reader = new FileReader();
         if (file) {
@@ -76,11 +65,7 @@ const CreateProduct = () => {
                 description,
                 price,
                 size,
-<<<<<<< Updated upstream
                 thumbnail
-=======
-                thumbnail,
->>>>>>> Stashed changes
                 // parent_id
             },
         };
@@ -97,15 +82,11 @@ const CreateProduct = () => {
             <ToastContainer />
             <Container className='admincreateproduct__container'>
                 <h1>Tạo mới sản phẩm</h1>
-<<<<<<< Updated upstream
                 <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data" >
                     {/* <Radio.Group onChange={onChangeStatus} value={status}>
                         <Radio value={"active"}>Nổi bật</Radio>
                         <Radio value={"inactive"}>Không</Radio>
                     </Radio.Group> */}
-=======
-                <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data">
->>>>>>> Stashed changes
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
                         <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
@@ -145,17 +126,11 @@ const CreateProduct = () => {
                     <div className='mt-2 mb-4'>
                         <div className="App">
                             <div className='mb-2'>Ảnh</div>
-<<<<<<< Updated upstream
                             <input name="thumbnail"
                                 accept="image/*" type="file" onChange={handleImageChange} />
                             <div style={{ marginTop: "5px" }}>
                                 <img style={{ width: "100px", height: "auto" }} src={thumbnail} />
                             </div>
-=======
-                            <input name="thumnail"
-                                accept="image/*" type="file" onChange={handleImageChange} />
-                            <img  style={{width:'100px', height:'auto'}} src={thumbnail} />
->>>>>>> Stashed changes
                         </div>
                     </div>
 
@@ -164,13 +139,8 @@ const CreateProduct = () => {
                         <Radio value={"active"}>Hoạt động</Radio>
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
-<<<<<<< Updated upstream
                     <Form.Item className='admincreateproduct__wrapperbtn' >
                         <Button style={{ marginBottom: "20px" }} variant="primary" type='submit'>Tạo mới</Button>
-=======
-                    <Form.Item  className='admincreateproduct__wrapperbtn' >
-                        <Button style={{marginBottom:'20px'}} variant="primary" type='submit'>Tạo mới</Button>
->>>>>>> Stashed changes
                     </Form.Item>
                 </Form>
             </Container>

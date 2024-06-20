@@ -5,12 +5,9 @@ import Card from 'react-bootstrap/Card';
 import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
-<<<<<<< Updated upstream
-=======
-import { Pagination } from 'antd';
->>>>>>> Stashed changes
+// import { Pagination } from 'antd';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
@@ -20,20 +17,21 @@ import '../../styles/Product.css';
 const Product = () => {
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
-    const {
-        reset,
-    } = useForm()
+    // const {
+    //     reset,
+    // } = useForm()
     const [product, setProduct] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-    React.useEffect(() => {
-        fetchData()
-    }, [filterStatusQuery])
+
+    useEffect(() => {
+        fetchData(searchQuery, filterStatusQuery);
+    }, [searchQuery, filterStatusQuery])
 
     // Lấy data thông qua API
-    const fetchData = () => {
-        axios.get('/admin/product', { params: { keyword: searchQuery, status: filterStatusQuery } })
+    const fetchData = (keyword, status) => {
+        axios.get('/admin/product', { params: { keyword, status } })
             .then(function (response) {
                 setProduct(response.data.records);
                 setFilterState(response.data.filterState);
@@ -42,13 +40,17 @@ const Product = () => {
             .catch(function (error) {
                 console.log(error);
             })
-
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = () => {
+    const onSearch = (value) => {
         try {
-            fetchData();
+            const params = {};
+            if (value) params.keyword = value;
+            if (filterStatusQuery) params.status = filterStatusQuery;
+            setSearchParams(params);
+            setSearchQuery(value);
+            fetchData(value, filterStatusQuery);
         } catch (error) {
             console.log(error);
         }
@@ -70,6 +72,13 @@ const Product = () => {
 
 
     // Chuyển sang trang tạo tài khoản
+    const handleFilterStatusChange = (status) => {
+        const params = {};
+        if (searchQuery) params.keyword = searchQuery;
+        if (status) params.status = status;
+        setSearchParams(params);
+        setfilterStatusQuery(status);
+    };
 
     return (
         <>
@@ -83,7 +92,7 @@ const Product = () => {
                             <Col xs="6" >
                                 {
                                     filterState.map((item) => {
-                                        return <Button onClick={(event) => setfilterStatusQuery(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+                                        return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
                                     })
                                 }
                             </Col>
@@ -138,12 +147,7 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
-<<<<<<< Updated upstream
-                                                {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
-
-=======
                                                 {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
->>>>>>> Stashed changes
                                             </td>
                                             <td>
                                                 {item.title}
