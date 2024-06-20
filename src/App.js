@@ -14,6 +14,9 @@ import Product from "./components/admin/pages/product/Product";
 import CreateProduct from "./components/admin/pages/product/CreateProduct";
 import AdminLogin from "./components/admin/pages/auth/AdminLogin";
 import DetailProduct from "./components/admin/pages/product/DetailProduct";
+import Promotion from "./components/client/pages/promotion/Promotion";
+import RingProducts from "./components/client/pages/home/RingProducts";
+import RingProductDetail from "./components/client/pages/home/RingProductDetail";
 import UpdateProduct from "./components/admin/pages/product/UpdateProduct";
 import UserLayout from "./components/client/profile/UserLayout";
 import UserProfile from "./components/client/profile/UserProfile";
@@ -38,6 +41,8 @@ function App() {
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/verify/otp" element={<VerifyOtp />} />
         <Route path="/user/promotion" element={<Promotion />} />
+        <Route path="/user/product/ring" element={<RingProducts />} />
+        <Route path="/user/product/ring/detail/:id" element={<RingProductDetail />} />
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />

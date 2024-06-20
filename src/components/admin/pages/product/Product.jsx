@@ -5,8 +5,11 @@ import Card from 'react-bootstrap/Card';
 import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
+
+// import { Pagination } from 'antd';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,6 +20,7 @@ import Search from 'antd/es/input/Search';
 
 
 const Product = () => {
+
 
 
     const location = useLocation();
@@ -33,7 +37,7 @@ const Product = () => {
     
     React.useEffect(() => {
         fetchData()
-    }, [filterStatusQuery])
+    }, [])
     useEffect(() => {
         if (location.state && location.state.success) {
             toast.success('Thêm mới thành công');
@@ -55,8 +59,8 @@ const Product = () => {
     }
 
 
-    const fetchDataWithParams = () => {
-        axios.get('/admin/product', { params: { keyword: searchQuery, status: filterStatusQuery } })
+    const fetchDataWithParams = (keyword, status) => {
+        axios.get('/admin/product', { params: { keyword, status } })
             .then(function (response) {
                 setData(response.data.records);
                 setFilterState(response.data.filterState);
@@ -64,15 +68,21 @@ const Product = () => {
             .catch(function (error) {
                 console.log(error);
             })
-
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = (e) => {
-        // e.preventDefault();
-        queryParams.set("keyword", searchQuery);
-        navigate({ search: queryParams.toString() });
-        fetchDataWithParams();
+    const onSearch = (value) => {
+        try {
+            const params = {};
+            if (value) params.keyword = value;
+            if (filterStatusQuery) params.status = filterStatusQuery;
+            setSearchParams(params);
+            setSearchQuery(value);
+            fetchDataWithParam(value, filterStatusQuery);
+        } catch (error) {
+            console.log(error);
+        }
+
     };
 
     // Chức năng filter trạng thái
@@ -102,6 +112,13 @@ const Product = () => {
 
 
     // Chuyển sang trang tạo tài khoản
+    const handleFilterStatusChange = (status) => {
+        const params = {};
+        if (searchQuery) params.keyword = searchQuery;
+        if (status) params.status = status;
+        setSearchParams(params);
+        setfilterStatusQuery(status);
+    };
 
     return (
         <>
@@ -115,49 +132,10 @@ const Product = () => {
                             <Col xs="6" >
                                 {
                                     filterState.map((item) => {
-                                        return <Button onClick={(e) => {
-                                            e.preventDefault();
-                                            console.log(queryParams.toString());
-                                            console.log(item.status)
-                                            setfilterStatusQuery(item.status);
-                                            console.log(filterStatusQuery);
-                                            queryParams.set("status", filterStatusQuery);
-                                            navigate({ search: queryParams.toString() });                                       
-                                        }} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} >{item.name}</Button>
+                                        return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+
                                     })
                                 }
-                                {/* <Button onClick={(e) => {
-                                    e.preventDefault();
-                                    queryParams.delete('status');
-                                    // console.log(queryParams.toString());
-                                    // console.log(item.status)
-                                    setfilterStatusQuery("");
-                                    // console.log(filterStatusQuery);
-                                    // queryParams.set("status", filterStatusQuery);
-                                    navigate({ search: queryParams.toString() });
-                                    fetchDataWithParams();
-                                }} value={""} style={{ marginRight: "2px" }} variant="outline-success" active={true}>Tất cả</Button>
-                                <Button onClick={(e) => {
-                                    e.preventDefault();
-                                    console.log(queryParams.toString());
-                                    // console.log(item.status)
-                                    setfilterStatusQuery("active");
-                                    // setfilterStatusQuery(item.status);
-                                    console.log(filterStatusQuery);
-                                    queryParams.set("status", filterStatusQuery);
-                                    navigate({ search: queryParams.toString() });
-                                    fetchDataWithParams();
-                                }}  value={"active"} style={{ marginRight: "2px" }} variant="outline-success" active={false}>Hoạt động</Button>
-                                <Button  onClick={(e) => {
-                                    e.preventDefault();
-                                    // console.log(queryParams.toString());
-                                    // console.log(item.status)
-                                    setfilterStatusQuery("inactive");
-                                    console.log(filterStatusQuery);
-                                    queryParams.set("status", filterStatusQuery);
-                                    navigate({ search: queryParams.toString() });
-                                    fetchDataWithParams();
-                                }} value={"inactive"} style={{ marginRight: "2px" }} variant="outline-success" active={false}>Dừng hoạt động</Button> */}
                             </Col>
                             <Col xs="6">
                                 {/* <form onSubmit={onSearch}>
@@ -213,8 +191,8 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
-                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: "100px", height: "auto" }} alt='thumbnail' src={item.thumbnail} />}
 
+                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
 
                                             </td>
                                             <td>

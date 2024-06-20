@@ -4,6 +4,7 @@ import '../../styles/RingProducts.css'
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import CheckOutCart from '../checkout/CheckOutCart';
 
 const RingProducts = () => {
 
@@ -16,7 +17,7 @@ const RingProducts = () => {
     const [selectedPage, setSelectedPage] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const applyFilters = useCallback((products) => {
         let filteredProducts = [...products];
 
@@ -42,7 +43,7 @@ const RingProducts = () => {
 
         return filteredProducts;
     }, [priceFilter, sortOrder]);
-    
+
     useEffect(() => {
         const fetchProducts = async () => {
             const respone = await fetch('https://fakestoreapi.com/products');
@@ -55,7 +56,48 @@ const RingProducts = () => {
         fetchProducts();
     }, [priceFilter, sortOrder, applyFilters]);
 
-    
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const page = parseInt(params.get('page')) || 1;
+        setSelectedPage(page - 1);
+    }, [location.search]);
+
+    useEffect(() => {
+        const params = new URLSearchParams();
+        params.set('page', selectedPage + 1);
+        if (priceFilter) {
+            params.set('filterprice', priceFilter);
+        }
+        if (sortOrder) {
+            params.set('sort', sortOrder);
+        }
+
+        navigate(`?${params.toString()}`);
+    }, [selectedPage, priceFilter, sortOrder, navigate]);
+
+    // const hrefBuilder = (pageIndex) => {
+    //     const baseUrl = window.location.href.split('?')[0];
+    //     const params = new URLSearchParams(window.location.search);
+    //     params.set('page', pageIndex + 1);
+    //     if (priceFilter) {
+    //         params.set('filterprice', priceFilter);
+    //     }
+    //     if (sortOrder) {
+    //         params.set('sort', sortOrder);
+    //     }
+
+    //     const url = `${baseUrl}?${params.toString()}`;
+    //     return url;
+    // };
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const page = parseInt(params.get('page')) || 1;
+        const newOffset = ((page - 1) * itemsPerPage) % products.length;
+        const filteredProducts = applyFilters(products);
+        setCurrentItems(filteredProducts.slice(newOffset, newOffset + itemsPerPage));
+        setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
+    }, [location.search, products, applyFilters]);
 
     const handlePageClick = (event) => {
         // const newOffset = (event.selected * itemsPerPage) % products.length;
@@ -64,26 +106,6 @@ const RingProducts = () => {
         // navigate(`?page=${event.selected + 1}`);
         setSelectedPage(event.selected);
     };
-
-    useEffect(() => {
-        navigate(`?page=${selectedPage + 1}`);
-    }, [selectedPage, navigate]);
-
-    const hrefBuilder = (pageIndex) => {
-        const baseUrl = window.location.href.split('?')[0];
-        const params = new URLSearchParams(window.location.search);
-        params.set('page', pageIndex + 1);
-        const url = `${baseUrl}?${params.toString()}`;
-        return url;
-    };
-
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        const page = parseInt(params.get('page')) || 1;
-        const newOffset = ((page - 1) * itemsPerPage) % products.length;
-        const filteredProducts = applyFilters(products);
-        setCurrentItems(filteredProducts.slice(newOffset, newOffset + itemsPerPage));
-    }, [location.search, products, applyFilters]);    
 
     const selectRef1 = useRef(null);
     const selectRef2 = useRef(null);
@@ -110,8 +132,9 @@ const RingProducts = () => {
         updateSelectWidth(selectRef2, setSelectWidth2);
     }, []);
 
-    const params = new URLSearchParams(location.search);
-    const currentPage = parseInt(params.get('page')) || 1;
+    // const params = new URLSearchParams(location.search);
+    // const currentPage = parseInt(params.get('page')) || 1;
+    // console.log(currentPage);
 
     return (
 
@@ -128,6 +151,7 @@ const RingProducts = () => {
                     onChange={(e) => {
                         setPriceFilter(e.target.value);
                         updateSelectWidth(selectRef1, setSelectWidth1);
+                        setSelectedPage(0);
                     }}
                     style={{ width: selectWidth1 }}
                 >
@@ -172,10 +196,12 @@ const RingProducts = () => {
                 pageClassName='RingProducts-reactPaginate-page'
                 pageLinkClassName='RingProducts-reactPaginate-page-link'
                 activeClassName='RingProducts-active-ring'
-                hrefBuilder={hrefBuilder}
-                initialPage={currentPage - 1}
+                // hrefBuilder={hrefBuilder}
+                forcePage={selectedPage}
             />
+            <CheckOutCart />
         </section>
+
     )
 }
 

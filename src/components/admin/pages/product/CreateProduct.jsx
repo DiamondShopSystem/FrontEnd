@@ -52,11 +52,6 @@ const CreateProduct = () => {
         setStatus(e.target.value);
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        console.log(file);
-        transformFile(file);
-    }
     const transformFile = (file) => {
         const reader = new FileReader();
         if (file) {
@@ -85,7 +80,6 @@ const CreateProduct = () => {
                 price,
                 size,
                 thumbnail
-
                 // parent_id
             },
         };
@@ -107,7 +101,6 @@ const CreateProduct = () => {
                         <Radio value={"active"}>Nổi bật</Radio>
                         <Radio value={"inactive"}>Không</Radio>
                     </Radio.Group> */}
-
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
                         <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
@@ -152,7 +145,6 @@ const CreateProduct = () => {
                             <div style={{ marginTop: "5px" }}>
                                 <img style={{ width: "100px", height: "auto" }} src={thumbnail} />
                             </div>
-
                         </div>
                     </div>
 
@@ -162,7 +154,8 @@ const CreateProduct = () => {
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
                     <Form.Item className='admincreateproduct__wrapperbtn' >
-                        <Button style={{ marginBottom: '20px' }} variant="primary" type='submit'>Tạo mới</Button>
+                        <Button style={{ marginBottom: "20px" }} variant="primary" type='submit'>Tạo mới</Button>
+
                     </Form.Item>
                 </Form>
             </Container>
