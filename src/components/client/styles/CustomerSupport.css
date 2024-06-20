@@ -1,0 +1,51 @@
+.CustomerSupport-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+    background-color: blanchedalmond;
+}
+
+.CustomerSupport-cover {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+}
+
+.CustomerSupport-content-support {
+    display: flex;
+    justify-content: center;
+}
+
+.CustomerSupport-input {
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.CustomerSupport-select {
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.CustomerSupport-button {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CustomerSupport-button button {
+    background-color: #c69967;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 130px;
+    font-weight: 500;
+}

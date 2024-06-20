@@ -1,0 +1,110 @@
+.Ring-container-ring {
+    background-color: #f3c507;
+    border-radius: 0.75rem;
+    position: relative;
+    padding: 4px;
+    margin: 55px 5px 0px 5px;
+    height: auto;
+    width: 330px;
+    filter: drop-shadow(2px 4px 6px #ceae08);
+}
+
+.Ring-cover-image {
+    height: 120px;
+    position: relative;
+}
+
+.Ring-cover-image:hover .Ring-button-detail-ring {
+    opacity: 1;
+}
+
+.Ring-button-detail-ring {
+    position: absolute;
+    bottom: 0;
+    left: 105px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    border-radius: 0.75rem;
+    font-size: large;
+    padding: 0px 10px;
+}
+
+.Ring-button-detail-ring:hover {
+    background-color: black;
+    color: white;
+}
+
+.Ring-image-ring {
+    border-radius: 0.5rem;
+    /* box-shadow: 0px 8px 20px 3px rgb(250, 128, 128); */
+    position: absolute;
+    bottom: 45px;
+    right: 95px;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 0 5px blue) brightness(100%);
+}
+
+.Ring-image-ring:hover {
+    transform: scale(1.1);
+}
+
+.Ring-cover-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.Ring-name-ring {
+    font-size: 16px;
+    text-align: center;
+    height: 60px;
+    color: #0b4b88;
+}
+
+.Ring-cover-price-ring {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 5px;
+}
+
+.Ring-price-ring {
+    display: flex;
+    gap: 0px 15px;
+    font-size: 16px;
+}
+
+.Ring-new-price-ring {
+    color: #ee1935;
+}
+
+.Ring-old-price-ring {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.Ring-RiShoppingBag3Fill-ring {
+    padding: 2px;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.Ring-RiShoppingBag3Fill-ring:hover {
+    color: red;
+}
+
+.Ring-success-message {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}

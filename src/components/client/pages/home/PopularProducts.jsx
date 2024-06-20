@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/PopularProduct.css'
 // import GetPopularProduct from './GetPopularProduct'
-import picture from '../../../../Assets/logo.png'
+// import picture from '../../../../Assets/logo.png'
 import Product from './Product'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -32,42 +32,42 @@ const PopularProducts = () => {
         {
             id: 1,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     
         {
             id: 2,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     
         {
             id: 3,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     
         {
             id: 4,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     
         {
             id: 5,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     
         {
             id: 6,
             name: "Kim cương 24 cara",
-            image: picture,
+            // image: picture,
             price: 24000,
         },
     ];
@@ -79,7 +79,7 @@ const PopularProducts = () => {
                 <Link>Xem thêm {'>'}</Link>
             </div>
 
-            <Carousel responsive={responsive}>
+            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='cover-item'>
                 {GetPopularProduct.map((item) => {
                     return <Product product={item} key={item.id} />
                 })}
