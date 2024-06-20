@@ -1,10 +1,12 @@
-import { Container, Row, Col, Stack, Image, Nav, NavLink } from "react-bootstrap"
+import { Container, Row, Col, Stack, Image, Nav} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import '../../styles/Footer.css'; // Import the new CSS file
 
 const Footer = () => {
     return (
         <footer>
             <Container fluid>
-                <Row className="p-3 mb-2 bg-white text-dark">
+                <Row className="footer-section p-4 text-white">
                     <Col className="mx-5">
                         <Stack>
                             <Image
@@ -15,42 +17,46 @@ const Footer = () => {
                                 height={150}
                             />
                             <h2>Trùm Kim Cương</h2>
-                            <p>Lorem</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </Stack>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Về Trùm Kim Cương</h4>
-                            <NavLink href="#" className="text-black">Câu Chuyện</NavLink>
-                            <NavLink href="#" className="text-black">Câu Chuyện2</NavLink>
-                            <NavLink href="#" className="text-black">Câu Chuyện3</NavLink>
-                            <NavLink href="#" className="text-black">Câu Chuyện4</NavLink>
+                            <NavLink to="/story" className="nav-link text-white">Câu Chuyện</NavLink>
+                            <NavLink to="/story2" className="nav-link text-white">Câu Chuyện 2</NavLink>
+                            <NavLink to="/story3" className="nav-link text-white">Câu Chuyện 3</NavLink>
                         </Nav>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Dịch vụ khách hàng</h4>
-                            <NavLink href="#" className="text-black">Hướng dẫn đo size trang sức</NavLink>
-                            <NavLink href="#" className="text-black">Mua hàng trả góp</NavLink>
-                            <NavLink href="#" className="text-black">Hướng dẫn mua hàng và thanh toán</NavLink>
-                            <NavLink href="#" className="text-black">Cẩm nang sử dụng trang sức</NavLink>
+                            <NavLink to="/test" className="nav-link text-white">Hướng dẫn đo size trang sức</NavLink>
+                            <NavLink to="/test1" className="nav-link text-white">Hướng dẫn mua hàng và thanh toán</NavLink>
+                            <NavLink to="/jewelry-guide" className="nav-link text-white">Cẩm nang sử dụng trang sức</NavLink>
                         </Nav>
                     </Col>
                     <Col>
                         <h4>Kết nối với chúng tôi</h4>
-                        <p>email</p>
-                        <p>phone</p>
+                        <p>Email: contact@trumkimcuong.com</p>
+                        <p>Phone: +84 123 456 789</p>
+                        <div className="social-icons">
+                            <a href="#"><i className="fab fa-facebook-f"></i></a>
+                            <a href="#"><i className="fab fa-twitter"></i></a>
+                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                        </div>
                     </Col>
                 </Row>
             </Container>
-            <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-                © 2021 Copyright:
+            <div className='text-center p-4 footer-bottom'>
+                © 2021 Copyright: 
                 <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
                     TrumKimCuong
                 </a>
             </div>
         </footer>
-    )
+    );
 }
 
 export default Footer;

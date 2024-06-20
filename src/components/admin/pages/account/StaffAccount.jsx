@@ -12,11 +12,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Account.css'; // Assuming you have a generic styles file
 
-const UserAccount = () => {
+const StaffAccount = () => {
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
     const { reset } = useForm();
-    const [userAccounts, setUserAccounts] = useState([]);
+    const [staffAccounts, setStaffAccounts] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
@@ -33,11 +33,11 @@ const UserAccount = () => {
     }, [location.state]);
 
     const fetchData = () => {
-        axios.get('/admin/account/user', { params: { keyword: searchQuery, status: filterStatusQuery } })
+        axios.get('/admin/account/staff', { params: { keyword: searchQuery, status: filterStatusQuery } })
             .then(function (response) {
-                setUserAccounts(response.data.records);
+                setStaffAccounts(response.data.records);
                 setFilterState(response.data.filterState);
-                console.log(userAccounts);
+                console.log(staffAccounts);
             })
             .catch(function (error) {
                 console.log(error);
@@ -52,8 +52,8 @@ const UserAccount = () => {
         }
     };
 
-    const deleteUserAccount = async (id) => {
-        axios.delete(`/admin/account/user/delete/${id}`)
+    const deleteStaffAccount = async (id) => {
+        axios.delete(`/admin/account/staff/delete/${id}`)
             .then(response => {
                 console.log(response);
                 fetchData();
@@ -69,7 +69,7 @@ const UserAccount = () => {
         <>
             <ToastContainer />
             <Container className='adminAccount__container'>
-                <h1>Tài khoản khách hàng</h1>
+                <h1>Tài khoản nhân viên</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>
                     <Card.Body>
@@ -121,7 +121,7 @@ const UserAccount = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {userAccounts.map((item, index) => (
+                                {staffAccounts.map((item, index) => (
                                     <tr key={item._id}>
                                         <td>{index + 1}</td>
                                         <td>{item.thumbnail === "" ? <div></div> : <img alt='thumbnail' />}</td>
@@ -134,15 +134,15 @@ const UserAccount = () => {
                                         </td>
                                         <td>
                                             <Button className='me-2' style={{ margin: 1 }} variant="secondary">
-                                                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/userAccount/detail/${item._id}`}>Chi tiết</Link>
+                                                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/staffAccount/detail/${item._id}`}>Chi tiết</Link>
                                             </Button>
                                             <Button className='me-2' style={{ margin: 1 }} variant="warning">
-                                                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/userAccount/edit/${item._id}`}>Chỉnh sửa</Link>
+                                                <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/staffAccount/edit/${item._id}`}>Chỉnh sửa</Link>
                                             </Button>
                                             <Button
                                                 style={{ margin: 1 }}
                                                 variant="danger"
-                                                onClick={() => deleteUserAccount(item._id)}
+                                                onClick={() => deleteStaffAccount(item._id)}
                                                 className='me-2'
                                             >
                                                 Xóa
@@ -159,4 +159,4 @@ const UserAccount = () => {
     );
 };
 
-export default UserAccount;
+export default StaffAccount;

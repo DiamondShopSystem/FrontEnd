@@ -7,35 +7,63 @@ import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 // import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
+
 // import { Pagination } from 'antd';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from "react-router-dom";
 import '../../styles/Product.css';
+
+import Search from 'antd/es/input/Search';
 
 
 
 const Product = () => {
-    const { Search } = Input;
-    const [searchParams, setSearchParams] = useSearchParams();
-    // const {
-    //     reset,
-    // } = useForm()
-    const [product, setProduct] = useState([]);
+
+
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const queryParams = new URLSearchParams(location.search);
+    const [searchQuery, setSearchQuery] = useState(queryParams.get("keyword"));
+    const [filterStatusQuery, setfilterStatusQuery] = useState(queryParams.get("status"));
+
+    // Mảng button filter trạng thái
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-
+    const location = useLocation();
+    
+    React.useEffect(() => {
+        fetchData()
+    }, [])
     useEffect(() => {
-        fetchData(searchQuery, filterStatusQuery);
-    }, [searchQuery, filterStatusQuery])
+        if (location.state && location.state.success) {
+            toast.success('Thêm mới thành công');
+        }
+    }, [location.state]);
+
 
     // Lấy data thông qua API
-    const fetchData = (keyword, status) => {
+    const fetchData = () => {
+        axios.get('/admin/product')
+            .then(function (response) {
+                setData(response.data.records);
+                setFilterState(response.data.filterState);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+    }
+
+
+    const fetchDataWithParams = (keyword, status) => {
         axios.get('/admin/product', { params: { keyword, status } })
             .then(function (response) {
-                setProduct(response.data.records);
+                setData(response.data.records);
                 setFilterState(response.data.filterState);
-
             })
             .catch(function (error) {
                 console.log(error);
@@ -50,11 +78,23 @@ const Product = () => {
             if (filterStatusQuery) params.status = filterStatusQuery;
             setSearchParams(params);
             setSearchQuery(value);
-            fetchData(value, filterStatusQuery);
+            fetchDataWithParam(value, filterStatusQuery);
         } catch (error) {
             console.log(error);
         }
+
     };
+
+    // Chức năng filter trạng thái
+    const onFilterStatus = (e) => {
+        // console.log(status);
+        e.preventDefault();
+        queryParams.set("status", filterStatusQuery);
+        console.log(queryParams);
+        navigate({ search: queryParams.toString() });
+        
+    }
+
 
     // Xóa danh mục
     const deleteProduct = async (id) => {
@@ -93,10 +133,14 @@ const Product = () => {
                                 {
                                     filterState.map((item) => {
                                         return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+
                                     })
                                 }
                             </Col>
                             <Col xs="6">
+                                {/* <form onSubmit={onSearch}>
+                                    <input value={searchQuery} placeholder='Nhập từ khóa' onChange={(e) => setSearchQuery(e.target.value)} />
+                                </form> */}
                                 <Search
                                     placeholder="Nhập từ khóa"
                                     onChange={(event) => setSearchQuery(event.target.value)}
@@ -119,7 +163,7 @@ const Product = () => {
                                 <Link to={"create"}><Button variant="success">Thêm mới</Button></Link>
                             </Col>
                         </Row>
-                        <table className='table table-hover table-sm'>
+                        <table className='table table-hover table-sm centered-table'>
                             <thead>
                                 <tr>
                                     <th>
@@ -140,14 +184,16 @@ const Product = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {product.map((item, index) => {
+                                {data.map((item, index) => {
                                     return (
                                         <tr>
                                             <td>
                                                 {index + 1}
                                             </td>
                                             <td>
+
                                                 {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
+
                                             </td>
                                             <td>
                                                 {item.title}
@@ -157,7 +203,10 @@ const Product = () => {
                                             </td>
                                             <td>
                                                 <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
-                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                <Button
+                                                    style={{ margin: 1 }} 
+                                                    variant="warning">
+                                                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"

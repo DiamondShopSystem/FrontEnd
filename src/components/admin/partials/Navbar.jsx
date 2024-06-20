@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 // import Layout from 'antd';
 import Logo from '../partials/Logo';
+import { Container } from 'react-bootstrap';
 const { Header, Content, Sider } = Layout;
 
 const Navbar = () => {
@@ -15,7 +16,7 @@ const Navbar = () => {
                 display: 'flex',
                 alignItems: 'center',
             }} >
-                <Logo />
+            <Logo />
             </Header>
             <Menu
                 theme="dark"

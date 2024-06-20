@@ -1,5 +1,6 @@
 
 import React from "react";
+<<<<<<< source-Nghia
 import NewProducts from './NewProducts';
 import PopularProducts from './PopularProducts';
 import Footer from './Footer';
@@ -12,10 +13,10 @@ import Header from "./Header";
 
 
 
+
 const Home = () => {
     return (
         <>
-
             <Header />
             <HomeCarousel />
             <NewProducts />

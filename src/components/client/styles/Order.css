@@ -1,0 +1,51 @@
+.useroder__history {
+    padding: 20px;
+  }
+  
+  .useroder__history h2 {
+    margin-bottom: 20px;
+  }
+  
+  .useroder__history table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .useroder__history table thead tr {
+    background-color: #f8f9fa;
+  }
+  
+  .useroder__history table tbody tr {
+    background-color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  .useroder__history table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .useroder__history .btn-filter {
+    color: #000; /* Màu chữ mặc định */
+    background-color: transparent; /* Nền trong suốt mặc định */
+    border: none; /* Không có viền */
+    margin-right: 5px; /* Khoảng cách giữa các nút */
+  }
+  
+  .useroder__history .btn-filter.active {
+    background-color: #007bff; /* Nền xanh khi active */
+    color: #fff; /* Chữ trắng khi active */
+  }
+  
+  .useroder__history .btn-filter:hover:not(.active) {
+    background-color: #f8f9fa; /* Nền xám nhạt khi hover */
+  }
+  .useroder__history th, 
+  .useroder__history td {
+    text-align: center; /* Center align table content */
+    vertical-align: middle; /* Center align vertically */
+  }
+  .useroder__history .badge {
+    display: inline-block;
+    width: 100px; /* Set a fixed width */
+    text-align: center; /* Center the text within the badge */
+}

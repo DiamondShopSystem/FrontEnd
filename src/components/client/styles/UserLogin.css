@@ -131,7 +131,7 @@
 }
 
 .userlogin_logo {
-    height: 100px;
+    height: auto;
     width: 100px;
     /* background-size: cover;
     display: inline-block; */
