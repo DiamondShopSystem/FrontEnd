@@ -9,31 +9,48 @@ import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from "react-router-dom";
 import '../../styles/Product.css';
-
+import Search from 'antd/es/input/Search';
 
 
 const Product = () => {
-    const { Search } = Input;
-    const [searchParams, setSearchParams] = useSearchParams();
-    const {
-        reset,
-    } = useForm()
-    const [product, setProduct] = useState([]);
+
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const queryParams = new URLSearchParams(location.search);
+    const [searchQuery, setSearchQuery] = useState(queryParams.get("keyword"));
+    const [filterStatusQuery, setfilterStatusQuery] = useState(queryParams.get("status"));
+
+    // Mảng button filter trạng thái
     const [filterState, setFilterState] = useState([]);
-    const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
-    const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
+
+    // Data sản phẩm
+    const [data, setData] = useState([]);
     React.useEffect(() => {
-        fetchData()
-    }, [filterStatusQuery])
+        fetchData();
+    }, [])
 
     // Lấy data thông qua API
     const fetchData = () => {
+        axios.get('/admin/product')
+            .then(function (response) {
+                setData(response.data.records);
+                setFilterState(response.data.filterState);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+    }
+
+
+    const fetchDataWithParams = () => {
         axios.get('/admin/product', { params: { keyword: searchQuery, status: filterStatusQuery } })
             .then(function (response) {
-                setProduct(response.data.records);
+                setData(response.data.records);
                 setFilterState(response.data.filterState);
-
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,13 +59,23 @@ const Product = () => {
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = () => {
-        try {
-            fetchData();
-        } catch (error) {
-            console.log(error);
-        }
+    const onSearch = (e) => {
+        // e.preventDefault();
+        queryParams.set("keyword", searchQuery);
+        navigate({ search: queryParams.toString() });
+        fetchDataWithParams();
     };
+
+    // Chức năng filter trạng thái
+    const onFilterStatus = (e) => {
+        // console.log(status);
+        e.preventDefault();
+        queryParams.set("status", filterStatusQuery);
+        console.log(queryParams);
+        navigate({ search: queryParams.toString() });
+        
+    }
+
 
     // Xóa danh mục
     const deleteProduct = async (id) => {
@@ -79,11 +106,54 @@ const Product = () => {
                             <Col xs="6" >
                                 {
                                     filterState.map((item) => {
-                                        return <Button onClick={(event) => setfilterStatusQuery(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+                                        return <Button onClick={(e) => {
+                                            e.preventDefault();
+                                            console.log(queryParams.toString());
+                                            console.log(item.status)
+                                            setfilterStatusQuery(item.status);
+                                            console.log(filterStatusQuery);
+                                            queryParams.set("status", filterStatusQuery);
+                                            navigate({ search: queryParams.toString() });                                       
+                                        }} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} >{item.name}</Button>
                                     })
                                 }
+                                {/* <Button onClick={(e) => {
+                                    e.preventDefault();
+                                    queryParams.delete('status');
+                                    // console.log(queryParams.toString());
+                                    // console.log(item.status)
+                                    setfilterStatusQuery("");
+                                    // console.log(filterStatusQuery);
+                                    // queryParams.set("status", filterStatusQuery);
+                                    navigate({ search: queryParams.toString() });
+                                    fetchDataWithParams();
+                                }} value={""} style={{ marginRight: "2px" }} variant="outline-success" active={true}>Tất cả</Button>
+                                <Button onClick={(e) => {
+                                    e.preventDefault();
+                                    console.log(queryParams.toString());
+                                    // console.log(item.status)
+                                    setfilterStatusQuery("active");
+                                    // setfilterStatusQuery(item.status);
+                                    console.log(filterStatusQuery);
+                                    queryParams.set("status", filterStatusQuery);
+                                    navigate({ search: queryParams.toString() });
+                                    fetchDataWithParams();
+                                }}  value={"active"} style={{ marginRight: "2px" }} variant="outline-success" active={false}>Hoạt động</Button>
+                                <Button  onClick={(e) => {
+                                    e.preventDefault();
+                                    // console.log(queryParams.toString());
+                                    // console.log(item.status)
+                                    setfilterStatusQuery("inactive");
+                                    console.log(filterStatusQuery);
+                                    queryParams.set("status", filterStatusQuery);
+                                    navigate({ search: queryParams.toString() });
+                                    fetchDataWithParams();
+                                }} value={"inactive"} style={{ marginRight: "2px" }} variant="outline-success" active={false}>Dừng hoạt động</Button> */}
                             </Col>
                             <Col xs="6">
+                                {/* <form onSubmit={onSearch}>
+                                    <input value={searchQuery} placeholder='Nhập từ khóa' onChange={(e) => setSearchQuery(e.target.value)} />
+                                </form> */}
                                 <Search
                                     placeholder="Nhập từ khóa"
                                     onChange={(event) => setSearchQuery(event.target.value)}
@@ -127,14 +197,14 @@ const Product = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {product.map((item, index) => {
+                                {data.map((item, index) => {
                                     return (
                                         <tr>
                                             <td>
                                                 {index + 1}
                                             </td>
                                             <td>
-                                                {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
+                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: "100px", height: "auto" }} alt='thumbnail' src={item.thumbnail} />}
 
 
                                             </td>

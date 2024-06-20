@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div className='admin__imagelogo'>
       <img
-        src='https://haianhuniform.com/wp-content/uploads/2022/04/logo-ao-lop-hinh-kim-cuong-den-trang.jpg'
+        src='https://banner2.cleanpng.com/20180629/qqs/kisspng-fpt-group-computer-software-software-development-i-lakshmi-5b3604abb34904.0268253715302667957344.jpg'
         alt='admin_imagelogo'
         className='logo__img'
       />

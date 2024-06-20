@@ -37,8 +37,8 @@ const UserLogin = () => {
 
     const getOtp = async (e) => {
         e.preventDefault();
-        console.log(number);
         setError("");
+        console.log(number);
         if (number === "" || number === undefined || number.length < 12)
             return setError("Số điện thoại không hợp lệ");
         try {
@@ -66,7 +66,7 @@ const UserLogin = () => {
                     <div className="flex w-full max-w-sm grow flex-col justify-center p-5">
                         <div className="text-center">
                             <div className="userlogin_welcome">
-                                <img className="userlogin_logo" src="https://haianhuniform.com/wp-content/uploads/2022/04/logo-ao-lop-hinh-kim-cuong-den-trang.jpg" alt="new" />
+                                <img className="userlogin_logo" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_FPT_Education.png" alt="new" />
                                 <div className="mt-4">
                                     <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100 ">Chào mừng trở lại</h2>
                                     <p className="text-slate-400 dark:text-navy-300">Vui lòng đăng nhập để tiếp tục</p>
