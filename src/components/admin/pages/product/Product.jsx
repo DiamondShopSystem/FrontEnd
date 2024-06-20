@@ -11,7 +11,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import '../../styles/Product.css';
+
 import Search from 'antd/es/input/Search';
+
 
 
 const Product = () => {
@@ -25,12 +27,19 @@ const Product = () => {
 
     // Mảng button filter trạng thái
     const [filterState, setFilterState] = useState([]);
-
-    // Data sản phẩm
-    const [data, setData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
+    const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
+    const location = useLocation();
+    
     React.useEffect(() => {
-        fetchData();
-    }, [])
+        fetchData()
+    }, [filterStatusQuery])
+    useEffect(() => {
+        if (location.state && location.state.success) {
+            toast.success('Thêm mới thành công');
+        }
+    }, [location.state]);
+
 
     // Lấy data thông qua API
     const fetchData = () => {
@@ -216,7 +225,10 @@ const Product = () => {
                                             </td>
                                             <td>
                                                 <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
-                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                <Button
+                                                    style={{ margin: 1 }} 
+                                                    variant="warning">
+                                                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"
