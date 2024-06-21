@@ -22,48 +22,28 @@ import Search from 'antd/es/input/Search';
 const Product = () => {
 
 
-
-    const location = useLocation();
-    const navigate = useNavigate();
-    const queryParams = new URLSearchParams(location.search);
-    const [searchQuery, setSearchQuery] = useState(queryParams.get("keyword"));
-    const [filterStatusQuery, setfilterStatusQuery] = useState(queryParams.get("status"));
-
-    // Mảng button filter trạng thái
+    const { Search } = Input;
+    const [searchParams, setSearchParams] = useSearchParams();
+    // const {
+    //     reset,
+    // } = useForm()
+    const [product, setProduct] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
+    const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-    const location = useLocation();
-    
-    React.useEffect(() => {
-        fetchData()
-    }, [])
-    useEffect(() => {
-        if (location.state && location.state.success) {
-            toast.success('Thêm mới thành công');
-        }
-    }, [location.state]);
 
+    useEffect(() => {
+        fetchData(searchQuery, filterStatusQuery);
+    }, [searchQuery, filterStatusQuery])
 
     // Lấy data thông qua API
-    const fetchData = () => {
-        axios.get('/admin/product')
-            .then(function (response) {
-                setData(response.data.records);
-                setFilterState(response.data.filterState);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-
-    }
-
-
-    const fetchDataWithParams = (keyword, status) => {
+    const fetchData = (keyword, status) => {
         axios.get('/admin/product', { params: { keyword, status } })
             .then(function (response) {
-                setData(response.data.records);
+                setProduct(response.data.records);
                 setFilterState(response.data.filterState);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -74,27 +54,15 @@ const Product = () => {
     const onSearch = (value) => {
         try {
             const params = {};
-            if (value) params.keyword = value;
             if (filterStatusQuery) params.status = filterStatusQuery;
+            if (value) params.keyword = value;
             setSearchParams(params);
             setSearchQuery(value);
-            fetchDataWithParam(value, filterStatusQuery);
+            // fetchData(value, filterStatusQuery);
         } catch (error) {
             console.log(error);
         }
-
     };
-
-    // Chức năng filter trạng thái
-    const onFilterStatus = (e) => {
-        // console.log(status);
-        e.preventDefault();
-        queryParams.set("status", filterStatusQuery);
-        console.log(queryParams);
-        navigate({ search: queryParams.toString() });
-        
-    }
-
 
     // Xóa danh mục
     const deleteProduct = async (id) => {
@@ -111,11 +79,11 @@ const Product = () => {
     }
 
 
-    // Chuyển sang trang tạo tài khoản
+
     const handleFilterStatusChange = (status) => {
         const params = {};
-        if (searchQuery) params.keyword = searchQuery;
         if (status) params.status = status;
+        if (searchQuery) params.keyword = searchQuery;
         setSearchParams(params);
         setfilterStatusQuery(status);
     };
@@ -133,7 +101,6 @@ const Product = () => {
                                 {
                                     filterState.map((item) => {
                                         return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
-
                                     })
                                 }
                             </Col>
@@ -143,8 +110,8 @@ const Product = () => {
                                 </form> */}
                                 <Search
                                     placeholder="Nhập từ khóa"
-                                    onChange={(event) => setSearchQuery(event.target.value)}
-                                    value={searchQuery}
+                                    onChange={(event) => setInputValue(event.target.value)}
+                                    value={inputValue}
                                     size='large'
                                     enterButton
                                     onSearch={onSearch}
@@ -184,7 +151,7 @@ const Product = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((item, index) => {
+                                {product.map((item, index) => {
                                     return (
                                         <tr>
                                             <td>
@@ -204,9 +171,9 @@ const Product = () => {
                                             <td>
                                                 <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
                                                 <Button
-                                                    style={{ margin: 1 }} 
+                                                    style={{ margin: 1 }}
                                                     variant="warning">
-                                                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                    <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"

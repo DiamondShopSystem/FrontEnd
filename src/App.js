@@ -22,7 +22,6 @@ import UserLayout from "./components/client/profile/UserLayout";
 import UserProfile from "./components/client/profile/UserProfile";
 import Wishlist from "./components/client/profile/content/Wishlist";
 import Order from "./components/client/profile/content/Order";
-import Promotion from "./components/client/profile/content/Promotion";
 import UserInfo from "./components/client/profile/content/UserInfo";
 import SizeGuidePage from "./components/client/pages/home/UserService/SizeGuidePage";
 import PaymentGuidePage from "./components/client/pages/home/UserService/PaymentGuidePage";
