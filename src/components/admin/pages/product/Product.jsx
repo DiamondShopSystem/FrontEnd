@@ -32,10 +32,17 @@ const Product = () => {
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-
+    const location = useLocation();
+    
     useEffect(() => {
         fetchData(searchQuery, filterStatusQuery);
     }, [searchQuery, filterStatusQuery])
+
+    useEffect(() => {
+        if (location.state && location.state.success) {
+            toast.success('Thêm mới thành công');
+        }
+    }, [location.state]);
 
     // Lấy data thông qua API
     const fetchData = (keyword, status) => {
@@ -55,7 +62,9 @@ const Product = () => {
         try {
             const params = {};
             if (filterStatusQuery) params.status = filterStatusQuery;
+            console.log(value)
             if (value) params.keyword = value;
+            console.log(params)
             setSearchParams(params);
             setSearchQuery(value);
             // fetchData(value, filterStatusQuery);

@@ -141,7 +141,7 @@ const CreateProduct = () => {
                         <div className="App">
                             <div className='mb-2'>Ảnh</div>
                             <input name="thumbnail"
-                                accept="image/*" type="file" onChange={handleImageChange} />
+                                accept="image/*" type="file" />
                             <div style={{ marginTop: "5px" }}>
                                 <img style={{ width: "100px", height: "auto" }} src={thumbnail} />
                             </div>

@@ -1,12 +1,12 @@
-import { Container, Row, Col, Stack, Image, Nav} from "react-bootstrap";
+import { Container, Row, Col, Stack, Image, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import '../../styles/Footer.css'; // Import the new CSS file
 
 const Footer = () => {
     return (
-        <footer>
-            <Container fluid>
-                <Row className="footer-section p-4 text-white">
+        <footer className="section__footer">
+            <Container className="footer__container">
+                <Row className="p-4 footer__content">
                     <Col className="mx-5">
                         <Stack>
                             <Image
@@ -14,26 +14,26 @@ const Footer = () => {
                                 alt="company logo"
                                 rounded
                                 width={150}
-                                height={150}
+                                height={"auto"}
                             />
-                            <h2>Trùm Kim Cương</h2>
+                            <h4>Trùm Kim Cương</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </Stack>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Về Trùm Kim Cương</h4>
-                            <NavLink to="/story" className="nav-link text-white">Câu Chuyện</NavLink>
-                            <NavLink to="/story2" className="nav-link text-white">Câu Chuyện 2</NavLink>
-                            <NavLink to="/story3" className="nav-link text-white">Câu Chuyện 3</NavLink>
+                            <NavLink to="/story" className="nav-link ">Câu Chuyện</NavLink>
+                            <NavLink to="/story2" className="nav-link ">Câu Chuyện 2</NavLink>
+                            <NavLink to="/story3" className="nav-link ">Câu Chuyện 3</NavLink>
                         </Nav>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Dịch vụ khách hàng</h4>
-                            <NavLink to="/test" className="nav-link text-white">Hướng dẫn đo size trang sức</NavLink>
-                            <NavLink to="/test1" className="nav-link text-white">Hướng dẫn mua hàng và thanh toán</NavLink>
-                            <NavLink to="/jewelry-guide" className="nav-link text-white">Cẩm nang sử dụng trang sức</NavLink>
+                            <NavLink to="/test" className="nav-link ">Hướng dẫn đo size trang sức</NavLink>
+                            <NavLink to="/test1" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
+                            <NavLink to="/jewelry-guide" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
                         </Nav>
                     </Col>
                     <Col>
@@ -48,13 +48,11 @@ const Footer = () => {
                         </div>
                     </Col>
                 </Row>
+                <div class="quick-link">
+                    <p>© TrumKimCuong. All rights reserved.</p>
+                </div>
             </Container>
-            <div className='text-center p-4 footer-bottom'>
-                © 2021 Copyright: 
-                <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
-                    TrumKimCuong
-                </a>
-            </div>
+
         </footer>
     );
 }
