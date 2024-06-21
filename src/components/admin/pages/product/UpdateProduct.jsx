@@ -16,16 +16,10 @@ const UpdateProduct = (req, res) => {
     const [thumbnail, setThumbnail] = useState("");
     const [columns, setColumns] = useState([]);
     const { id } = useParams();
-    const onChange = (newValue) => {
-        setProduct({ ...product, parent_id: newValue });
-    };
 
     const handleChange = (e) => {
         setThumbnail(URL.createObjectURL(e.target.files[0]));
     }
-    const onPopupScroll = (e) => {
-        console.log('onPopupScroll', e);
-    };
 
     useEffect(() => {
         console.log(id);
@@ -33,7 +27,6 @@ const UpdateProduct = (req, res) => {
             .then(function (response) {
                 setProduct(response.data.records);
                 setColumns(response.data.records);
-                setDefaultValue(response.data.product.parent_id)
             })
             .catch(function (error) {
                 console.log(error);
@@ -41,8 +34,9 @@ const UpdateProduct = (req, res) => {
     }, []);
 
     const updateProduct = (e) => {
+        console.log(product)
         e.preventDefault();
-        axios.patch("/admin/category/edit/" + id, product)
+        axios.patch("/admin/product/edit/" + id, product)
             .then((result) => {
                 console.log(result);
                 const checkResult = result.data;
@@ -54,26 +48,13 @@ const UpdateProduct = (req, res) => {
                 console.log(error);
             });
     }
-
-    const onEditorChange = (content) => {
-        setProduct({ ...product, description: content });
-    }
-
-    const onInputChange = (e) => {
-        const { name, value } = e.target;
-        setProduct({ ...product, [name]: value });
-    }
-
-    const onRadioChange = (e) => {
-        setProduct({ ...product, status: e.target.value });
-    }
-
+    
     return (
         <>
             <ToastContainer />
             <Container className='admindetailproduct__container'>
                 <h1>Chỉnh sửa sản phẩm</h1>
-                <Form onSubmit={updateProduct}>
+                <Form onSubmit={updateProduct} enctype='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }}>
                         <Form.Label>Tiêu đề</Form.Label>
                         <Form.Control

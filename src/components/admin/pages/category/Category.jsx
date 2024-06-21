@@ -18,21 +18,19 @@ const Category = () => {
 
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
-    const {
-        reset,
-    } = useForm()
+    // const {
+    //     reset,
+    // } = useForm()
     const [category, setCategory] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
+    const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
     const location = useLocation();
-    React.useEffect(() => {
-        fetchData()
-    }, [filterStatusQuery])
-
+    
     useEffect(() => {
-        fetchData();
-    }, [filterStatusQuery]);
+        fetchData(searchQuery, filterStatusQuery);
+    }, [searchQuery, filterStatusQuery])
 
     useEffect(() => {
         if (location.state && location.state.success) {
@@ -40,8 +38,8 @@ const Category = () => {
         }
     }, [location.state]);
     // Lấy data thông qua API
-    const fetchData = () => {
-        axios.get('/admin/category', { params: { keyword: searchQuery, status: filterStatusQuery } })
+    const fetchData = (keyword, status) => {
+        axios.get('/admin/category', { params: { keyword, status } })
             .then(function (response) {
                 setCategory(response.data.records);
                 setFilterState(response.data.filterState);
@@ -54,9 +52,13 @@ const Category = () => {
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = (event) => {
+    const onSearch = (value) => {
         try {
-            fetchData();
+            const params = {};
+            if (filterStatusQuery) params.status = filterStatusQuery;
+            if (value) params.keyword = value;
+            setSearchParams(params);
+            setSearchQuery(value);
         } catch (error) {
             console.log(error);
         }
@@ -76,7 +78,15 @@ const Category = () => {
                 console.error(error);
                 toast.error('Xóa không thành công');
             });
-    }
+    };
+
+    const handleFilterStatusChange = (status) => {
+        const params = {};
+        if (status) params.status = status;
+        if (searchQuery) params.keyword = searchQuery;
+        setSearchParams(params);
+        setfilterStatusQuery(status);
+    };
 
     return (
         <>
@@ -90,15 +100,15 @@ const Category = () => {
                             <Col xs="6" >
                                 {
                                     filterState.map((item) => {
-                                        return <Button onClick={(event) => setfilterStatusQuery(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+                                        return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
                                     })
                                 }
                             </Col>
                             <Col xs="6">
                                 <Search
                                     placeholder="Nhập từ khóa"
-                                    onChange={(event) => setSearchQuery(event.target.value)}
-                                    value={searchQuery}
+                                    onChange={(event) => setInputValue(event.target.value)}
+                                    value={inputValue}
                                     size='large'
                                     enterButton
                                     onSearch={onSearch}
@@ -224,7 +234,7 @@ export default Category;
 //         setFilterState(sampleData.filterState);
 //     };
 
-//     // Chức năng tìm kiếm 
+//     // Chức năng tìm kiếm
 //     const onSearch = () => {
 //         fetchData();
 //     };
@@ -248,12 +258,12 @@ export default Category;
 //                             <Col xs="6">
 //                                 {filterState.map((item) => {
 //                                     return (
-//                                         <Button 
+//                                         <Button
 //                                             key={item.status}
-//                                             onClick={() => setFilterStatusQuery(item.status)} 
-//                                             value={item.status} 
-//                                             style={{ marginRight: "2px" }} 
-//                                             variant="outline-success" 
+//                                             onClick={() => setFilterStatusQuery(item.status)}
+//                                             value={item.status}
+//                                             style={{ marginRight: "2px" }}
+//                                             variant="outline-success"
 //                                             active={item.active}
 //                                         >
 //                                             {item.name}
@@ -300,8 +310,8 @@ export default Category;
 //                                         <td>{item.thumnail === "" ? <div></div> : <img alt='thumnail' />}</td>
 //                                         <td>{item.title}</td>
 //                                         <td>
-//                                             {item.status === "active" ? 
-//                                                 <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge> : 
+//                                             {item.status === "active" ?
+//                                                 <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge> :
 //                                                 <Badge style={{ width: 100.21 }} bg="danger">Dừng hoạt động</Badge>
 //                                             }
 //                                         </td>
