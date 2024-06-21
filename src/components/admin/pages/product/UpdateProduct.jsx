@@ -31,7 +31,7 @@ const UpdateProduct = (req, res) => {
         console.log(id);
         axios.get("/admin/product/edit/" + id)
             .then(function (response) {
-                setProduct(response.data.product);
+                setProduct(response.data.records);
                 setColumns(response.data.records);
                 setDefaultValue(response.data.product.parent_id)
             })
