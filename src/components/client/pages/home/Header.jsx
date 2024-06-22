@@ -18,24 +18,22 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__top">
-                <div className="header__account">
-                    <span className="header__account-info">Thông tin tài khoản</span>
-                    <span className="header__wishlist">♡</span>
-                    <span className="header__cart">🛒 0</span>
+                <div className="header__center">
+                    <img src="https://vinagems.vn/images/upload/images/kim-cuong-.jpg" alt="Thế Giới Kim Cương" className="header__logo-image" />
+                    <div className="header__logo-text">
+                        <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
+                    </div>
                 </div>
-            </div>
-            <div className="header__center">
-                <img src="/logo.png" alt="Thế Giới Kim Cương" className="header__logo-image" />
-                <div className="header__logo-text">
-                    <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
+                <div className="header__account">
+                    <a href="#account" className="header__account-info">Tài Khoản Của Tôi</a>
+                    <a href="#cart" className="header__cart">🛒 Giỏ Hàng <span className="cart-count"></span></a>
                 </div>
             </div>
             <div className="header__bottom">
                 <nav className="header__nav">
                     <ul className="header__nav-list">
                         <li
-                            onMouseEnter={() => toggleDropdown("Kim Cương")}
-                            onMouseLeave={() => toggleDropdown("Kim Cương")}
+                            onClick={() => toggleDropdown("Kim Cương")}
                             className="header__nav-item dropdown"
                         >
                             Kim Cương
@@ -48,8 +46,7 @@ const Header = () => {
                             )}
                         </li>
                         <li
-                            onMouseEnter={() => toggleDropdown("Trang Sức Kim Cương")}
-                            onMouseLeave={() => toggleDropdown("Trang Sức Kim Cương")}
+                            onClick={() => toggleDropdown("Trang Sức Kim Cương")}
                             className="header__nav-item dropdown"
                         >
                             Trang Sức Kim Cương
@@ -64,8 +61,7 @@ const Header = () => {
                             )}
                         </li>
                         <li
-                            onMouseEnter={() => toggleDropdown("Trang Sức Cưới")}
-                            onMouseLeave={() => toggleDropdown("Trang Sức Cưới")}
+                            onClick={() => toggleDropdown("Trang Sức Cưới")}
                             className="header__nav-item dropdown"
                         >
                             Trang Sức Cưới

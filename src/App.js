@@ -27,6 +27,7 @@ function App() {
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/verify/otp" element={<VerifyOtp />} />
         <Route path="/user/promotion" element={<Promotion />} />
+
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />

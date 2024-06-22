@@ -22,9 +22,8 @@
 
 .diamond-guide h1 {
     text-align: center;
-    font-size: 28px;
+    font-size: 35px;
     color: #ff0000;
-    /* Brighter red color */
     margin-bottom: 20px;
     margin: 40px 0 20px;
 }
@@ -36,14 +35,14 @@
 }
 
 .diamond-guide__section h2 {
-    font-size: 22px;
+    font-size: 27px;
     color: #ff0000;
     margin-bottom: 10px;
     text-align: left;
 }
 
 .diamond-guide__section p {
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 10px;
     line-height: 1.6;
     text-align: left;
@@ -52,16 +51,14 @@
 .diamond-guide__images {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
+    gap: 50px;
+    margin-bottom: 20px;
 }
 
 .diamond-guide__images img {
-    max-width: 200px;
+    width: 45%;
     border: none;
-    /* Removed border around images */
     border-radius: 0;
-    /* Removed border radius around images */
 }
 
 .diamond-guide__cut-image,
@@ -89,12 +86,12 @@ ul {
 
 ul li {
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 ul li b {
     color: #ff0000;
-    /* Brighter red color */
+    font-size: 20px;
 }
 
 table {
@@ -113,7 +110,7 @@ td {
 th,
 td {
     padding: 8px;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 a {

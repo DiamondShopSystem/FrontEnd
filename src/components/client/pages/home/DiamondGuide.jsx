@@ -35,7 +35,6 @@ const DiamondGuide = () => {
             <section className="diamond-guide__section">
                 <h2>Tiêu chí 2: Giác cắt (Cut)</h2>
                 <p>Kim cương có giá trị càng gần Excellent thì giá trị càng cao</p>
-                <h3>Thang giác cắt</h3>
                 <div className="diamond-guide__cut-image">
                     <img src="https://file.hstatic.net/1000381168/file/2_pc_c50d7f9c47d44fdd8c010ad7cb9f5a23.png" alt="Cut Chart" />
                 </div>
@@ -45,33 +44,30 @@ const DiamondGuide = () => {
             <section className="diamond-guide__section">
                 <h2>Tiêu chí 3: Nước/Màu (Color)</h2>
                 <p>Kim cương có màu gần D thì giá trị càng cao</p>
-                <h3>Thang đo nước màu</h3>
                 <div className="diamond-guide__color-image">
                     <img src="https://file.hstatic.net/1000381168/file/cnkc-pc-_psd__07_458ca5848535457f9ae6e70a50ac906f.png" alt="Color Chart" />
                 </div>
-                <p><i>Thế giới kim cương tư vấn: Tùy vào ngân sách của mình, Quý Khách có thể chọn nước từ H trở lên D.</i></p>
+                <p><i>Trùm kim cương tư vấn: Tùy vào ngân sách của mình, Quý Khách có thể chọn nước từ H trở lên D.</i></p>
             </section>
 
             <section className="diamond-guide__section">
                 <h2>Tiêu chí 4: Độ Tinh Khiết (Clarity)</h2>
                 <p>Kim Cương có độ tinh khiết càng gần FL thì giá trị càng cao</p>
-                <h3>Thang đo độ tinh khiết</h3>
                 <div className="diamond-guide__clarity-image">
                     <img src="https://file.hstatic.net/1000381168/file/4_pc_c62a9116ad3a44c196d9b29e6c0bfd50.png" alt="Clarity Chart" />
                 </div>
                 <p><b>Lưu ý:</b> Chỉ sử dụng kính phòng đại 10x để xác định cấp độ tinh khiết.</p>
-                <p><i>Thế giới kim cương tư vấn: Kim cương có độ tinh khiết càng gần FL thì giá trị càng cao.</i></p>
+                <p><i>Trùm kim cương tư vấn: Kim cương có độ tinh khiết càng gần FL thì giá trị càng cao.</i></p>
             </section>
 
             <section className="diamond-guide__section">
                 <h2>Tiêu chí 5: Kích cỡ kim cương (Carat Weight/Measurements)</h2>
                 <p>Kim cương có kích cỡ càng lớn thì giá trị càng cao</p>
-                <h3>Thang đo đường kính</h3>
                 <div className="diamond-guide__cut-image">
                     <img src="https://file.hstatic.net/1000381168/file/cnkc-pc-_psd__14_369f341f9043461e8e242a0952b4fd7a.png" alt="Carat Weight Chart" />
                 </div>
                 <p>Tại Việt Nam, Khách Hàng thường căn cứ vào đường kính viên kim cương khi chọn mua. Trên thế giới, người ta thường dùng trọng lượng viên kim cương (Carat Weight) để chọn mua.</p>
-                <p><i>Thế giới kim cương tư vấn: Tùy vào ngân sách của mình, Quý khách có thể chọn viên kim cương có kích cỡ phù hợp với trang sức mà mình yêu thích.</i></p>
+                <p><i>Trùm kim cương tư vấn: Tùy vào ngân sách của mình, Quý khách có thể chọn viên kim cương có kích cỡ phù hợp với trang sức mà mình yêu thích.</i></p>
             </section>
         </div>
     );
