@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 // import Layout from 'antd';
 import Logo from '../partials/Logo';
+import { Container } from 'react-bootstrap';
 const { Header, Content, Sider } = Layout;
 
 const Navbar = () => {
@@ -10,12 +11,12 @@ const Navbar = () => {
             <Header style={{
                 position: 'sticky',
                 top: 0,
-                zIndex: 1,
+                zIndex: 1000,
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
             }} >
-                <Logo />
+            <Logo />
             </Header>
             <Menu
                 theme="dark"

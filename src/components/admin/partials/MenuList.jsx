@@ -61,10 +61,10 @@ const MenuList = () => {
             </Menu.Item>
 
             < Menu.SubMenu key="account" icon={<UserOutlined />} title="Quản lí tài khoản"  >
-                <Menu.Item key="account/adminaccount" icon >
+                <Menu.Item key="account/staff" icon >
                     Nhân Viên
                 </Menu.Item>
-                <Menu.Item key="account/useraccount" icon >
+                <Menu.Item key="account/user" icon >
                     Khách hàng
                 </Menu.Item>
             </Menu.SubMenu>

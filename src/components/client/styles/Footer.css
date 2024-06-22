@@ -1,109 +1,66 @@
-.footer {
-    background-color: white;
-    color: black;
-    padding: 2rem 0;
-    font-family: Arial, sans-serif;
+.section__footer {
+    position: relative;
+    background: #f7f7f7;
+    height: 520px;
+    padding-top: 65px;
+    border-top: 1px solid #cfd1d2;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
+.footer__container {
+    max-width: 1240px;
     margin: 0 auto;
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin: 1rem;
+.footer__content p {
+    color: gray;
+    font-family: inherit;
 }
 
-.footer-section h3 {
-    font-weight: bold;
+.footer__content h4 {
+    padding-top: 10px;
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: gray;
+    font-family: inherit;
 }
 
-.footer-section p,
-.footer-section ul,
-.footer-section a {
-    color: black;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
+.footer__content .nav-link {
     margin-bottom: 0.5rem;
+    color: gray;
+    font-family: inherit;
+    font-size: 1rem;
 }
 
-.footer-section ul li a {
-    text-decoration: none;
-    color: black;
-}
-
-.footer-section ul li a:hover {
+.footer__content .nav-link:hover {
     text-decoration: underline;
 }
 
-.about-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.about-logo img {
-    height: 4rem;
-    margin-bottom: 0.5rem;
-}
-
-.about-logo h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.social-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-}
-
-.social-links li {
-    margin-right: 1rem;
-}
-
-.social-links li a {
+.nav-link .active {
     color: black;
-    text-decoration: none;
-    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.subscribe {
-    display: flex;
-    align-items: center;
+.footer__logo-text {
     margin-top: 1rem;
+    color: #333;
 }
 
-.subscribe input {
-    padding: 0.5rem;
-    border: 1px solid black;
-    border-radius: 5px 0 0 5px;
-    outline: none;
+.section__footer .quick-link {
+    position: relative;
+    margin-top: 50px;
+    border-top: 1px solid #a5a5a5;
+    color: #7e7e7e;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
 }
 
-.subscribe button {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #3498db;
-    color: black;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.subscribe button:hover {
-    background-color: #2980b9;
+.quick-link p {
+    font-family: "Exo 2";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 35px;
+    color: gray;
+    padding-top: 20px;
 }

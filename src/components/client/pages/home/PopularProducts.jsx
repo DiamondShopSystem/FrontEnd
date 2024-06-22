@@ -73,7 +73,7 @@ const PopularProducts = () => {
     ];
 
     return (
-        <section className='section-item'>
+        <section className='section-item' style={{backgroundColor: '#fff'}}>
             <div className='title-item'>
                 <h3>Sản phẩm phổ biến</h3>
                 <Link>Xem thêm {'>'}</Link>

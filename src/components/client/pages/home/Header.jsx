@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/Header.css';
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"></link>
 
 const Header = () => {
     const [dropdownVisible, setDropdownVisible] = useState({
@@ -18,15 +19,15 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__top">
-                <div className="header__center">
-                    <img src="https://vinagems.vn/images/upload/images/kim-cuong-.jpg" alt="Thế Giới Kim Cương" className="header__logo-image" />
-                    <div className="header__logo-text">
-                        <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
-                    </div>
+                <div className="header__account" >
+                    <span className="header__account-info">Thông tin tài khoản</span>
+                    <span className="header__cart">🛒 0</span>
                 </div>
-                <div className="header__account">
-                    <a href="#account" className="header__account-info">Tài Khoản Của Tôi</a>
-                    <a href="#cart" className="header__cart">🛒 Giỏ Hàng <span className="cart-count"></span></a>
+            </div>
+            <div className="header__center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCPedHYgEbswX5-OREJD1TKplrG2j_eyOqag&s" alt="header__logo" className="header__logo-image" />
+                <div className="header__logo-text">
+                    <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
                 </div>
             </div>
             <div className="header__bottom">

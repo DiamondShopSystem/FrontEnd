@@ -24,7 +24,9 @@ const Ring = ({ ring }) => {
     return (
         <div className='Ring-container-ring'>
             <div className='Ring-cover-image'>
-                <button className='Ring-button-detail-ring'>Xem chi tiết</button>
+                <Link to={`/user/product/ring/detail/${id}`}>
+                    <button className='Ring-button-detail-ring'>Xem chi tiết</button>
+                </Link>
                 <Link to={`/product/${id}`} className='Ring-link-product'>
                     <img className='Ring-image-ring' src={image} alt={title} height='130px' width='130px' />
                 </Link>

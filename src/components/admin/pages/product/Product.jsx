@@ -5,31 +5,48 @@ import Card from 'react-bootstrap/Card';
 import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
+
+// import { Pagination } from 'antd';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from "react-router-dom";
 import '../../styles/Product.css';
+
+import Search from 'antd/es/input/Search';
 
 
 
 const Product = () => {
+
+
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
-    const {
-        reset,
-    } = useForm()
+    // const {
+    //     reset,
+    // } = useForm()
     const [product, setProduct] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
+    const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-    React.useEffect(() => {
-        fetchData()
-    }, [filterStatusQuery])
+    const location = useLocation();
+    
+    useEffect(() => {
+        fetchData(searchQuery, filterStatusQuery);
+    }, [searchQuery, filterStatusQuery])
+
+    useEffect(() => {
+        if (location.state && location.state.success) {
+            toast.success('Thêm mới thành công');
+        }
+    }, [location.state]);
 
     // Lấy data thông qua API
-    const fetchData = () => {
-        axios.get('/admin/product', { params: { keyword: searchQuery, status: filterStatusQuery } })
+    const fetchData = (keyword, status) => {
+        axios.get('/admin/product', { params: { keyword, status } })
             .then(function (response) {
                 setProduct(response.data.records);
                 setFilterState(response.data.filterState);
@@ -38,13 +55,19 @@ const Product = () => {
             .catch(function (error) {
                 console.log(error);
             })
-
     }
 
     // Chức năng tìm kiếm 
-    const onSearch = () => {
+    const onSearch = (value) => {
         try {
-            fetchData();
+            const params = {};
+            if (filterStatusQuery) params.status = filterStatusQuery;
+            console.log(value)
+            if (value) params.keyword = value;
+            console.log(params)
+            setSearchParams(params);
+            setSearchQuery(value);
+            // fetchData(value, filterStatusQuery);
         } catch (error) {
             console.log(error);
         }
@@ -65,7 +88,14 @@ const Product = () => {
     }
 
 
-    // Chuyển sang trang tạo tài khoản
+
+    const handleFilterStatusChange = (status) => {
+        const params = {};
+        if (status) params.status = status;
+        if (searchQuery) params.keyword = searchQuery;
+        setSearchParams(params);
+        setfilterStatusQuery(status);
+    };
 
     return (
         <>
@@ -79,15 +109,18 @@ const Product = () => {
                             <Col xs="6" >
                                 {
                                     filterState.map((item) => {
-                                        return <Button onClick={(event) => setfilterStatusQuery(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
+                                        return <Button onClick={() => handleFilterStatusChange(item.status)} value={item.status} style={{ marginRight: "2px" }} variant="outline-success" active={item.active} button-status={item.status} >{item.name}</Button>
                                     })
                                 }
                             </Col>
                             <Col xs="6">
+                                {/* <form onSubmit={onSearch}>
+                                    <input value={searchQuery} placeholder='Nhập từ khóa' onChange={(e) => setSearchQuery(e.target.value)} />
+                                </form> */}
                                 <Search
                                     placeholder="Nhập từ khóa"
-                                    onChange={(event) => setSearchQuery(event.target.value)}
-                                    value={searchQuery}
+                                    onChange={(event) => setInputValue(event.target.value)}
+                                    value={inputValue}
                                     size='large'
                                     enterButton
                                     onSearch={onSearch}
@@ -134,8 +167,8 @@ const Product = () => {
                                                 {index + 1}
                                             </td>
                                             <td>
-                                                {item.thumbnail === "" ? <div></div> : <img  style={{width:"100px", height:"auto"}} alt='thumbnail' src={item.thumbnail} />}
 
+                                                {item.thumbnail === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='thumnail' src={item.thumbnail} />}
 
                                             </td>
                                             <td>
@@ -146,7 +179,10 @@ const Product = () => {
                                             </td>
                                             <td>
                                                 <Button style={{ margin: 1 }} variant="secondary"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/detail/${item._id}`} >Chi tiết</Link></Button>
-                                                <Button style={{ margin: 1 }} variant="warning"><Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
+                                                <Button
+                                                    style={{ margin: 1 }}
+                                                    variant="warning">
+                                                    <Link style={{ textDecoration: 'none', color: 'white' }} to={`/admin/product/edit/${item._id}`} >Chỉnh sửa</Link></Button>
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"

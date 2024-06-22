@@ -1,54 +1,60 @@
-import React from 'react';
-import '../../styles/Footer.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Container, Row, Col, Stack, Image, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import '../../styles/Footer.css'; // Import the new CSS file
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="footer-container">
-                <div className="footer-section about">
-                    <div className="about-logo">
-                        <img src="https://vinagems.vn/images/upload/images/kim-cuong-.jpg" alt="Logo" />
-                        <div>
-                            <h3>VỀ TRÙM KIM CƯƠNG</h3>
-                            <p>Trùm Kim Cương hướng đến mục tiêu trở thành thương hiệu kim cương và trang sức uy tín nhất Việt Nam.</p>
+        <footer className="section__footer">
+            <Container className="footer__container">
+                <Row className="p-4 footer__content">
+                    <Col className="mx-5">
+                        <Stack>
+                            <Image
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8t3uKbanp3uSurjv8n-3b-Js7LisE7XMxSw&s"
+                                alt="company logo"
+                                rounded
+                                width={150}
+                                height={"auto"}
+                            />
+                            <h4>Trùm Kim Cương</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </Stack>
+                    </Col>
+                    <Col>
+                        <Nav className="flex-column fs-5">
+                            <h4>Về Trùm Kim Cương</h4>
+                            <NavLink to="/story" className="nav-link ">Câu Chuyện</NavLink>
+                            <NavLink to="/story2" className="nav-link ">Câu Chuyện 2</NavLink>
+                            <NavLink to="/story3" className="nav-link ">Câu Chuyện 3</NavLink>
+                        </Nav>
+                    </Col>
+                    <Col>
+                        <Nav className="flex-column fs-5">
+                            <h4>Dịch vụ khách hàng</h4>
+                            <NavLink to="/test" className="nav-link ">Hướng dẫn đo size trang sức</NavLink>
+                            <NavLink to="/test1" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
+                            <NavLink to="/jewelry-guide" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
+                        </Nav>
+                    </Col>
+                    <Col>
+                        <h4>Kết nối với chúng tôi</h4>
+                        <p>Email: contact@trumkimcuong.com</p>
+                        <p>Phone: +84 123 456 789</p>
+                        <div className="social-icons">
+                            <a href="#"><i className="fab fa-facebook-f"></i></a>
+                            <a href="#"><i className="fab fa-twitter"></i></a>
+                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
                         </div>
-                    </div>
+                    </Col>
+                </Row>
+                <div class="quick-link">
+                    <p>© TrumKimCuong. All rights reserved.</p>
                 </div>
-                <div className="footer-section quick-links">
-                    <h3>Dịch Vụ </h3>
-                    <ul>
-                        <li><a href="#">Hướng Dẫn Đo Size Nhẫn</a></li>
-                        <li><a href="#">Kiến Thức Kim Cương</a></li>
-                        <li><a href="#">Giao Hàng Tận Nơi</a></li>
-                        <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
-                        <li><a href="#">Phương Thức Thanh Toán</a></li>
-                    </ul>
-                </div>
-                <div className="footer-section contact">
-                    <h3>Liên Hệ </h3>
-                    <p>info@fptuniversity.com</p>
-                    <p>FPT University Ho Chi Minh.</p>
-                    <p>+1 246-345-0699</p>
-                    <p>+1 246-345-0695</p>
-                </div>
-                <div className="footer-section follow-us">
-                    <h3>Theo Dõi</h3>
-                    <ul className="social-links">
-                        <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i className="fab fa-pinterest"></i></a></li>
-                        <li><a href="#"><i className="fab fa-dribbble"></i></a></li>
-                    </ul>
-                    <div className="subscribe">
-                        <input type="email" placeholder="Nhập email" />
-                        <button type="submit">Gửi</button>
-                    </div>
-                </div>
-            </div>
+            </Container>
+
         </footer>
     );
-};
+}
 
 export default Footer;
