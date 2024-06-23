@@ -1,0 +1,78 @@
+/* Navbar.css */
+
+.navbar-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.navbar-dropdown .ant-avatar {
+    margin-right: 8px;
+}
+
+.navbar-dropdown .username {
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.ant-dropdown-menu {
+    width: 200px;
+}
+
+.ant-dropdown-menu-item {
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ant-dropdown-menu-item a {
+    color: #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.ant-dropdown-menu-item a .anticon {
+    margin-right: 8px;
+    transition: color 0.3s;
+}
+
+.ant-dropdown-menu-item:hover {
+    background-color: #1890ff !important;
+}
+
+.ant-dropdown-menu-item:hover a {
+    color: #fff !important;
+}
+
+.ant-dropdown-menu-item:hover a .anticon {
+    color: #fff !important;
+}
+
+.ant-dropdown-menu-submenu-title {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ant-dropdown-menu-submenu-title .anticon {
+    margin-right: 8px;
+    transition: color 0.3s;
+}
+
+.ant-dropdown-menu-submenu-title:hover {
+    background-color: #1890ff !important;
+}
+
+.ant-dropdown-menu-submenu-title:hover .anticon,
+.ant-dropdown-menu-submenu-title:hover span {
+    color: #fff !important;
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
