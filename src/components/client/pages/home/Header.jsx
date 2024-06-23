@@ -25,7 +25,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="header__center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCPedHYgEbswX5-OREJD1TKplrG2j_eyOqag&s" alt="header__logo" className="header__logo-image" />
+                <img src="https://vinagems.vn/images/upload/images/kim-cuong-.jpg" alt="header__logo" className="header__logo-image" />
                 <div className="header__logo-text">
                     <span className="header__logo-title">THẾ GIỚI KIM CƯƠNG</span>
                 </div>

@@ -1,7 +1,7 @@
 import { Container, Row, Col, Stack, Image, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import '../../styles/Footer.css'; // Import the new CSS file
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 const Footer = () => {
     return (
         <footer className="section__footer">

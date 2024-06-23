@@ -43,6 +43,7 @@ function App() {
         <Route path="/user/promotion" element={<Promotion />} />
         <Route path="/user/product/ring" element={<RingProducts />} />
         <Route path="/user/product/ring/detail/:id" element={<RingProductDetail />} />
+
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />
