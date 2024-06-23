@@ -9,6 +9,10 @@ const { Header } = Layout;
 
 const menu = (
     <Menu>
+        <Menu.Item key="profile" icon={<UserOutlined />}>
+            <a href="/admin/profile">Thông tin tài khoản</a>
+        </Menu.Item>
+        <Menu.Divider />
         <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
             <a href="/admin/dashboard">Trang tổng quan</a>
         </Menu.Item>
@@ -48,7 +52,7 @@ const Navbar = () => {
             <Logo />
             <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
                 <div className="navbar-dropdown">
-                    <Avatar icon={<UserOutlined />} />
+                    <Avatar src="https://m.yodycdn.com/blog/anh-dai-dien-hai-yodyvn3-b3a8cf32-e08a-47fc-a741-71626aadc4de.jpg" />
                     <span className="username">Admin</span>
                 </div>
             </Dropdown>

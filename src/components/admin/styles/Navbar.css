@@ -9,11 +9,16 @@
 
 .navbar-dropdown .ant-avatar {
     margin-right: 8px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 24px;
 }
 
 .navbar-dropdown .username {
     color: #fff;
     transition: all 0.3s;
+    font-size: 18px;
 }
 
 .ant-dropdown-menu {
@@ -23,6 +28,7 @@
 .ant-dropdown-menu-item {
     padding: 10px 20px;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
 }
 
 .ant-dropdown-menu-item a {
@@ -54,6 +60,7 @@
     display: flex;
     align-items: center;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
 }
 
 .ant-dropdown-menu-submenu-title .anticon {
