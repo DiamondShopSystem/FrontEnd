@@ -1,0 +1,49 @@
+/* CertificateModal.css */
+.certificate-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.certificate-modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.certificate-modal-close {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+
+.certificate-modal-title {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.certificate-modal-image {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
