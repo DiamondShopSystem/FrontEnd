@@ -1,38 +1,19 @@
 import React from 'react';
 import { Layout, Menu, Dropdown, Avatar } from 'antd';
 import { DashboardOutlined, BarsOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
-import { IoDiamond } from "react-icons/io5";
 import Logo from '../partials/Logo';
 import '../styles/Navbar.css';
-
+import { Link } from 'react-router-dom';
 const { Header } = Layout;
 
 const menu = (
     <Menu>
         <Menu.Item key="profile" icon={<UserOutlined />}>
-            <a href="/admin/profile">Thông tin tài khoản</a>
+            <Link to="/admin/profile">Thông tin tài khoản</Link>
         </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-            <a href="/admin/dashboard">Trang tổng quan</a>
-        </Menu.Item>
-        <Menu.Item key="product" icon={<IoDiamond />}>
-            <a href="/admin/product">Trang sản phẩm</a>
-        </Menu.Item>
-        <Menu.Item key="category" icon={<BarsOutlined />}>
-            <a href="/admin/category">Trang danh mục</a>
-        </Menu.Item>
-        <Menu.SubMenu key="account" title="Quản lí tài khoản" icon={<UserOutlined />}>
-            <Menu.Item key="account/staff">
-                <a href="/admin/account/staff">Nhân Viên</a>
-            </Menu.Item>
-            <Menu.Item key="account/user">
-                <a href="/admin/account/user">Khách hàng</a>
-            </Menu.Item>
-        </Menu.SubMenu>
         <Menu.Divider />
         <Menu.Item key="logout" icon={<LogoutOutlined />}>
-            <a href="/admin/login">Đăng Xuất</a>
+            <Link to="/admin/login">Đăng Xuất</Link>
         </Menu.Item>
     </Menu>
 );
