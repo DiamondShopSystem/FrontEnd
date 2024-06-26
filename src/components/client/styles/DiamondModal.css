@@ -14,9 +14,9 @@
 
 .modal-content {
     background: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 15px;
-    width: 500px;
+    width: 600px;
     max-width: 90%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -25,12 +25,12 @@
 .modal-close {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 300px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 30px;
     cursor: pointer;
-    color: #333;
+    color: red;
     padding: 0;
     line-height: 1;
 }
@@ -45,7 +45,7 @@
 .modal-body {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     margin-top: 20px;
 }
 

@@ -12,9 +12,8 @@ const ProductDetailsFooter = () => {
                     <ul>
                         <li>Trang sức/ Ổ trang sức 100% chuẩn xác về hàm lượng và trọng lượng vàng.</li>
                         <li>Kim cương tự nhiên được nhập khẩu chính ngạch 100% và có giấy kiểm định GIA/ IGI uy tín thế giới và có giá trị toàn cầu. Đây đủ máy móc, trang thiết bị hiện đại để kiểm tra chất lượng và soi mã số cạnh kim cương.</li>
-                        <li>Đồng hồ chính hãng các thương hiệu: Versace, Mathey-Tissot, Pierre Cardin bảo hành chính hãng.</li>
                         <li>Trang sức vàng ta 24k (999.9) 100% chuẩn xác về hàm lượng và trọng lượng vàng.</li>
-                        <li>Mọi sản phẩm do Thế Giới Kim Cương bán ra đều có hóa đơn tài chính hợp lệ.</li>
+                        <li>Mọi sản phẩm do Trùm Kim Cương bán ra đều có hóa đơn tài chính hợp lệ.</li>
                     </ul>
                 </div>
                 <div className="guide">
@@ -26,7 +25,7 @@ const ProductDetailsFooter = () => {
                         <li>Thêm vào giỏ hàng.</li>
                         <li>Kiểm tra thông tin đơn hàng và đặt hàng.</li>
                         <li>Kiểm tra và xác nhận đơn hàng.</li>
-                        <li>Đơn hàng thành công sẽ được gửi về email & sms của quý khách, đồng thời nhân viên sẽ liên hệ lại với Quý Khách xác nhận thời gian giao hàng. Xem chi tiết.</li>
+                        <li>Đơn hàng thành công sẽ được gửi về email & sms của quý khách, đồng thời nhân viên sẽ liên hệ lại với Quý Khách xác nhận thời gian giao hàng.</li>
                     </ul>
                 </div>
             </div>

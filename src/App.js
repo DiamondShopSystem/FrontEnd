@@ -30,7 +30,8 @@ import SizeBraceletGuide from "./components/client/pages/home/UserService/SizeBr
 import SizeNecklaceGuide from "./components/client/pages/home/UserService/SizeNecklaceGuide";
 
 // import 'dotenv/config';
-
+import ProductDetails from "./components/client/pages/details/ProductDetails/ProductDetails";
+import DiamondDetails from "./components/client/pages/details/DiamondDetails/DiamondDetails";
 function App() {
   return (
 
@@ -43,7 +44,8 @@ function App() {
         <Route path="/user/promotion" element={<Promotion />} />
         <Route path="/user/product/ring" element={<RingProducts />} />
         <Route path="/user/product/ring/detail/:id" element={<RingProductDetail />} />
-
+        <Route path="/user/product/details" element={<ProductDetails />} />
+        <Route path="/user/diamond/details" element={<DiamondDetails />} />
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />
