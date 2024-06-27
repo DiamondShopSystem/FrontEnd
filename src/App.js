@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import Home from "./components/client/pages/home/Home";
 import UserLogin from "./components/client/pages/auth/UserLogin";
 import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
-import Home from "./components/client/pages/home/Home";
 import StaffAccount from "./components/admin/pages/account/StaffAccount";
 import UserAccount from "./components/admin/pages/account/UserAccount";
 import Dashboard from "./components/admin/pages/dashboard/Dashboard";
@@ -15,8 +15,6 @@ import CreateProduct from "./components/admin/pages/product/CreateProduct";
 import AdminLogin from "./components/admin/pages/auth/AdminLogin";
 import DetailProduct from "./components/admin/pages/product/DetailProduct";
 import Promotion from "./components/client/pages/promotion/Promotion";
-import RingProducts from "./components/client/pages/home/RingProducts";
-import RingProductDetail from "./components/client/pages/home/RingProductDetail";
 import ProductPage from "./components/client/pages/product/ProductPage";
 import ProductDetail from "./components/client/pages/product/ProductDetail";
 import UpdateProduct from "./components/admin/pages/product/UpdateProduct";
@@ -59,9 +57,6 @@ function App() {
         <Route path="/admin/category/edit/:id" element={<AdminLayout><UpdateCategory /></AdminLayout>} />
         {/* Account  */}
         <Route path="/admin/account" element={<AdminLayout><StaffAccount /></AdminLayout>} />
-        <Route path="/admin/account/create" element={<AdminLayout><CreateStaffAccount /></AdminLayout>} />
-        <Route path="/admin/account/edit/:id" element={<AdminLayout><UpdateStaffAccount /></AdminLayout>} />
-        <Route path="/admin/account/detail/:id" element={<AdminLayout><DetailStaffAccount /></AdminLayout>} />
         <Route path="/admin/account/user" element={<AdminLayout><UserAccount /></AdminLayout>} />
       </Routes>
 

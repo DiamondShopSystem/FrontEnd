@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../styles/Header.css';
-import Navbar from './Navbar.jsx'
+import '../styles/Header.css';
+import Navbar from '../pages/home/Navbar';
 import { Link } from 'react-router-dom';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"></link>
 
