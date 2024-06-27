@@ -19,7 +19,6 @@ import RingProducts from "./components/client/pages/home/RingProducts";
 import RingProductDetail from "./components/client/pages/home/RingProductDetail";
 import UpdateProduct from "./components/admin/pages/product/UpdateProduct";
 import UserLayout from "./components/client/profile/UserLayout";
-import UserProfile from "./components/client/profile/UserProfile";
 import Wishlist from "./components/client/profile/content/Wishlist";
 import Order from "./components/client/profile/content/Order";
 import UserInfo from "./components/client/profile/content/UserInfo";
@@ -28,7 +27,10 @@ import PaymentGuidePage from "./components/client/pages/home/UserService/Payment
 import SizeRingGuide from "./components/client/pages/home/UserService/SizeRingGuide";
 import SizeBraceletGuide from "./components/client/pages/home/UserService/SizeBraceletGuide";
 import SizeNecklaceGuide from "./components/client/pages/home/UserService/SizeNecklaceGuide";
-
+import MyVoucher from "./components/client/profile/content/MyVoucher";
+import CreateStaffAccount from "./components/admin/pages/account/CreateStaffAcount";
+import UpdateStaffAccount from "./components/admin/pages/account/UpdateStaffAccount";
+import DetailStaffAccount from "./components/admin/pages/account/DetailStaffAccount";
 // import 'dotenv/config';
 function App() {
   return (
@@ -58,12 +60,15 @@ function App() {
         <Route path="/admin/category/detail/:id" element={<AdminLayout><DetailCategory /></AdminLayout>} />
         <Route path="/admin/category/edit/:id" element={<AdminLayout><UpdateCategory /></AdminLayout>} />
         {/* Account  */}
-        <Route path="/admin/account/staff" element={<AdminLayout><StaffAccount /></AdminLayout>} />
+        <Route path="/admin/account" element={<AdminLayout><StaffAccount /></AdminLayout>} />
+        <Route path="/admin/account/create" element={<AdminLayout><CreateStaffAccount /></AdminLayout>} />
+        <Route path="/admin/account/edit/:id" element={<AdminLayout><UpdateStaffAccount /></AdminLayout>} />
+        <Route path="/admin/account/detail/:id" element={<AdminLayout><DetailStaffAccount /></AdminLayout>} />
         <Route path="/admin/account/user" element={<AdminLayout><UserAccount /></AdminLayout>} />
         {/* User */}
-        <Route path="/customer" element={<UserLayout />}>
+        <Route path="/user" element={<UserLayout />}>
           <Route path="info" element={<UserInfo />} />
-          <Route path="promotion" element={<Promotion />} />
+          <Route path="voucher" element={<MyVoucher />} />
           <Route path="order" element={<Order />} />
           <Route path="wishlist" element={<Wishlist />} />
         </ Route>

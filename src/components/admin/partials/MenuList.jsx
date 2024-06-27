@@ -21,6 +21,9 @@ const MenuList = () => {
         if (path.startsWith('product')) {
             setCurrent('product');
         }
+        if (path.startsWith('account')) {
+            setCurrent('account');
+        }
 
         // Mở submenu nếu đường dẫn hiện tại liên quan đến "account"
         if (path.startsWith('account')) {
@@ -61,7 +64,7 @@ const MenuList = () => {
             </Menu.Item>
 
             < Menu.SubMenu key="account" icon={<UserOutlined />} title="Quản lí tài khoản"  >
-                <Menu.Item key="account/staff" icon >
+                <Menu.Item key="account" icon >
                     Nhân Viên
                 </Menu.Item>
                 <Menu.Item key="account/user" icon >

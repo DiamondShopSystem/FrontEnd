@@ -1,9 +1,12 @@
 .section-item {
-    max-width: 100%;
+    max-width: 1580px;
     max-height: 100%;
-    background-color: whitesmoke;
-    padding: 3rem;
+    margin: 0 auto; /* căn giữa */
+    background-color: #fff;
+    padding: 20px; /* thêm padding để tạo khoảng cách với lề */
+    padding: 2rem;
 }
+
 
 @media (min-width: 1280px) {
     .xl\:py-28 {
@@ -23,7 +26,7 @@
 }
 
 .title-item h3 {
-    margin-bottom: 0;
+    margin-bottom: 40px;
 }
 
 .title-item a {
@@ -31,12 +34,11 @@
     color: black;
     font-size: larger;
     position: absolute;
-    right: 150px;
+    right: 314px;
 }
 
 .title-item:hover a {
     text-decoration: underline;
-    color: rgba(13, 110, 253, 1);
 }
 
 

@@ -10,7 +10,7 @@ const BlogLayout = ({ articles }) => {
     return (
         <>
             <Header />
-            <Container className='bg-light' style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+            <Container style={{ paddingTop: '20px', paddingBottom: '20px' }}>
                 <Grid container spacing={3} className="size__guide">
                     {articles.map(article => (
                         <Grid item xs={12} md={6} key={article.id}>

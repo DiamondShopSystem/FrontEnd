@@ -34,7 +34,6 @@ const UpdateProduct = (req, res) => {
     }, []);
 
     const updateProduct = (e) => {
-        console.log(product)
         e.preventDefault();
         axios.patch("/admin/product/edit/" + id, product)
             .then((result) => {
@@ -48,7 +47,7 @@ const UpdateProduct = (req, res) => {
                 console.log(error);
             });
     }
-    
+
     return (
         <>
             <ToastContainer />

@@ -25,7 +25,6 @@ const UpdateCategory = (req, res) => {
         console.log('onPopupScroll', e);
     };
     useEffect(() => {
-        console.log(id);
         axios.get("/admin/category/edit/" + id)
             .then(function (response) {
                 setCategory(response.data.category);
@@ -38,7 +37,6 @@ const UpdateCategory = (req, res) => {
     }, []);
 
     const updateCategory = (e) => {
-        console.log(category)
         e.preventDefault();
         axios.patch("/admin/category/edit/" + id, category)
             // .then(res => alert("Cập nhật thành công"))

@@ -33,7 +33,7 @@ const Product = () => {
     const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
     const location = useLocation();
-    
+
     useEffect(() => {
         fetchData(searchQuery, filterStatusQuery);
     }, [searchQuery, filterStatusQuery])
@@ -62,9 +62,7 @@ const Product = () => {
         try {
             const params = {};
             if (filterStatusQuery) params.status = filterStatusQuery;
-            console.log(value)
             if (value) params.keyword = value;
-            console.log(params)
             setSearchParams(params);
             setSearchQuery(value);
             // fetchData(value, filterStatusQuery);
