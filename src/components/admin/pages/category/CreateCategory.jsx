@@ -1,34 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Category.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import { Form, Input, Radio } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
-import { TreeSelect, message, Upload } from 'antd';
+import { TreeSelect, message } from 'antd';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UploadOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom v6
 
-const props = {
-    name: 'file',
-    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-    headers: {
-        authorization: 'authorization-text',
-    },
-    onChange(info) {
-        if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-};
 
 const CreateCategory = () => {
     const navigate = useNavigate(); // Hook useNavigate
@@ -44,7 +26,8 @@ const CreateCategory = () => {
 
     const { reset, setValue } = useForm();
 
-    const onChange = (newValue) => {
+    // Set danh mục cha
+    const onSetParentCategory = (newValue) => {
         setParentCategory(newValue);
     };
 
@@ -113,7 +96,7 @@ const CreateCategory = () => {
                         allowClear
                         treeDefaultExpandAll
                         fieldNames={{ label: "title", value: '_id', children: "children" }}
-                        onChange={onChange}
+                        onChange={onSetParentCategory}
                         treeData={category}
                         onPopupScroll={onPopupScroll}
                     />

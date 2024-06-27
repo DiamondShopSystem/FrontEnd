@@ -1,6 +1,6 @@
 // PaymentGuidePage.jsx
 import React from 'react';
-import BlogLayout from './BlogLayout.jsx'; // Import BlogLayout component
+import BlogLayout from './GuideComponent.jsx'; // Import BlogLayout component
 
 const articles = [
     { id: 1, title: "Hướng dẫn mua hàng trả góp", date: "20/06/2024", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJshyY08fXkV39syu6oXTH8gHD-lMJtWt2rQ&s", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in dui accumsan volutpat." },

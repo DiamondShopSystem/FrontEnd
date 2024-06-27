@@ -1,7 +1,7 @@
 // SizeGuidePage.jsx
 import React from 'react';
-import BlogLayout from './BlogLayout.jsx'; // Import BlogLayout component
-import '../../../styles/SizeGuidePage.css'; // Import the CSS file
+import BlogLayout from './GuideComponent.jsx'; // Import BlogLayout component
+import '../../styles/SizeGuidePage.css'; // Import the CSS file
 
 const articles = [
     { id: 1, title: "Cách Đo Size, Ni Nhẫn Nữ/Nam Chính Xác Và Đơn Giản", date: "17/11/2021", image: "https://www.pnj.com.vn/blog/wp-content/uploads/2021/11/huong-dan-do-size-nhan-534x462.jpg", description: "PNJ sẽ hướng dẫn bạn cách đo kích thước nhẫn tại nhà & cách bí mật đo nhân để tạo bất ngờ cho món quà dành tặng người thân, nhất là đối với..." },

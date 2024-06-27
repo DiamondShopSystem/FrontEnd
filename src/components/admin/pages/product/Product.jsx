@@ -5,28 +5,19 @@ import Card from 'react-bootstrap/Card';
 import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
-// import { useForm } from "react-hook-form";
 import { useSearchParams, Link } from 'react-router-dom';
-
-// import { Pagination } from 'antd';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import '../../styles/Product.css';
 
-import Search from 'antd/es/input/Search';
+
 
 
 
 const Product = () => {
-
-
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
-    // const {
-    //     reset,
-    // } = useForm()
     const [product, setProduct] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");

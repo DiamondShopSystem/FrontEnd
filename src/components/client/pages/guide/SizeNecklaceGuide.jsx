@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header.jsx'
+import Header from '../../partials/Header.jsx'
 import { Container } from 'react-bootstrap'
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -7,9 +7,9 @@ import Link from '@mui/material/Link';
 import HomeIcon from '@mui/icons-material/Home';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import GrainIcon from '@mui/icons-material/Grain';
-import '../../../styles/SizeBraceletGuide.css'
-import Footer from '../Footer.jsx';
-import ScrollToTopButton from '../../../../helpers/ScrollToTopButton.jsx';
+import '../../styles/SizeBraceletGuide.css'
+import Footer from '../../partials/Footer.jsx';
+import ScrollToTopButton from '../../../helpers/ScrollToTopButton.jsx';
 
 
 const SizeNecklaceGuide = () => {

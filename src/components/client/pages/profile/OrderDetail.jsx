@@ -6,7 +6,7 @@ import {
   MDBContainer,
   MDBRow
 } from 'mdb-react-ui-kit';
-import '../../styles/OrderDetail.css'
+import "../../styles/OrderDetail.css"
 
 const OrderDetail = ({ order, onBack }) => {
   const renderTrackingStatus = (status) => {

@@ -18,9 +18,6 @@ const Category = () => {
 
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
-    // const {
-    //     reset,
-    // } = useForm()
     const [category, setCategory] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
@@ -133,9 +130,9 @@ const Category = () => {
                                     <th>
                                         STT
                                     </th>
-                                    <th>
+                                    {/* <th>
                                         Hình ảnh
-                                    </th>
+                                    </th> */}
                                     <th>
                                         Tiêu đề
                                     </th>
@@ -154,10 +151,9 @@ const Category = () => {
                                             <td>
                                                 {index + 1}
                                             </td>
-                                            <td>
-                                                {item.thumbnail === "" ? <div></div> : <img alt='thumbnail' />}
-
-                                            </td>
+                                            {/* <td>
+                                                {item.thumbnail === "" ? <div></div> : <img alt='thumnail' src={item.thumbnail} />}
+                                            </td> */}
                                             <td>
                                                 {item.title}
                                             </td>

@@ -3,6 +3,8 @@ import Slider from 'react-slick';
 import '../../styles/Promotion.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Header from '../../partials/Header';
+import Footer from '../../partials/Footer';
 
 const Promotion = () => {
     const promotions = [
@@ -58,50 +60,54 @@ const Promotion = () => {
     };
 
     return (
-        <div className="promotion">
-            <header className="promotion__header">
-                <div className="promotion__title-container">
-                    <h1 className="promotion__title">ƯU ĐÃI ĐỘC QUYỀN ONLINE </h1>
-                </div>
-                <div className="promotion__subtitle">
-                    <span>TRANG SỨC VÀNG ƯU ĐÃI ĐẾN 20%</span>
-                    <span className="divider">|</span>
-                    <span>TRANG SỨC BẠC ƯU ĐÃI ĐẾN 40%</span>
-                </div>
-                <div className="promotion__carousel-container">
-                    <Slider {...settings} className="promotion__carousel">
-                        {carouselItems.map((item) => (
-                            <div key={item.id} className="promotion__carousel-item">
-                                <img className="promotion__carousel-img" src={item.image} alt={item.title} />
-                                <p className="promotion__carousel-text">{item.title}</p>
+        <>
+            <Header />
+            <div className="promotion">
+                <header className="promotion__header">
+                    <div className="promotion__title-container">
+                        <h1 className="promotion__title">ƯU ĐÃI ĐỘC QUYỀN ONLINE </h1>
+                    </div>
+                    <div className="promotion__subtitle">
+                        <span>TRANG SỨC VÀNG ƯU ĐÃI ĐẾN 20%</span>
+                        <span className="divider">|</span>
+                        <span>TRANG SỨC BẠC ƯU ĐÃI ĐẾN 40%</span>
+                    </div>
+                    <div className="promotion__carousel-container">
+                        <Slider {...settings} className="promotion__carousel">
+                            {carouselItems.map((item) => (
+                                <div key={item.id} className="promotion__carousel-item">
+                                    <img className="promotion__carousel-img" src={item.image} alt={item.title} />
+                                    <p className="promotion__carousel-text">{item.title}</p>
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
+                    <button className="promotion__store-button">Xem tất cả</button>
+                    <div className="promotion__main-banner">
+                        <img className="promotion__img-fluid" src="https://cdn.pnj.io/images/promo/210/combo-t5-24-1200x450-2.jpg" alt="Main Banner" />
+                    </div>
+                </header>
+                <header className="promotion__header promotion__section-separator">
+                    <div className="promotion__title-container">
+                        <h1 className="promotion__title"> KHUYẾN MÃI TRONG THÁNG</h1>
+                    </div>
+                    <button className="promotion__store-button">Toàn Hệ Thống Cửa Hàng</button>
+                </header>
+                <main className="promotion__main">
+                    <div className="promotion__main-banner">
+                        <img className="promotion__img-fluid" src="https://file.hstatic.net/1000381168/file/km-nam-nang_eee156e9b6c24adcbea7d09b23ccaf07.png" alt="Main Banner" />
+                    </div>
+                    <div className="promotion__grid">
+                        {promotions.map((promo) => (
+                            <div key={promo.id} className="promotion__card">
+                                <img className="promotion__img-fluid" src={promo.image} alt={`Promotion ${promo.id}`} />
                             </div>
                         ))}
-                    </Slider>
-                </div>
-                <button className="promotion__store-button">Xem tất cả</button>
-                <div className="promotion__main-banner">
-                    <img className="promotion__img-fluid" src="https://cdn.pnj.io/images/promo/210/combo-t5-24-1200x450-2.jpg" alt="Main Banner" />
-                </div>
-            </header>
-            <header className="promotion__header promotion__section-separator">
-                <div className="promotion__title-container">
-                    <h1 className="promotion__title"> KHUYẾN MÃI TRONG THÁNG</h1>
-                </div>
-                <button className="promotion__store-button">Toàn Hệ Thống Cửa Hàng</button>
-            </header>
-            <main className="promotion__main">
-                <div className="promotion__main-banner">
-                    <img className="promotion__img-fluid" src="https://file.hstatic.net/1000381168/file/km-nam-nang_eee156e9b6c24adcbea7d09b23ccaf07.png" alt="Main Banner" />
-                </div>
-                <div className="promotion__grid">
-                    {promotions.map((promo) => (
-                        <div key={promo.id} className="promotion__card">
-                            <img className="promotion__img-fluid" src={promo.image} alt={`Promotion ${promo.id}`} />
-                        </div>
-                    ))}
-                </div>
-            </main>
-        </div>
+                    </div>
+                </main>
+            </div>
+            <Footer />
+        </>
     );
 };
 

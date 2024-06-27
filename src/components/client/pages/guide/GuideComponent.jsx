@@ -1,10 +1,10 @@
 // BlogLayout.jsx
 import React from 'react';
-import Header from '../Header.jsx'; // Import Header component
-import Footer from '../Footer.jsx'; // Import Header component
+import Header from '../../partials/Header.jsx'; // Import Header component
+import Footer from '../../partials/Footer.jsx'; // Import Header component
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'; // Import Material-UI components
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import '../../../styles/BlogLayout.css'
+import '../../styles/BlogLayout.css'
 
 const BlogLayout = ({ articles }) => {
     return (

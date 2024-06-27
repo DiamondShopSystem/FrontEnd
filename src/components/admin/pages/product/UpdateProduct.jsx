@@ -13,13 +13,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const UpdateProduct = (req, res) => {
     const [defaultValue, setDefaultValue] = useState([]);
     const [product, setProduct] = useState({});
-    const [thumbnail, setThumbnail] = useState("");
+    const [thumbnail, setThumbnail] = useState();
     const [columns, setColumns] = useState([]);
     const { id } = useParams();
-
-    const handleChange = (e) => {
-        setThumbnail(URL.createObjectURL(e.target.files[0]));
-    }
+    const [preview, setPreview] = useState("");
+    
 
     useEffect(() => {
         console.log(id);
@@ -27,20 +25,32 @@ const UpdateProduct = (req, res) => {
             .then(function (response) {
                 setProduct(response.data.records);
                 setColumns(response.data.records);
+                setPreview(response.data.records.thumbnail);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }, []);
-
+    const handleChange = (e) => {
+        setThumbnail({...product, thumbnail : e.target.files[0]});
+        setPreview(URL.createObjectURL(e.target.files[0]));
+    }
     const updateProduct = (e) => {
         e.preventDefault();
-        axios.patch("/admin/product/edit/" + id, product)
+        axios.patch("/admin/product/edit/" + id, product, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        })
             .then((result) => {
-                console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult)
-                toast.success('Cập nhật thành công');
+                if (checkResult.code === 200) {
+                    toast.success('Cập nhật thành công');
+                } else if (checkResult.code === 400) {
+                    toast.error('Cập nhật không thành công');
+                } else if (checkResult.code === 401) {
+                    toast.error('Cập nhật không thành công');
+                }
+
             })
             .catch(error => {
                 toast.error('Cập nhật không thành công');
@@ -96,15 +106,18 @@ const UpdateProduct = (req, res) => {
                                 type="file"
                                 onChange={handleChange}
                             />
-                            {thumbnail && <img src={thumbnail} alt="thumbnail" />}
+                            <div style={{ marginTop: "5px" }}>
+                                {/* {product.thumbnail && <img style={{ width: "100px", height: "auto" }} src={product.thumbnail} />} */}
+                                {preview && <img style={{ width: "100px", height: "auto" }} src={preview} />}
+                            </div>
                         </div>
                     </div>
-                    <Radio.Group onChange={(e) => setProduct({ ...product, status: e.target.value })} value={product.status}>
+                    <Radio.Group className="mb-3" onChange={(e) => setProduct({ ...product, status: e.target.value })} value={product.status}>
                         <Radio value="active">Hoạt động</Radio>
                         <Radio value="inactive">Dừng hoạt động</Radio>
                     </Radio.Group>
                     <Form.Group className='admindetailproduct__wrapperbtn'>
-                        <Button variant="primary" type="submit">Cập nhật</Button>
+                        <Button style={{ marginBottom: "20px" }} variant="primary" type="submit">Cập nhật</Button>
                     </Form.Group>
                 </Form>
             </Container>

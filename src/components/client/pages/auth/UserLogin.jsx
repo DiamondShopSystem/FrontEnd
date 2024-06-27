@@ -15,14 +15,13 @@ import { auth } from "../../../../config/firebase";
 import { GetResultContext } from "../../../helpers/GetResultContext";
 
 
-
-
 const UserLogin = () => {
 
     const navigate = useNavigate();
     const { setResult, setPhoneNumber } = useContext(GetResultContext);
     const [error, setError] = useState("");
     const [number, setNumber] = useState("");
+    
     function setUpRecaptha(number) {
         const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             size: 'invisible',
@@ -38,8 +37,8 @@ const UserLogin = () => {
     const getOtp = async (e) => {
         e.preventDefault();
         setError("");
-        console.log(number);
-        if (number === "" || number === undefined || number.length < 12)
+        console.log(number.length);
+        if (number === "" || number === undefined || number.length < 12 || number.length >= 13 || number === null)
             return setError("Số điện thoại không hợp lệ");
         try {
             const response = await setUpRecaptha(number);

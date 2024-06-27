@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Ring from './Ring';
+import Ring from './Product';
 import '../../styles/RingProducts.css'
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -199,7 +199,6 @@ const RingProducts = () => {
                 // hrefBuilder={hrefBuilder}
                 forcePage={selectedPage}
             />
-            <CheckOutCart />
         </section>
 
     )
