@@ -1,23 +1,342 @@
 .RingProducts-container {
-    background-color: #fbd83d;
     margin-top: 20px;
     padding-top: 15px;
 }
 
 .RingProducts-title-ring-cover {
     text-align: center;
-}
-
-.RingProducts-title-ring {
-    color: #0b4b88;
-    text-shadow: 5px 2px #ceae80;
-}
-
-.RingProducts-cover-select-ring {
+    height: 250px;
+    width: 100%;
+    background-image: url('https://png.pngtree.com/background/20230519/original/pngtree-diamond-and-gold-ring-on-a-black-background-picture-image_2667856.jpg');
+    background-size: contain;
+    background-position: center;
+    margin-bottom: 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0px 50px;
+}
+
+.RingProducts-title-ring-body {
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+}
+
+.RingProducts-title-ring-body-para {
+    margin-top: 13vh;
+}
+
+.RingProducts-title-ring-h2-cover-1 {
+    content: '';
+    background-color: red;
+    box-shadow: 0px 0px 5px 2px red;
+    filter: drop-shadow(2px 4px 6px black);
+    width: 40px;
+    padding: 5px;
+    position: relative;
+    right: 40px;
+}
+
+.RingProducts-title-ring-h2-cover-2 {
+    content: '';
+    background-color: #ffc107;
+    box-shadow: 0px 0px 5px 2px #ffc107ed;
+    filter: drop-shadow(2px 4px 6px black);
+    width: 40px;
+    padding: 5px;
+    position: relative;
+    top: 95px;
+    left: 20px;
+}
+
+.RingProducts-title-ring-h2-cover-3 {
+    content: '';
+    background-color: greenyellow;
+    box-shadow: 0px 0px 5px 2px greenyellow;
+    filter: drop-shadow(2px 4px 6px black);
+    width: 40px;
+    padding: 5px;
+    position: relative;
+    left: 75px;
+}
+
+/* .RingProducts-title-ring-h2-cover-1::before, .RingProducts-title-ring-h2-cover-2::before, .RingProducts-title-ring-h2-cover-3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 63px; 
+    transform: rotate(90deg);
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    animation: rotateAndMove 4s infinite;
+}
+
+@keyframes rotateAndMove {
+    0% {
+        transform: rotate(35deg) translateX(8px) translateY(-17px);
+    }
+    
+    25% {
+        transform: rotate(90deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(135deg) translateX(5px) translateY(15px);
+    }
+    
+    75% {
+        transform: rotate(90deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(35deg) translateX(8px) translateY(-17px);
+    }
+} */
+
+
+/* .RingProducts-title-ring-h2-cover-1:first-child:after {
+    content: "n";
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-1:nth-child(2):after {
+    content: 'h';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-1:nth-child(3):after {
+    content: 'ẫ';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-1:nth-child(4):after {
+    content: 'n';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-2:nth-child(5):after {
+    content: 'k';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-2:nth-child(6):after {
+    content: 'i';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-2:nth-child(7):after {
+    content: 'm';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-3:nth-child(8):after {
+    content: 'c';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-3:nth-child(9):after {
+    content: 'ư';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-3:nth-child(10):after {
+    content: 'ơ';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-3:nth-child(11):after {
+    content: 'n';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+.RingProducts-title-ring-h2-cover-3:nth-child(12):after {
+    content: 'g';
+    position: absolute;
+    bottom: -60px;
+    left: 8px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffc107;
+    animation: conlac 4s infinite;
+}
+
+@keyframes conlac {
+
+    0% {
+        bottom: -37px;
+        left: 47px;
+        transform: rotate(-52deg);
+    }   
+
+    25% {
+        bottom: -60px;
+        left: 8px;
+        transform: rotate(0) rotateY(360deg);
+    }
+
+    50% {
+        bottom: -45px;
+        left: -28px;
+        transform: rotate(47deg);
+    }
+
+    75% {
+        bottom: -60px;
+        left: 8px;
+        transform: rotate(0) rotateY(360deg);
+    }
+
+    100% {
+        bottom: -37px;
+        left: 47px;
+        transform: rotate(-52deg);
+    }
+} */
+
+
+.RingProducts-title-ring {
+    /* text-shadow: 5px 2px #ceae80; */
+    margin: 0;
+}
+
+.RingProducts-cover-select-ring-cover {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px 10px;
+}
+
+.RingProducts-cover-select-contain {
+    display: flex;
+    column-gap: 50px;
+    justify-content: center;
 }
 
 .RingProducts-select-ring {
@@ -59,8 +378,47 @@
     }
 }
 
+/* CSS Paginate*/
+
+.RingProducts-button-first-last-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.RingProducts-button-first {
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.RingProducts-button-last {
+    background-color: transparent;
+    margin-left: 10px;
+    padding: 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.RingProducts-button-last:hover {
+    background-color: #f5f5f5;
+}
+
+.RingProducts-button-first {
+    background-color: transparent;
+    margin-left: 10px;
+    padding: 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.RingProducts-button-first:hover {
+    background-color: #f5f5f5;
+}
+
 .RingProducts-previous-ring {
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
 .RingProducts-previous-link-ring {
@@ -79,8 +437,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0px 0px 0px;
-    padding: 15px 0px;
+    /* margin: 10px 0px 0px 0px;
+    padding: 15px 0px; */
 }
 
 .RingProducts-reactPaginate-page {
@@ -94,7 +452,8 @@
 
 .RingProducts-reactPaginate-page:hover {
     border-radius: 0.5rem;
-    background-color: #ffc107;
+    background-color: #f5f5f5;
+    border: 1px solid black;
 }
 
 .RingProducts-reactPaginate-page-link {
@@ -102,7 +461,7 @@
 }
 
 .RingProducts-active-ring {
-    background-color: #ffc107;
+    background-color: #f5f5f5;
     border-radius: 0.5rem;
+    border: 1px solid black;
 }
-
