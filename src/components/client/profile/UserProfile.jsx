@@ -29,11 +29,11 @@ const UserProfile = () => {
           {/* Sidebar */}
           <Col md={2} className="bg-light" style={{ height: '100vh', position: 'fixed', width: '252px' }}>
             <Nav defaultActiveKey="/info" className="flex-column">
-              <NavLink to="/customer/info" className="nav-link" activeClassName="active">Thông tin tài khoản</NavLink>
-              <NavLink to="/customer/promotion" className="nav-link" activeClassName="active">Mã giảm của tôi</NavLink>
-              <NavLink to="/customer/order" className="nav-link" activeClassName="active">Lịch sử mua hàng</NavLink>
-              <NavLink to="/customer/wishlist" className="nav-link" activeClassName="active">Sản phẩm bạn quan tâm</NavLink>
-              <NavLink to="/customer/logout" className="nav-link text-danger" activeClassName="active">Đăng xuất</NavLink>
+              <NavLink to="/user/info" className="nav-link" activeClassName="active">Thông tin tài khoản</NavLink>
+              <NavLink to="/user/voucher" className="nav-link" activeClassName="active">Mã giảm của tôi</NavLink>
+              <NavLink to="/user/order" className="nav-link" activeClassName="active">Lịch sử mua hàng</NavLink>
+              <NavLink to="/user/wishlist" className="nav-link" activeClassName="active">Sản phẩm bạn quan tâm</NavLink>
+              <NavLink to="/user/login" className="nav-link text-danger" activeClassName="active">Đăng xuất</NavLink>
             </Nav>
           </Col>
 

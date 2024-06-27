@@ -5,9 +5,9 @@ import '../../styles/Footer.css'; // Import the new CSS file
 const Footer = () => {
     return (
         <footer className="section__footer">
-            <Container className="footer__container">
+            <Container fluid className="footer__container">
                 <Row className="p-4 footer__content">
-                    <Col className="mx-5">
+                    <Col>
                         <Stack>
                             <Image
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8t3uKbanp3uSurjv8n-3b-Js7LisE7XMxSw&s"
@@ -15,18 +15,29 @@ const Footer = () => {
                                 rounded
                                 width={150}
                                 height={"auto"}
+                                style={{ paddingLeft: '16px' }}
                             />
-                            <h4>Trùm Kim Cương</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div >
+                                <p style={{
+                                    paddingTop: '10px',
+                                    fontSize: '15px',
+                                    fontWeight: 500,
+                                    color: 'black'
+                                }}>© TrumKimCuong. All rights reserved.</p>
+                                <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh</p>
+                                <p>ĐT: 028 39951703 - Fax: 028 3995 1702</p>
+                            </div>
+
                         </Stack>
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Về Trùm Kim Cương</h4>
-                            <NavLink to="/story" className="nav-link ">Câu Chuyện</NavLink>
-                            <NavLink to="/story2" className="nav-link ">Câu Chuyện 2</NavLink>
-                            <NavLink to="/story3" className="nav-link ">Câu Chuyện 3</NavLink>
+                            <NavLink to="/story" className="nav-link ">Câu chuyện</NavLink>
+                            <NavLink to="/story2" className="nav-link ">Tuyển dụng</NavLink>
+                            <NavLink to="/story3" className="nav-link ">Xuất khẩu</NavLink>
                         </Nav>
+
                     </Col>
                     <Col>
                         <Nav className="flex-column fs-5">
@@ -35,22 +46,28 @@ const Footer = () => {
                             <NavLink to="/test1" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
                             <NavLink to="/jewelry-guide" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
                         </Nav>
+                        <h4>Phương thức thanh toán</h4>
+                        <a href="#"><i><img className="payment-icon" alt="img-mail" src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Circle.png" /></i></a>
+                        <a href="#"><i><img className="payment-icon" alt="img-mail" src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-ZaloPay-Square.png" /></i></a>
                     </Col>
                     <Col>
                         <h4>Kết nối với chúng tôi</h4>
                         <p>Email: contact@trumkimcuong.com</p>
                         <p>Phone: +84 123 456 789</p>
                         <div className="social-icons">
-                            <a href="#"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#"><i className="fab fa-twitter"></i></a>
-                            <a href="#"><i className="fab fa-instagram"></i></a>
-                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i><img alt="img-fb" src="	https://cdn.pnj.io/images/image-update/footer/facebook.svg" /></i></a>
+                            <a href="#"><i><img alt="img-ins" src="https://cdn.pnj.io/images/image-update/footer/instagram.svg" /></i></a>
+                            <a href="#"><i><img alt="img-ytb" src="	https://cdn.pnj.io/images/image-update/footer/youtube.svg" /></i></a>
+                            <a href="#"><i><img alt="img-mail" src="https://cdn.pnj.io/images/image-update/footer/email.svg" /></i></a>
                         </div>
+                        <h4>Chứng nhận</h4>
+                        <a href="#"><i><img
+                            style={{ marginLeft: '16px', maxWidth: '130px', height: 'auto' }}
+                            alt="img-mail"
+                            src="https://cdn.pnj.io/images/image-update/op-da-thong-bao-bo-cong-thuong-183x60.png" /></i></a>
                     </Col>
                 </Row>
-                <div class="quick-link">
-                    <p>© TrumKimCuong. All rights reserved.</p>
-                </div>
+
             </Container>
 
         </footer>
