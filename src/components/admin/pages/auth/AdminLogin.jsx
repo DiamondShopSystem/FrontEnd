@@ -5,6 +5,8 @@ import { auth } from '../../../../config/firebase';
 import axios from 'axios';
 import '../../styles/AdminLogin.css';
 
+
+
 function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,13 +26,12 @@ function AdminLogin() {
         };
         axios(configuration)
             .then((result) => {
-                console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
                 if (checkResult.code === 200) {
                     navigate('/admin/dashboard');
                 } else {
-                    setMessage(result.data.msg)
+                    setMessage("Sai Email hoặc mật khẩu!");
                 }
             })
             .catch((error) => { console.log(error); })
@@ -62,7 +63,7 @@ function AdminLogin() {
                 <p className="adminlogin__subtitle">Trùm Kim Cương</p>
                 <form onSubmit={handleSubmit} className="adminlogin__form">
                     <div className="adminlogin__input-group">
-                        <label className="adminlogin__label">Tên Đăng Nhập:</label>
+                        <label className="adminlogin__label">Email:</label>
                         <input
                             type="email"
                             value={email}
@@ -81,17 +82,17 @@ function AdminLogin() {
                             className="adminlogin__input"
                         />
                     </div>
-                    {message && <p style={{color:'red'}}  className="adminlogin__message">{message}</p>}
+                    {message && <p style={{ color: 'red' }} className="adminlogin__message">{message}</p>}
                     <div className="adminlogin__forgot-password">
                         <Link to="/admin/forgotpassword" className="adminlogin__forgot-password-button">Quên Mật Khẩu</Link>
                     </div>
                     <button type="submit" className="adminlogin__button">Đăng Nhập</button>
-                    
+
                 </form>
                 <button onClick={handleGoogleSignIn} className="adminlogin__google-button">
                     <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo" /> Đăng nhập với Google
                 </button>
-                
+
             </div>
         </div>
     );

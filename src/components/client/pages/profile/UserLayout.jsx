@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import UserProfile from './UserProfile'
+import UserProfile from './UserProfileSider'
 import { Header } from 'antd/es/layout/layout'
 import { Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'

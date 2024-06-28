@@ -35,7 +35,7 @@ const ScrollToTopButton = () => {
                     variant="contained" 
                     color="primary" 
                     onClick={scrollToTop}
-                    style={{ borderRadius: '50%', minWidth: '50px', minHeight: '50px' }}
+                    style={{ borderRadius: '50%', minWidth: '50px', minHeight: '50px', backgroundColor: 'gray' }}
                 >
                     <KeyboardArrowUpIcon />
                 </Button>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/Category.css';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Input, Radio } from 'antd';
+import { Container } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios'
@@ -10,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import zIndex from '@mui/material/styles/zIndex';
 
 const UpdateCategory = (req, res) => {
 
@@ -25,7 +23,6 @@ const UpdateCategory = (req, res) => {
         console.log('onPopupScroll', e);
     };
     useEffect(() => {
-        console.log(id);
         axios.get("/admin/category/edit/" + id)
             .then(function (response) {
                 setCategory(response.data.category);
@@ -38,15 +35,17 @@ const UpdateCategory = (req, res) => {
     }, []);
 
     const updateCategory = (e) => {
-        console.log(category)
         e.preventDefault();
         axios.patch("/admin/category/edit/" + id, category)
-            // .then(res => alert("Cập nhật thành công"))
             .then((result) => {
-                console.log(result);
                 const checkResult = result.data;
-                console.log(checkResult);
-                toast.success('Cập nhật thành công');
+                if (checkResult.code === 200) {
+                    toast.success('Cập nhật thành công');
+                } else if (checkResult.code === 400) {
+                    toast.error('Cập nhật không thành công');
+                } else if (checkResult.code === 401) {
+                    toast.error('Cập nhật không thành công');
+                }
             })
             .catch((error) => { console.log(error); toast.error('Cập nhật không thành công') })
     }

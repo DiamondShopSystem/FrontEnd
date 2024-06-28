@@ -37,7 +37,7 @@ const Order = () => {
 
     const handleRowClick = (order) => {
         setSelectedOrder(order);
-        navigate(`/customer/order?id=${order.id}`);
+        navigate(`/user/order?id=${order.id}`);
     };
 
     const handleBack = () => {

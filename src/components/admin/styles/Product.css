@@ -38,3 +38,58 @@
     text-align: center;
     vertical-align: middle;
 }
+
+/*CSS reactPaginate*/
+
+.Product-admin-pages-product-previous-ring {
+    margin-right: 10px;
+}
+
+.Product-admin-pages-product-previous-link-ring {
+    color: black;
+}
+
+.Product-admin-pages-product-next-link-ring {
+    color: black;
+}
+
+.Product-admin-pages-product-breakLabel {
+    margin-right: 12px;
+}
+
+.Product-admin-pages-product-reactPaginate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
+}
+
+.Product-admin-pages-product-reactPaginate-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom: 1px solid;
+    box-shadow: 0px 1px gray;
+}
+
+.Product-admin-pages-product-reactPaginate-page:hover {
+    border-radius: 0.5rem;
+    border: 1px solid;
+    box-shadow: 0px 0px 0px 1px gray;
+}
+
+.Product-admin-pages-product-reactPaginate-page-link {
+    color: black;
+}
+
+.Product-admin-pages-product-active-ring {
+    border-radius: 0.5rem;
+    border: 1px solid;
+    box-shadow: 0px 0px 0px 1px gray;
+    transition: all 0.5s ease-in;
+}
