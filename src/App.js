@@ -34,9 +34,11 @@ function App() {
         <Route path="/login/verify/otp" element={<VerifyOtp />} />
         {/* Home  */}
         <Route path="/" element={<Home />} />
+        {/* Category  */}
+        {/* <Route path="/:slugCategory" element={<ProductPage />} /> */}
         {/* Product  */}
-        <Route path="/product/:slug" element={<ProductPage />} />
-        <Route path="/product/:slug/:id" element={<ProductDetail />} />
+        <Route path="/products/:slug" element={<ProductPage />} />
+        <Route path="/products/:slug/:id" element={<ProductDetail />} />
         {/* Checkout  */}
         <Route path="/checkout" element={<CheckOutCart />} />
         {/* Promotion  */}

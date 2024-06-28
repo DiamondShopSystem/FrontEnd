@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Ring from './Product';
-import '../../styles/RingProducts.css'
+import { useParams } from 'react-router-dom';
+import '../../styles/ProductPage.css'
+import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-// import CheckOutCart from '../checkout/CheckOutCart';
-// import debounce from 'lodash.debounce';
 
-const RingProducts = () => {
 
+const ProductPage = () => {
+    const { slugCategory } = useParams();
     const [products, setProducts] = useState([]);
     const itemsPerPage = 2;
     const [currentItems, setCurrentItems] = useState([]);
@@ -44,17 +45,19 @@ const RingProducts = () => {
 
         return filteredProducts;
     }, [priceFilter, sortOrder]);
-
+    // Lấy data thông qua API
+    const fetchData = () => {
+        console.log(slugCategory);
+        axios.get('/products/', + slugCategory)
+            .then(function (response) {
+                setProducts(response.data.records);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
     useEffect(() => {
-        const fetchProducts = async () => {
-            const respone = await fetch('https://fakestoreapi.com/products');
-            const data = await respone.json();
-            setProducts(data);
-            // const filteredProducts = applyFilters(data);
-            // setCurrentItems(filteredProducts.slice(0, itemsPerPage));
-            // setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
-        };
-        fetchProducts();
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -302,4 +305,4 @@ const RingProducts = () => {
     )
 }
 
-export default RingProducts
+export default ProductPage;

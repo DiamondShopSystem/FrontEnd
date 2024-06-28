@@ -16,7 +16,7 @@ const CreateProduct = () => {
     const {
         reset,
     } = useForm()
-    const [isHighlight, setIsHighLight] = useState("");
+    const [isHighlight, setIsHighLight] = useState(false);
     const [categories, setCategories] = useState("");
     const [category, setCategory] = useState([]);
     const [thumbnail, setThumbnail] = useState();
@@ -87,7 +87,7 @@ const CreateProduct = () => {
                 size,
                 thumbnail,
                 category,
-                // isHighlight
+                isHighlight
             },
         };
         await axios(configuration)
@@ -107,12 +107,12 @@ const CreateProduct = () => {
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
                         <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
-                    {/* <div className="mt-2 mb-2">
+                    <div className="mt-2 mb-2">
                         <Radio.Group onChange={onChangeHighlight} value={isHighlight}>
                             <Radio value={true}>Nổi bật</Radio>
                             <Radio value={false}>Không</Radio>
                         </Radio.Group>
-                    </div> */}
+                    </div>
                     <TreeSelect
                         className='mb-2 mt-2'
                         showSearch

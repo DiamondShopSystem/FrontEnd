@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 import '../../styles/PopularProduct.css'
-// import GetPopularProduct from './GetPopularProduct'
-// import picture from '../../../../Assets/logo.png'
+import axios from 'axios';
 import Product from './Product'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
 
 const PopularProducts = () => {
+    const [popularProduct, setPopularProduct] = useState([]);
+    useEffect(() => {
+        fetchData();
+    }, []);
+    
+    // Lấy data thông qua API
+    const fetchData = () => {
+        axios.get('/', )
+            .then(function (response) {
+                setPopularProduct(response.data.popularProducts);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -28,59 +43,16 @@ const PopularProducts = () => {
         }
     };
 
-    const GetPopularProduct = [
-        {
-            id: 1,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    
-        {
-            id: 2,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    
-        {
-            id: 3,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    
-        {
-            id: 4,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    
-        {
-            id: 5,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    
-        {
-            id: 6,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    ];
 
     return (
         <section className='section-item' style={{backgroundColor: '#fff'}}>
             <div className='title-item'>
-                <h3>Sản phẩm phổ biến</h3>
+                <h3>Sản Phẩm Nổi Bật</h3>
                 <Link>Xem thêm {'>'}</Link>
             </div>
 
             <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='cover-item'>
-                {GetPopularProduct.map((item) => {
+                {popularProduct.map((item) => {
                     return <Product product={item} key={item.id} />
                 })}
             </Carousel>

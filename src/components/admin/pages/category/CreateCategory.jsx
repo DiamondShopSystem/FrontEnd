@@ -112,6 +112,7 @@ const CreateCategory = () => {
                     </Radio.Group>
                     <Form.Item className='admincreatecategory__wrapperbtn'>
                         <Button
+                            style={{ marginBottom: "20px" }}
                             variant="primary"
                             type='submit'
                             >Tạo mới</Button>
