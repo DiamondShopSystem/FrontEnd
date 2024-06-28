@@ -26,21 +26,21 @@ import AdminForgotPasswordReset from "./components/admin/pages/auth/AdminForgotP
 
 function App() {
   return (
-
     <>
       <Routes>
         {/* Client Path  */}
-
-        <Route path="/checkout" element={<CheckOutCart />} />
+        {/* Authen  */}
+        <Route path="/login" element={<UserLogin />} />
+        <Route path="/login/verify/otp" element={<VerifyOtp />} />
+        {/* Home  */}
         <Route path="/" element={<Home />} />
-        <Route path="/user/login" element={<UserLogin />} />
-        <Route path="/user/verify/otp" element={<VerifyOtp />} />
-        <Route path="/user/product/ring" element={<RingProducts />} />
-        <Route path="/user/product/ring/detail/:id" element={<RingProductDetail />} />
-
-        <Route path="/promotion" element={<Promotion />} />
+        {/* Product  */}
         <Route path="/product/:slug" element={<ProductPage />} />
         <Route path="/product/:slug/:id" element={<ProductDetail />} />
+        {/* Checkout  */}
+        <Route path="/checkout" element={<CheckOutCart />} />
+        {/* Promotion  */}
+        <Route path="/promotion" element={<Promotion />} />
         {/* Admin Path  */}
         {/* Authen */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -50,9 +50,9 @@ function App() {
         {/* Dashboard  */}
         <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
         {/* Product  */}
-        <Route path="/admin/product/detail/:id" element={<AdminLayout><DetailProduct /></AdminLayout>} />
         <Route path="/admin/product" element={<AdminLayout><Product /></AdminLayout>} />
         <Route path="/admin/product/create" element={<AdminLayout><CreateProduct /></AdminLayout>} />
+        <Route path="/admin/product/detail/:id" element={<AdminLayout><DetailProduct /></AdminLayout>} />
         <Route path="/admin/product/edit/:id" element={<AdminLayout><UpdateProduct /></AdminLayout>} />
         {/* Category  */}
         <Route path="/admin/category" element={<AdminLayout><Category /></AdminLayout>} />

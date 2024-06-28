@@ -7,7 +7,7 @@ import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Category.css';
@@ -16,7 +16,7 @@ import ReactPaginate from 'react-paginate';
 
 
 const Category = () => {
-
+    const location = useLocation();
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
     const [category, setCategory] = useState([]);
