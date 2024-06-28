@@ -23,6 +23,7 @@ import AdminForgotPassword from "./components/admin/pages/auth/AdminForgotPasswo
 import AdminForgotPasswordOtp from "./components/admin/pages/auth/AdminForgotPasswordOtp";
 import AdminForgotPasswordReset from "./components/admin/pages/auth/AdminForgotPasswordReset";
 // import 'dotenv/config';
+
 function App() {
   return (
 
@@ -34,6 +35,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/verify/otp" element={<VerifyOtp />} />
+        <Route path="/user/product/ring" element={<RingProducts />} />
+        <Route path="/user/product/ring/detail/:id" element={<RingProductDetail />} />
+
         <Route path="/promotion" element={<Promotion />} />
         <Route path="/product/:slug" element={<ProductPage />} />
         <Route path="/product/:slug/:id" element={<ProductDetail />} />

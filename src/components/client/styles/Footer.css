@@ -30,8 +30,14 @@
     font-size: 0.85rem;
     margin-left: 0;
 }
-.footer__content .nav-link:hover{
+
+.footer__content .nav-link:hover {
     text-decoration: underline;
+}
+
+.nav-link .active {
+    color: black;
+    font-weight: bold;
 }
 
 .footer__logo-text {
@@ -48,6 +54,7 @@
     font-style: normal;
     font-weight: 500;
 }
+
 .quick-link p {
     font-family: "Exo 2";
     font-style: normal;
