@@ -4,12 +4,13 @@ import '../../styles/RingProducts.css'
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import CheckOutCart from '../checkout/CheckOutCart';
+// import CheckOutCart from '../checkout/CheckOutCart';
+// import debounce from 'lodash.debounce';
 
 const RingProducts = () => {
 
     const [products, setProducts] = useState([]);
-    const itemsPerPage = 8;
+    const itemsPerPage = 2;
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [priceFilter, setPriceFilter] = useState('');
@@ -49,18 +50,23 @@ const RingProducts = () => {
             const respone = await fetch('https://fakestoreapi.com/products');
             const data = await respone.json();
             setProducts(data);
-            const filteredProducts = applyFilters(data);
-            setCurrentItems(filteredProducts.slice(0, itemsPerPage));
-            setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
+            // const filteredProducts = applyFilters(data);
+            // setCurrentItems(filteredProducts.slice(0, itemsPerPage));
+            // setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
         };
         fetchProducts();
-    }, [priceFilter, sortOrder, applyFilters]);
+    }, []);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const page = parseInt(params.get('page')) || 1;
         setSelectedPage(page - 1);
     }, [location.search]);
+    console.log(selectedPage);
+
+    // const debouncedNavigate = useCallback(debounce((params) => {
+    //     navigate(`?${params.toString()}`);
+    // }, 300), [navigate]);
 
     useEffect(() => {
         const params = new URLSearchParams();
@@ -72,7 +78,9 @@ const RingProducts = () => {
             params.set('sort', sortOrder);
         }
 
+        // debouncedNavigate(params);
         navigate(`?${params.toString()}`);
+
     }, [selectedPage, priceFilter, sortOrder, navigate]);
 
     // const hrefBuilder = (pageIndex) => {
@@ -91,13 +99,13 @@ const RingProducts = () => {
     // };
 
     useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        const page = parseInt(params.get('page')) || 1;
-        const newOffset = ((page - 1) * itemsPerPage) % products.length;
+        // const params = new URLSearchParams(location.search);
+        // const page = parseInt(params.get('page')) || 1;
+        // const newOffset = ((page - 1) * itemsPerPage) % products.length;
         const filteredProducts = applyFilters(products);
-        setCurrentItems(filteredProducts.slice(newOffset, newOffset + itemsPerPage));
+        setCurrentItems(filteredProducts.slice(selectedPage * itemsPerPage, (selectedPage + 1) * itemsPerPage));
         setPageCount(Math.ceil(filteredProducts.length / itemsPerPage));
-    }, [location.search, products, applyFilters]);
+    }, [selectedPage, products, applyFilters]);
 
     const handlePageClick = (event) => {
         // const newOffset = (event.selected * itemsPerPage) % products.length;
@@ -105,6 +113,14 @@ const RingProducts = () => {
         // setCurrentItems(filteredProducts.slice(newOffset, newOffset + itemsPerPage));
         // navigate(`?page=${event.selected + 1}`);
         setSelectedPage(event.selected);
+    };
+
+    const handleFirstPageClick = () => {
+        setSelectedPage(0);
+    };
+
+    const handleLastPageClick = () => {
+        setSelectedPage(pageCount - 1);
     };
 
     const selectRef1 = useRef(null);
@@ -140,65 +156,147 @@ const RingProducts = () => {
 
         <section className='RingProducts-container'>
             <div className='RingProducts-title-ring-cover'>
-                <h2 className='RingProducts-title-ring'>Nhẫn kim cương</h2>
-                <p>*****</p>
+                <div className='RingProducts-title-ring-body'>
+                    <div className='RingProducts-title-ring-h2-cover-1'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>N</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-1'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>H</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-1'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>Ẫ</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-1'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>N</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-2'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>K</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-2'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>I</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-2'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>M</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-3'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>C</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-3'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>Ư</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-3'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>Ơ</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-3'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>N</h2>
+                        </div>
+                    </div>
+                    <div className='RingProducts-title-ring-h2-cover-3'>
+                        <div className='RingProducts-title-ring-h2-body'>
+                            <h2 className='RingProducts-title-ring'>G</h2>
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className='RingProducts-title-ring-body-para'>
+                    <p>*****</p>
+                </div> */}
             </div>
 
-            <div className='RingProducts-cover-select-ring'>
-                <select
-                    className='RingProducts-select-ring'
-                    ref={selectRef1}
-                    onChange={(e) => {
-                        setPriceFilter(e.target.value);
-                        updateSelectWidth(selectRef1, setSelectWidth1);
-                        setSelectedPage(0);
-                    }}
-                    style={{ width: selectWidth1 }}
-                >
-                    <option>Mức Giá</option>
-                    <option>Dưới 50 triệu đồng</option>
-                    <option>Từ 50 - 100 triệu đồng</option>
-                    <option>Từ 100 - 200 triệu đồng</option>
-                    <option>Trên 200 triệu đồng</option>
-                </select>
+            <div className='RingProducts-cover-select-ring-cover'>
+                <div className='RingProducts-cover-para-ring-body'>
+                    <h2>NHẪN KIM CƯƠNG</h2>
+                    <p>*****</p>
+                </div>
+                <div className='RingProducts-cover-select-contain'>
+                    <select
+                        className='RingProducts-select-ring'
+                        ref={selectRef1}
+                        onChange={(e) => {
+                            setPriceFilter(e.target.value);
+                            updateSelectWidth(selectRef1, setSelectWidth1);
+                            setSelectedPage(0);
+                        }}
+                        style={{ width: selectWidth1 }}
+                    >
+                        <option>Mức Giá</option>
+                        <option>Dưới 50 triệu đồng</option>
+                        <option>Từ 50 - 100 triệu đồng</option>
+                        <option>Từ 100 - 200 triệu đồng</option>
+                        <option>Trên 200 triệu đồng</option>
+                    </select>
 
-                <select
-                    className='RingProducts-select-ring'
-                    ref={selectRef2}
-                    onChange={(e) => {
-                        setSortOrder(e.target.value);
-                        updateSelectWidth(selectRef2, setSelectWidth2);
-                    }}
-                    style={{ width: selectWidth2 }}
-                >
-                    <option>Sắp Xếp</option>
-                    <option>Giá Từ Cao Đến Thấp</option>
-                    <option>Giá Từ Thấp Đến Cao</option>
-                </select>
+                    <select
+                        className='RingProducts-select-ring'
+                        ref={selectRef2}
+                        onChange={(e) => {
+                            setSortOrder(e.target.value);
+                            updateSelectWidth(selectRef2, setSelectWidth2);
+                        }}
+                        style={{ width: selectWidth2 }}
+                    >
+                        <option>Sắp Xếp</option>
+                        <option>Giá Từ Cao Đến Thấp</option>
+                        <option>Giá Từ Thấp Đến Cao</option>
+                    </select>
+                </div>
             </div>
 
             <div className='RingProducts-grid RingProducts-grid-cols-1 RingProducts-grid-cols-2 RingProducts-grid-cols-3 RingProducts-grid-cols-4'>
                 {currentItems.map((ring) => <Ring ring={ring} key={ring.id} />)}
                 <ToastContainer />
             </div>
-            <ReactPaginate
-                breakLabel="..."
-                breakClassName='RingProducts-breakLabel'
-                nextLabel="sau >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel="< trước"
-                previousClassName='RingProducts-previous-ring'
-                previousLinkClassName='RingProducts-previous-link-ring'
-                nextLinkClassName='RingProducts-next-link-ring'
-                containerClassName='RingProducts-reactPaginate-container'
-                pageClassName='RingProducts-reactPaginate-page'
-                pageLinkClassName='RingProducts-reactPaginate-page-link'
-                activeClassName='RingProducts-active-ring'
-                // hrefBuilder={hrefBuilder}
-                forcePage={selectedPage}
-            />
+
+            <div className='RingProducts-button-first-last-container'>
+                <div>
+                    <button className='RingProducts-button-first' onClick={handleFirstPageClick}>Đầu</button>
+                </div>
+                <ReactPaginate
+                    breakLabel="" //...
+                    marginPagesDisplayed={0} //bỏ
+                    breakClassName='RingProducts-breakLabel'
+                    nextLabel="sau >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5} //5
+                    pageCount={pageCount}
+                    previousLabel="< trước"
+                    previousClassName='RingProducts-previous-ring'
+                    previousLinkClassName='RingProducts-previous-link-ring'
+                    nextLinkClassName='RingProducts-next-link-ring'
+                    containerClassName='RingProducts-reactPaginate-container'
+                    pageClassName='RingProducts-reactPaginate-page'
+                    pageLinkClassName='RingProducts-reactPaginate-page-link'
+                    activeClassName='RingProducts-active-ring'
+                    // hrefBuilder={hrefBuilder}
+                    forcePage={selectedPage}
+                />
+                <div>
+                    <button className='RingProducts-button-last' onClick={handleLastPageClick}>Cuối</button>
+                </div>
+            </div>
+
+            {/* <CheckOutCart /> */}
         </section>
 
     )
