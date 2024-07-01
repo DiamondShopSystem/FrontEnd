@@ -48,8 +48,25 @@ function AdminLogin() {
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                setMessage('Đăng nhập với Google thành công');
-                navigate('/admin');
+                const user = result.user;
+                const googleEmail = user.email;
+
+                // Fetch account details from the backend
+                axios.get('/admin/account/staff')
+                    .then(response => {
+                        const accounts = response.data.account;
+                        const matchingAccount = accounts.find(account => account.email === googleEmail && account.status === 'active' && !account.deleted);
+
+                        if (matchingAccount) {
+                            setMessage('Đăng nhập với Google thành công');
+                            navigate('/admin/dashboard');
+                        } else {
+                            setMessage('Người dùng không có quyền truy cập');
+                        }
+                    })
+                    .catch(error => {
+                        setMessage('Đăng nhập với Google thất bại: ' + error.message);
+                    });
             })
             .catch((error) => {
                 setMessage('Đăng nhập với Google thất bại: ' + error.message);

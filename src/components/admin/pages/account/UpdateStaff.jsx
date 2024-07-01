@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { Radio } from 'antd';
-import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Product.css';
 
-const UpdateStaffAccount = () => {
+const UpdateStaff = () => {
     const { id } = useParams();
     const [staff, setStaff] = useState({});
     const [avatar, setAvatar] = useState("");
@@ -20,15 +18,16 @@ const UpdateStaffAccount = () => {
             setThumbnail(URL.createObjectURL(e.target.files[0]));
             setAvatar(e.target.files[0]);
         } else {
-            setStaff({ ...staff, [e.target.name]: e.target.value });
+            setStaff({ ...staff, [e.target.fullName]: e.target.value });
         }
     };
 
     useEffect(() => {
-        axios.get("/admin/account/edit/" + id)
+        axios.get("/admin/account/staff/edit/" + id)
             .then(function (response) {
-                setStaff(response.data.records);
-                setColumns(response.data.records);
+                setStaff(response.data.record);
+                console.log(staff.email)
+                setColumns(response.data.record);
             })
             .catch(error => {
                 console.error('Error fetching staff account:', error);
@@ -37,7 +36,7 @@ const UpdateStaffAccount = () => {
 
     const updateStaff = async (e) => {
         e.preventDefault();
-        axios.patch("/admin/account/edit/" + id, staff)
+        axios.patch("/admin/account/staff/edit/" + id, staff)
             // .then(res => alert("Cập nhật thành công"))
             .then((result) => {
                 console.log(result);
@@ -56,12 +55,12 @@ const UpdateStaffAccount = () => {
                 <Form onSubmit={updateStaff} encType='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }}>
                         <Form.Label>Họ và tên</Form.Label>
-                        <Form.Control
+                        {/* <Form.Control
                             type="text"
                             name="name"
                             value={staff.name || ''}
-                            onChange={(e) => setStaff({ ...staff, name: e.target.value })}
-                        />
+                            onChange={(e) => setStaff({ ...staff, fullName: e.target.value })}
+                        /> */}
                     </Form.Group>
                     <Form.Group className="mb-3" style={{ width: '100%' }}>
                         <Form.Label>Email</Form.Label>
@@ -74,12 +73,12 @@ const UpdateStaffAccount = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" style={{ width: '100%' }}>
                         <Form.Label>Vai trò</Form.Label>
-                        <Form.Control
+                        {/* <Form.Control
                             type="text"
                             name="role"
                             value={staff.role || ''}
                             onChange={(e) => setStaff({ ...staff, role: e.target.value })}
-                        />
+                        /> */}
                     </Form.Group>
                     {/* <div className='mt-3 mb-3 ml-2 mr-2'>Thông tin chi tiết</div>
                     <Editor
@@ -88,7 +87,7 @@ const UpdateStaffAccount = () => {
                         apiKey='your_api_key_here'
                     /> */}
                     <div className='mt-2 mb-4'>
-                        <div className="App">
+                        {/* <div className="App">
                             <div className='mb-2'>Ảnh đại diện</div>
                             <input
                                 name="avatar"
@@ -97,7 +96,7 @@ const UpdateStaffAccount = () => {
                                 onChange={(e) => setStaff({ ...staff, avatar: e.target.value })}
                             />
                             {thumbnail && <img src={thumbnail} alt="avatar" />}
-                        </div>
+                        </div> */}
                     </div>
                     {['radio'].map((type) => (
                         <div key={`inline-${type}`} className="mb-3" onChange={(e) => setStaff({ ...staff, status: e.target.value })} >
@@ -130,4 +129,4 @@ const UpdateStaffAccount = () => {
     );
 };
 
-export default UpdateStaffAccount;
+export default UpdateStaff;

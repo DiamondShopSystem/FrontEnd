@@ -1,12 +1,12 @@
 .cover-product {
-    width: 270px; /* Chiều dài của sản phẩm */
+    width: 270px; 
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 10px 20px; /* Khoảng cách giữa các sản phẩm */
-    position: relative; /* Để có thể sử dụng absolute cho RiShoppingBag3Fill */
+    margin: 0 10px 20px; 
+    position: relative; 
 }
 
 .cover-image {
@@ -17,7 +17,7 @@
 .image-product {
     max-width: 100%;
     height: auto;
-    transition: transform 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    transition: transform 0.3s ease; 
 }
 
 .cover-product:hover .image-product {
@@ -36,17 +36,17 @@
 
 .cover-price-product {
     display: flex;
-    justify-content: center; /* Căn giữa nội dung */
-    align-items: center; /* Căn giữa nội dung */
-    margin-top: 10px; /* Khoảng cách từ tên sản phẩm */
-    background-color: #fff; /* Màu nền mặc định */
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 10px; 
+    background-color: #fff; 
 }
 
 
 
 .new-price-product {
     font-weight: bold;
-    color: black; /* Màu chữ trắng */
+    color: black; 
 }
 
 .old-price-product {
@@ -56,9 +56,9 @@
 }
 
 .RiShoppingBag3Fill-product {
-    position: absolute; /* Đặt vị trí tuyệt đối */
-    bottom: 10px; /* Cách đáy 10px */
-    right: 10px; /* Cách phải 10px */
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
     color: #888;
     font-size: 20px;
 }

@@ -1,27 +1,41 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/client/pages/home/Home";
+//Dashboard
+import Dashboard from "./components/admin/pages/dashboard/Dashboard";
+//Layout
+import AdminLayout from "./components/admin/layouts/AdminLayout";
+//Auth
 import UserLogin from "./components/client/pages/auth/UserLogin";
 import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
-import StaffAccount from "./components/admin/pages/account/StaffAccount";
-import UserAccount from "./components/admin/pages/account/UserAccount";
-import Dashboard from "./components/admin/pages/dashboard/Dashboard";
-import AdminLayout from "./components/admin/layouts/AdminLayout";
+import AdminLogin from "./components/admin/pages/auth/AdminLogin";
+import AdminForgotPassword from "./components/admin/pages/auth/AdminForgotPassword";
+import AdminForgotPasswordOtp from "./components/admin/pages/auth/AdminForgotPasswordOtp";
+import AdminForgotPasswordReset from "./components/admin/pages/auth/AdminForgotPasswordReset";
+//Staff
+import Staff from "./components/admin/pages/account/Staff";
+import CreateStaff from "./components/admin/pages/account/CreateStaff";
+import UpdateStaff from "./components/admin/pages/account/UpdateStaff";
+import DetailStaff from "./components/admin/pages/account/DetailStaff";
+//Customer
+import Customer from "./components/admin/pages/account/Customer";
+//Cart
+import CartManagement from "./components/admin/pages/cart/CartManagement";
+
+//Category
 import Category from "./components/admin/pages/category/Category";
 import CreateCategory from "./components/admin/pages/category/CreateCategory";
 import UpdateCategory from "./components/admin/pages/category/UpdateCategory";
 import DetailCategory from "./components/admin/pages/category/DetailCategory";
+//Product Admin
 import Product from "./components/admin/pages/product/Product";
 import CreateProduct from "./components/admin/pages/product/CreateProduct";
-import AdminLogin from "./components/admin/pages/auth/AdminLogin";
 import DetailProduct from "./components/admin/pages/product/DetailProduct";
+import UpdateProduct from "./components/admin/pages/product/UpdateProduct";
+//Client Page
 import Promotion from "./components/client/pages/promotion/Promotion";
 import ProductPage from "./components/client/pages/product/ProductPage";
 import ProductDetail from "./components/client/pages/product/ProductDetail";
-import UpdateProduct from "./components/admin/pages/product/UpdateProduct";
 import CheckOutCart from "./components/client/pages/checkout/CheckOutCart";
-import AdminForgotPassword from "./components/admin/pages/auth/AdminForgotPassword";
-import AdminForgotPasswordOtp from "./components/admin/pages/auth/AdminForgotPasswordOtp";
-import AdminForgotPasswordReset from "./components/admin/pages/auth/AdminForgotPasswordReset";
 // import 'dotenv/config';
 
 function App() {
@@ -62,8 +76,13 @@ function App() {
         <Route path="/admin/category/detail/:id" element={<AdminLayout><DetailCategory /></AdminLayout>} />
         <Route path="/admin/category/edit/:id" element={<AdminLayout><UpdateCategory /></AdminLayout>} />
         {/* Account  */}
-        <Route path="/admin/account" element={<AdminLayout><StaffAccount /></AdminLayout>} />
-        <Route path="/admin/account/user" element={<AdminLayout><UserAccount /></AdminLayout>} />
+        <Route path="/admin/account/staff" element={<AdminLayout><Staff /></AdminLayout>} />
+        <Route path="/admin/account/staff/create" element={<AdminLayout><CreateStaff /></AdminLayout>} />
+        <Route path="/admin/account/staff/detail/:id" element={<AdminLayout><DetailStaff /></AdminLayout>} />
+        <Route path="/admin/account/staff/edit/:id" element={<AdminLayout><UpdateStaff /></AdminLayout>} />
+        <Route path="/admin/account/customer" element={<AdminLayout><Customer /></AdminLayout>} />
+        {/* Cart */}
+        <Route path="/admin/cart" element={<AdminLayout><CartManagement /></AdminLayout>} />
       </Routes>
 
     </>

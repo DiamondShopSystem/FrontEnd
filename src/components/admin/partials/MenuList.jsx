@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { DashboardOutlined, BarsOutlined, UserOutlined, } from '@ant-design/icons';
+import { DashboardOutlined, BarsOutlined, UserOutlined, ShoppingCartOutlined, KeyOutlined } from '@ant-design/icons';
 import { IoDiamond } from "react-icons/io5";
 import '../styles/MenuList.css';
 import { Link } from "react-router-dom";
@@ -21,8 +21,11 @@ const MenuList = () => {
         if (path.startsWith('product')) {
             setCurrent('product');
         }
-        if (path.startsWith('account')) {
-            setCurrent('account');
+        if (path.startsWith('account/staff')) {
+            setCurrent('account/staff');
+        }
+        if (path.startsWith('account/customer')) {
+            setCurrent('account/customer');
         }
 
         // Mở submenu nếu đường dẫn hiện tại liên quan đến "account"
@@ -64,13 +67,23 @@ const MenuList = () => {
             </Menu.Item>
 
             < Menu.SubMenu key="account" icon={<UserOutlined />} title="Quản lí tài khoản"  >
-                <Menu.Item key="account" icon >
+                <Menu.Item key="account/staff" icon >
                     Nhân Viên
                 </Menu.Item>
-                <Menu.Item key="account/user" icon >
+                <Menu.Item key="account/customer" icon >
                     Khách hàng
                 </Menu.Item>
             </Menu.SubMenu>
+            <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+                Quản Lý Đơn Hàng
+
+                {/* <Link to={"/admin/category"} >Trang Danh mục</Link> */}
+            </Menu.Item>
+            <Menu.Item key="role" icon={<KeyOutlined />}>
+                Trang phân quyền
+
+                {/* <Link to={"/admin/category"} >Trang Danh mục</Link> */}
+            </Menu.Item>
 
         </ Menu>
     )

@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UploadOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const props = {
@@ -29,7 +28,7 @@ const props = {
     },
 };
 
-const CreateStaffAccount = () => {
+const CreateStaff = () => {
     const navigate = useNavigate(); // Hook useNavigate
     const [name, setName] = useState("");
     const [avatar, setAvatar] = useState("");
@@ -56,7 +55,7 @@ const CreateStaffAccount = () => {
     const addStaffAccount = async (values) => {
         const configuration = {
             method: "post",
-            url: "admin/account/create",
+            url: "admin/account/staff/create",
             data: {
                 name: values.name,
                 avatar,
@@ -73,7 +72,7 @@ const CreateStaffAccount = () => {
                 const checkResult = result.data;
                 console.log(checkResult);
                 reset();
-                navigate('/admin/account', { state: { success: true } });
+                navigate('/admin/account/staff', { state: { success: true } });
 
             })
             .catch((error) => {
@@ -134,4 +133,4 @@ const CreateStaffAccount = () => {
     );
 };
 
-export default CreateStaffAccount;
+export default CreateStaff;
