@@ -4,15 +4,15 @@ import { Badge } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const DetailStaffAccount = () => {
+const DetailStaff = () => {
     const [staff, setStaff] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get("/admin/account/detail/" + id)
+        axios.get("/admin/account/staff/detail/" + id)
             .then(response => {
-                console.log(response.data.account);
-                setStaff(response.data.account);
+                console.log(response.data.record);
+                setStaff(response.data.record);
             })
             .catch(error => {
                 console.log(error);
@@ -22,10 +22,10 @@ const DetailStaffAccount = () => {
     return (
         <Container className='admindetailaccount__container'>
             <h1 className='mb-4'>Chi tiết tài khoản nhân viên</h1>
-            <img className='ma-4' src={staff.avatar}/>
-            <h3 className='mb-4'>Tên nhân viên: {staff.name}</h3>
+            {/* <img className='ma-4' src={staff.avatar}/>
+            <h3 className='mb-4'>Tên nhân viên: {staff.fullName}</h3> */}
             <div className='mb-4'>Email: {staff.email}</div>
-            <div className='mb-4'>Vai trò: {staff.role}</div>
+            {/* <div className='mb-4'>Vai trò: {staff.role}</div> */}
             {
                 staff.status === "active" ?
                 <span className='mb-4'>Trạng thái: <Badge bg="success">Hoạt động</Badge></span> :
@@ -35,4 +35,4 @@ const DetailStaffAccount = () => {
     );
 };
 
-export default DetailStaffAccount;
+export default DetailStaff;

@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/Account.css';
 
-const StaffAccount = () => {
+const Staff = () => {
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
     const [account, setAccount] = useState([]);
@@ -32,7 +32,7 @@ const StaffAccount = () => {
     }, [location.state]);
 
     const fetchData = (keyword, status) => {
-        axios.get('/admin/account', { params: { keyword, status } })
+        axios.get('/admin/account/staff', { params: { keyword, status } })
             .then(response => {
                 setAccount(response.data.account); // Ensure `account` is set correctly
                 setFilterState(response.data.filterState || []); // Ensure `filterState` is set correctly
@@ -57,7 +57,7 @@ const StaffAccount = () => {
     };
 
     const deleteAccount = async (id) => {
-        axios.delete(`/admin/account/delete/${id}`)
+        axios.delete(`/admin/account/staff/delete/${id}`)
             .then(response => {
                 console.log(response);
                 fetchData();
@@ -149,11 +149,11 @@ const StaffAccount = () => {
                                                     style={{ width: '50px', height: '50px', borderRadius: '50%' }}
                                                 />
                                             ) : (
-                                                <div>No Image</div>
+                                                <div></div>
                                             )}
                                         </td>
                                         <td>
-                                            {item.name}
+                                           {item.fullName}
                                         </td>
                                         <td>{item.email}</td>
                                         <td>{item.role}</td>
@@ -164,7 +164,7 @@ const StaffAccount = () => {
                                             <Button style={{ margin: 1 }} variant="secondary">
                                                 <Link
                                                     style={{ textDecoration: 'none', color: 'white' }}
-                                                    to={`/admin/account/detail/${item._id}`}
+                                                    to={`/admin/account/staff/detail/${item._id}`}
                                                 >
                                                     Chi tiết
                                                 </Link>
@@ -172,7 +172,7 @@ const StaffAccount = () => {
                                             <Button style={{ margin: 1 }} variant="warning">
                                                 <Link
                                                     style={{ textDecoration: 'none', color: 'white' }}
-                                                    to={`/admin/account/edit/${item._id}`}
+                                                    to={`/admin/account/staff/edit/${item._id}`}
                                                 >
                                                     Chỉnh sửa
                                                 </Link>
@@ -196,4 +196,4 @@ const StaffAccount = () => {
     );
 };
 
-export default StaffAccount;
+export default Staff;

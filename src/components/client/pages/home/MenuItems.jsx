@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Dropdown from './Dropdown';
 import { Link } from 'react-router-dom';
 
-
 const MenuItems = ({ items, depthLevel }) => {
     const [dropdown, setDropdown] = useState(false);
     const ref = useRef();
@@ -39,6 +38,10 @@ const MenuItems = ({ items, depthLevel }) => {
         setDropdown(false);
     };
 
+    const buildLink = (url) => {
+        return url.startsWith('/') ? url : `/products/${url}`;
+    };
+
     return (
         <li
             className="menu-items"
@@ -57,7 +60,7 @@ const MenuItems = ({ items, depthLevel }) => {
                         onClick={toggleDropdown}
                     >
                         <div className="submenu__btn">
-                            <Link to={items.url}>{items.title}</Link>
+                            <Link to={buildLink(items.url)}>{items.title}</Link>
                             {depthLevel > 0 ? <span>&#62;</span> : <span className="arrow" />}
                         </div>
                     </button>
@@ -78,7 +81,7 @@ const MenuItems = ({ items, depthLevel }) => {
                     <Dropdown depthLevel={depthLevel + 1} submenus={items.submenu} dropdown={dropdown} />
                 </>
             ) : (
-                <Link to={items.url}>{items.title}</Link>
+                <Link to={buildLink(items.url)}>{items.title}</Link>
             )}
         </li>
     );
