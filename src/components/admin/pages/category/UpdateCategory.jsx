@@ -25,7 +25,7 @@ const UpdateCategory = (req, res) => {
     useEffect(() => {
         axios.get("/admin/category/edit/" + id)
             .then(function (response) {
-                setCategory(response.data.category);
+                setCategory(response.data.record);
                 setColumns(response.data.records);
                 setDefaultValue(response.data.category.parent_id)
             })

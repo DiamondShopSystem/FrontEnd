@@ -6,9 +6,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Badge from 'react-bootstrap/Badge';
 
-
-
-
 const DetailCategory = (req, res) => {
 
     const [category, setCategory] = useState([]);
@@ -16,12 +13,9 @@ const DetailCategory = (req, res) => {
     const { id } = useParams();
 
     useEffect(() => {
-        console.log("Hello");
-        console.log(id);
         axios.get("/admin/category/detail/" + id)
             .then(function (response) {
-                console.log(response.data.category);
-                setCategory(response.data.category);
+                setCategory(response.data.record);
             })
             .catch(function (error) {
                 console.log(error);

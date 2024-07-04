@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MenuItems from './MenuItems';
-import '../../styles/Navbar.css';
+import '../../../styles/Navbar.css';
 import axios from 'axios';
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
       const submenu = record.children && record.children.length > 0 ? buildMenu(record.children) : [];
       return {
         title: record.title,
-        url: record.slug || '/', 
+        url: record.slug || '/',
         submenu: submenu.length > 0 ? submenu : null,
       };
     });
@@ -20,7 +20,7 @@ const Navbar = () => {
   const fetchData = () => {
     axios.get('/')
       .then(function (response) {
-        const menuData = buildMenu(response.data.records);
+        const menuData = buildMenu(response.data.category);
         const staticCategories = [
           { title: 'Liên Hệ', url: '/contact' },
           { title: 'Khuyến Mãi', url: '/user/promotion' },

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../../styles/DiamondDetails.css';
-import ProductDetailsFooter from '../ProductDetailsFooter';
+import '../../styles/DiamondDetails.css';
+import ProductDetailsFooter from './ProductDetailsFooter';
 import CertificateModal from './CertificateModal';
 import EditIcon from '@mui/icons-material/Edit';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,8 +8,8 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import JewelryModal from './JewelryModal';
-import Header from '../../home/Header';
-import Footer from '../../home/Footer';
+import Header from '../../partials/Header';
+import Footer from '../../partials/Footer';
 const DiamondDetails = () => {
     const [mainImage, setMainImage] = useState('/mnt/data/image.png');
     const [selectedQuality, setSelectedQuality] = useState('G');

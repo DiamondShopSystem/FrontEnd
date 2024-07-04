@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/CertificateModal.css';
+import '../../styles/CertificateModal.css';
 
 const CertificateModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

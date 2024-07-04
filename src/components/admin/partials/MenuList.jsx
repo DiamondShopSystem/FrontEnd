@@ -74,7 +74,7 @@ const MenuList = () => {
                     Khách hàng
                 </Menu.Item>
             </Menu.SubMenu>
-            <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+            <Menu.Item key="order" icon={<ShoppingCartOutlined />}>
                 Quản Lý Đơn Hàng
 
                 {/* <Link to={"/admin/category"} >Trang Danh mục</Link> */}

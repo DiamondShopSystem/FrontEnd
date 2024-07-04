@@ -9,9 +9,9 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../styles/Account.css';
+import '../../../styles/Account.css';
 
-const Customer = () => {
+const Staff = () => {
     const { Search } = Input;
     const [searchParams, setSearchParams] = useSearchParams();
     const [account, setAccount] = useState([]);
@@ -32,9 +32,9 @@ const Customer = () => {
     }, [location.state]);
 
     const fetchData = (keyword, status) => {
-        axios.get('/admin/account/customer', { params: { keyword, status } })
+        axios.get('/admin/account/staff', { params: { keyword, status } })
             .then(response => {
-                setAccount(response.data.account || []); // Ensure `account` is set correctly
+                setAccount(response.data.account); // Ensure `account` is set correctly
                 setFilterState(response.data.filterState || []); // Ensure `filterState` is set correctly
                 console.log('Fetched account:', response.data.account);
                 console.log('Fetched filterState:', response.data.filterState);
@@ -57,7 +57,7 @@ const Customer = () => {
     };
 
     const deleteAccount = async (id) => {
-        axios.delete(`/admin/account/customer/delete/${id}`)
+        axios.delete(`/admin/account/staff/delete/${id}`)
             .then(response => {
                 console.log(response);
                 fetchData();
@@ -81,7 +81,7 @@ const Customer = () => {
         <>
             <ToastContainer />
             <Container className='admincreateAccount__container'>
-                <h1>Danh sách tài khoản khách hàng</h1>
+                <h1>Danh sách tài khoản nhân viên</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>
                     <Card.Body>
@@ -153,7 +153,7 @@ const Customer = () => {
                                             )}
                                         </td>
                                         <td>
-                                            {item.name}
+                                           {item.fullName}
                                         </td>
                                         <td>{item.email}</td>
                                         <td>{item.role}</td>
@@ -196,4 +196,4 @@ const Customer = () => {
     );
 };
 
-export default Customer;
+export default Staff;

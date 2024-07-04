@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Input, Table } from 'antd';
+import { Input } from 'antd';
 import Badge from 'react-bootstrap/Badge';
 import axios from 'axios';
-import { useForm } from "react-hook-form";
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,9 +25,7 @@ const Category = () => {
     const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
 
-    // const [currentItems, setCurrentItems] = useState([]);
     const itemsPerPage = pagination.limitItems;
-    // const [pageCount, setPageCount] = useState(0);
     const pageCount = pagination.totalPage;
     const currentPage = pagination.currentPage;
     const [selectedPage, setSelectedPage] = useState(searchParams.get("page") ? parseInt(searchParams.get("page")) - 1 : 0);
@@ -44,21 +41,13 @@ const Category = () => {
     }, [location.state]);
     
     useEffect(() => {
-        // if (category.length > 0) {
-        //     console.log(`category: `, category);
-        //     console.log(`selectedPage: `, selectedPage);
-        //     console.log(`itemsPerPage: `, itemsPerPage);
-        //     // setCurrentItems(category.slice(selectedPage * itemsPerPage, (selectedPage + 1) * itemsPerPage));
-        //     // setPageCount(Math.ceil(category.length / itemsPerPage));
-        // }
         const params = {};
         if (filterStatusQuery) params.status = filterStatusQuery;
         if (searchQuery) params.keyword = searchQuery;
-        params.page = selectedPage === 0 ? currentPage : selectedPage + 1;
+        if (selectedPage !==0) params.page = selectedPage === 0 ? currentPage : selectedPage + 1;
         setSearchParams(params);
     }, [category, selectedPage, currentPage, filterStatusQuery, searchQuery, itemsPerPage, setSearchParams]);
 
-    // console.log(currentItems);
     // Lấy data thông qua API
     const fetchData = (keyword, status, page) => {
         axios.get('/admin/category', { params: { keyword, status, page } })
@@ -207,7 +196,6 @@ const Category = () => {
                                                 <Button
                                                     style={{ margin: 1 }}
                                                     variant="danger"
-                                                    // color='error'
                                                     type='submit'
                                                     onClick={(e) => deleteCategory(item._id)}
                                                 >
@@ -234,7 +222,6 @@ const Category = () => {
                             pageClassName='Product-admin-pages-product-reactPaginate-page'
                             pageLinkClassName='Product-admin-pages-product-reactPaginate-page-link'
                             activeClassName='Product-admin-pages-product-active-ring'
-                            // hrefBuilder={hrefBuilder}
                             forcePage={selectedPage}
                         />
                     </Card.Body>

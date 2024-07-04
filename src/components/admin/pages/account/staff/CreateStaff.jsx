@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/Category.css';
+import '../../../styles/Category.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Form, Input, Radio, Select } from 'antd';
 import { TreeSelect, message, Upload } from 'antd';
@@ -28,7 +28,7 @@ const props = {
     },
 };
 
-const CreateCustomer = () => {
+const CreateStaff = () => {
     const navigate = useNavigate(); // Hook useNavigate
     const [name, setName] = useState("");
     const [avatar, setAvatar] = useState("");
@@ -55,7 +55,7 @@ const CreateCustomer = () => {
     const addStaffAccount = async (values) => {
         const configuration = {
             method: "post",
-            url: "admin/account/customer/create",
+            url: "admin/account/staff/create",
             data: {
                 name: values.name,
                 avatar,
@@ -72,7 +72,7 @@ const CreateCustomer = () => {
                 const checkResult = result.data;
                 console.log(checkResult);
                 reset();
-                navigate('/admin/account/customer', { state: { success: true } });
+                navigate('/admin/account/staff', { state: { success: true } });
 
             })
             .catch((error) => {
@@ -84,7 +84,7 @@ const CreateCustomer = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreateaccount__container'>
+            <Container className='admincreatestaffaccount__container'>
                 <h1>Tạo mới tài khoản nhân viên</h1>
                 <Form onFinish={addStaffAccount} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='name' label="Tên" style={{ width: '100%' }}>
@@ -121,7 +121,7 @@ const CreateCustomer = () => {
                         <Radio value={"active"}>Hoạt động</Radio>
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
-                    <Form.Item className='admincreateaccount__wrapperbtn'>
+                    <Form.Item className='admincreatestaffaccount__wrapperbtn'>
                         <Button
                             variant="primary"
                             type='submit'
@@ -133,4 +133,4 @@ const CreateCustomer = () => {
     );
 };
 
-export default CreateCustomer;
+export default CreateStaff;

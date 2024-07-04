@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/DiamondModal.css';
+import '../../styles/DiamondModal.css';
 
 const DiamondModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

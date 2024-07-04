@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import { Form, Input, Radio } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
-import { TreeSelect, message } from 'antd';
+import { TreeSelect } from 'antd';
 import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
@@ -15,18 +15,33 @@ import { useNavigate } from 'react-router-dom';
 const CreateProduct = () => {
     const {
         reset,
-    } = useForm()
-    const [isHighlight, setIsHighLight] = useState(false);
-    const [categories, setCategories] = useState("");
-    const [category, setCategory] = useState([]);
-    const [thumbnail, setThumbnail] = useState();
+    } = useForm();
     const navigate = useNavigate();
+    // Viên chính
+    const [mainGemStone, setMainGemStone] = useState("");
+    // Viên phụ
+    const [secondGemStone, setSecondGemStone] = useState("");
+    // Chất liệu
+    const [material, setMaterial] = useState("");
+    // Nổi bật
+    const [isHighlight, setIsHighLight] = useState(false);
+    // Lấy danh sách danh mục
+    const [categories, setCategories] = useState("");
+    // Danh mục của sản phẩm
+    const [category_id, setCategory_Id] = useState("");
+    // Ảnh
+    const [thumbnail, setThumbnail] = useState("");
+    // Kích thước (Ni)
     const [size, setSize] = useState("");
+    // Tiêu đề
     const [title, setTitle] = useState("");
+    // Trạng thái
     const [status, setStatus] = useState("active");
+    // Mô tả
     const [description, setDescription] = useState("");
+    // Giá
     const [price, setPrice] = useState(1);
-    const [stock, setStock] = useState(1);
+    // Preview ảnh
     const [preview, setPreview] = useState("");
 
 
@@ -47,7 +62,7 @@ const CreateProduct = () => {
 
 
     const onSetCategory = (newValue) => {
-        setCategory(newValue);
+        setCategory_Id(newValue);
     }
 
     // Chọn trạng thái hoạt động
@@ -74,7 +89,6 @@ const CreateProduct = () => {
 
     //Hàm submit gửi form tạo mới sản phẩm
     const addProduct = async (e) => {
-        console.log(thumbnail)
         const configuration = {
             method: "post",
             url: "admin/product/create",
@@ -86,8 +100,11 @@ const CreateProduct = () => {
                 price,
                 size,
                 thumbnail,
-                category,
-                isHighlight
+                category_id,
+                isHighlight,
+                mainGemStone,
+                secondGemStone,
+                material
             },
         };
         await axios(configuration)
@@ -103,7 +120,6 @@ const CreateProduct = () => {
             <Container className='admincreateproduct__container'>
                 <h1>Tạo mới sản phẩm</h1>
                 <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data" >
-
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
                         <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
@@ -114,6 +130,7 @@ const CreateProduct = () => {
                         </Radio.Group>
                     </div>
                     <TreeSelect
+                        name="category_id"
                         className='mb-2 mt-2'
                         showSearch
                         style={{
@@ -131,21 +148,37 @@ const CreateProduct = () => {
                         treeData={categories}
                         onPopupScroll={onPopupScroll}
                     />
+                    <Form.Item name='material' label="Chất liệu" style={{ width: '100%' }}>
+                        <Input type='text' onChange={(e) => setMaterial(e.target.value)} value={material} />
+                    </Form.Item>
+                    <Form.Item name='mainGemStone' label="Viên chính" style={{ width: '100%' }}>
+                        <Input type='text' onChange={(e) => setMainGemStone(e.target.value)} value={mainGemStone} />
+                    </Form.Item>
+                    <Form.Item name='secondGemStone' label="Viên phụ" style={{ width: '100%' }}>
+                        <Input type='text' onChange={(e) => setSecondGemStone(e.target.value)} value={secondGemStone} />
+                    </Form.Item>
                     <Form.Item name='price' label="Giá" style={{ width: '100%' }}>
                         <Input type='number' onChange={(e) => setPrice(e.target.value)} value={price} />
                     </Form.Item>
                     <Form.Item name='size' label="Kích cỡ (Ni)" style={{ width: '100%' }}>
                         <Input type='number' onChange={(e) => setSize(e.target.value)} value={size} />
                     </Form.Item>
-
                     <Form.Item name='description' label="Mô tả" style={{ width: '100%' }}>
                         <Editor
-                            // onEditorChange={(content) => setDescription({ description: content })}
-                            onEditorChange={(value, editor) => {
-                                setDescription(editor.getContent({ format: 'text' }));
-
-                            }}
+                            onEditorChange={(content) => setDescription(content)}
                             apiKey='7kewhhnqfkgy1b51ajibp6aquu8pbcuqgaw64fatnixmljhf'
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                                          alignleft aligncenter alignright alignjustify | \
+                                          bullist numlist outdent indent | removeformat | help'
+                            }}
                         />
                     </Form.Item>
                     <div className='mt-2 mb-4'>

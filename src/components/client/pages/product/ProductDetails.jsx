@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import '../../../styles/ProductDetails.css';
-import ProductDetailsFooter from '../ProductDetailsFooter';
+import '../../styles/ProductDetails.css';
+import ProductDetailsFooter from './ProductDetailsFooter';
 import DiamondModal from './DiamondModal'; // Import modal component
 import EditIcon from '@mui/icons-material/Edit';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
-import Header from '../../home/Header';
-import Footer from '../../home/Footer';
-import PopularProducts from '../../home/PopularProducts';
+import Header from '../../partials/Header';
+import Footer from '../../partials/Footer';
+
 const ProductDetails = () => {
     const [selectedSize, setSelectedSize] = useState('');
     const [isSizeDropdownOpen, setIsSizeDropdownOpen] = useState(false);

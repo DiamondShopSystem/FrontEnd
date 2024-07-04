@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Category.css';
-import { Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Form, Input, Radio } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
 import { TreeSelect, message } from 'antd';
@@ -86,7 +86,7 @@ const CreateCategory = () => {
                 <h1>Tạo mới danh mục</h1>
                 <Form onFinish={addCategory} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
-                        <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
+                        <Input type='text' onChange={(e) => setTitle(e.target.value)} value={title} />
                     </Form.Item>
                     <TreeSelect
                         showSearch
@@ -102,8 +102,20 @@ const CreateCategory = () => {
                     />
                     <Form.Item name='description' label="Mô tả" style={{ width: '100%' }}>
                         <Editor
-                            onEditorChange={(value, editor) => setDescription(editor.getContent({ format: 'text' }))}
+                            onEditorChange={(content) => setDescription(content)}
                             apiKey='7kewhhnqfkgy1b51ajibp6aquu8pbcuqgaw64fatnixmljhf'
+                            init={{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                                          alignleft aligncenter alignright alignjustify | \
+                                          bullist numlist outdent indent | removeformat | help'
+                            }}
                         />
                     </Form.Item>
                     <Radio.Group onChange={onChangeStatus} value={status}>
@@ -115,7 +127,7 @@ const CreateCategory = () => {
                             style={{ marginBottom: "20px" }}
                             variant="primary"
                             type='submit'
-                            >Tạo mới</Button>
+                        >Tạo mới</Button>
                     </Form.Item>
                 </Form>
             </Container>

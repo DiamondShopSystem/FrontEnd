@@ -1,6 +1,7 @@
-import React from 'react'
-import '../../styles/PopularProduct.css'
-import Product from './Product'
+import React, { useState, useEffect } from 'react'
+import '../../../styles/NewProducts.css'
+import axios from 'axios';
+import BoxProduct from '../mixins/BoxProduct';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
@@ -27,49 +28,21 @@ const NewProducts = () => {
         }
     };
 
-    const GetNewProduct = [
-        {
-            id: 1,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
+    const [newProducts, setNewProducts] = useState([]);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-        {
-            id: 2,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-
-        {
-            id: 3,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-
-        {
-            id: 4,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-
-        {
-            id: 5,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-
-        {
-            id: 6,
-            name: "Kim cương 24 cara",
-            // image: picture,
-            price: 24000,
-        },
-    ];
+    // Lấy data thông qua API
+    const fetchData = () => {
+        axios.get('/',)
+            .then(function (response) {
+                setNewProducts(response.data.newProducts);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
     return (
         <section className='section-item' style={{backgroundColor: '#fff'}}>
@@ -79,8 +52,8 @@ const NewProducts = () => {
             </div>
 
             <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='cover-item'>
-                {GetNewProduct.map((item) => {
-                    return <Product product={item} key={item.id} />
+                {newProducts.map((item) => {
+                    return <BoxProduct product={item} key={item.id} />
                 })}
             </Carousel>
         </section>

@@ -11,11 +11,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateProduct = (req, res) => {
+    const { id } = useParams();
     const [defaultValue, setDefaultValue] = useState([]);
     const [product, setProduct] = useState({});
     const [thumbnail, setThumbnail] = useState();
     const [columns, setColumns] = useState([]);
-    const { id } = useParams();
     const [preview, setPreview] = useState("");
     
 
@@ -31,10 +31,13 @@ const UpdateProduct = (req, res) => {
                 console.log(error);
             })
     }, []);
-    const handleChange = (e) => {
+
+    // Chọn ảnh
+    const handleImageChange = (e) => {
         setThumbnail({...product, thumbnail : e.target.files[0]});
         setPreview(URL.createObjectURL(e.target.files[0]));
     }
+    // Gửi form submit update
     const updateProduct = (e) => {
         e.preventDefault();
         axios.patch("/admin/product/edit/" + id, product, {
@@ -104,10 +107,9 @@ const UpdateProduct = (req, res) => {
                                 name="thumbnail"
                                 accept="image/*"
                                 type="file"
-                                onChange={handleChange}
+                                onChange={handleImageChange}
                             />
                             <div style={{ marginTop: "5px" }}>
-                                {/* {product.thumbnail && <img style={{ width: "100px", height: "auto" }} src={product.thumbnail} />} */}
                                 {preview && <img style={{ width: "100px", height: "auto" }} src={preview} />}
                             </div>
                         </div>

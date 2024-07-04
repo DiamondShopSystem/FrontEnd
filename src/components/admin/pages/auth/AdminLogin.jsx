@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '../../../../config/firebase';
 import axios from 'axios';
 import '../../styles/AdminLogin.css';
 
 
-
+// Component Trang Admin Login
 function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
-
+    
+    // Hàm Login 
     const handleSubmit = (event) => {
         event.preventDefault();
         const configuration = {
@@ -35,16 +36,9 @@ function AdminLogin() {
                 }
             })
             .catch((error) => { console.log(error); })
-        // signInWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         setMessage('Đăng nhập thành công');
-        //         navigate('/admin/dashboard');
-        //     })
-        //     .catch((error) => {
-        //         setMessage('Đăng nhập thất bại: ' + error.message);
-        //     });
     };
 
+    // Hàm login với google
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -67,9 +61,26 @@ function AdminLogin() {
                     .catch(error => {
                         setMessage('Đăng nhập với Google thất bại: ' + error.message);
                     });
+
+                // Fetch account details from the backend
+                axios.get('/admin/account')
+                    .then(response => {
+                        const accounts = response.data.account;
+                        const matchingAccount = accounts.find(account => account.email === googleEmail && account.status === 'active' && !account.deleted);
+
+                        if (matchingAccount) {
+                            setMessage('Đăng nhập với Google thành công');
+                            navigate('/admin/dashboard');
+                        } else {
+                            setMessage('Người dùng không có quyền truy cập');
+                        }
+                    })
+                    .catch(error => {
+                        setMessage('Đăng nhập với Google thất bại');
+                    });
             })
             .catch((error) => {
-                setMessage('Đăng nhập với Google thất bại: ' + error.message);
+                setMessage('Đăng nhập với Google thất bại');
             });
     };
 

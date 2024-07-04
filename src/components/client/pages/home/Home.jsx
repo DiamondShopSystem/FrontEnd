@@ -1,20 +1,16 @@
 import React from "react";
-import NewProducts from './NewProducts';
-import PopularProducts from './PopularProducts';
-import Footer from '../../partials/Footer';
-import HomeCarousel from "./HomeCarousel";
-
-// import RingProducts from "./RingProducts";
 import Header from "../../partials/Header";
+import Footer from '../../partials/Footer';
+import NewProducts from './partials/NewProducts';
+import PopularProducts from './partials/PopularProducts';
+import Carousel from "./partials/Carousel";
 import ScrollToTopButton from "../../../helpers/ScrollToTopButton";
-// import CustomerSupport from "./CustomerSupport";
-// import CheckOutCart from "../checkout/CheckOutCart";
-// import CartContextProvider from "../../../helpers/CartContext";
+
 const Home = () => {
     return (
         <>
             <Header />
-            <HomeCarousel />
+            <Carousel />
             <NewProducts />
             <PopularProducts />
             <Footer />

@@ -1,17 +1,17 @@
 import React from 'react';
 import '../styles/Header.css';
-import Navbar from '../pages/home/Navbar';
+import Navbar from '../pages/home/mixins/Navbar';
 import { Link } from 'react-router-dom';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"></link>
 
 const Header = () => {
-
     return (
         <header className="header">
             <div className="header__top">
                 <div className="header__account" >
                     <Link style={{color: 'black'}} to={'/user/info'}><span className="header__account-info">Thông tin tài khoản</span></Link>
-                    <span className="header__cart">🛒 0</span>
+                    
+                    <Link style={{textDecoration:'none'}} to={'/cart'}><span className="header__cart">🛒 Giỏ hàng</span></Link>
                 </div>
             </div>
             <div className="header__center">

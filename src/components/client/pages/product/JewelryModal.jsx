@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/JewelryModal.css';
+import '../../styles/JewelryModal.css';
 
 const JewelryModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;

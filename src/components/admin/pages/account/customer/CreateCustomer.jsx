@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../../styles/Category.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import '../../../styles/Category.css';
+import { Container } from 'react-bootstrap';
 import { Form, Input, Radio, Select } from 'antd';
-import { TreeSelect, message, Upload } from 'antd';
+import {  message  } from 'antd';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form";
@@ -28,7 +28,7 @@ const props = {
     },
 };
 
-const CreateStaff = () => {
+const CreateCustomer = () => {
     const navigate = useNavigate(); // Hook useNavigate
     const [name, setName] = useState("");
     const [avatar, setAvatar] = useState("");
@@ -55,7 +55,7 @@ const CreateStaff = () => {
     const addStaffAccount = async (values) => {
         const configuration = {
             method: "post",
-            url: "admin/account/staff/create",
+            url: "admin/account/customer/create",
             data: {
                 name: values.name,
                 avatar,
@@ -72,7 +72,7 @@ const CreateStaff = () => {
                 const checkResult = result.data;
                 console.log(checkResult);
                 reset();
-                navigate('/admin/account/staff', { state: { success: true } });
+                navigate('/admin/account/customer', { state: { success: true } });
 
             })
             .catch((error) => {
@@ -84,7 +84,7 @@ const CreateStaff = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreatestaffaccount__container'>
+            <Container className='admincreateaccount__container'>
                 <h1>Tạo mới tài khoản nhân viên</h1>
                 <Form onFinish={addStaffAccount} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='name' label="Tên" style={{ width: '100%' }}>
@@ -121,7 +121,7 @@ const CreateStaff = () => {
                         <Radio value={"active"}>Hoạt động</Radio>
                         <Radio value={"inactive"}>Dừng hoạt động</Radio>
                     </Radio.Group>
-                    <Form.Item className='admincreatestaffaccount__wrapperbtn'>
+                    <Form.Item className='admincreateaccount__wrapperbtn'>
                         <Button
                             variant="primary"
                             type='submit'
@@ -133,4 +133,4 @@ const CreateStaff = () => {
     );
 };
 
-export default CreateStaff;
+export default CreateCustomer;
