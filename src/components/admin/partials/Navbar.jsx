@@ -34,7 +34,7 @@ const Navbar = () => {
             <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
                 <div className="navbar-dropdown">
                     <Avatar src="https://m.yodycdn.com/blog/anh-dai-dien-hai-yodyvn3-b3a8cf32-e08a-47fc-a741-71626aadc4de.jpg" />
-                    <span className="username">Admin</span>
+                    <span className="username">Tên nè</span>
                 </div>
             </Dropdown>
         </Header>

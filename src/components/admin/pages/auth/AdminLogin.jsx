@@ -1,41 +1,60 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '../../../../config/firebase';
 import axios from 'axios';
 import '../../styles/AdminLogin.css';
-
+import useAuth from '../../../../hooks/useAuth';
 
 // Component Trang Admin Login
 function AdminLogin() {
+    const { setAuth } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const provider = new GoogleAuthProvider();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const navigate = useNavigate();
-    const provider = new GoogleAuthProvider();
-    
+
+
     // Hàm Login 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const configuration = {
-            method: "post",
-            url: "admin/login",
-            data: {
-                email,
-                password,
-            },
-        };
-        axios(configuration)
-            .then((result) => {
-                const checkResult = result.data;
-                console.log(checkResult);
-                if (checkResult.code === 200) {
-                    navigate('/admin/dashboard');
-                } else {
-                    setMessage("Sai Email hoặc mật khẩu!");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMessage("");
+        try {
+            const response = await axios.post("/admin/login",
+                JSON.stringify({ email, password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
                 }
-            })
-            .catch((error) => { console.log(error); })
+            );
+            const accessToken = response?.data?.accessToken;
+            setAuth({ email, password, accessToken });
+            navigate(from, { replace: true });
+        } catch (error) {
+
+        }
+        // const configuration = {
+        //     method: "post",
+        //     url: "admin/login",
+        //     data: {
+        //         email,
+        //         password,
+        //     },
+        // };
+        // axios(configuration)
+        //     .then((result) => {
+        //         const checkResult = result.data;
+        //         console.log(checkResult);
+        //         if (checkResult.code === 200) {
+        //             navigate('/admin/dashboard');
+        //         } else {
+        //             setMessage("Sai Email hoặc mật khẩu!");
+        //         }
+        //     })
+        //     .catch((error) => { console.log(error); })
     };
 
     // Hàm login với google

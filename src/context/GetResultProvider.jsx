@@ -4,8 +4,6 @@ export const GetResultContext = createContext();
 
 const GetResultProvider = ({ children }) => {
 
-
-
   const [result, setResult,] = useState([]);
   const [phoneNumber, setPhoneNumber] = useState([]);
 

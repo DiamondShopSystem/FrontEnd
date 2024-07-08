@@ -12,17 +12,19 @@ import {
     signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../../../../config/firebase";
-import { GetResultContext } from "../../../helpers/GetResultContext";
-
+import { GetResultContext } from "../../../../context/GetResultProvider";
 
 const UserLogin = () => {
 
     const navigate = useNavigate();
+
     const { setResult, setPhoneNumber } = useContext(GetResultContext);
     const [error, setError] = useState("");
     const [number, setNumber] = useState("");
-    
-    function setUpRecaptha(number) {
+
+
+    //Captcha Firebase
+    function setUpRecaptcha(number) {
         const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             size: 'invisible',
             callback: () => {
@@ -33,18 +35,18 @@ const UserLogin = () => {
         return signInWithPhoneNumber(auth, number, recaptchaVerifier);
     }
 
-
+    // Submit gửi form Login lấy OTP xác thực
     const getOtp = async (e) => {
         e.preventDefault();
         setError("");
         console.log(number.length);
-        if (number === "" || number === undefined || number.length < 12 || number.length >= 13 || number === null)
+        if (!(number.length === 12))
             return setError("Số điện thoại không hợp lệ");
         try {
-            const response = await setUpRecaptha(number);
+            const response = await setUpRecaptcha(number);
             setPhoneNumber(number);
             setResult(response);
-            navigate("/user/verify/otp");
+            navigate("/login/verify/otp");
         } catch (err) {
             return setError("Số điện thoại không hợp lệ");
         }
@@ -55,7 +57,7 @@ const UserLogin = () => {
                 <main className="userlogin_total">
                     <div className="userlogin_linkback">
                         <Link to="/" className="flex userlogin__linktohome" >
-                            <div className="">
+                            <div className="center">
                                 <FaArrowLeft />
                                 <span className="userlogin_back">Trang chủ</span>
                             </div>
@@ -65,7 +67,7 @@ const UserLogin = () => {
                     <div className="flex w-full max-w-sm grow flex-col justify-center p-5">
                         <div className="text-center">
                             <div className="userlogin_welcome">
-                                <img className="userlogin_logo" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_FPT_Education.png" alt="new" />
+                                <img className="userlogin_logo" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_FPT_Education.png" alt="Logo" />
                                 <div className="mt-4">
                                     <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100 ">Chào mừng trở lại</h2>
                                     <p className="text-slate-400 dark:text-navy-300">Vui lòng đăng nhập để tiếp tục</p>
@@ -91,10 +93,13 @@ const UserLogin = () => {
 
                                 </Form.Group>
                                 {error !== "" ? <div className="text-red-600">{error}</div> : <div className="text-red-600 d-none">{error}</div>}
+                                {/* <Button className="userlogin__button" type="submit">
 
-                                <Button className="userlogin__button" type="submit">
+                                </Button> */}
+                                <button className="userlogin__button" type="submit"
+                                >
                                     <span> SMS </span>
-                                </Button>
+                                </button>
                             </Form>
                         </div>
                         <div className="userlogin_benifit">
