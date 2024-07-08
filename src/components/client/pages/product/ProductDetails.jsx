@@ -63,14 +63,7 @@ const ProductDetails = () => {
                                 <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTprbFRt9KJ-jPfXGGwxLzgLHPgJYgX63vijapDAY_ge7-QMN3R" alt="Thumbnail 2" onClick={() => handleThumbnailClick('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTprbFRt9KJ-jPfXGGwxLzgLHPgJYgX63vijapDAY_ge7-QMN3R')} />
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUtg_JAtu6GcxV2jF2EWqb_RcYwo9mNEBIeRbVZMKPG8AYiqP" alt="Thumbnail 3" onClick={() => handleThumbnailClick('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUtg_JAtu6GcxV2jF2EWqb_RcYwo9mNEBIeRbVZMKPG8AYiqP')} />
                             </div>
-                            <div className="action-buttons">
-                                <button className="action-button">
-                                    <FavoriteBorderIcon /> Thích
-                                </button>
-                                <button className="action-button">
-                                    <ShareIcon /> Chia sẻ
-                                </button>
-                            </div>
+                            
                         </div>
                         <div className="details-section">
                             <h1>Nhẫn nam kim cương tấm vàng 10K Pinnacle 2C W</h1>

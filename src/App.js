@@ -57,15 +57,18 @@ import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
 import Home from "./components/client/pages/home/Home";
 
 //Product
-import ProductPage from "./components/client/pages/product/ProductPage";
-import ProductDetail from "./components/client/pages/product/ProductDetails";
+import ProductsPage from "./components/client/pages/product/ProductsPage";
+import ProductDetail from "./components/client/pages/product/ProductDetail";
+
+//Cart
+import Cart from "./components/client/pages/cart/Cart";
 
 //Promotion
 import Promotion from "./components/client/pages/promotion/Promotion";
-
-
-
-
+import AdminRequireAuth from "./components/admin/RequireAuth";
+import LayoutOutlet from "./components/admin/layouts/LayoutOutlet";
+import ClientLayout from "./components/client/layouts/ClientLayout";
+import RequireAuth from "./components/client/pages/RequireAuth";
 
 function App() {
   return (
@@ -75,25 +78,40 @@ function App() {
         {/* Authen  */}
         <Route path="/login" element={<UserLogin />} />
         <Route path="/login/verify/otp" element={<VerifyOtp />} />
-        {/* Home  */}
-        <Route path="/" element={<Home />} />
-        {/* Product  */}
-        <Route path="/products/:slug" element={<ProductPage />} />
-        <Route path="/products/:slug/:id" element={<ProductDetail />} />
-        {/* Cart  */}
-        {/* Checkout  */}
-        {/* Promotion  */}
-        <Route path="/promotion" element={<Promotion />} />
+        <Route path="/" element={<ClientLayout />}>
+          {/* Home  */}
+          <Route path="" element={<Home />} />
+          {/* Product  */}
+          <Route path="products/:slug/" element={<ProductsPage />} />
+          <Route path=":id" element={<ProductDetail />} />
+          <Route element={<RequireAuth />}>
+            <Route path="info" />
+            {/* Cart  */}
+            <Route path="cart" element={<Cart />} />
+          </Route>
+
+          {/* Promotion  */}
+          <Route path="promotion" element={<Promotion />} />
+        </Route>
+
         {/* Admin Path  */}
-        {/* Authen */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/forgotpassword" element={<AdminForgotPassword />} />
-        <Route path="/admin/forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
-        <Route path="/admin/forgotpassword/reset" element={<AdminForgotPasswordReset />} />
+        <Route path="/admin/" element={<LayoutOutlet />}>
+          {/* Authen */}
+          <Route path="login" element={<AdminLogin />} />
+          <Route path="forgotpassword" element={<AdminForgotPassword />} />
+          <Route path="forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
+          <Route path="forgotpassword/reset" element={<AdminForgotPasswordReset />} />
+          {/* Dashboard  */}
+          <Route element={<AdminRequireAuth />}>
+            <Route path="dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
+          </Route>
+
+
+        </Route>
+
         {/* Profile  */}
         <Route path="/admin/profile" element={<AdminLayout><AdminProfile /></AdminLayout>} />
-        {/* Dashboard  */}
-        <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
+
         {/* Product  */}
         <Route path="/admin/product" element={<AdminLayout><Product /></AdminLayout>} />
         <Route path="/admin/product/create" element={<AdminLayout><CreateProduct /></AdminLayout>} />
@@ -119,7 +137,7 @@ function App() {
         {/* Role */}
         <Route path="/admin/role" element={<AdminLayout><Role /></AdminLayout>} />
 
-      </Routes>
+      </Routes >
 
     </>
   );

@@ -1,64 +1,47 @@
-.cover-product {
-    width: 270px; 
+.boxproduct {
+    width: 270px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 10px 20px; 
-    position: relative; 
+    margin: 0 10px 20px;
+    position: relative;
 }
 
-.cover-image {
+.boxproduct .boxproduct__cover {
     text-align: center;
     padding: 10px;
 }
 
-.image-product {
+.boxproduct:hover .boxproduct__price {
+    margin-bottom: 0;
+    background-color: black;
+    color: #fff;
+}
+
+.boxproduct .boxproduct__cover .boxproduct__image {
     max-width: 100%;
     height: auto;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
-.cover-product:hover .image-product {
-    transform: scale(1.1); /* Phóng to 110% khi hover vào */
+.boxproduct__cover:hover .boxproduct__image {
+    transform: scale(1.1);
+    /* Phóng to 110% khi hover vào */
 }
 
-.cover-content {
-    padding: 10px;
-    text-align: center;
-}
 
-.name-product {
+
+.boxproduct__cover .boxproduct__title {
     font-size: 16px;
     margin-bottom: 5px;
 }
 
-.cover-price-product {
+.boxproduct__cover .boxproduct__price {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 10px; 
-    background-color: #fff; 
-}
-
-
-
-.new-price-product {
-    font-weight: bold;
-    color: black; 
-}
-
-.old-price-product {
-    text-decoration: line-through;
-    color: #888;
-    font-size: 12px;
-}
-
-.RiShoppingBag3Fill-product {
-    position: absolute; 
-    bottom: 10px; 
-    right: 10px; 
-    color: #888;
-    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #fff;
 }

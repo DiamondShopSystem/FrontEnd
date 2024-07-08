@@ -61,7 +61,6 @@ const Promotion = () => {
 
     return (
         <>
-            <Header />
             <div className="promotion">
                 <header className="promotion__header">
                     <div className="promotion__title-container">
@@ -106,7 +105,6 @@ const Promotion = () => {
                     </div>
                 </main>
             </div>
-            <Footer />
         </>
     );
 };

@@ -1,0 +1,46 @@
+.home__section {
+    max-width: 1580px;
+    max-height: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    padding: 2rem;
+}
+
+.home__section .home__title {
+    max-width: 36rem;
+    text-align: center;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px 40px;
+}
+
+.home__section .home__title h3 {
+    margin-bottom: 40px;
+}
+
+.home__title .home__more {
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+    position: absolute;
+    right: 314px;
+}
+
+.home__title:hover .home__more {
+    text-decoration: underline;
+}
+
+.home__coveritem {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1280px) {
+    .xl\:py-28 {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import MenuItems from './MenuItems';
-import '../../../styles/Navbar.css';
+import MenuItems from '../mixins/MenuItems';
+import '../styles/Navbar.css';
 import axios from 'axios';
 
 const Navbar = () => {
@@ -22,9 +22,8 @@ const Navbar = () => {
       .then(function (response) {
         const menuData = buildMenu(response.data.category);
         const staticCategories = [
-          { title: 'Liên Hệ', url: '/contact' },
-          { title: 'Khuyến Mãi', url: '/user/promotion' },
-          { title: 'Tin Tức', url: '/news' }
+          { title: 'Khuyến Mãi', url: '/promotion' },
+          { title: 'Blog', url: '/blog' }
         ];
         setMenuItemsData([...menuData, ...staticCategories]);
       })

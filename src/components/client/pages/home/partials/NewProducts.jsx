@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import '../../../styles/NewProducts.css'
+import "../../../styles/Home.css";
 import axios from 'axios';
-import BoxProduct from '../mixins/BoxProduct';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
+import BoxProduct from '../../../mixins/BoxProduct';
 
 const NewProducts = () => {
 
@@ -45,13 +45,11 @@ const NewProducts = () => {
     }
 
     return (
-        <section className='section-item' style={{backgroundColor: '#fff'}}>
-            <div className='title-item'>
+        <section className='home__section' style={{backgroundColor: '#fff'}}>
+            <div className='home__title'>
                 <h3>Sản phẩm mới</h3>
-                <Link>Xem thêm {'>'}</Link>
             </div>
-
-            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='cover-item'>
+            <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} keyBoardControl={true} itemClass='home__coveritem'>
                 {newProducts.map((item) => {
                     return <BoxProduct product={item} key={item.id} />
                 })}
