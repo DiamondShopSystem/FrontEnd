@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import BoxProduct from '../../mixins/BoxProduct';
 import { useLocation } from 'react-router-dom';
+import '../../styles/ProductsPage.css'
 
 const ProductsPage = () => {
     const location = useLocation();
@@ -33,7 +34,7 @@ const ProductsPage = () => {
                     <img style={{ width: '100%' }} alt='header-image' src='https://file.hstatic.net/1000381168/collection/1920x820px_c920d1d4bbd04d84b13ad580976272cd.png' />
                 </div>
                 <div className='container'>
-                    <div className='row'>
+                    <div className='row productspage__gird'>
                         {products.map((item) => {
                             console.log(products);
                             return <BoxProduct className='col-3' product={item} key={item.id} />

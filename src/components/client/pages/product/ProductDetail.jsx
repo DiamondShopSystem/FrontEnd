@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import BoxProductDetail from '../../mixins/BoxProductDetail';
-
+import '../../styles/ProductDetail.css'
 
 const ProductDetail = () => {
     const [product, setProduct] = useState([]);
@@ -26,7 +26,9 @@ const ProductDetail = () => {
 
     return (
         <section className='container'>
-            <BoxProductDetail product={product} key={product.id} />
+            <div className='productdetail__info'>
+                <BoxProductDetail product={product} key={product.id} />
+            </div>
             <div className='productdetail__description'>
                 <h2>CHI TIẾT SẢN PHẨM</h2>
                 {parse(`${product.description}`)}

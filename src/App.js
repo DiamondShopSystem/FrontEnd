@@ -69,6 +69,11 @@ import AdminRequireAuth from "./components/admin/RequireAuth";
 import LayoutOutlet from "./components/admin/layouts/LayoutOutlet";
 import ClientLayout from "./components/client/layouts/ClientLayout";
 import RequireAuth from "./components/client/pages/RequireAuth";
+//User
+import UserProfile from "./components/client/pages/profile/UserProfile";
+import UserInfoDetail from "./components/client/pages/profile/UserInfoDetail";
+import HistoryOrder from "./components/client/pages/profile/HistoryOrder";
+import MyVoucher from "./components/client/pages/profile/MyVoucher";
 
 function App() {
   return (
@@ -85,13 +90,18 @@ function App() {
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path=":id" element={<ProductDetail />} />
           <Route element={<RequireAuth />}>
-            <Route path="info" />
+            <Route path="info"/>
             {/* Cart  */}
             <Route path="cart" element={<Cart />} />
           </Route>
 
           {/* Promotion  */}
           <Route path="promotion" element={<Promotion />} />
+          <Route path="user/" element={<UserProfile />}>
+            <Route path="info" element={<UserInfoDetail />} />
+            <Route path="voucher" element={<MyVoucher />} />
+            <Route path="history-order" element={<HistoryOrder />} />
+          </Route>
         </Route>
 
         {/* Admin Path  */}

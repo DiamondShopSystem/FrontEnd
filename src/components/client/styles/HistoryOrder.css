@@ -4,6 +4,8 @@
   
   .useroder__history h2 {
     margin-bottom: 20px;
+    text-align: center;
+    color: gray;
   }
   
   .useroder__history table {
