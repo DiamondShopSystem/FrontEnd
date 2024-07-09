@@ -3,7 +3,7 @@ import { Table, Badge, Container, Button } from 'react-bootstrap';
 import '../../styles/OrderDetail.css'
 import OrderDetail from './OrderDetail';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/Order.css'
+import '../../styles/HistoryOrder.css'
 
 const orders = [
     { id: 1, product: 'Product 1', status: 'Unconfirmed', date: '2023-01-10', total: 100, shippingFee: 10 },
@@ -29,7 +29,7 @@ const getStatusBadge = (status) => {
     }
 };
 
-const Order = () => {
+const HistoryOrder = () => {
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [filteredOrders, setFilteredOrders] = useState(orders);
     const [activeFilter, setActiveFilter] = useState('');
@@ -115,4 +115,4 @@ const Order = () => {
     );
 };
 
-export default Order;
+export default HistoryOrder;
