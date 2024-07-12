@@ -22,9 +22,9 @@ const UpdateProduct = (req, res) => {
         console.log(id);
         axios.get("/admin/product/edit/" + id)
             .then(function (response) {
-                setProduct(response.data.records);
-                setColumns(response.data.records);
-                setPreview(response.data.records.thumbnail);
+                setProduct(response.data.record);
+                setColumns(response.data.record);
+                setPreview(response.data.record.thumbnail);
             })
             .catch(function (error) {
                 console.log(error);
@@ -63,7 +63,7 @@ const UpdateProduct = (req, res) => {
     return (
         <>
             <ToastContainer />
-            <Container className='admindetailproduct__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Chỉnh sửa sản phẩm</h1>
                 <Form onSubmit={updateProduct} enctype='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }}>

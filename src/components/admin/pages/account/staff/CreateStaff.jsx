@@ -65,7 +65,7 @@ const CreateStaff = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admin__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Tạo mới tài khoản nhân viên</h1>
                 <Form onFinish={addAccountStaff} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='email' label="Email" style={{ width: '100%' }}>

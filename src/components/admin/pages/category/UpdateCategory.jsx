@@ -53,7 +53,7 @@ const UpdateCategory = (req, res) => {
     return (
         <>
             <ToastContainer />
-            <Container className='admindetailcategory__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Chỉnh sửa danh mục</h1>
                 <Form onSubmit={updateCategory} enctype='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }} >

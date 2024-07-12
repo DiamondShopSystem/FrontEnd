@@ -81,7 +81,7 @@ const CreateCategory = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreatecategory__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Tạo mới danh mục</h1>
                 <Form onFinish={addCategory} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
@@ -123,7 +123,7 @@ const CreateCategory = () => {
                     </Radio.Group>
                     <Form.Item className='admincreatecategory__wrapperbtn'>
                         <Button
-                            style={{ marginBottom: "20px" }}
+                            style={{ marginTop: "20px", marginBottom: '10px' }}
                             variant="primary"
                             type='submit'
                         >Tạo mới</Button>
