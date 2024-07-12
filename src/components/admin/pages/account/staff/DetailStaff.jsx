@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../../../styles/Admin.css'
 
 const DetailStaff = () => {
     const [staff, setStaff] = useState([]);
@@ -20,13 +21,13 @@ const DetailStaff = () => {
     }, [id]);
 
     return (
-        <Container style={{ marginTop: '20px' }}>
+        <Container className='detail__container'>
             <h1 className='mb-4'>Chi tiết tài khoản nhân viên</h1>
-            <h3 className='mb-4'>Họ và tên: {staff.fullName}</h3>
+            <h3 className='mb-4'>Họ và tên: <b>{staff.fullName}</b></h3>
             <img className='mb-4' src={staff.avatar} style={{ width: '200px', height: 'auto' }} />
 
-            <div className='mb-4'>Email: {staff.email}</div>
-            <div className='mb-4'>Vai trò: {staff.role}</div>
+            <div className='mb-4'>Email: <b>{staff.email}</b></div>
+            <div className='mb-4'>Vai trò: <b>{staff.role}</b></div>
             {
                 staff.status === "active" ?
                     <span className='mb-4'>Trạng thái: <Badge bg="success">Hoạt động</Badge></span> :

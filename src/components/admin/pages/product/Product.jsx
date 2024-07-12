@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
-
+import '../../styles/Admin.css'
 
 
 
@@ -107,7 +107,7 @@ const Product = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='adminproduct__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Danh sách sản phẩm</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>

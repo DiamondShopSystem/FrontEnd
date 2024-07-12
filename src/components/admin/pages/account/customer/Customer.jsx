@@ -9,6 +9,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../../../styles/Admin.css'
 
 const Customer = () => {
     const { Search } = Input;
@@ -79,7 +80,7 @@ const Customer = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreateAccount__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Danh sách tài khoản khách hàng</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>

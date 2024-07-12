@@ -115,7 +115,7 @@ const CreateProduct = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreateproduct__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Tạo mới sản phẩm</h1>
                 <Form onFinish={addProduct} size='large' layout='vertical' labelCol={{ span: 4 }} enctype="multipart/form-data" >
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>
@@ -196,7 +196,7 @@ const CreateProduct = () => {
                         </Radio.Group>
                     </div>
                     <Form.Item className='admincreateproduct__wrapperbtn' >
-                        <Button style={{ marginBottom: "20px" }} variant="primary" type='submit'>Tạo mới</Button>
+                        <Button style={{ marginTop: "20px", marginBottom: '10px' }} variant="primary" type='submit'>Tạo mới</Button>
                     </Form.Item>
                 </Form>
             </Container>
