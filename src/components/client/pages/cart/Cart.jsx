@@ -3,49 +3,52 @@ import '../../styles/Cart.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-const Cart = () => {
 
+const Cart = () => {
     const [cart, setCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState([]);
+    const [selectedSize, setSelectedSize] = useState(localStorage.getItem('selectedSize')); // Lấy size từ localStorage
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    // Lấy data thông qua API
-    const fetchData = () => {
-        axios.get('/cart/get')
-            .then(function (response) {
-                setCart(response.data.cart);
-                console.log(response.data.cart);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/cart/get');
+            if (response.data.code === 200) {
+                const products = response.data.cart.products.map(product => ({
+                    ...product,
+                    productInfo: product.productInfo[0],
+                    size: JSON.parse(localStorage.getItem('selectedSize'))[product.productInfo[0]._id] || 0 // Lấy kích thước từ localStorage
+                }));
+                setCart(products);
+                setTotalPrice(response.data.cart.totalPrice);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-    // // const [cartData, setCartData] = useState(cart);
+    const handleQuantityChange = (index, delta) => {
+        const newCartData = [...cart];
+        newCartData[index].quantity += delta;
+        if (newCartData[index].quantity < 1) {
+            newCartData[index].quantity = 1;
+        }
+        setCart(newCartData);
+    };
 
-    // const handleQuantityChange = (index, delta) => {
-    //     const newCartData = [...cart];
-    //     newCartData[index].quantity += delta;
-    //     if (newCartData[index].quantity < 1) {
-    //         newCartData[index].quantity = 1; // đảm bảo số lượng thấp nhất là 1
-    //     }
-    //     setCart(newCartData);
-    // };
+    const handleInputChange = (index, value) => {
+        const newCartData = [...cart];
+        newCartData[index].quantity = value < 1 ? 1 : value;
+        setCart(newCartData);
+    };
 
-    // const handleInputChange = (index, value) => {
-    //     const newCartData = [...cart];
-    //     newCartData[index].quantity = value < 1 ? 1 : value; // đảm bảo số lượng thấp nhất là 1
-    //     setCart(newCartData);
-    // };
-
-    // const handleDelete = (index) => {
-    //     const newCartData = cart.filter((_, i) => i !== index);
-    //     setCart(newCartData);
-    // };
-
-
+    const handleDelete = (index) => {
+        const newCartData = cart.filter((_, i) => i !== index);
+        setCart(newCartData);
+    };
 
     return (
         <div className="cart__container">
@@ -64,7 +67,7 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {cart?.products?.map((item, index) => (
+                        {cart.map((item, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>
@@ -74,8 +77,7 @@ const Cart = () => {
                                         </Link>
                                         <div>
                                             <div>{item.productInfo.title}</div>
-                                            {/* <div>{item.details}</div> */}
-                                            <div>Ni (size): {item.productInfo.size}</div>
+                                            <div>Ni (size): {selectedSize}</div> {/* Hiển thị size được chọn */}
                                         </div>
                                         <div className="cart__trash-icon" onClick={() => handleDelete(index)}>
                                             <i className="fas fa-trash"></i>
@@ -105,7 +107,8 @@ const Cart = () => {
                 <div className="cart__total-amount">
                     <div className="total">
                         <span>TỔNG TIỀN (tạm tính): </span>
-                        <span style={{ marginLeft: '10px', fontSize: '25px' }}>{calculateTotal()?.toLocaleString()}đ</span>
+                        
+                        <span style={{ marginLeft: '10px', fontSize: '25px' }}>{totalPrice?.toLocaleString()}đ</span>
                     </div>
                     <div className="checkout">
                         <button className="cart__checkout-btn">THANH TOÁN</button>

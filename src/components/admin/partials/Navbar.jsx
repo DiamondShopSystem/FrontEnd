@@ -29,6 +29,7 @@ const Navbar = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0 20px',
+            backgroundColor: 'black'
         }}>
             <Logo />
             <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">

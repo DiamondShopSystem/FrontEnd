@@ -108,5 +108,11 @@
     color: white;
 }
 .addToCart__button:hover {
-    background-color: #009b34;
+    outline: none;
+    border: 1px solid #d7d7d7;
+    background: #f7f7f7;
+    color: #000000;
+}
+.productdetail__info {
+    margin-top: 20px;
 }

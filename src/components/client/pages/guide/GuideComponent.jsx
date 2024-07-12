@@ -35,7 +35,7 @@ const GuideComponent = ({ articles }) => {
                                     <Typography variant="body2" color="text.secondary">
                                         {article.description}
                                     </Typography>
-                                    <Button variant="contained" color="primary" component={Link} to={`/article/${article.id}`}>
+                                    <Button variant="contained" color="primary" component={Link} to={`${article.slug}`}>
                                         Xem thêm
                                     </Button>
                                 </CardContent>

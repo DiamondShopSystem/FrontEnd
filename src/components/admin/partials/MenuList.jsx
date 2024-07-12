@@ -44,7 +44,7 @@ const MenuList = () => {
         setOpenKeys(keys);
     };
     return (
-        <Menu theme="dark"
+        <Menu theme="light"
             mode="inline"
             onClick={handleClick}
             selectedKeys={[current]}
