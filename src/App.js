@@ -99,10 +99,10 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
-          <Route path=":id" element={<ProductDetail />} />
+          <Route path="/:id" element={<ProductDetail />} />
           <Route path="info" />
           {/* Cart  */}
-          <Route path="cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
           {/* Promotion  */}
           <Route path="promotion" element={<Promotion />} />
           {/* Blog */}
