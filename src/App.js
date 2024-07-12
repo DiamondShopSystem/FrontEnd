@@ -74,6 +74,16 @@ import UserProfile from "./components/client/pages/profile/UserProfile";
 import UserInfoDetail from "./components/client/pages/profile/UserInfoDetail";
 import HistoryOrder from "./components/client/pages/profile/HistoryOrder";
 import MyVoucher from "./components/client/pages/profile/MyVoucher";
+//Guide
+import SizeGuidePage from "./components/client/pages/guide/SizeGuidePage";
+import SizeRingGuide from "./components/client/pages/guide/SizeRingGuide";
+import SizeNecklaceGuide from "./components/client/pages/guide/SizeNecklaceGuide";
+import SizeBraceletGuide from "./components/client/pages/guide/SizeBraceletGuide";
+// Blog
+import Blog from './components/client/pages/blog/Blog'
+import BlogDiamondTips from "./components/client/pages/blog/BlogDiamondTips";
+import BlogFAQs from "./components/client/pages/blog/BlogFAQs";
+import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 
 function App() {
   return (
@@ -90,19 +100,31 @@ function App() {
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path=":id" element={<ProductDetail />} />
           <Route element={<RequireAuth />}>
-            <Route path="info"/>
-            {/* Cart  */}
-            <Route path="cart" element={<Cart />} />
+            <Route path="info" />
+            
           </Route>
+          {/* Cart  */}
+          <Route path="cart" element={<Cart />} />
 
           {/* Promotion  */}
           <Route path="promotion" element={<Promotion />} />
+          {/* Blog */}
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/diamond-tips" element={<BlogDiamondTips />} />
+          <Route path="blog/faqs" element={<BlogFAQs />} />
+          <Route path="blog/diamond-price" element={<BlogDiamondPrice />} />
+          {/* User */}
           <Route path="user/" element={<UserProfile />}>
             <Route path="info" element={<UserInfoDetail />} />
             <Route path="voucher" element={<MyVoucher />} />
             <Route path="history-order" element={<HistoryOrder />} />
           </Route>
         </Route>
+        {/* Guide Page */}
+        <Route path="size-guide" element={<SizeGuidePage />} />
+        <Route path="size-guide/ring" element={<SizeRingGuide />} />
+        <Route path="size-guide/bracelet" element={<SizeBraceletGuide />} />
+        <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
 
         {/* Admin Path  */}
         <Route path="/admin/" element={<LayoutOutlet />}>
@@ -113,9 +135,9 @@ function App() {
           <Route path="forgotpassword/reset" element={<AdminForgotPasswordReset />} />
           {/* Dashboard  */}
           <Route element={<AdminRequireAuth />}>
-            <Route path="dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
+            
           </Route>
-
+          <Route path="dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
 
         </Route>
 

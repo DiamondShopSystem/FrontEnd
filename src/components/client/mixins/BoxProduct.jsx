@@ -8,21 +8,22 @@ const BoxProduct = ({ product }) => {
 
     return (
         <div className='boxproduct'>
+            <Link to={`/${_id}`} style={{color: 'black'}} >
             <div className='boxproduct__cover'>
-                <Link to={`/${_id}`} >
+                
                     <img className='boxproduct__image' src={thumbnail} alt='Ảnh' height='auto' width='220px' />
-                </Link>
+                
             </div>
             <div className='boxproduct__cover'>
-                <Link to={`/${_id}`} style={{ color: 'black' }}>
                     <h4 className='boxproduct__title'>{title}</h4>
-                </Link>
+                
                 <div className='boxproduct__price'>
                     <div >
                         <span >{price} VND</span><br />
                     </div>
                 </div>
             </div>
+            </Link>
         </div>
     )
 }

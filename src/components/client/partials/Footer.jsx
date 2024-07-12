@@ -42,7 +42,7 @@ const Footer = () => {
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Dịch vụ khách hàng</h4>
-                            <NavLink to="/test" className="nav-link ">Hướng dẫn đo size trang sức</NavLink>
+                            <NavLink to="/size-guide" className="nav-link ">Hướng dẫn đo size trang sức</NavLink>
                             <NavLink to="/test1" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
                             <NavLink to="/jewelry-guide" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
                         </Nav>
