@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import '../../styles/Category.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button, Form, Input, Radio } from 'antd';
 import { useParams } from 'react-router-dom';

@@ -8,7 +8,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import GrainIcon from '@mui/icons-material/Grain';
-import '../../styles/SizeRingGuide.css'
+// import '../../styles/SizeRingGuide.css'
 import Footer from '../../partials/Footer.jsx';
 import ScrollToTopButton from '../ScrollToTopButton.jsx';
 

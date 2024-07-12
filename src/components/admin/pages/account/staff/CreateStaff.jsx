@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../../styles/Category.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Form, Input, Radio, Select } from 'antd';
 import { TreeSelect, message, Upload } from 'antd';
@@ -9,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import "../../../styles/Content.css";
+
 
 
 const CreateStaff = () => {
@@ -105,7 +104,7 @@ const CreateStaff = () => {
                             <Radio value={"inactive"}>Dừng hoạt động</Radio>
                         </Radio.Group>
                     </div>
-                    <Form.Item className='admin__button--create'>
+                    <Form.Item style={{marginTop: '20px'}}>
                         <Button
                             variant="primary"
                             type='submit'

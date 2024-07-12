@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
-import '../../styles/Dashboard.css';
+import "../../styles/Admin.css";
 import axios from 'axios';
 
 function Home() {

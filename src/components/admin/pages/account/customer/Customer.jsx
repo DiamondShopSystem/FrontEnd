@@ -9,7 +9,6 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../../styles/Account.css';
 
 const Customer = () => {
     const { Search } = Input;

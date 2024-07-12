@@ -1,7 +1,6 @@
 import { Menu } from "antd";
 import { DashboardOutlined, BarsOutlined, UserOutlined, ShoppingCartOutlined, KeyOutlined } from '@ant-design/icons';
 import { IoDiamond } from "react-icons/io5";
-import '../styles/MenuList.css';
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";

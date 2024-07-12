@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import '../../styles/Category.css';
 import { Container} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -25,7 +24,7 @@ const DetailProduct = (req, res) => {
 
     return (
         <>
-            <Container className='admindetailcategory__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1 className='mb-4'>Chi tiết sản phẩm</h1>
                 <h3 className='mb-4'>Tên sản phẩm: {product.title}</h3>
                 <h4 className='mb-4'>Danh mục: {category.title}</h4>

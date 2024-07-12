@@ -85,6 +85,7 @@ import BlogDiamondTips from "./components/client/pages/blog/BlogDiamondTips";
 import BlogFAQs from "./components/client/pages/blog/BlogFAQs";
 import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 
+import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
   return (
     <>
@@ -95,22 +96,13 @@ function App() {
         <Route path="login/verify/otp" element={<VerifyOtp />} />
         <Route element={<ClientLayout />}>
           {/* Home  */}
-          <Route path="" element={<Home />} />
+          <Route path="/" element={<Home />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path=":id" element={<ProductDetail />} />
-          <Route element={<RequireAuth />}>
-            <Route path="info" />
-            
-          </Route>
+          <Route path="info" />
           {/* Cart  */}
           <Route path="cart" element={<Cart />} />
-          {/* <Route element={<RequireAuth />}> */}
-          <Route path="/info" />
-          {/* Cart  */}
-          <Route path="/cart" element={<Cart />} />
-          {/* </Route> */}
-
           {/* Promotion  */}
           <Route path="promotion" element={<Promotion />} />
           {/* Blog */}
@@ -128,22 +120,34 @@ function App() {
         <Route path="size-guide/ring" element={<SizeRingGuide />} />
         <Route path="size-guide/bracelet" element={<SizeBraceletGuide />} />
         <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
-
         {/* Admin Path  */}
-        <Route path="">
+        <Route path="/admin">
+
           {/* Authen */}
           <Route path="login" element={<AdminLogin />} />
           <Route path="forgotpassword" element={<AdminForgotPassword />} />
           <Route path="forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
           <Route path="forgotpassword/reset" element={<AdminForgotPasswordReset />} />
           {/* Dashboard  */}
-          <Route element={<AdminRequireAuth />}>
-            
+          <Route element={<AdminLayout />} >
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="product" element={<Product />} />
+            <Route path="product/create" element={<CreateProduct />} />
+            <Route path="product/edit/:id" element={<UpdateProduct />} />
+            <Route path="product/detail/:id" element={<DetailProduct />} />
+            <Route path="category" element={<Category />} />
+            <Route path="category/create" element={<CreateCategory />} />
+            <Route path="category/edit/:id" element={<UpdateCategory />} />
+            <Route path="category/detail/:id" element={<DetailCategory />} />
+            <Route path="account">
+              <Route path="staff" element={<Staff />} />
+              <Route path="staff/create" element={<CreateStaff />} />
+              <Route path="staff/edit/:id" element={<UpdateStaff />} />
+              <Route path="staff/detail/:id" element={<DetailStaff />} />
+              <Route path="customer" element={<Cusomter />} />
+            </Route>
           </Route>
-          <Route path="dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
-
         </Route>
-
       </Routes >
 
     </>
