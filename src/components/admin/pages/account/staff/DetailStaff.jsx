@@ -20,16 +20,17 @@ const DetailStaff = () => {
     }, [id]);
 
     return (
-        <Container className='admindetailaccount__container'>
+        <Container style={{ marginTop: '20px' }}>
             <h1 className='mb-4'>Chi tiết tài khoản nhân viên</h1>
-            {/* <img className='ma-4' src={staff.avatar}/>
-            <h3 className='mb-4'>Tên nhân viên: {staff.fullName}</h3> */}
+            <h3 className='mb-4'>Họ và tên: {staff.fullName}</h3>
+            <img className='mb-4' src={staff.avatar} style={{ width: '200px', height: 'auto' }} />
+
             <div className='mb-4'>Email: {staff.email}</div>
-            {/* <div className='mb-4'>Vai trò: {staff.role}</div> */}
+            <div className='mb-4'>Vai trò: {staff.role}</div>
             {
                 staff.status === "active" ?
-                <span className='mb-4'>Trạng thái: <Badge bg="success">Hoạt động</Badge></span> :
-                <span className='mb-4'>Trạng thái: <Badge bg="danger">Dừng hoạt động</Badge></span>
+                    <span className='mb-4'>Trạng thái: <Badge bg="success">Hoạt động</Badge></span> :
+                    <span className='mb-4'>Trạng thái: <Badge bg="danger">Dừng hoạt động</Badge></span>
             }
         </Container>
     );

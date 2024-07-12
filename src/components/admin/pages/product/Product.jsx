@@ -39,9 +39,6 @@ const Product = () => {
     }, [searchQuery, filterStatusQuery, selectedPage]);
 
     useEffect(() => {
-        // setCurrentItems(product.slice(selectedPage * itemsPerPage, (selectedPage + 1) * itemsPerPage));
-        // setPageCount(Math.ceil(product.length / itemsPerPage));
-
         const params = {};
         if (filterStatusQuery) params.status = filterStatusQuery;
         if (searchQuery) params.keyword = searchQuery;

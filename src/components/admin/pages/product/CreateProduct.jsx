@@ -33,13 +33,13 @@ const CreateProduct = () => {
     const [thumbnail, setThumbnail] = useState("");
     // Kích thước (Ni)
     const [size, setSize] = useState("");
-    // Tiêu đề
+
     const [title, setTitle] = useState("");
-    // Trạng thái
+
     const [status, setStatus] = useState("active");
-    // Mô tả
+
     const [description, setDescription] = useState("");
-    // Giá
+
     const [price, setPrice] = useState(1);
     // Preview ảnh
     const [preview, setPreview] = useState("");

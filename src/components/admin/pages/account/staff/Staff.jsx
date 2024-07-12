@@ -8,22 +8,27 @@ import Badge from 'react-bootstrap/Badge';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import ReactPaginate from 'react-paginate';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../../styles/Account.css';
+
 
 const Staff = () => {
     const { Search } = Input;
+    const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
     const [account, setAccount] = useState([]);
     const [filterState, setFilterState] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParams.get("keyword") || "");
     const [inputValue, setInputValue] = useState(searchParams.get("keyword") || "");
     const [filterStatusQuery, setfilterStatusQuery] = useState(searchParams.get("status") || "");
-    const location = useLocation();
+    const [paginationQuery, setPaginationQuery] = useState(searchParams.get("page"));
+    const [pageCount, setPageCount] = useState(0);
+    let limit = 4;
 
     useEffect(() => {
-        fetchData(searchQuery, filterStatusQuery);
-    }, [searchQuery, filterStatusQuery]);
+        fetchData(searchQuery, filterStatusQuery, paginationQuery);
+        console.log(account)
+    }, [searchQuery, filterStatusQuery, paginationQuery]);
 
     useEffect(() => {
         if (location.state && location.state.success) {
@@ -31,24 +36,34 @@ const Staff = () => {
         }
     }, [location.state]);
 
-    const fetchData = (keyword, status) => {
-        axios.get('/admin/account/staff', { params: { keyword, status } })
+    const fetchData = (keyword, status, page) => {
+        axios.get('/admin/account/staff', { params: { keyword, status, page } })
             .then(response => {
-                setAccount(response.data.account); // Ensure `account` is set correctly
-                setFilterState(response.data.filterState || []); // Ensure `filterState` is set correctly
-                console.log('Fetched account:', response.data.account);
-                console.log('Fetched filterState:', response.data.filterState);
+                const total = response.data.total;
+                setPageCount(Math.ceil(total / limit));
+                setAccount(response.data.account);
+                setFilterState(response.data.filterState);
             })
             .catch(error => {
                 console.log(error);
             });
     };
-
+    const handlePageClick = (data) => {
+        const params = {};
+        let currentPage = data.selected + 1;
+        if (filterStatusQuery) params.status = filterStatusQuery;
+        if (searchQuery) params.keyword = searchQuery;
+        if (data && currentPage != 1) params.page = currentPage;
+        setSearchParams(params);
+        setPaginationQuery(currentPage);
+        console.log(currentPage);
+    }
     const onSearch = (value) => {
         try {
             const params = {};
             if (filterStatusQuery) params.status = filterStatusQuery;
             if (value) params.keyword = value;
+            if (paginationQuery && paginationQuery != 1) params.page = paginationQuery;
             setSearchParams(params);
             setSearchQuery(value);
         } catch (error) {
@@ -73,6 +88,7 @@ const Staff = () => {
         const params = {};
         if (status) params.status = status;
         if (searchQuery) params.keyword = searchQuery;
+        if (paginationQuery && paginationQuery != 1) params.page = paginationQuery;
         setSearchParams(params);
         setfilterStatusQuery(status);
     };
@@ -80,7 +96,7 @@ const Staff = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreateAccount__container'>
+            <Container style={{marginTop: '20px'}}>
                 <h1>Danh sách tài khoản nhân viên</h1>
                 <Card className='mb-3'>
                     <Card.Header>Bộ lọc và tìm kiếm</Card.Header>
@@ -88,7 +104,7 @@ const Staff = () => {
                         <Row>
                             <Col xs="6" >
                                 {
-                                    filterState.map((item) => (
+                                    filterState?.map((item) => (
                                         <Button
                                             key={item.status}
                                             onClick={() => handleFilterStatusChange(item.status)}
@@ -130,7 +146,7 @@ const Staff = () => {
                                 <tr>
                                     <th>STT</th>
                                     <th>Avatar</th>
-                                    <th>Tên</th>
+                                    <th>Họ và tên</th>
                                     <th>Email</th>
                                     <th>Vai trò</th>
                                     <th>Trạng thái</th>
@@ -138,22 +154,14 @@ const Staff = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {account.map((item, index) => (
+                                {account?.map((item, index) => (
                                     <tr key={item._id}>
                                         <td>{index + 1}</td>
                                         <td>
-                                            {item.avatar ? (
-                                                <img
-                                                    src={item.avatar}
-                                                    alt="avatar"
-                                                    style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-                                                />
-                                            ) : (
-                                                <div></div>
-                                            )}
+                                            {item.avatar === "" ? <div></div> : <img style={{ width: '100px', height: 'auto' }} alt='avatar' src={item.avatar} />}
                                         </td>
                                         <td>
-                                           {item.fullName}
+                                            {item.fullName}
                                         </td>
                                         <td>{item.email}</td>
                                         <td>{item.role}</td>
@@ -189,6 +197,27 @@ const Staff = () => {
                                 ))}
                             </tbody>
                         </table>
+                        <div className='center'>
+                            <ReactPaginate
+                                previousLabel={'Trang trước'}
+                                nextLabel={'Trang sau'}
+                                breakLabel={"..."}
+                                pageCount={pageCount} // Thay bằng tổng số trang theo sản phảm6
+                                marginPagesDisplayed={3}
+                                pageRangeDisplayed={4}
+                                onPageChange={handlePageClick}
+                                containerClassName='pagination'
+                                pageClassName='page-item'
+                                pageLinkClassName='page-link'
+                                previousClassName='page-item'
+                                previousLinkClassName='page-link'
+                                nextClassName='page-item'
+                                nextLinkClassName='page-link'
+                                breakClassName='page-item'
+                                breakLinkClassName='page-link'
+                                activeClassName='active'
+                            />
+                        </div>
                     </Card.Body>
                 </Card>
             </Container>
