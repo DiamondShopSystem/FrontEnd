@@ -24,7 +24,7 @@ const Footer = () => {
                                     fontWeight: 500,
                                     color: 'black'
                                 }}>© TrumKimCuong. All rights reserved.</p>
-                                <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh</p>
+                                <p>Đại học FPT, CNC Quận 9</p>
                                 <p>ĐT: 028 39951703 - Fax: 028 3995 1702</p>
                             </div>
 

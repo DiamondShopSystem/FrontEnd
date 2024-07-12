@@ -1,0 +1,105 @@
+.boxproductdetail__content {
+    width: 70%;
+}
+.boxproductdetail__image {
+    width: 65%;
+    height: auto;
+    margin-left: 5rem;
+}
+.boxproductdetail__content-header h2 {
+    font-family: 'UVFDidot';
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+.boxproductdetail__content-header p {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #F44336;
+}
+.boxproductdetail__content-center {
+    padding: 0;
+    border-top: 1px dashed #d1d1d1;
+    border-bottom: 1px dashed #d1d1d1;
+    margin-bottom: 0;
+}
+.boxproductdetail__content-center p {
+    font-size: 1rem;
+    margin: 0.625rem 0;
+    padding-left: 12px;
+}
+
+.boxproductdetail__content-footer {
+    margin-top: 20px;
+}
+
+.content-footer__size {
+    margin-bottom: 10px;
+}
+
+.size-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.size-selector__button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 1px solid black; 
+    font-size: 16px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 30px;
+}
+
+.size-selector__button:after {
+    content: "▾";
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.size-selector__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.size-selector__item {
+    padding: 8px;
+    cursor: pointer;
+    text-align: center;
+    width: 3rem;
+    border: 1px solid #d7d7d7;
+}
+
+.size-selector__item:hover {
+    background-color: black;
+    color: white;
+}
+.boxproductdetail__content-footer .content-footer__link {
+    display: inline-block;
+    margin-left: 20px;
+    text-decoration: underline;
+    font-size: 14px;
+    color: black;
+}
+.boxproductdetail__content-footer .content-footer__link:hover {
+    color: gray;
+}
+.addToCart__button {
+    margin-top: 10px;
+    width: 410px;
+    height: 40px;
+    background-color: black;
+    color: white;
+}

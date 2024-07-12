@@ -1,50 +1,44 @@
 import { FaPencil } from "react-icons/fa6";
-import { FaEnvelope } from "react-icons/fa";
 import "../../styles/VerifyOtp.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
 import { useState, useContext } from "react";
 import 'react-phone-number-input/style.css'
-import { GetResultContext } from "../../../helpers/GetResultContext";
+import { GetResultContext } from "../../../../context/GetResultProvider";
+import useAuth from "../../../../hooks/useAuth";
 import axios from "axios";
 
 
 const VerifyOtp = () => {
+    const { setAuth } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const { result, phoneNumber } = useContext(GetResultContext);
     const [error, setError] = useState("");
     const [otp, setOtp] = useState("");
 
 
+    //Submit xác nhận OTP
     const verifyOtp = async (e) => {
-        console.log(otp);
         e.preventDefault();
         setError("");
         if (otp === "" || otp === null) return setError("OTP không chính xác");;
         try {
             await result.confirm(otp);
-            const configuration = {
-                method: "post",
-                url: "user/login",
-                data: {
-                    phoneNumber
-                },
-            };
-            axios(configuration)
-                .then((result) => {
-                    console.log(result);
-                    const checkResult = result.data;
-                    console.log(checkResult);
-                    if (checkResult.code === 200) {
-                        navigate('/');
-                    } else {
-                        setError(result.data.msg)
-                    }
-                })
-                .catch((error) => { console.log(error); })
-
+            const response = await axios.post("/login/verify/otp",
+                JSON.stringify({ phoneNumber }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data))
+            const accessToken = response?.data?.accessToken;
+            setAuth({phoneNumber, accessToken });
+            navigate(from, { replace: true });
         } catch (err) {
             return setError("OTP không chính xác")
         }
@@ -55,17 +49,17 @@ const VerifyOtp = () => {
             <div className="verify_otp_wrapper">
                 <div className=" flex justify-center grow bg-slate-50 dark:bg-navy-900">
                     <main className="main flex w-full flex-col items-center bg-white dark:bg-navy-700 lg:max-w-md">
-                        <img className="logo" src="https://haianhuniform.com/wp-content/uploads/2022/04/logo-ao-lop-hinh-kim-cuong-den-trang.jpg" alt="new" />
+                        <img className="verify-otp_logo " src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_FPT_Education.png" alt="Logo" />
                         <div className="flex w-full max-w-sm grow flex-col justify-center p-5">
                             <div className="verify_otp_header">
                                 <div className="text-center">
                                     <div className="mt-4">
                                         <h2 className="text-2xl font-semibold text-slate-600 dark:text-navy-100">Xác thực</h2>
                                         <p className="text-slate-400 dark:text-navy-300">Mã xác thực của bạn đã được gửi tới số điện thoại</p>
-                                        <a href="/user/login" className="text-blue-400  focus:outline-none font-light py-2 px-4 rounded inline-flex items-center"  >
+                                        <Link href="/login" className="text-blue-400  focus:outline-none font-light py-2 px-4 rounded inline-flex items-center"  >
                                             <span>{phoneNumber}</span>
                                             <FaPencil className="mg-1" />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

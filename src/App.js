@@ -57,15 +57,23 @@ import VerifyOtp from "./components/client/pages/auth/VerifyOtp";
 import Home from "./components/client/pages/home/Home";
 
 //Product
-import ProductPage from "./components/client/pages/product/ProductPage";
-import ProductDetail from "./components/client/pages/product/ProductDetails";
+import ProductsPage from "./components/client/pages/product/ProductsPage";
+import ProductDetail from "./components/client/pages/product/ProductDetail";
+
+//Cart
+import Cart from "./components/client/pages/cart/Cart";
 
 //Promotion
 import Promotion from "./components/client/pages/promotion/Promotion";
-
-
-
-
+import AdminRequireAuth from "./components/admin/RequireAuth";
+import LayoutOutlet from "./components/admin/layouts/LayoutOutlet";
+import ClientLayout from "./components/client/layouts/ClientLayout";
+import RequireAuth from "./components/client/pages/RequireAuth";
+//User
+import UserProfile from "./components/client/pages/profile/UserProfile";
+import UserInfoDetail from "./components/client/pages/profile/UserInfoDetail";
+import HistoryOrder from "./components/client/pages/profile/HistoryOrder";
+import MyVoucher from "./components/client/pages/profile/MyVoucher";
 
 function App() {
   return (
@@ -73,53 +81,67 @@ function App() {
       <Routes>
         {/* Client Path  */}
         {/* Authen  */}
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/login/verify/otp" element={<VerifyOtp />} />
-        {/* Home  */}
-        <Route path="/" element={<Home />} />
-        {/* Product  */}
-        <Route path="/products/:slug" element={<ProductPage />} />
-        <Route path="/products/:slug/:id" element={<ProductDetail />} />
-        {/* Cart  */}
-        {/* Checkout  */}
-        {/* Promotion  */}
-        <Route path="/promotion" element={<Promotion />} />
-        {/* Admin Path  */}
-        {/* Authen */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/forgotpassword" element={<AdminForgotPassword />} />
-        <Route path="/admin/forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
-        <Route path="/admin/forgotpassword/reset" element={<AdminForgotPasswordReset />} />
-        {/* Profile  */}
-        <Route path="/admin/profile" element={<AdminLayout><AdminProfile /></AdminLayout>} />
-        {/* Dashboard  */}
-        <Route path="/admin/dashboard" element={<AdminLayout><Dashboard /></AdminLayout>} />
-        {/* Product  */}
-        <Route path="/admin/product" element={<AdminLayout><Product /></AdminLayout>} />
-        <Route path="/admin/product/create" element={<AdminLayout><CreateProduct /></AdminLayout>} />
-        <Route path="/admin/product/edit/:id" element={<AdminLayout><UpdateProduct /></AdminLayout>} />
-        <Route path="/admin/product/detail/:id" element={<AdminLayout><DetailProduct /></AdminLayout>} />
-        {/* Category  */}
-        <Route path="/admin/category" element={<AdminLayout><Category /></AdminLayout>} />
-        <Route path="/admin/category/create" element={<AdminLayout><CreateCategory /></AdminLayout>} />
-        <Route path="/admin/category/edit/:id" element={<AdminLayout><UpdateCategory /></AdminLayout>} />
-        <Route path="/admin/category/detail/:id" element={<AdminLayout><DetailCategory /></AdminLayout>} />
-        {/* Account Staff  */}
-        <Route path="/admin/account/staff" element={<AdminLayout><Staff /></AdminLayout>} />
-        <Route path="/admin/account/staff/create" element={<AdminLayout><CreateStaff /></AdminLayout>} />
-        <Route path="/admin/account/staff/edit/:id" element={<AdminLayout><UpdateStaff /></AdminLayout>} />
-        <Route path="/admin/account/staff/detail/:id" element={<AdminLayout><DetailStaff /></AdminLayout>} />
-        {/* Account Cusomter  */}
-        <Route path="/admin/account/customer" element={<AdminLayout><Cusomter /></AdminLayout>} />
-        <Route path="/admin/account/customer/create" element={<AdminLayout><CreateCusomter /></AdminLayout>} />
-        <Route path="/admin/account/customer/edit/:id" element={<AdminLayout><UpdateCustomer /></AdminLayout>} />
-        <Route path="/admin/account/customer/detail/:id" element={<AdminLayout><DetailCustomer /></AdminLayout>} />
-        {/* Order */}
-        <Route path="/admin/order" element={<AdminLayout><Order /></AdminLayout>} />
-        {/* Role */}
-        <Route path="/admin/role" element={<AdminLayout><Role /></AdminLayout>} />
+        <Route path="login" element={<UserLogin />} />
+        <Route path="login/verify/otp" element={<VerifyOtp />} />
+        <Route element={<ClientLayout />}>
+          {/* Home  */}
+          <Route path="" element={<Home />} />
+          {/* Product  */}
+          <Route path="products/:slug/" element={<ProductsPage />} />
+          <Route path=":id" element={<ProductDetail />} />
+          {/* <Route element={<RequireAuth />}> */}
+          <Route path="/info" />
+          {/* Cart  */}
+          <Route path="/cart" element={<Cart />} />
+          {/* </Route> */}
 
-      </Routes>
+          {/* Promotion  */}
+          <Route path="promotion" element={<Promotion />} />
+        </Route>
+
+        {/* Admin Path  */}
+        <Route path="">
+          {/* Authen */}
+          <Route path="admin/login" element={<AdminLogin />} />
+          <Route path="admin/forgotpassword" element={<AdminForgotPassword />} />
+          <Route path="admin/forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
+          <Route path="admin/forgotpassword/reset" element={<AdminForgotPasswordReset />} />
+          <Route path="admin" element={<AdminLayout />} >
+            {/* Dashboard  */}
+            {/* <Route element={<AdminRequireAuth />}> */}
+              <Route path="dashboard" element={<Dashboard />} />
+              {/* Profile  */}
+              <Route path="profile" element={<AdminProfile />} />
+
+              {/* Product  */}
+              <Route path="product" element={<Product />} />
+              <Route path="product/create" element={<CreateProduct />} />
+              <Route path="product/edit/:id" element={<UpdateProduct />} />
+              <Route path="product/detail/:id" element={<DetailProduct />} />
+              {/* Category  */}
+              <Route path="category" element={<Category />} />
+              <Route path="category/create" element={<CreateCategory />} />
+              <Route path="category/edit/:id" element={<UpdateCategory />} />
+              <Route path="category/detail/:id" element={<DetailCategory />} />
+              {/* Account Staff  */}
+              <Route path="account/staff" element={<Staff />} />
+              <Route path="account/staff/create" element={<CreateStaff />} />
+              <Route path="account/staff/edit/:id" element={<UpdateStaff />} />
+              <Route path="account/staff/detail/:id" element={<DetailStaff />} />
+              {/* Account Cusomter  */}
+              <Route path="account/customer" element={<Cusomter />} />
+              <Route path="account/customer/create" element={<CreateCusomter />} />
+              <Route path="account/customer/edit/:id" element={<UpdateCustomer />} />
+              <Route path="account/customer/detail/:id" element={<DetailCustomer />} />
+              {/* Order */}
+              <Route path="order" element={<Order />} />
+              {/* Role */}
+              <Route path="role" element={<Role />} />
+            {/* </Route> */}
+          </Route>
+        </Route>
+
+      </Routes >
 
     </>
   );

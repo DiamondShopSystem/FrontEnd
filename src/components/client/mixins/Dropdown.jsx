@@ -1,7 +1,5 @@
 import React from 'react'
 import MenuItems from './MenuItems';
-// Import cùng Navbar.css
-import '../../../styles/Navbar.css';
 
 const Dropdown = ({ submenus, dropdown, depthLevel }) => {
     depthLevel = depthLevel + 1;

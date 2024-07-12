@@ -1,50 +1,18 @@
 import React from 'react';
-import { Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
-import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
-import '../styles/UserProfile.css';
+import { Link } from 'react-router-dom';
+import '../../styles/UserProfileSider.css';
 
-const UserProfile = () => {
-  const location = useLocation();
-
+const UserProfileSider = () => {
   return (
-    <div>
-      {/* Header */}
-      <Navbar bg="white" expand="lg" style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
-      <Navbar.Brand as={NavLink} to="/" style={{ paddingLeft: '50px', width: '252px', fontSize: '20px', fontWeight: 'bold', color: '#083A6D' }}>
-            Trùm Kim Cương
-          </Navbar.Brand>
-        <Container style={{marginLeft: 0}}>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/" style={{fontWeight: 'bold', color: '#3333FF'}}>Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      <Container fluid>
-        <Row>
-          {/* Sidebar */}
-          <Col md={2} className="bg-light" style={{ height: '100vh', position: 'fixed', width: '252px' }}>
-            <Nav defaultActiveKey="/info" className="flex-column">
-              <NavLink to="/user/info" className="nav-link" activeClassName="active">Thông tin tài khoản</NavLink>
-              <NavLink to="/user/voucher" className="nav-link" activeClassName="active">Mã giảm của tôi</NavLink>
-              <NavLink to="/user/order" className="nav-link" activeClassName="active">Lịch sử mua hàng</NavLink>
-              <NavLink to="/user/wishlist" className="nav-link" activeClassName="active">Sản phẩm bạn quan tâm</NavLink>
-              <NavLink to="/user/login" className="nav-link text-danger" activeClassName="active">Đăng xuất</NavLink>
-            </Nav>
-          </Col>
-
-          {/* Content */}
-          <Col md={10} style={{ marginLeft: '252px', backgroundClip: '#f5f5f5'}}>
-            <Outlet />
-          </Col>
-        </Row>
-      </Container>
+    <div className="userprofilesider__sidebar">
+      <ul>
+        <li><Link to="/user/info">Thông tin tài khoản</Link></li>
+        <li><Link to="/user/voucher">Mã giảm của tôi</Link></li>
+        <li><Link to="/user/history-order">Lịch sử mua hàng</Link></li>
+        <li><Link to="/user/logout">Đăng xuất</Link></li>
+      </ul>
     </div>
   );
 };
 
-export default UserProfile;
+export default UserProfileSider;

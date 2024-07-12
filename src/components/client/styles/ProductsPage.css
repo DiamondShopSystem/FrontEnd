@@ -1,0 +1,19 @@
+.productspage__container .productspage__gird {
+    display: grid !important;
+    display: -ms-grid;
+    grid-auto-flow: dense;
+    grid-row-gap: 8px;
+    grid-column-gap: 8px;
+    overflow: visible;
+    height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+}
+.productspage__container .container .productspage__gird .boxproduct {
+    width: 100%;
+    height: 100%;
+}
+.productspage__container .container {
+    max-width: 1220px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

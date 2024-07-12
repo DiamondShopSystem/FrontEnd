@@ -1,0 +1,50 @@
+.userinfodetail__container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .userinfodetail__title {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: solid 0.1px;
+    color: gray;
+  }
+  
+  .userinfodetail__form-group {
+    margin-bottom: 15px;
+  }
+  
+  .userinfodetail__form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: gray;
+  }
+  
+  .userinfodetail__form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    border-width: 1px;
+    box-sizing: border-box;
+    border-color: #cbd5e1;
+  }
+  
+  .userinfodetail__button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

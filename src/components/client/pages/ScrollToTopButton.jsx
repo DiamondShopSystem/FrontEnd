@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import '../client/styles/ScrollToTopButton.css';
 
 const ScrollToTopButton = () => {
     const [visible, setVisible] = useState(false);
@@ -29,7 +28,7 @@ const ScrollToTopButton = () => {
     }, []);
 
     return (
-        <div className="scroll-to-top">
+        <div style={{position:'fixed', bottom: '20px', right: '20px', zIndex: '1000'}}>
             {visible && 
                 <Button 
                     variant="contained" 
