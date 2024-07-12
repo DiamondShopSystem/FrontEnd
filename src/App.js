@@ -116,8 +116,6 @@ function App() {
           {/* User */}
           <Route path="user/" element={<UserProfile />}>
             <Route path="info" element={<UserInfoDetail />} />
-            <Route path="voucher" element={<MyVoucher />} />
-            <Route path="history-order" element={<HistoryOrder />} />
           </Route>
         </Route>
         {/* Guide Page */}
@@ -127,7 +125,6 @@ function App() {
         <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
 
         {/* Admin Path  */}
-        <Route path="/admin/" element={<LayoutOutlet />}>
           {/* Authen */}
           <Route path="login" element={<AdminLogin />} />
           <Route path="forgotpassword" element={<AdminForgotPassword />} />
