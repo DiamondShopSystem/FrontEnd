@@ -1,0 +1,10 @@
+.admin__container{
+    margin-top: 20px;
+}
+
+.admin__button--create{
+    padding-top: 2rem;
+}
+.admin__button--create button{
+    margin-bottom: 20px;
+}

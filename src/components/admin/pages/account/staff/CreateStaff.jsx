@@ -9,68 +9,50 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import "../../../styles/Content.css";
 
-const props = {
-    name: 'file',
-    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-    headers: {
-        authorization: 'authorization-text',
-    },
-    onChange(info) {
-        if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-};
 
 const CreateStaff = () => {
-    const navigate = useNavigate(); // Hook useNavigate
-    const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState("");
-    const [stt, setStt] = useState("");
+    const {
+        reset,
+    } = useForm();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [preview, setPreview] = useState("");
     const [role, setRole] = useState("");
     const [status, setStatus] = useState("active");
 
-    const { reset, setValue } = useForm();
 
+    // Chọn trạng thái hoạt động
     const onChangeStatus = (e) => {
         console.log('radio checked', e.target.value);
         setStatus(e.target.value);
     };
+    // Chọn ảnh
+    const onChangeImage = (e) => {
+        console.log(e.target.files);
+        setAvatar(e.target.files[0]);
+        setPreview(URL.createObjectURL(e.target.files[0]));
+    }
 
-    const handleAvatarUpload = (info) => {
-        if (info.file.status === 'done') {
-            setAvatar(info.file.response.url);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    };
-
-    const addStaffAccount = async (values) => {
+    const addAccountStaff = async (values) => {
         const configuration = {
             method: "post",
             url: "admin/account/staff/create",
+            headers: { "Content-Type": "multipart/form-data" },
             data: {
-                name: values.name,
+                email,
+                password,
+                fullName,
                 avatar,
-                stt: values.stt,
-                email: values.email,
-                role: values.role,
-                status,
+                status
             },
         };
-
         await axios(configuration)
             .then((result) => {
-                console.log(result);
-                const checkResult = result.data;
-                console.log(checkResult);
                 reset();
                 navigate('/admin/account/staff', { state: { success: true } });
 
@@ -84,48 +66,50 @@ const CreateStaff = () => {
     return (
         <>
             <ToastContainer />
-            <Container className='admincreatestaffaccount__container'>
+            <Container className='admin__container'>
                 <h1>Tạo mới tài khoản nhân viên</h1>
-                <Form onFinish={addStaffAccount} size='large' layout='vertical' labelCol={{ span: 4 }}>
-                    <Form.Item name='name' label="Tên" style={{ width: '100%' }}>
-                        <Input type='text' onChange={(e) => setName(e.target.value)} value={name}/>
-                    </Form.Item>
-                    <div className='mt-2 mb-4'>
-                        <div className="App">
-                            <div className='mb-2'>Ảnh</div>
-                            <input name="thumbnail"
-                                accept="image/*" type="file" />
-                            <div style={{ marginTop: "5px" }}>
-                                <img style={{ width: "100px", height: "auto" }} src={avatar} />
-                            </div>
-                        </div>
-                    </div>
-                    <Form.Item name='stt' label="STT" style={{ width: '100%' }}>
-                        <Input type='text' onChange={(e) => setStt(e.target.value)} value={stt}/>
-                    </Form.Item>
+                <Form onFinish={addAccountStaff} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='email' label="Email" style={{ width: '100%' }}>
-                        <Input type='email' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                        <Input type='email' onChange={(e) => setEmail(e.target.value)} value={email} />
                     </Form.Item>
-                    <Form.Item name='role' label="Vai trò" style={{ width: '100%' }}>
+                    <Form.Item name='password' label="Mật khẩu" style={{ width: '100%' }}>
+                        <Input type='password' onChange={(e) => setPassword(e.target.value)} value={password} />
+                    </Form.Item>
+                    <Form.Item name='fullName' label="Họ và Tên" style={{ width: '100%' }}>
+                        <Input type='text' onChange={(e) => setFullName(e.target.value)} value={fullName} />
+                    </Form.Item>
+                    {/* <Form.Item name='role' label="Vai trò" style={{ width: '100%' }}>
                         <Select
                             onChange={(value) => setRole(value)}
                             placeholder="Chọn vai trò"
                             options={[
-                                { value: 'admin', label: 'Admin' },
-                                { value: 'editor', label: 'Editor' },
-                                { value: 'viewer', label: 'Viewer' }
+                                { value: 'salestaff', label: 'Nhân viên bán hàng' },
+                                { value: 'deliverystaff', label: 'Nhân viên giao hàng' },
+                                { value: 'manager', label: 'Quản lí' }
                             ]}
                         />
-                    </Form.Item>
-                    <Radio.Group onChange={onChangeStatus} value={status}>
-                        <Radio value={"active"}>Hoạt động</Radio>
-                        <Radio value={"inactive"}>Dừng hoạt động</Radio>
-                    </Radio.Group>
-                    <Form.Item className='admincreatestaffaccount__wrapperbtn'>
+                    </Form.Item> */}
+                    <div className='mt-2 mb-4'>
+                        <div className="App">
+                            <div className='mb-2'>Ảnh</div>
+                            <input name="avatar"
+                                accept="image/*" type="file" onChange={onChangeImage} />
+                            <div style={{ marginTop: "5px" }}>
+                                {preview && <img style={{ width: "100px", height: "auto" }} src={preview} />}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-2">
+                        <Radio.Group onChange={onChangeStatus} value={status}>
+                            <Radio value={"active"}>Hoạt động</Radio>
+                            <Radio value={"inactive"}>Dừng hoạt động</Radio>
+                        </Radio.Group>
+                    </div>
+                    <Form.Item className='admin__button--create'>
                         <Button
                             variant="primary"
                             type='submit'
-                            >Tạo mới</Button>
+                        >Tạo mới</Button>
                     </Form.Item>
                 </Form>
             </Container>
