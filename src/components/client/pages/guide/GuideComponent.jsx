@@ -4,9 +4,9 @@ import Header from '../../partials/Header.jsx'; // Import Header component
 import Footer from '../../partials/Footer.jsx'; // Import Header component
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'; // Import Material-UI components
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import '../../styles/BlogLayout.css'
+// import '../../styles/BlogLayout.css'
 
-const BlogLayout = ({ articles }) => {
+const GuideComponent = ({ articles }) => {
     return (
         <>
             <Header />
@@ -15,7 +15,7 @@ const BlogLayout = ({ articles }) => {
                     {articles.map(article => (
                         <Grid item xs={12} md={6} key={article.id}>
                             <Card className="article-card">
-                                <Link to={`/article/${article.id}`} className="link">
+                                <Link to={`${article.slug}`} className="link">
                                     <CardMedia
                                         component="img"
                                         image={article.image}
@@ -24,7 +24,7 @@ const BlogLayout = ({ articles }) => {
                                     />
                                 </Link>
                                 <CardContent>
-                                    <Link to={`/article/${article.id}`} className="link">
+                                    <Link to={`${article.slug}`} className="link">
                                         <Typography className="title" gutterBottom variant="h5" component="div">
                                             {article.title}
                                         </Typography>
@@ -49,4 +49,4 @@ const BlogLayout = ({ articles }) => {
     );
 }
 
-export default BlogLayout;
+export default GuideComponent;

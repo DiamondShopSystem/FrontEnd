@@ -4,12 +4,13 @@ import { Container } from 'react-bootstrap'
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import GrainIcon from '@mui/icons-material/Grain';
-import '../../styles/SizeRingGuide.css'
+// import '../../styles/SizeRingGuide.css'
 import Footer from '../../partials/Footer.jsx';
-import ScrollToTopButton from '../../../helpers/ScrollToTopButton.jsx';
+import ScrollToTopButton from '../ScrollToTopButton.jsx';
 
 const SizeRingGuide = () => {
     return (
@@ -19,19 +20,21 @@ const SizeRingGuide = () => {
                 <div className='breadcrumbs'>
                 <Breadcrumbs aria-label="breadcrumb">
                         <Link
+                            component={RouterLink}
                             underline="hover"
                             sx={{ display: 'flex', alignItems: 'center' }}
                             color="inherit"
-                            href="/"
+                            to="/"
                         >
                             <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                             Trang chủ
                         </Link>
                         <Link
+                            component={RouterLink}
                             underline="hover"
                             sx={{ display: 'flex', alignItems: 'center' }}
                             color="inherit"
-                            href="/test"
+                            to="/size-guide"
                         >
                             <DiamondIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                             Kiến thức trang sức
@@ -171,4 +174,4 @@ const SizeRingGuide = () => {
     )
 }
 
-export default SizeRingGuide
+export default SizeRingGuide;

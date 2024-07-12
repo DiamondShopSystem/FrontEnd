@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import '../../styles/Category.css';
 import { Container } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 import Button from 'react-bootstrap/Button';

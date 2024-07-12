@@ -202,7 +202,7 @@ const Staff = () => {
                                 previousLabel={'Trang trước'}
                                 nextLabel={'Trang sau'}
                                 breakLabel={"..."}
-                                pageCount={pageCount} // Thay bằng tổng số trang theo sản phảm6
+                                pageCount={pageCount} // Thay bằng tổng số trang theo sản phẩm
                                 marginPagesDisplayed={3}
                                 pageRangeDisplayed={4}
                                 onPageChange={handlePageClick}

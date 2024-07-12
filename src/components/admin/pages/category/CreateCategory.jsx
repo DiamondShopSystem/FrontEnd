@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/Category.css';
 import { Container } from 'react-bootstrap';
 import { Form, Input, Radio } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';

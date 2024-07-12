@@ -10,7 +10,7 @@ const Header = () => {
         <header className="header">
             <div className="header__top">
                 <div className="header__account" >
-                    <Link style={{ color: 'black' }} to={'/customer/info'}><span className="header__account-info"><CiUser /> Tài Khoản của tôi</span></Link>
+                    <Link style={{ color: 'black' }} to={'/user/info'}><span className="header__account-info"><CiUser /> Tài Khoản của tôi</span></Link>
 
                     <Link style={{ color: 'black' }} to={'/cart'}><span className="header__cart">🛒 Giỏ hàng</span></Link>
                 </div>
@@ -21,7 +21,9 @@ const Header = () => {
                 </Link>
 
                 <div className="header__logo-text">
-                    <span className="header__logo-title">TRÙM KIM CƯƠNG</span>
+                    <Link to='/'>
+                        <span className="header__logo-title">TRÙM KIM CƯƠNG</span>
+                    </Link>
                 </div>
             </div>
             <div className="header__bottom">

@@ -18,6 +18,7 @@ const ProductDetail = () => {
         axios.get(`${id}`,)
             .then(function (response) {
                 setProduct(response.data.record);
+                console.log(response.data.record)
             })
             .catch(function (error) {
                 console.log(error);

@@ -1,5 +1,4 @@
 import { Layout, Button, theme } from 'antd';
-import '../styles/Sidebar.css';
 import MenuList from './MenuList';
 import { useState } from 'react';
 

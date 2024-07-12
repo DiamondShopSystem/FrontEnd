@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../../styles/Category.css';
 import { Container } from 'react-bootstrap';
 import { Form, Input, Radio, Select } from 'antd';
 import {  message  } from 'antd';

@@ -1,6 +1,5 @@
 import React from 'react'
-import '../styles/Logo.css';
-
+import "../styles/Admin.css";
 const Logo = () => {
   return (
     <div className='admin__imagelogo'>

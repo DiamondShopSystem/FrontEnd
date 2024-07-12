@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "react-phone-number-input/style.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import 'react-phone-number-input/style.css'
 import { GetResultContext } from "../../../../context/GetResultProvider";
 import useAuth from "../../../../hooks/useAuth";
@@ -12,7 +12,7 @@ import axios from "axios";
 
 
 const VerifyOtp = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, persist, setPersist } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -20,10 +20,14 @@ const VerifyOtp = () => {
     const [error, setError] = useState("");
     const [otp, setOtp] = useState("");
 
-
+    useEffect(() => {
+        localStorage.setItem("persist", persist);
+    }, [persist]);
+    
     //Submit xác nhận OTP
     const verifyOtp = async (e) => {
         e.preventDefault();
+        setPersist(true);
         setError("");
         if (otp === "" || otp === null) return setError("OTP không chính xác");;
         try {
@@ -37,7 +41,8 @@ const VerifyOtp = () => {
             );
             console.log(JSON.stringify(response?.data))
             const accessToken = response?.data?.accessToken;
-            setAuth({phoneNumber, accessToken });
+            const user = response?.data?.record;
+            setAuth({ phoneNumber, accessToken, user });
             navigate(from, { replace: true });
         } catch (err) {
             return setError("OTP không chính xác")

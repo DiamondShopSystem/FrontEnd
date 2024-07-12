@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/Category.css';
 import { Container } from 'react-bootstrap';
 import { Form, Input, Radio } from 'antd';
 import { Editor } from '@tinymce/tinymce-react';
@@ -9,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../styles/Product.css';
 import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
