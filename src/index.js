@@ -7,8 +7,8 @@ import GetResultProvider from './context/GetResultProvider';
 import axios from 'axios';
 import { Routes } from 'react-router-dom';
 import AuthProvider from "./context/AuthProvider";
-axios.defaults.baseURL = 'https://diamondshopsystem-api.onrender.com/api/v1';
-// axios.defaults.baseURL = 'http://127.0.0.1:8080/api/v1/'
+// axios.defaults.baseURL = 'https://diamondshopsystem-api.onrender.com/api/v1';
+axios.defaults.baseURL = 'http://127.0.0.1:8080/api/v1/'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

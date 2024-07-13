@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../styles/BlogFAQs.css';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
@@ -7,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import GrainIcon from '@mui/icons-material/Grain';
+import "../../styles/Client.css";
 
 const faqs = [
     {

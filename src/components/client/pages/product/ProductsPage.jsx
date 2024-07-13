@@ -3,9 +3,9 @@ import axios from 'axios';
 import BoxProduct from '../../mixins/BoxProduct';
 import { useLocation } from 'react-router-dom';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
-import '../../styles/ProductsPage.css'
 import { Input } from 'antd';
 import ReactPaginate from 'react-paginate';
+import "../../styles/Client.css";
 
 const ProductsPage = () => {
     const location = useLocation();

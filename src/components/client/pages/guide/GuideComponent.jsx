@@ -4,7 +4,7 @@ import Header from '../../partials/Header.jsx'; // Import Header component
 import Footer from '../../partials/Footer.jsx'; // Import Header component
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'; // Import Material-UI components
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-// import '../../styles/BlogLayout.css'
+import "../../styles/Client.css";
 
 const GuideComponent = ({ articles }) => {
     return (

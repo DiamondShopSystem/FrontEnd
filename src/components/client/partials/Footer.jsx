@@ -33,9 +33,9 @@ const Footer = () => {
                     <Col>
                         <Nav className="flex-column fs-5">
                             <h4>Về Trùm Kim Cương</h4>
-                            <NavLink to="/story" className="nav-link ">Câu chuyện</NavLink>
-                            <NavLink to="/story2" className="nav-link ">Tuyển dụng</NavLink>
-                            <NavLink to="/story3" className="nav-link ">Xuất khẩu</NavLink>
+                            <NavLink to="#" className="nav-link ">Câu chuyện</NavLink>
+                            <NavLink to="#"className="nav-link ">Tuyển dụng</NavLink>
+                            <NavLink to="#" className="nav-link ">Xuất khẩu</NavLink>
                         </Nav>
 
                     </Col>
@@ -43,8 +43,8 @@ const Footer = () => {
                         <Nav className="flex-column fs-5">
                             <h4>Dịch vụ khách hàng</h4>
                             <NavLink to="/size-guide" className="nav-link ">Hướng dẫn đo size trang sức</NavLink>
-                            <NavLink to="/test1" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
-                            <NavLink to="/jewelry-guide" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
+                            <NavLink to="#" className="nav-link ">Hướng dẫn mua hàng và thanh toán</NavLink>
+                            <NavLink to="#" className="nav-link ">Cẩm nang sử dụng trang sức</NavLink>
                         </Nav>
                         <h4>Phương thức thanh toán</h4>
                         <Link to="#"><i><img className="payment-icon" alt="img-mail" src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Circle.png" /></i></Link>
