@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Badge from 'react-bootstrap/Badge';
@@ -24,9 +24,9 @@ const DetailProduct = (req, res) => {
 
     return (
         <>
-            <Container className='detail__container'>
+            <Container style={{ marginTop: '20px' }} >
                 <h1 className='mb-4'>Chi tiết sản phẩm</h1>
-<b>                <h3 className='mb-4'>Tên sản phẩm: <b>{product.title}</b></h3></b>                <img className='mb-4' src={product.thumbnail} style={{ width: '200px', height: 'auto' }} />
+                <b><h3 className='mb-4'>Tên sản phẩm: <b>{product.title}</b></h3></b>                <img className='mb-4' src={product.thumbnail} style={{ width: '200px', height: 'auto' }} />
                 <h4 className='mb-4'>Danh mục: <b>{category.title}</b></h4>
                 {
                     (product.status === "active") ? (<div><span className='mb-4'><b>Trạng thái:</b> <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge></span></div>)

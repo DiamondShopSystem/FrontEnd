@@ -145,6 +145,9 @@ function App() {
               <Route path="staff/edit/:id" element={<UpdateStaff />} />
               <Route path="staff/detail/:id" element={<DetailStaff />} />
               <Route path="customer" element={<Cusomter />} />
+              <Route path="customer/create" element={<CreateCusomter />} />
+              <Route path="customer/edit/:id" element={<UpdateCustomer />} />
+              <Route path="customer/detail/:id" element={<DetailCustomer />} />
             </Route>
           </Route>
         </Route>

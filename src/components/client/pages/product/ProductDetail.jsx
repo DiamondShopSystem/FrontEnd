@@ -25,7 +25,11 @@ const ProductDetail = () => {
         console.log(product)
         const configuration = {
             method: "post",
-            url: `cart/add/${id}`
+            url: "/cart/add",
+            data: {
+                id,
+                selectedSize
+            }
         };
 
         await axios(configuration)

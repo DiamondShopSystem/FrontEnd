@@ -53,7 +53,7 @@ const UpdateCategory = (req, res) => {
     return (
         <>
             <ToastContainer />
-            <Container style={{marginTop: '20px'}}>
+            <Container style={{ marginTop: '20px' }}>
                 <h1>Chỉnh sửa danh mục</h1>
                 <Form onSubmit={updateCategory} enctype='multipart/form-data'>
                     <Form.Group className="mb-3" style={{ width: '100%' }} >
@@ -80,10 +80,8 @@ const UpdateCategory = (req, res) => {
                     />
                     <div className='mt-3 mb-3 ml-2 mr-2'>Mô tả</div>
                     <Editor
-                        onEditorChange={(value, editor) => {
-                            setCategory({ ...category, description: editor.getContent({ format: 'text' }) });
-                        }}
-                        value={category.description}
+                        initialValue={category.description}
+                        onEditorChange={(content) => setCategory({ ...category, description: content })}
                         apiKey='7kewhhnqfkgy1b51ajibp6aquu8pbcuqgaw64fatnixmljhf'
                     />
                     {['radio'].map((type) => (
@@ -108,7 +106,7 @@ const UpdateCategory = (req, res) => {
                             />
                         </div>
                     ))}
-                    <Button variant="primary" type='submit'>Cập nhật</Button>
+                    <Button style={{marginBottom: '20px'}} variant="primary" type='submit'>Cập nhật</Button>
                 </Form>
             </Container >
         </>
