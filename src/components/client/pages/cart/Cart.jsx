@@ -30,14 +30,6 @@ const Cart = () => {
         }
     };
 
-    // const updateCartQuantity = async (productId, quantity) => {
-    //     try {
-    //         await axios.patch(`/cart/update/${productId}`, { quantity });
-    //         fetchData();
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
     const updateCartQuantity = async (productId, quantity, e) => {
         const configuration = {
             method: "patch",
@@ -151,7 +143,9 @@ const Cart = () => {
                             <span style={{ marginLeft: '10px', fontSize: '25px' }}>{totalPrice?.toLocaleString()}đ</span>
                         </div>
                         <div className="checkout">
-                            <button className="cart__checkout-btn">THANH TOÁN</button>
+                        <Link to="/checkout">
+                                <button className="cart__checkout-btn">THANH TOÁN</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

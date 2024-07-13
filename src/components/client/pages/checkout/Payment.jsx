@@ -6,7 +6,7 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import '../../styles/Client.css';
 
-const Checkout = () => {
+const Payment = () => {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -36,32 +36,35 @@ const Checkout = () => {
                 <Col md={8} className='my-5'>
                     <div style={{ height: '200px' }} className="mb-3">
                         <Link to="/">
-                            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8t3uKbanp3uSurjv8n-3b-Js7LisE7XMxSw&s" height={'180px'} alt="Trùm Kim Cương" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8t3uKbanp3uSurjv8n-3b-Js7LisE7XMxSw&s" height={'180px'} alt="Trùm Kim Cương" />
                         </Link>
                     </div>
                     <nav className="checkout__breadcrumb">
                         <Link to="/cart" className="breadcrumb-item">Giỏ hàng</Link>
-                        <span className="breadcrumb-item active">Thông tin giao hàng</span>
+                        <Link to="/checkout" className="breadcrumb-item">Thông tin giao hàng</Link>
                         <span className="breadcrumb-item active">Phương thức thanh toán</span>
                     </nav>
-                    <h3 style={{ fontSize: '18px', margin: '20px 0' }}>Thông tin giao hàng</h3>
+                    <h3 style={{ fontSize: '18px', margin: '20px 0' }}>Phương thức vận chuyển</h3>
                     <Form>
-                        <Form.Group className="mb-3 checkout__form-input" controlId="name">
-                            <Form.Control type="text" placeholder='Họ và Tên' />
+                        <Form.Group className="mb-3 checkout__form-check" controlId="deliveryMethod">
+                            <Form.Check type="radio" name="deliveryMethod" label="Giao hàng tận nơi" checked disabled />
                         </Form.Group>
-                        <Form.Group className="mb-3 checkout__form-input" controlId="phone">
-                            <Form.Control type="text" placeholder="Số điện thoại" />
+                    </Form>
+                    <h3 style={{ fontSize: '18px', margin: '20px 0' }}>Phương thức thanh toán</h3>
+                    <Form>
+                        <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod1">
+                            <Form.Check type="radio" name="paymentMethod" label="Thanh toán khi giao hàng (COD)" />
                         </Form.Group>
-                        <Form.Group className="mb-3 checkout__form-input" controlId="address">
-                            <Form.Control type="text" placeholder="Địa chỉ" />
+                        <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod2">
+                            <Form.Check type="radio" name="paymentMethod" label="Thanh toán online bằng Ví điện tử" />
                         </Form.Group>
-                        <Col style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    </Form>
+                    <Col style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Link to='/cart'>Giỏ hàng</Link>
-                            <Button className='checkout__button' variant="primary" as={Link} to="/payment">
-                                Tiếp tục đến phương thức thanh toán
+                            <Button className='checkout__button' variant="primary" >
+                            Hoàn tất đơn hàng
                             </Button>
                         </Col>
-                    </Form>
                 </Col>
                 <Col md={4} className='my-5'>
                     <div className="p-3 bg-light rounded">
@@ -88,10 +91,10 @@ const Checkout = () => {
                         </Table>
                         <div className="border-top pt-3">
                             <div className="d-flex justify-content-between mb-2">
-                                <Form.Group style={{width: '65%'}} className="mb-3 checkout__form-input" controlId="voucher">
+                                <Form.Group style={{ width: '65%' }} className="mb-3 checkout__form-input" controlId="voucher">
                                     <Form.Control type="text" placeholder='Mã giảm giá' />
                                 </Form.Group>
-                                <Button style={{height: '38px', width: '30%'}}>Sử dụng</Button>
+                                <Button style={{ height: '38px', width: '30%' }}>Sử dụng</Button>
                             </div>
                             <div className="d-flex justify-content-between mb-2 border-top pt-2">
                                 <span>Tạm tính</span>
@@ -113,4 +116,4 @@ const Checkout = () => {
     );
 };
 
-export default Checkout;
+export default Payment;

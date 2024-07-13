@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
+// import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import "../../styles/Admin.css";
 import axios from 'axios';
 import {Space, Card} from 'antd';
 import { Statistic, Typography } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { BarChart } from '@mui/x-charts/BarChart';
 function Dashboard() {
   return (
     <div>
@@ -21,12 +22,27 @@ function Dashboard() {
 }
 function DashboardCard({ title, value , icon}) {
   return (
+    <>
     <Card>
       <Space direction="horizontal">
         <ShoppingCartOutlined />
         <Statistic title={title} value={value} icon={icon} />
       </Space>
     </Card>
+    <BarChart
+      series={[
+        { data: [35, 44, 24, 34] },
+        { data: [51, 6, 49, 30] },
+        { data: [15, 25, 30, 50] },
+        { data: [60, 50, 15, 25] },
+      ]}
+      height={290}
+      xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
+      margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+    />
+    </>
+    
+    
   )
 }
 

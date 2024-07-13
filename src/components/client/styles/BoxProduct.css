@@ -22,7 +22,7 @@
 
 .boxproduct .boxproduct__cover .boxproduct__image {
     max-width: 100%;
-    height: auto;
+    height: 220px;
     transition: transform 0.3s ease;
 }
 
