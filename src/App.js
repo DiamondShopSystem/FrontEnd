@@ -106,7 +106,7 @@ function App() {
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path="/:id" element={<ProductDetail />} />
-          <Route path="/diamond" element={<DiamondDetail />} />
+          <Route path="/:id" element={<DiamondDetail />} />
           <Route path="info" />
           {/* Cart  */}
           <Route path="/cart" element={<Cart />} />

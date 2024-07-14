@@ -34,42 +34,26 @@ const Dashboard = () => {
     const [revenueData, setRevenueData] = useState({ labels: [], datasets: [] });
     const [orderData, setOrderData] = useState({ labels: [], datasets: [] });
     const [userData, setUserData] = useState({ labels: [], datasets: [] });
+    
     const [category, setCategory] = useState([]);
     const [product, setProduct] = useState([]);
-    const [staff, setStaff] = useState([]);
+    const [user, setUser] = useState([]);
     const [cart, setCart] = useState([]);
 
+    const fetchData = () => {
+        axios.get('/admin/dashboard')
+            .then(function (response) {
+                setProduct(response.data.productsTotal);
+                setCategory(response.data.categoryTotal);
+                setUser(response.data.userTotal);
+                setCart(response.data.orderTotal);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    };
     useEffect(() => {
-        const fetchData = () => {
-            axios.get('/admin/category')
-                .then(function (response) {
-                    setCategory(response.data.records);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            axios.get('/admin/product')
-                .then(function (response) {
-                    setProduct(response.data.records);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            axios.get('/admin/account/staff')
-                .then(function (response) {
-                    setStaff(response.data.account);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            axios.get('/admin/cart')
-                .then(function (response) {
-                    setCart(response.data.cart);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        };
+
         fetchData();
     }, []);
 
@@ -162,28 +146,28 @@ const Dashboard = () => {
                         <h3>Tổng số sản phẩm</h3>
                         <BsFillArchiveFill className='card_icon' />
                     </div>
-                    <h1>{product.length}</h1>
+                    <h1>{product}</h1>
                 </div>
                 <div className='dashboard__card'>
                     <div className='dashboard__card-inner'>
                         <h3>Tổng số danh mục</h3>
                         <BsFillGrid3X3GapFill className='card_icon' />
                     </div>
-                    <h1>{category.length}</h1>
+                    <h1>{category}</h1>
                 </div>
                 <div className='dashboard__card'>
                     <div className='dashboard__card-inner'>
-                        <h3>Tổng số tài khoản nhân viên</h3>
+                        <h3>Tổng số tài khoản khách hàng</h3>
                         <BsPeopleFill className='card_icon' />
                     </div>
-                    <h1>{staff.length}</h1>
+                    <h1>{user}</h1>
                 </div>
                 <div className='dashboard__card'>
                     <div className='dashboard__card-inner'>
                         <h3>Tổng số đơn hàng</h3>
                         <BsFillBellFill className='card_icon' />
                     </div>
-                    <h1>{cart.length}</h1>
+                    <h1>{cart}</h1>
                 </div>
             </div>
             <div className="chart-container">
