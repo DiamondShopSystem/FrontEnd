@@ -26,7 +26,6 @@ const DetailDiamond = (req, res) => {
         <>
             <Container style={{ marginTop: '20px' }} >
                 <h1 className='mb-4'>Chi tiết sản phẩm</h1>
-    const [diamond, setDiamond] = useState([]);
                 <b><h3 className='mb-4'>Tên sản phẩm: <b>{diamond.title}</b></h3></b>                <img className='mb-4' src={diamond.thumbnail} style={{ width: '200px', height: 'auto' }} />
                 <h4 className='mb-4'>Danh mục: <b>{category.title}</b></h4>
                 {

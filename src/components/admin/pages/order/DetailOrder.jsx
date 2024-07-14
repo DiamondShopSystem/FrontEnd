@@ -9,34 +9,39 @@ import '../../styles/Admin.css'
 
 const DetailDiamond = (req, res) => {
     const [diamond, setDiamond] = useState([]);
-    const [category, setCategory] = useState([]);
     const { id } = useParams();
     useEffect(() => {
-        axios.get("/admin/diamond/detail/" + id)
+        axios.get("/admin/order/detail/" + id)
             .then(function (response) {
                 setDiamond(response.data.record);
-                setCategory(response.data.category);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }, []);
+    const getStatusClass = (status) => {
+        switch (status) {
+            case 'Đã hoàn thành':
+                return 'bg-success';
+            case 'Đang vận chuyển':
+                return 'bg-info';
+            case 'Đang xử lí':
+                return 'bg-warning';
+            default:
+                return 'bg-secondary';
+        }
+    };
 
     return (
         <>
             <Container style={{ marginTop: '20px' }} >
                 <h1 className='mb-4'>Chi tiết sản phẩm</h1>
-    const [diamond, setDiamond] = useState([]);
-                <b><h3 className='mb-4'>Tên sản phẩm: <b>{diamond.title}</b></h3></b>                <img className='mb-4' src={diamond.thumbnail} style={{ width: '200px', height: 'auto' }} />
-                <h4 className='mb-4'>Danh mục: <b>{category.title}</b></h4>
-                {
-                    (diamond.status === "active") ? (<div><span className='mb-4'><b>Trạng thái:</b> <Badge style={{ width: 100.21 }} bg="success">Hoạt động</Badge></span></div>)
-                        : (<div><span className='mb-4'><b>Trạng thái: </b> <Badge style={{ width: 100.21 }} bg="danger">Dừng hoạt động</Badge></span></div>)
-                }
-                <div className='mb-4 mt-2'>Đơn giá: <b>{diamond.price}</b></div>
-                <div className='mb-4 mt-2'>Số lượng: <b>{diamond.color}</b></div>
-                <div className='mb-4 mt-2'>Thành tiền: <b>{diamond.clarity}</b></div>
-                <div className='mt-4'>Mô tả: {parse(`${diamond.description}`)}</div>
+                <b><h3 className='mb-4'>Tên sản phẩm: <b>{order.title}</b></h3></b>                <img className='mb-4' src={order.thumbnail} style={{ width: '200px', height: 'auto' }} />
+                <h4 className='mb-4'>Danh mục: <b>{order.category}</b></h4>
+                <div className='mb-4 mt-2'>Đơn giá: <b>{order.price}</b></div>
+                <div className='mb-4 mt-2'>Số lượng: <b>{order.quantity}</b></div>
+                <p>Trạng thái: <span className={`badge ${getStatusClass(order.status)}`}>{order.status}</span></p>
+                <div className='mb-4 mt-2'>Thành tiền: <b>{order.totalPrice}</b></div>
             </Container>
         </>
     )
