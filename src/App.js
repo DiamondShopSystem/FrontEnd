@@ -85,6 +85,11 @@ import BlogDiamondTips from "./components/client/pages/blog/BlogDiamondTips";
 import BlogFAQs from "./components/client/pages/blog/BlogFAQs";
 import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 
+// Checkout
+import Checkout from "./components/client/pages/checkout/Checkout";
+import Payment from "./components/client/pages/checkout/Payment";
+import Success from "./components/client/pages/checkout/Success";
+
 import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
   return (
@@ -94,9 +99,13 @@ function App() {
         {/* Authen  */}
         <Route path="login" element={<UserLogin />} />
         <Route path="login/verify/otp" element={<VerifyOtp />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="payment" element={<Payment />} />
+        
         <Route element={<ClientLayout />}>
           {/* Home  */}
           <Route path="/" element={<Home />} />
+          <Route path="payment/success" element={<Success />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path=":id" element={<ProductDetail />} />

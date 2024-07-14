@@ -81,7 +81,7 @@ const CreateCategory = () => {
     return (
         <>
             <ToastContainer />
-            <Container style={{marginTop: '20px'}}>
+            <Container style={{ marginTop: '20px' }}>
                 <h1>Tạo mới danh mục</h1>
                 <Form onFinish={addCategory} size='large' layout='vertical' labelCol={{ span: 4 }}>
                     <Form.Item name='title' label="Tiêu đề" style={{ width: '100%' }}>

@@ -30,7 +30,7 @@ const ProductDetail = () => {
             <div className='productdetail__info'>
                 <BoxProductDetail product={product} key={product.id} />
             </div>
-            <div className='productdetail__description'>
+            <div className='productdetail__description'>s
                 <h2>CHI TIẾT SẢN PHẨM</h2>
                 {parse(`${product.description}`)}
             </div>

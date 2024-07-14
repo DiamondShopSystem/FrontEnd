@@ -6,8 +6,9 @@ const GetResultProvider = ({ children }) => {
 
   const [result, setResult,] = useState([]);
   const [phoneNumber, setPhoneNumber] = useState([]);
+  const [itemOfCart , setItemOfCart] = useState([]);
 
-  return <GetResultContext.Provider value={{ result, setResult, phoneNumber, setPhoneNumber }}>{children}</GetResultContext.Provider>
+  return <GetResultContext.Provider value={{ result, setResult, phoneNumber, setPhoneNumber, itemOfCart , setItemOfCart,  }}>{children}</GetResultContext.Provider>
 }
 
 export default GetResultProvider;
