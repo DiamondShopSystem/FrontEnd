@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { DashboardOutlined, BarsOutlined, UserOutlined, ShoppingCartOutlined, KeyOutlined } from '@ant-design/icons';
+import { DashboardOutlined, BarsOutlined, UserOutlined, ShoppingCartOutlined, KeyOutlined, ProductOutlined } from '@ant-design/icons';
 import { IoDiamond } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -55,9 +55,13 @@ const MenuList = () => {
                 {/* <Link to={"/admin/dashboard"} >Trang tổng quan</Link> */}
                 Trang tổng quan
             </Menu.Item>
-            <Menu.Item key="product" icon={<IoDiamond />}>
+            <Menu.Item key="product" icon={<ProductOutlined />}>
                 {/* <Link to={"/admin/dashboard"} >Trang tổng quan</Link> */}
                 Trang sản phẩm
+            </Menu.Item>
+            <Menu.Item key="diamond" icon={<IoDiamond />}>
+                {/* <Link to={"/admin/dashboard"} >Trang tổng quan</Link> */}
+                Trang kim cương
             </Menu.Item>
             <Menu.Item key="category" icon={<BarsOutlined />}>
                 Trang danh mục

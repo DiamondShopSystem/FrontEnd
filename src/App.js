@@ -46,7 +46,7 @@ import DetailCustomer from "./components/admin/pages/account/customer/DetailCust
 import Role from "./components/admin/pages/role/Role";
 
 //Order 
-import Order from "./components/admin/pages/order/Order";
+import Order from "./components/admin/pages/order/OrderAdmin";
 
 //Client //
 
@@ -91,8 +91,14 @@ import Payment from "./components/client/pages/checkout/Payment";
 
 import Success from "./components/client/pages/checkout/Success";
 
-
+import OrderAdmin from "./components/admin/pages/order/OrderAdmin"
 import PersistLogin from "./components/client/pages/PersistLogin";
+import Orders from "./components/client/pages/profile/Orders";
+import OrderDetail from "./components/client/pages/profile/OrderDetail";
+import Diamond from "./components/admin/pages/diamond/Diamond";
+import CreateDiamond from "./components/admin/pages/diamond/CreateDiamond";
+import UpdateDiamond from "./components/admin/pages/diamond/UpdateDiamond";
+import DetailDiamond from "./components/admin/pages/diamond/DetailDiamond";
 function App() {
   return (
     <>
@@ -124,6 +130,8 @@ function App() {
           {/* User */}
           <Route path="user/" element={<UserProfile />}>
             <Route path="info" element={<UserInfoDetail />} />
+            <Route path="orders/" element={<Orders />} />
+            <Route path="orders/:id" element={<OrderDetail />} />
           </Route>
         </Route>
         {/* Guide Page */}
@@ -149,6 +157,14 @@ function App() {
             <Route path="category/create" element={<CreateCategory />} />
             <Route path="category/edit/:id" element={<UpdateCategory />} />
             <Route path="category/detail/:id" element={<DetailCategory />} />
+            <Route path="diamond" element={<Diamond />} />
+            <Route path="diamond/create" element={<CreateDiamond />} />
+            <Route path="diamond/edit/:id" element={<UpdateDiamond />} />
+            <Route path="diamond/detail/:id" element={<DetailDiamond />} />
+            <Route path="order" element={<OrderAdmin />} />
+            <Route path="order/create" element={<CreateDiamond />} />
+            <Route path="order/edit/:id" element={<UpdateDiamond />} />
+            <Route path="order/detail/:id" element={<DetailDiamond />} />
             <Route path="account">
               <Route path="staff" element={<Staff />} />
               <Route path="staff/create" element={<CreateStaff />} />

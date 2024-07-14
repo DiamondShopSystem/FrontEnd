@@ -8,7 +8,7 @@ const UserProfileSider = () => {
       <ul>
         <li><Link to="/user/info">Thông tin tài khoản</Link></li>
         <li><Link to="/user/voucher">Mã giảm của tôi</Link></li>
-        <li><Link to="/user/history-order">Lịch sử mua hàng</Link></li>
+        <li><Link to="/user/orders">Danh sách đơn hàng</Link></li>
         <li><Link to="/user/logout">Đăng xuất</Link></li>
       </ul>
     </div>

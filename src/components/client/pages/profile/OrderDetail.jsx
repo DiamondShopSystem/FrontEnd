@@ -1,191 +1,106 @@
 import React from 'react';
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCol,
-  MDBContainer,
-  MDBRow
-} from 'mdb-react-ui-kit';
-// import "../../styles/OrderDetail.css"
+import { Table, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../styles/Client.css';
+import { Link } from 'react-router-dom';
 
-const OrderDetail = ({ order, onBack }) => {
-  const renderTrackingStatus = (status) => {
-    switch (status) {
-      case 'Shipped':
-        return (
-          <div className="horizontal-timeline">
-            <ul className="list-inline items d-flex justify-content-between">
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Chưa xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Đã xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Đang giao
-                </p>
-              </li>
-              <li className="list-inline-item items-list text-end" style={{ marginRight: '-8px' }}>
-                <p style={{ marginRight: '-8px', color: '#00FF00', fontWeight: 'bold' }}>Đã nhận</p>
-              </li>
-            </ul>
-          </div>
-        );
-      case 'On the way':
-        return (
-          <div className="horizontal-timeline">
-            <ul className="list-inline items d-flex justify-content-between">
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Chưa xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Đã xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Đang giao
-                </p>
-              </li>
-              <li className="list-inline-item items-list text-end" style={{ marginRight: '-8px' }}>
-                <p style={{ marginRight: '-8px' }}>Đã nhận</p>
-              </li>
-            </ul>
-          </div>
-        );
-      case 'Unconfirmed':
-        return (
-          <div className="horizontal-timeline">
-            <ul className="list-inline items d-flex justify-content-between">
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                  Chưa xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#f37a27' }}>
-                  Đã xác nhận
-                </p>
-              </li>
-              <li className="list-inline-item items-list">
-                <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#f37a27' }}>
-                  Đang giao
-                </p>
-              </li>
-              <li className="list-inline-item items-list text-end" style={{ marginRight: '-8px' }}>
-                <p style={{ marginRight: '-8px' }}>Đã nhận</p>
-              </li>
-            </ul>
-          </div>
-        );
-      case 'Confirmed':
-        return (
-          <div className="horizontal-timeline">
-          <ul className="list-inline items d-flex justify-content-between">
-            <li className="list-inline-item items-list">
-              <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                Chưa xác nhận
-              </p>
-            </li>
-            <li className="list-inline-item items-list">
-              <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#00FF00' }}>
-                Đã xác nhận
-              </p>
-            </li>
-            <li className="list-inline-item items-list">
-              <p className="py-1 px-2 rounded text-white" style={{ backgroundColor: '#f37a27' }}>
-                Đang giao
-              </p>
-            </li>
-            <li className="list-inline-item items-list text-end" style={{ marginRight: '-8px' }}>
-              <p style={{ marginRight: '-8px' }}>Đã nhận</p>
-            </li>
-          </ul>
-        </div>
-        );
-      default:
-        return <p style={{fontWeight: 'bold', fontSize: '20px', color: 'red'}}>Đơn hàng đã bị hủy</p>;
-    }
-  };
+const OrderDetail = () => {
+    const order = {
+        id: 'ORD001',
+        date: '2023-07-10',
+        total: 60800000,
+        status: 'Đã hoàn thành',
+        paymentMethod: 'COD',
+        products: [
+            {
+                name: "Vòng đeo tay đính đá CZ vàng 10K Aretha S 5C",
+                price: 30400000,
+                quantity: 2,
+                total: 60800000,
+                description: "10KW / ĐÁ CZ WHIRD5.5x1 / ĐÁ CZ WHIRD2.1x8,1.8x16,1.5x14,1.2x14,1.1x176",
+                thumbnail: "https://noraydesigns.com/cdn/shop/articles/diamond_quality_e937434a-7bdf-41fd-bd81-5935707348e8.jpg?v=1614681170"
+            }
+        ],
+        customer: {
+            fullName: "Nguyen Tan Phuoc",
+            phone: '0866792159',
+            address: "Landmark 81"
+        }
+    };
 
-  return (
-    <MDBContainer className="py-5">
-      <MDBRow className="justify-content-center">
-        <MDBCol lg="8" xl="6">
-          <MDBCard className="border-top border-bottom border-3 border-color-custom">
-            <MDBCardBody className="p-5">
-              <p className="lead fw-bold mb-5" style={{ color: '#f37a27' }}>
-                Purchase Receipt
-              </p>
+    const getStatusClass = (status) => {
+        switch (status) {
+            case 'Đã hoàn thành':
+                return 'bg-success';
+            case 'Đang vận chuyển':
+                return 'bg-info';
+            case 'Đang xử lí':
+                return 'bg-warning';
+            default:
+                return 'bg-secondary';
+        }
+    };
 
-              <MDBRow>
-                <MDBCol className="mb-3">
-                  <p className="small text-muted mb-1">Date</p>
-                  <p>{order.date}</p>
-                </MDBCol>
-                <MDBCol className="mb-3">
-                  <p className="small text-muted mb-1">Order No.</p>
-                  <p>{`#${order.id}`}</p>
-                </MDBCol>
-              </MDBRow>
-
-              <div className="mx-n5 px-5 py-4" style={{ backgroundColor: '#f2f2f2' }}>
-                <MDBRow>
-                  <MDBCol md="8" lg="9">
-                    <p>{order.product}</p>
-                  </MDBCol>
-                  <MDBCol md="4" lg="3">
-                    <p>£{order.total}</p>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol md="8" lg="9">
-                    <p className="mb-0">Shipping</p>
-                  </MDBCol>
-                  <MDBCol md="4" lg="3">
-                    <p className="mb-0">£{order.shippingFee}</p>
-                  </MDBCol>
-                </MDBRow>
-              </div>
-
-              <MDBRow className="my-4">
-                <MDBCol md="4" className="offset-md-8 col-lg-3 offset-lg-9">
-                  <p className="lead fw-bold mb-0" style={{ color: '#f37a27' }}>
-                    £{order.total - order.shippingFee}
-                  </p>
-                </MDBCol>
-              </MDBRow>
-
-              <p className="lead fw-bold mb-4 pb-2" style={{ color: '#f37a27' }}>
-                Tracking Order
-              </p>
-
-              {renderTrackingStatus(order.status)}
-
-              <p className="mt-4 pt-2 mb-0">
-                Want any help?{' '}
-                <a href="#!" style={{ color: '#f37a27' }}>
-                  Please contact us
-                </a>
-              </p>
-
-              <button className="btn btn-primary mt-3" onClick={onBack}>
-                Back to Orders
-              </button>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
+    return (
+        <Container className='orders__container'>
+            <h2 className="my-4">Chi tiết đơn hàng</h2>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {order.products.map((product, index) => (
+                        <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>
+                                <img
+                                    src={product.thumbnail}
+                                    alt={product.name}
+                                    style={{ height: '50px', width: '50px' }}
+                                />
+                            </td>
+                            <td>
+                                <Link to="/:id">
+                                    {product.name}
+                                </Link>
+                                <br />
+                                {product.description}
+                            </td>
+                            <td>{product.price.toLocaleString()}đ</td>
+                            <td>{product.quantity}</td>
+                            <td>{product.total.toLocaleString()}đ</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+            <div className="d-flex justify-content-end">
+                <div className="me-4">
+                    <p><b>Giá sản phẩm: {order.total.toLocaleString()}đ</b></p>
+                    <p><b>Giao hàng tận nơi: 0đ</b></p>
+                    <p><strong>Tổng tiền: {order.total.toLocaleString()}đ</strong></p>
+                </div>
+            </div>
+            <Row>
+                <Col md={12}>
+                    <h4><strong>Thông Tin</strong></h4>
+                    <div className="border p-3">
+                        <p>Họ và Tên: {order.customer.fullName}</p>
+                        <p>Số Điện Thoại: {order.customer.phone}</p>
+                        <p>Địa chỉ: {order.customer.address}</p>
+                        <p>Trạng thái: <span className={`badge ${getStatusClass(order.status)}`}>{order.status}</span></p>
+                        <p>Hình thức thanh toán: <b>{order.paymentMethod}</b></p>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
 };
 
 export default OrderDetail;
