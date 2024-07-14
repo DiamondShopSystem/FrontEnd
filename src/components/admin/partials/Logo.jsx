@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <div className='admin__imagelogo'>
       <img
-        src='https://banner2.cleanpng.com/20180629/qqs/kisspng-fpt-group-computer-software-software-development-i-lakshmi-5b3604abb34904.0268253715302667957344.jpg'
+        src='https://fiverr-res.cloudinary.com/videos/so_47.9654,t_main1,q_auto,f_auto/rqbleccfji5zzfgtwh7a/design-initial-gaming-logo-esport-twitch-youtube.png'
         alt='admin_imagelogo'
         className='logo__img'
       />

@@ -1,137 +1,158 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/Cart.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Cart = () => {
-  const initialCartData = [
-    {
-      name: "Nhẫn nam kim cương tấm vàng 10K Pinnacle 2C W",
-      image: "https://product.hstatic.net/1000381168/product/upload_63cf3c9ae6d9483d98e737841bbc09e7_1024x1024.jpg",
-      details: "10KW / ĐÁ CZ WHIRD4.0x1 / KC DIA WHIRD1.3x8",
-      size: 25,
-      quantity: 2,
-      price: 18250000
-    },
-    {
-      name: "Phí size nam",
-      image: "https://product.hstatic.net/1000381168/product/upload_63cf3c9ae6d9483d98e737841bbc09e7_1024x1024.jpg",
-      details: "10K / 23 / 25.5",
-      size: 12,
-      quantity: 3,
-      price: 500000
-    },
-    {
-      name: "Phí size nam",
-      image: "https://product.hstatic.net/1000381168/product/upload_63cf3c9ae6d9483d98e737841bbc09e7_1024x1024.jpg",
-      details: "10K / 4 / 20",
-      quantity: 5,
-      size: 22,
-      price: 2000
-    },
-    {
-      name: "Hoa tai kim cương 8 Hearts & Arrows vàng 14K Oriflame H&A 2C",
-      image: "https://product.hstatic.net/1000381168/product/upload_63cf3c9ae6d9483d98e737841bbc09e7_1024x1024.jpg",
-      details: "14KW / KC DIA WHIRD3.8(H&A)E/SI1)x2 / KC DIA WHIRD1.2x16,0.9x16",
-      size: 52,
-      quantity: 5,
-      price: 45250000
+    const [cart, setCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/cart/get');
+            if (response.data.code === 200) {
+                const products = response.data.cart.products.map(product => ({
+                    ...product,
+                    productInfo: product.productInfo[0],
+                }));
+                setCart(products);
+                setTotalPrice(response.data.cart.totalPrice);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const updateCartQuantity = async (productId, quantity, e) => {
+        const configuration = {
+            method: "patch",
+            url: "cart/update/",
+            data: {
+                productId,
+                quantity
+            },
+        };
+        await axios(configuration)
+            .then((result) => {
+                fetchData();
+            })
+            .catch((error) => {
+               
+            });
     }
-  ];
 
-  const [cartData, setCartData] = useState(initialCartData);
+    const handleQuantityChange = (index, delta) => {
+        const newCartData = [...cart];
+        newCartData[index].quantity += delta;
+        if (newCartData[index].quantity < 1) {
+            newCartData[index].quantity = 1;
+        }
+        setCart(newCartData);
 
-  const handleQuantityChange = (index, delta) => {
-    const newCartData = [...cartData];
-    newCartData[index].quantity += delta;
-    if (newCartData[index].quantity < 1) {
-      newCartData[index].quantity = 1; // đảm bảo số lượng thấp nhất là 1
-    }
-    setCartData(newCartData);
-  };
+        updateCartQuantity(newCartData[index].product_id, newCartData[index].quantity);
+    };
 
-  const handleInputChange = (index, value) => {
-    const newCartData = [...cartData];
-    newCartData[index].quantity = value < 1 ? 1 : value; // đảm bảo số lượng thấp nhất là 1
-    setCartData(newCartData);
-  };
+    const handleInputChange = (index, value) => {
+        const newCartData = [...cart];
+        newCartData[index].quantity = value < 1 ? 1 : value;
+        setCart(newCartData);
+        updateCartQuantity(newCartData[index].product_id, newCartData[index].quantity);
+    };
 
-  const handleDelete = (index) => {
-    const newCartData = cartData.filter((_, i) => i !== index);
-    setCartData(newCartData);
-  };
+    const handleDelete = async (id) => {
+        console.log(id);
+        axios.delete(`/cart/delete/${id}`)
+            .then(response => {
+                console.log(response);
+                fetchData();
+                toast.success('Xóa thành công');
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error('Xóa không thành công');
+            });
+    };
 
-  const calculateTotal = () => {
-    return cartData.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+    return (
+        <>
+            <ToastContainer />
+            <div className="cart__container">
+                <div className="cart__header">
+                    <h1>Giỏ hàng của tôi</h1>
+                </div>
+                <div className="cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Sản Phẩm</th>
+                                <th>Số Lượng</th>
+                                <th>Đơn Giá</th>
+                                <th>Thành Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cart.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <div className="cart__product-info">
+                                            <Link to='/'>
+                                                <img src={item.productInfo.thumbnail} alt="Ảnh" className="cart__product-image" />
+                                            </Link>
+                                            <div>
+                                                <div>{item.productInfo.title}</div>
+                                                <div>Ni (size): {item.size}</div> {/* Hiển thị size được chọn */}
+                                            </div>
+                                            <div className="cart__trash-icon" onClick={() => handleDelete(item.product_id)}>
+                                                <i className="fas fa-trash"></i>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="cart__quantity-control">
+                                            <button onClick={() => handleQuantityChange(index, -1)}>-</button>
+                                            <input
+                                                type="number"
+                                                value={item.quantity}
+                                                onChange={(e) => handleInputChange(index, parseInt(e.target.value))}
+                                            />
+                                            <button onClick={() => handleQuantityChange(index, 1)}>+</button>
+                                        </div>
+                                    </td>
+                                    <td>{item.productInfo.price?.toLocaleString()}đ</td>
+                                    <td><b>{(item.productInfo.price * item.quantity)?.toLocaleString()}đ</b></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
-  return (
-    <div className="cart__container">
-      <div className="cart__header">
-        <h1>Giỏ hàng của tôi</h1>
-      </div>
-      <div className="cart__table">
-        <table>
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Sản Phẩm</th>
-              <th>Số Lượng</th>
-              <th>Đơn Giá</th>
-              <th>Thành Tiền</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartData.map((item, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <div className="cart__product-info">
-                    <Link to='/'>
-                      <img src={item.image} alt={item.name} className="cart__product-image" />
-                    </Link>
-                    <div>
-                      <div>{item.name}</div>
-                      <div>{item.details}</div>
-                      <div>Ni (size): {item.size}</div>
+                <div className="cart__footer">
+                    <div className="cart__total-amount">
+                        <div className="total">
+                            <span>TỔNG TIỀN (tạm tính): </span>
+
+                            <span style={{ marginLeft: '10px', fontSize: '25px' }}>{totalPrice?.toLocaleString()}đ</span>
+                        </div>
+                        <div className="checkout">
+                        <Link to="/checkout">
+                                <button className="cart__checkout-btn">THANH TOÁN</button>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="cart__trash-icon" onClick={() => handleDelete(index)}>
-                      <i className="fas fa-trash"></i>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="cart__quantity-control">
-                    <button onClick={() => handleQuantityChange(index, -1)}>-</button>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) => handleInputChange(index, parseInt(e.target.value))}
-                    />
-                    <button onClick={() => handleQuantityChange(index, 1)}>+</button>
-                  </div>
-                </td>
-                <td>{item.price.toLocaleString()}đ</td>
-                <td><b>{(item.price * item.quantity).toLocaleString()}đ</b></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                </div>
+            </div>
+        </>
 
-      <div className="cart__footer">
-        <div className="cart__total-amount">
-          <div className="total">
-            <span>TỔNG TIỀN (tạm tính): </span>
-            <span style={{ marginLeft: '10px', fontSize: '25px' }}>{calculateTotal().toLocaleString()}đ</span>
-          </div>
-          <div className="checkout">
-            <button className="cart__checkout-btn">THANH TOÁN</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Cart;

@@ -1,8 +1,12 @@
 /* Logo  */
 
-.admin__imagelogo img {
+.admin__imagelogo .logo__img {
     width: 100px;
-    height: auto;
+    height: 60px;
+    margin-right: 20px;
+    object-fit: cover;
+    background: transparent; 
+
 }
 
 /* End Logo  */

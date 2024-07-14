@@ -15,11 +15,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider >
-        <GetResultProvider>
-          <Routes>
-            <Route path='/*' element={<App />} />
-          </Routes>
-        </GetResultProvider>
+          <GetResultProvider>
+            <Routes>
+              <Route path='/*' element={<App />} />
+            </Routes>
+          </GetResultProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

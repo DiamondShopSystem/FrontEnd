@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/BlogDiamondPrice.css';
+import "../../styles/Client.css";
 
 const BlogDiamondPrice = () => {
     return (

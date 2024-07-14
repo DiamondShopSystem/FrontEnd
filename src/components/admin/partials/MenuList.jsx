@@ -44,7 +44,7 @@ const MenuList = () => {
         setOpenKeys(keys);
     };
     return (
-        <Menu theme="dark"
+        <Menu theme="light"
             mode="inline"
             onClick={handleClick}
             selectedKeys={[current]}
@@ -75,14 +75,9 @@ const MenuList = () => {
             </Menu.SubMenu>
             <Menu.Item key="order" icon={<ShoppingCartOutlined />}>
                 Quản Lý Đơn Hàng
-
                 {/* <Link to={"/admin/category"} >Trang Danh mục</Link> */}
             </Menu.Item>
-            <Menu.Item key="role" icon={<KeyOutlined />}>
-                Trang phân quyền
 
-                {/* <Link to={"/admin/category"} >Trang Danh mục</Link> */}
-            </Menu.Item>
 
         </ Menu>
     )

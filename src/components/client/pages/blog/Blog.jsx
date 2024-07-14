@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'; // Import Material-UI components
 import { Link } from 'react-router-dom';
-import '../../styles/BlogLayout.css'
+import "../../styles/Client.css";
 
 const articles = [
     { id: 1, slug: "faqs", title: "Câu hỏi thường gặp", date: "1/11/2021", image: "https://pos.nvncdn.com/d5c59c-23832/art/artCT/20200419_KuKxqXjX7oLpB3x6kw7Wl2UG.jpg", 

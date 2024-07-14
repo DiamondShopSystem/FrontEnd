@@ -101,17 +101,16 @@ function App() {
         <Route path="login/verify/otp" element={<VerifyOtp />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="payment" element={<Payment />} />
-        
         <Route element={<ClientLayout />}>
           {/* Home  */}
           <Route path="/" element={<Home />} />
           <Route path="payment/success" element={<Success />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
-          <Route path=":id" element={<ProductDetail />} />
+          <Route path="/:id" element={<ProductDetail />} />
           <Route path="info" />
           {/* Cart  */}
-          <Route path="cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
           {/* Promotion  */}
           <Route path="promotion" element={<Promotion />} />
           {/* Blog */}
@@ -131,7 +130,6 @@ function App() {
         <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
         {/* Admin Path  */}
         <Route path="/admin">
-
           {/* Authen */}
           <Route path="login" element={<AdminLogin />} />
           <Route path="forgotpassword" element={<AdminForgotPassword />} />
@@ -154,6 +152,9 @@ function App() {
               <Route path="staff/edit/:id" element={<UpdateStaff />} />
               <Route path="staff/detail/:id" element={<DetailStaff />} />
               <Route path="customer" element={<Cusomter />} />
+              <Route path="customer/create" element={<CreateCusomter />} />
+              <Route path="customer/edit/:id" element={<UpdateCustomer />} />
+              <Route path="customer/detail/:id" element={<DetailCustomer />} />
             </Route>
           </Route>
         </Route>
