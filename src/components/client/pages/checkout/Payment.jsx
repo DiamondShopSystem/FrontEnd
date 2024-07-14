@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
@@ -10,9 +11,50 @@ const Payment = () => {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
 
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
+import axios from 'axios';
+import { Input, Radio } from 'antd';
+import parse from 'html-react-parser';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import '../../styles/Client.css';
+
+const Payment = () => {
+    const [payment, setPayment] = useState();
+    const [cart, setCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetchCartData();
     }, []);
+
+
+    const handlePayment = (e) => {
+        setPayment(e.target.value);
+    }
+    const submitPayment = async (e) => {
+        try {
+            if (payment == 'zalo') {
+                const response = await axios.post('/payment/zalo',);
+                // navigate(response.data.order_url, {replace: true})
+                window.location.replace(response.data.order_url);
+            }
+        } catch (error) {
+            console.error("Error fetching cart data:", error);
+        }
+    }
+    const checkOrder = async () => {
+        try {
+            const response = await axios.get('/payment/zalo/callback');
+            if (response.data.return_code === 1) {
+                navigate("/payment/success");
+            }
+        } catch (error) {
+            console.error("Error fetching cart data:", error);
+        }
+    };
 
     const fetchCartData = async () => {
         try {
@@ -51,11 +93,16 @@ const Payment = () => {
                         </Form.Group>
                     </Form>
                     <h3 style={{ fontSize: '18px', margin: '20px 0' }}>Phương thức thanh toán</h3>
+
                     <Form>
+=======
+                    {/* <Form>
+
                         <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod1">
                             <Form.Check type="radio" name="paymentMethod" label="Thanh toán khi giao hàng (COD)" />
                         </Form.Group>
                         <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod2">
+
                             <Form.Check type="radio" name="paymentMethod" label="Thanh toán online bằng Ví điện tử" />
                         </Form.Group>
                     </Form>
@@ -65,6 +112,24 @@ const Payment = () => {
                             Hoàn tất đơn hàng
                             </Button>
                         </Col>
+
+                            <Form.Check type="radio" name="paymentMethod" label="Thanh toán online bằng Paypal" />
+                        </Form.Group>
+                        <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod2">
+                            <Form.Check type="radio" name="paymentMethod" label="Thanh toán online bằng Ví điện tử" />
+                        </Form.Group>
+                    </Form> */}
+                    <Radio.Group onChange={handlePayment} value={payment}>
+                        <Radio value={"cod"} className="mb-3 checkout__form-check" controlId="paymentMethod1">Thanh toán khi giao hàng (COD)</Radio>
+                        <Radio value={"zalo"} className="mb-3 checkout__form-check" controlId="paymentMethod2">Thanh toán online bằng ZaloPAY</Radio>
+                    </Radio.Group>
+                    <Col style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Link to='/cart'>Giỏ hàng</Link>
+                        <Button className='checkout__button' variant="primary" onClick={submitPayment} >
+                            Hoàn tất đơn hàng
+                        </Button>
+                    </Col>
+
                 </Col>
                 <Col md={4} className='my-5'>
                     <div className="p-3 bg-light rounded">

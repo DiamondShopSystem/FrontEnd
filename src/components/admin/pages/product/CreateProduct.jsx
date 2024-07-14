@@ -30,7 +30,7 @@ const CreateProduct = () => {
     // Ảnh
     const [thumbnail, setThumbnail] = useState("");
     // Kích thước (Ni)
-    const [size, setSize] = useState("");
+    const [size, setSize] = useState(false);
 
     const [title, setTitle] = useState("");
 
@@ -62,7 +62,9 @@ const CreateProduct = () => {
     const onSetCategory = (newValue) => {
         setCategory_Id(newValue);
     }
-
+    const onChangeSize = (e) => {
+        setSize(e.target.value);
+    }
     // Chọn trạng thái hoạt động
     const onChangeHighlight = (e) => {
         console.log('radio checked', e.target.value);
@@ -158,9 +160,13 @@ const CreateProduct = () => {
                     <Form.Item name='price' label="Giá" style={{ width: '100%' }}>
                         <Input type='number' onChange={(e) => setPrice(e.target.value)} value={price} />
                     </Form.Item>
-                    <Form.Item name='size' label="Kích cỡ (Ni)" style={{ width: '100%' }}>
-                        <Input type='number' onChange={(e) => setSize(e.target.value)} value={size} />
-                    </Form.Item>
+                    <div className="mt-2 mb-4">
+                        <label style={{marginRight: '10px'}}>Size:</label>
+                        <Radio.Group onChange={onChangeSize} value={size}  >
+                            <Radio value={true}>Có </Radio>
+                            <Radio value={false}>Không</Radio>
+                        </Radio.Group>
+                    </div>
                     <Form.Item name='description' label="Mô tả" style={{ width: '100%' }}>
                         <Editor
                             onEditorChange={(content) => setDescription(content)}

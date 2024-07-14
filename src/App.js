@@ -89,6 +89,8 @@ import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 import Checkout from "./components/client/pages/checkout/Checkout";
 import Payment from "./components/client/pages/checkout/Payment";
 
+import Success from "./components/client/pages/checkout/Success";
+
 
 import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
@@ -101,9 +103,11 @@ function App() {
         <Route path="login/verify/otp" element={<VerifyOtp />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="payment" element={<Payment />} />
+
         <Route element={<ClientLayout />}>
           {/* Home  */}
           <Route path="/" element={<Home />} />
+          <Route path="payment/success" element={<Success />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path="/:id" element={<ProductDetail />} />
