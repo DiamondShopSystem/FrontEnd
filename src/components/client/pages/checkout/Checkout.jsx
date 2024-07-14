@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
-
 import { useSearchParams, useNavigate, Link, Redirect  } from 'react-router-dom';
 import { Input, Radio } from 'antd';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
 import axios from 'axios';
@@ -12,9 +8,6 @@ import parse from 'html-react-parser';
 import '../../styles/Client.css';
 
 const Checkout = () => {
-
-    const [cart, setCart] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         fetchCartData();
@@ -121,9 +114,10 @@ const Checkout = () => {
                         <Table borderless>
                             <tbody>
                                 {cart.map((item, index) => (
-                                    <tr key={index}>
-                                        <td style={{ width: '25%' }}>
-                                            <Image src={item.productInfo.thumbnail} style={{ width: '100%', height: 'auto', borderRadius: '20px', border: 'solid 1px gray' }} alt="Sản phẩm" />
+                                    <tr key={index} className="position-relative">
+                                        <td style={{ width: '25%', position: 'relative' }}>
+                                            <Image src={item.productInfo.thumbnail} style={{ width: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1) inset' }} alt="Sản phẩm" />
+                                            <div className="checkout__item-quantity">{item.quantity}</div>
                                         </td>
                                         <td style={{ width: '50%', verticalAlign: 'middle' }}>
                                             <div>
@@ -152,7 +146,7 @@ const Checkout = () => {
                                 <span>{totalPrice?.toLocaleString()}đ</span>
                             </div>
                             <div className="d-flex justify-content-between mb-2">
-                                <span>Phí vận chuyển</span>
+                                <span>Giảm Giá</span>
                                 <span>—</span>
                             </div>
                             <div className="d-flex justify-content-between fw-bold border-top pt-2">

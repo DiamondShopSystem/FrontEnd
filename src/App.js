@@ -59,7 +59,7 @@ import Home from "./components/client/pages/home/Home";
 //Product
 import ProductsPage from "./components/client/pages/product/ProductsPage";
 import ProductDetail from "./components/client/pages/product/ProductDetail";
-
+import DiamondDetail from "./components/client/pages/product/DiamondDetail"
 //Cart
 import Cart from "./components/client/pages/cart/Cart";
 
@@ -103,13 +103,13 @@ function App() {
         <Route path="login/verify/otp" element={<VerifyOtp />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="payment" element={<Payment />} />
-
         <Route element={<ClientLayout />}>
           {/* Home  */}
           <Route path="/" element={<Home />} />
           <Route path="payment/success" element={<Success />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
+          <Route path="diamond" element={<DiamondDetail />} />
           <Route path="/:id" element={<ProductDetail />} />
           <Route path="info" />
           {/* Cart  */}

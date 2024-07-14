@@ -749,6 +749,7 @@
     overflow: visible;
     height: 100%;
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 20px;
 }
 
 .productspage__container .container .productspage__gird .boxproduct {
@@ -1014,5 +1015,40 @@
     background: #338dbc;
     color: white;
 }
+.checkout__item-quantity {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: rgba(153, 153, 153, 0.9);;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* End Checkout */
+/* Certificate */
+#warranty-certificate {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+#warranty-certificate h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#warranty-certificate p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* End Certificate */

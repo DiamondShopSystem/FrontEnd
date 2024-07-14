@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
-import axios from 'axios';
-import parse from 'html-react-parser';
 import '../../styles/Client.css';
-
-const Payment = () => {
-    const [cart, setCart] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
 import axios from 'axios';
@@ -94,8 +82,7 @@ const Payment = () => {
                     </Form>
                     <h3 style={{ fontSize: '18px', margin: '20px 0' }}>Phương thức thanh toán</h3>
 
-                    <Form>
-=======
+                    {/* <Form> */}
                     {/* <Form>
 
                         <Form.Group className="mb-3 checkout__form-check" controlId="paymentMethod1">

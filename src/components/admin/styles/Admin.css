@@ -48,19 +48,19 @@
 }
 
 .dashboard__card:first-child {
-    background-color: #2962ff;
+    background-color: #33dcfa;
 }
 
 .dashboard__card:nth-child(2) {
-    background-color: #ff6d00;
+    background-color: #f8d741;
 }
 
 .dashboard__card:nth-child(3) {
-    background-color: #2e7d32;
+    background-color: #32f162;
 }
 
 .dashboard__card:nth-child(4) {
-    background-color: #d50000;
+    background-color: #f78d8d;
 }
 
 .dashboard__card-inner {
@@ -125,6 +125,34 @@
 
 /* End DashBoard  */
 /* Detail */
+.dashboard {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.chart {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  max-height: 470px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .chart.pie canvas {
+  max-width: 100% !important; 
+  max-height: 100% !important;
+} */
 .detail__container {
     margin-top: 20px;
     padding: 20px;
