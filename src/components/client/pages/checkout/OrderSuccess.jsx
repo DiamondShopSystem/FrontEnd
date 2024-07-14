@@ -14,5 +14,4 @@ const OrderSuccess = () => {
         </div>
     )
 }
-
 export default OrderSuccess;

@@ -87,7 +87,8 @@ import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 // Checkout
 import Checkout from "./components/client/pages/checkout/Checkout";
 import OrderSuccess from "./components/client/pages/checkout/OrderSuccess";
-// ABC
+import DiamondDetail from "./components/client/pages/product/DiamondDetail";
+
 import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
   return (
@@ -105,6 +106,7 @@ function App() {
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path="/:id" element={<ProductDetail />} />
+          <Route path="/diamond" element={<DiamondDetail />} />
           <Route path="info" />
           {/* Cart  */}
           <Route path="/cart" element={<Cart />} />

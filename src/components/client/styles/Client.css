@@ -1023,6 +1023,24 @@
     color: white;
 }
 
+.checkout__item-quantity {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: rgba(153, 153, 153, 0.9);
+    ;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* End Checkout */
 
 /* OrderSuccess */
@@ -1049,6 +1067,35 @@
     text-transform: uppercase;
 }
 
+/* End Certificate */
+
+/* Order Success  */
+
+.order__success {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ffa052;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle__check {
+    color: rgb(81, 204, 10);
+    font-size: 60px;
+}
+
+.order__success h2 {
+    color: #ff9500;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .order__success p {
     margin-bottom: 15px;
     line-height: 1.6;
@@ -1070,4 +1117,4 @@
     background-color: #f39820;
 }
 
-/* End OrderSuccess */
+/* End Order Sucess  */

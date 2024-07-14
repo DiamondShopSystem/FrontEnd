@@ -53,8 +53,8 @@ const ProductDetail = () => {
             });
     };
 
-    const fetchData = () => {
-        axios.get(`${id}`)
+    const fetchData = async () => {
+        await axios.get(`${id}`)
             .then((response) => {
                 setProduct(response.data.record);
                 console.log(response.data.record);

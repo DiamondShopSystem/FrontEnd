@@ -44,11 +44,9 @@ const Checkout = () => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                if(checkResult.code == 200){
+                if(checkResult.data.code === 200){
                     navigate("/checkout/success");
                 }
-                // window.location.href = checkResult.order_url;
-                // navigate(checkResult.order_url, { replace: true });
             })
             .catch((error) => {
                 console.log(error);
