@@ -73,7 +73,6 @@ import RequireAuth from "./components/client/pages/RequireAuth";
 import UserProfile from "./components/client/pages/profile/UserProfile";
 import UserInfoDetail from "./components/client/pages/profile/UserInfoDetail";
 import HistoryOrder from "./components/client/pages/profile/HistoryOrder";
-import MyVoucher from "./components/client/pages/profile/MyVoucher";
 //Guide
 import SizeGuidePage from "./components/client/pages/guide/SizeGuidePage";
 import SizeRingGuide from "./components/client/pages/guide/SizeRingGuide";
@@ -87,8 +86,7 @@ import BlogDiamondPrice from "./components/client/pages/blog/BlogDiamondPrice";
 
 // Checkout
 import Checkout from "./components/client/pages/checkout/Checkout";
-import Payment from "./components/client/pages/checkout/Payment";
-import Success from "./components/client/pages/checkout/Success";
+import OrderSuccess from "./components/client/pages/checkout/OrderSuccess";
 // ABC
 import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
@@ -100,11 +98,10 @@ function App() {
         <Route path="login" element={<UserLogin />} />
         <Route path="login/verify/otp" element={<VerifyOtp />} />
         <Route path="checkout" element={<Checkout />} />
-        <Route path="payment" element={<Payment />} />
         <Route element={<ClientLayout />}>
           {/* Home  */}
           <Route path="/" element={<Home />} />
-          <Route path="payment/success" element={<Success />} />
+          <Route path="checkout/success" element={<OrderSuccess />} />
           {/* Product  */}
           <Route path="products/:slug/" element={<ProductsPage />} />
           <Route path="/:id" element={<ProductDetail />} />

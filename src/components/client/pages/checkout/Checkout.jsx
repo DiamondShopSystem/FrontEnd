@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate, Link, Redirect  } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link, Redirect } from 'react-router-dom';
 import { Input, Radio } from 'antd';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Container, Row, Col, Image, Table } from 'react-bootstrap';
@@ -11,6 +11,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const [payment, setPayment] = useState();
     const handlePayment = (e) => {
+        console.log(e.target.value)
         setPayment(e.target.value);
     }
     const [cart, setCart] = useState([]);
@@ -24,13 +25,18 @@ const Checkout = () => {
     const submitPayment = async (e) => {
         const configuration = {
             method: "post",
-            url: "payment/zalo",
+            url: `payment/${payment}`,
             data: {
                 totalPrice: totalPrice,
                 fullName: fullName,
                 phone: phone,
                 address: address
             },
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true,
+
         };
 
         await axios(configuration)
@@ -38,7 +44,10 @@ const Checkout = () => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                window.location.href = checkResult.order_url;
+                if(checkResult.code == 200){
+                    navigate("/checkout/success");
+                }
+                // window.location.href = checkResult.order_url;
                 // navigate(checkResult.order_url, { replace: true });
             })
             .catch((error) => {
@@ -47,7 +56,13 @@ const Checkout = () => {
     }
     const fetchCartData = async () => {
         try {
-            const response = await axios.get('/cart/get');
+            const response = await axios.get('/cart/get', {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+
+            });
             if (response.data.code === 200) {
                 const products = response.data.cart.products.map(product => ({
                     ...product,

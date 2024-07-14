@@ -29,7 +29,12 @@ const ProductDetail = () => {
             data: {
                 id,
                 selectedSize
-            }
+            },
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true,
+
         };
 
         await axios(configuration)

@@ -16,7 +16,12 @@ const Cart = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/cart/get');
+            const response = await axios.get('/cart/get', {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            });
             if (response.data.code === 200) {
                 const products = response.data.cart.products.map(product => ({
                     ...product,
@@ -38,13 +43,18 @@ const Cart = () => {
                 productId,
                 quantity
             },
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true,
+
         };
         await axios(configuration)
             .then((result) => {
                 fetchData();
             })
             .catch((error) => {
-               
+
             });
     }
 
@@ -143,7 +153,7 @@ const Cart = () => {
                             <span style={{ marginLeft: '10px', fontSize: '25px' }}>{totalPrice?.toLocaleString()}đ</span>
                         </div>
                         <div className="checkout">
-                        <Link to="/checkout">
+                            <Link to="/checkout">
                                 <button className="cart__checkout-btn">THANH TOÁN</button>
                             </Link>
                         </div>
