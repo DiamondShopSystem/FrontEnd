@@ -81,23 +81,23 @@ const ProductDetail = () => {
                 <div>
                     <form className='row' onSubmit={(e) => addToCart(product, e)}>
                         <div className='col-6'>
-                            <img className='boxproductdetail__image' src={product.thumbnail} alt='Ảnh sản phẩm' />
+                            <img className='boxproductdetail__image' src={product?.thumbnail} alt='Ảnh sản phẩm' />
                         </div>
                         <div className='col-6'>
                             <div className='boxproductdetail__content'>
                                 <div className="boxproductdetail__content-header">
-                                    <h2>{product.title}</h2>
-                                    <p>{product.price}</p>
+                                    <h2>{product?.title}</h2>
+                                    <p>{product?.price}</p>
                                 </div>
                                 <div className="boxproductdetail__content-center">
                                     <div>
-                                        <p>Chất liệu: {product.material}</p>
+                                        <p>Chất liệu: {product?.material}</p>
                                     </div>
                                     <div>
-                                        <p>Viên chính: {product.mainGemStone}</p>
+                                        <p>Viên chính: {product?.mainGemStone}</p>
                                     </div>
                                     <div>
-                                        <p>Viên Phụ: {product.secondGemStone}</p>
+                                        <p>Viên Phụ: {product?.secondGemStone}</p>
                                     </div>
                                 </div>
                                 <div className="boxproductdetail__content-footer">
@@ -132,7 +132,7 @@ const ProductDetail = () => {
             </div>
             <div className='productdetail__description'>s
                 <h2>CHI TIẾT SẢN PHẨM</h2>
-                {parse(`${product.description}`)}
+                {parse(`${product?.description}`)}
             </div>
         </section>
     );

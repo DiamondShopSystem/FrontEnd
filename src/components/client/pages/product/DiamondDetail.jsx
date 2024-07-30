@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
@@ -11,17 +11,24 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const DiamondDetail = () => {
+    const { id } = useParams();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [diamond, setDiamond] = useState();
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    const diamond = {
-        title: "Kim cương",
-        thumbnail: "https://i.natgeofe.com/k/905d83a3-45ed-46d1-8717-833d30b8c964/diamond-polished_4x3.jpg",
-        price: 5000000,
-        color: "D",
-        clarity: "VS1",
-        cut: "Excellent"
+    const fetchData = async () => {
+        await axios.get(`${id}`)
+            .then((response) => {
+                setDiamond(response.data.diamond);
+                console.log(response.data.record);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (

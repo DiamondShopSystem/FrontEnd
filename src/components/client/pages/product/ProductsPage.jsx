@@ -23,6 +23,7 @@ const ProductsPage = () => {
         return currentUrl.split('/products/')[1];
     };
     const [products, setProducts] = useState([]);
+    const [diamonds, setDiamonds] = useState([]); 
     const handlePageClick = (data) => {
         const params = {};
         let currentPage = data.selected + 1;
@@ -43,6 +44,7 @@ const ProductsPage = () => {
         axios.get(`/products/${slug}`,)
             .then(function (response) {
                 setProducts(response.data.records);
+                setDiamonds(response.data.diamonds);
             })
             .catch(function (error) {
                 console.log(error);
@@ -56,7 +58,11 @@ const ProductsPage = () => {
                 </div>
                 <div className='container'>
                     <div className='row productspage__gird'>
-                        {products.map((item) => {
+                        {products?.map((item) => {
+                            console.log(products);
+                            return <BoxProduct className='col-3' product={item} key={item.id} />
+                        })}
+                        {diamonds?.map((item) => {
                             console.log(products);
                             return <BoxProduct className='col-3' product={item} key={item.id} />
                         })}

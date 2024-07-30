@@ -89,78 +89,86 @@ import Checkout from "./components/client/pages/checkout/Checkout";
 import OrderSuccess from "./components/client/pages/checkout/OrderSuccess";
 import DiamondDetail from "./components/client/pages/product/DiamondDetail";
 
+
+import Diamond from "./components/admin/pages/diamond/Diamond";
+import CreateDiamond from "./components/admin/pages/diamond/CreateDiamond";
+import UpdateDiamond from "./components/admin/pages/diamond/UpdateDiamond";
+import DetailDiamond from "./components/admin/pages/diamond/DetailDiamond";
 import PersistLogin from "./components/client/pages/PersistLogin";
 function App() {
-  return (
-    <>
-      <Routes>
-        {/* Client Path  */}
-        {/* Authen  */}
-        <Route path="login" element={<UserLogin />} />
-        <Route path="login/verify/otp" element={<VerifyOtp />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route element={<ClientLayout />}>
-          {/* Home  */}
-          <Route path="/" element={<Home />} />
-          <Route path="checkout/success" element={<OrderSuccess />} />
-          {/* Product  */}
-          <Route path="products/:slug/" element={<ProductsPage />} />
-          <Route path="/:id" element={<ProductDetail />} />
-          <Route path="/:id" element={<DiamondDetail />} />
-          <Route path="info" />
-          {/* Cart  */}
-          <Route path="/cart" element={<Cart />} />
-          {/* Promotion  */}
-          <Route path="promotion" element={<Promotion />} />
-          {/* Blog */}
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/diamond-tips" element={<BlogDiamondTips />} />
-          <Route path="blog/faqs" element={<BlogFAQs />} />
-          <Route path="blog/diamond-price" element={<BlogDiamondPrice />} />
-          {/* User */}
-          <Route path="user/" element={<UserProfile />}>
-            <Route path="info" element={<UserInfoDetail />} />
-          </Route>
-        </Route>
-        {/* Guide Page */}
-        <Route path="size-guide" element={<SizeGuidePage />} />
-        <Route path="size-guide/ring" element={<SizeRingGuide />} />
-        <Route path="size-guide/bracelet" element={<SizeBraceletGuide />} />
-        <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
-        {/* Admin Path  */}
-        <Route path="/admin">
-          {/* Authen */}
-          <Route path="login" element={<AdminLogin />} />
-          <Route path="forgotpassword" element={<AdminForgotPassword />} />
-          <Route path="forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
-          <Route path="forgotpassword/reset" element={<AdminForgotPasswordReset />} />
-          {/* Dashboard  */}
-          <Route element={<AdminLayout />} >
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="product" element={<Product />} />
-            <Route path="product/create" element={<CreateProduct />} />
-            <Route path="product/edit/:id" element={<UpdateProduct />} />
-            <Route path="product/detail/:id" element={<DetailProduct />} />
-            <Route path="category" element={<Category />} />
-            <Route path="category/create" element={<CreateCategory />} />
-            <Route path="category/edit/:id" element={<UpdateCategory />} />
-            <Route path="category/detail/:id" element={<DetailCategory />} />
-            <Route path="account">
-              <Route path="staff" element={<Staff />} />
-              <Route path="staff/create" element={<CreateStaff />} />
-              <Route path="staff/edit/:id" element={<UpdateStaff />} />
-              <Route path="staff/detail/:id" element={<DetailStaff />} />
-              <Route path="customer" element={<Cusomter />} />
-              <Route path="customer/create" element={<CreateCusomter />} />
-              <Route path="customer/edit/:id" element={<UpdateCustomer />} />
-              <Route path="customer/detail/:id" element={<DetailCustomer />} />
-            </Route>
-          </Route>
-        </Route>
-      </Routes >
+    return (
+        <>
+            <Routes>
+                {/* Client Path  */}
+                {/* Authen  */}
+                <Route path="login" element={<UserLogin />} />
+                <Route path="login/verify/otp" element={<VerifyOtp />} />
+                <Route path="checkout" element={<Checkout />} />
+                <Route element={<ClientLayout />}>
+                    {/* Home  */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="checkout/success" element={<OrderSuccess />} />
+                    {/* Product  */}
+                    <Route path="products/:slug/" element={<ProductsPage />} />
+                    <Route path="/:id" element={<ProductDetail />} />
+                    <Route path="info" />
+                    {/* Cart  */}
+                    <Route path="/cart" element={<Cart />} />
+                    {/* Promotion  */}
+                    <Route path="promotion" element={<Promotion />} />
+                    {/* Blog */}
+                    <Route path="blog" element={<Blog />} />
+                    <Route path="blog/diamond-tips" element={<BlogDiamondTips />} />
+                    <Route path="blog/faqs" element={<BlogFAQs />} />
+                    <Route path="blog/diamond-price" element={<BlogDiamondPrice />} />
+                    {/* User */}
+                    <Route path="user/" element={<UserProfile />}>
+                        <Route path="info" element={<UserInfoDetail />} />
+                    </Route>
+                </Route>
+                {/* Guide Page */}
+                <Route path="size-guide" element={<SizeGuidePage />} />
+                <Route path="size-guide/ring" element={<SizeRingGuide />} />
+                <Route path="size-guide/bracelet" element={<SizeBraceletGuide />} />
+                <Route path="size-guide/necklace" element={<SizeNecklaceGuide />} />
+                {/* Admin Path  */}
+                <Route path="/admin">
+                    {/* Authen */}
+                    <Route path="login" element={<AdminLogin />} />
+                    <Route path="forgotpassword" element={<AdminForgotPassword />} />
+                    <Route path="forgotpassword/otp" element={<AdminForgotPasswordOtp />} />
+                    <Route path="forgotpassword/reset" element={<AdminForgotPasswordReset />} />
+                    {/* Dashboard  */}
+                    <Route element={<AdminLayout />} >
+                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="diamond" element={<Diamond />} />
+                        <Route path="diamond/create" element={<CreateDiamond />} />
+                        <Route path="diamond/edit/:id" element={<UpdateDiamond />} />
+                        <Route path="diamond/detail/:id" element={<DetailDiamond />} />
+                        <Route path="product" element={<Product />} />
+                        <Route path="product/create" element={<CreateProduct />} />
+                        <Route path="product/edit/:id" element={<UpdateProduct />} />
+                        <Route path="product/detail/:id" element={<DetailProduct />} />
+                        <Route path="category" element={<Category />} />
+                        <Route path="category/create" element={<CreateCategory />} />
+                        <Route path="category/edit/:id" element={<UpdateCategory />} />
+                        <Route path="category/detail/:id" element={<DetailCategory />} />
+                        <Route path="account">
+                            <Route path="staff" element={<Staff />} />
+                            <Route path="staff/create" element={<CreateStaff />} />
+                            <Route path="staff/edit/:id" element={<UpdateStaff />} />
+                            <Route path="staff/detail/:id" element={<DetailStaff />} />
+                            <Route path="customer" element={<Cusomter />} />
+                            <Route path="customer/create" element={<CreateCusomter />} />
+                            <Route path="customer/edit/:id" element={<UpdateCustomer />} />
+                            <Route path="customer/detail/:id" element={<DetailCustomer />} />
+                        </Route>
+                    </Route>
+                </Route>
+            </Routes >
 
-    </>
-  );
+        </>
+    );
 }
 
 export default App;

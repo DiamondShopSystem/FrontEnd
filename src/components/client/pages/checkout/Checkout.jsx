@@ -44,7 +44,7 @@ const Checkout = () => {
                 console.log(result);
                 const checkResult = result.data;
                 console.log(checkResult);
-                if(checkResult.data.code === 200){
+                if(checkResult.code == 200){
                     navigate("/checkout/success");
                 }
             })

@@ -59,6 +59,10 @@ const MenuList = () => {
                 {/* <Link to={"/admin/dashboard"} >Trang tổng quan</Link> */}
                 Trang sản phẩm
             </Menu.Item>
+            <Menu.Item key="diamond" icon={<IoDiamond />}>
+                {/* <Link to={"/admin/dashboard"} >Trang tổng quan</Link> */}
+                Trang kim cương
+            </Menu.Item>
             <Menu.Item key="category" icon={<BarsOutlined />}>
                 Trang danh mục
 
